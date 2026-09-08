@@ -115,34 +115,6 @@ const TIERS: Array<{
   },
 ];
 
-const TOOLKIT_VIDEOS = [
-  {
-    title: "What Is Neurofeedback?",
-    src: "/videos/myndlift-what-is-neurofeedback.mp4",
-    poster: "/images/video/myndlift-what-is-neurofeedback-thumbnail.png",
-  },
-  {
-    title: "Myndlift 101: Brain Training Explained",
-    src: "/videos/myndlift-101-brain-training-explained.mp4",
-    poster: "/images/video/myndlift-101-brain-training-explained-thumbnail.png",
-  },
-  {
-    title: "How to Prepare for Training",
-    src: "/videos/myndlift-how-to-prepare-for-training.mp4",
-    poster: "/images/video/myndlift-how-to-prepare-for-training-thumbnail.png",
-  },
-  {
-    title: "How to Stay Consistent",
-    src: "/videos/myndlift-how-to-stay-consistent.mp4",
-    poster: "/images/video/myndlift-how-to-stay-consistent-thumbnail.png",
-  },
-  {
-    title: "Feeling Confused?",
-    src: "/videos/myndlift-feeling-confused.mp4",
-    poster: "/images/video/myndlift-feeling-confused-thumbnail.png",
-  },
-] as const;
-
 const PROTOCOLS = [
   {
     title: "Anxiety Reduction & Mood Stabilization",
@@ -167,6 +139,49 @@ const PROTOCOLS = [
     inhibit: "High Beta",
     reward: "Theta & Alpha",
     src: "/images/neurofeedback/protocol-relaxation-meditation.jpg",
+  },
+] as const;
+
+const EXECUTIVE_CONTROL_SYSTEMS = [
+  {
+    title: "Sleep & circadian",
+    detail: "glymphatic clearance · restore",
+    position: "lg:col-start-5 lg:col-span-4 lg:row-start-1",
+  },
+  {
+    title: "Hormonal",
+    detail: "thyroid · sex hormones · rhythm",
+    position: "lg:col-start-1 lg:col-span-3 lg:row-start-2",
+  },
+  {
+    title: "Adrenal / HPA",
+    detail: "stress response · resilience",
+    position: "lg:col-start-10 lg:col-span-3 lg:row-start-2",
+  },
+  {
+    title: "Autonomic / mood",
+    detail: "calm · focus · heart-brain",
+    position: "lg:col-start-1 lg:col-span-3 lg:row-start-3",
+  },
+  {
+    title: "Immune",
+    detail: "inflammation · repair",
+    position: "lg:col-start-10 lg:col-span-3 lg:row-start-3",
+  },
+  {
+    title: "Neuroendocrine",
+    detail: "brain-to-gland signaling",
+    position: "lg:col-start-1 lg:col-span-3 lg:row-start-4",
+  },
+  {
+    title: "Digestion",
+    detail: "motility · enzymes · gut-brain",
+    position: "lg:col-start-10 lg:col-span-3 lg:row-start-4",
+  },
+  {
+    title: "Neuromuscular",
+    detail: "tone · coordination · movement",
+    position: "lg:col-start-5 lg:col-span-4 lg:row-start-5",
   },
 ] as const;
 
@@ -281,6 +296,72 @@ export default function VirtualProgramPage() {
         </div>
       </section>
 
+      {/* Executive control systems */}
+      <section className="bg-paper py-24 lg:py-32">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10">
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
+              The Idea in One Picture
+            </p>
+            <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
+              Restore the networks that run the rest.
+            </h2>
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted">
+              Brain mapping shows which executive networks are under-firing,
+              over-firing, or poorly timed. Neurofeedback is the targeted
+              neurological exercise that helps bring those networks back
+              online.
+            </p>
+          </Reveal>
+
+          <Reveal delay={120} offset={24} className="mt-14">
+            <div className="relative overflow-hidden rounded-2xl border border-rule bg-paper-2 px-5 py-8 sm:px-8 lg:px-10 lg:py-12">
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 1200 620"
+                preserveAspectRatio="none"
+                className="pointer-events-none absolute inset-10 hidden h-[calc(100%-5rem)] w-[calc(100%-5rem)] text-rule-d/35 lg:block"
+              >
+                <path d="M600 70V550M130 215H1070M130 310H1070M130 405L600 310L1070 405" fill="none" stroke="currentColor" strokeWidth="2" />
+              </svg>
+
+              <div className="relative grid gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:grid-rows-[auto_auto_auto_auto_auto] lg:gap-x-10 lg:gap-y-7">
+                <div className="order-first rounded-2xl border-2 border-amber/70 bg-ink px-5 py-7 text-center shadow-[0_18px_50px_-28px_rgba(18,24,31,0.65)] sm:col-span-2 lg:col-start-4 lg:col-span-6 lg:row-start-2 lg:row-end-5 lg:self-center lg:px-8 lg:py-10">
+                  <p className="font-mono text-[12px] font-medium uppercase tracking-[0.16em] text-amber-b sm:text-[13px]">
+                    Neurological Exercise
+                  </p>
+                  <h3 className="mt-3 font-serif text-2xl leading-tight text-paper sm:text-3xl">
+                    Executive Control Systems
+                  </h3>
+                  <p className="mt-4 text-[15px] leading-relaxed text-paper/75 sm:text-base">
+                    Brain mapping + Neurofeedback
+                    <span className="block">restore the networks that run the rest</span>
+                  </p>
+                </div>
+
+                {EXECUTIVE_CONTROL_SYSTEMS.map((system) => (
+                  <article
+                    key={system.title}
+                    className={`rounded-lg border border-ink/15 border-t-2 border-t-amber bg-paper px-4 py-5 text-center shadow-[0_10px_30px_-28px_rgba(18,24,31,0.7)] lg:self-center ${system.position}`}
+                  >
+                    <h3 className="font-serif text-lg leading-tight text-ink">
+                      {system.title}
+                    </h3>
+                    <p className="mt-2 font-serif text-[14px] italic leading-snug text-muted">
+                      {system.detail}
+                    </p>
+                  </article>
+                ))}
+              </div>
+            </div>
+            <p className="mx-auto mt-6 max-w-4xl text-center font-serif text-lg italic leading-relaxed text-muted">
+              Restore the center and the systems around it have a chance to
+              follow. Train only the edges and the center stays noisy.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
       {/* Watch — Remote Neurofeedback (Myndlift) */}
       <section className="bg-ink py-24 text-paper lg:py-32">
         <div className="mx-auto max-w-5xl px-6 lg:px-10">
@@ -306,46 +387,6 @@ export default function VirtualProgramPage() {
               </video>
             </div>
           </Reveal>
-        </div>
-      </section>
-
-      {/* Patient toolkit — short Myndlift onboarding clips */}
-      <section className="bg-paper-2 py-24 lg:py-32">
-        <div className="mx-auto max-w-6xl px-6 lg:px-10">
-          <Reveal className="max-w-2xl">
-            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
-              Patient Toolkit
-            </p>
-            <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
-              Short clips to get you started.
-            </h2>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-              Quick answers to the questions patients ask most once their
-              remote neurofeedback kit arrives.
-            </p>
-          </Reveal>
-
-          <ul className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {TOOLKIT_VIDEOS.map((clip, i) => (
-              <Reveal key={clip.src} as="li" delay={100 + i * 80} offset={20}>
-                <div className="mx-auto aspect-[9/16] w-full max-w-[280px] overflow-hidden rounded-2xl border border-rule/60 bg-ink">
-                  <video
-                    src={clip.src}
-                    poster={clip.poster}
-                    controls
-                    playsInline
-                    preload="metadata"
-                    className="h-full w-full object-cover"
-                  >
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-                <p className="mt-4 text-center text-[15px] font-medium leading-snug text-ink">
-                  {clip.title}
-                </p>
-              </Reveal>
-            ))}
-          </ul>
         </div>
       </section>
 
