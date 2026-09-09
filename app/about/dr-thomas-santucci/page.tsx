@@ -41,7 +41,7 @@ const PERSON_SCHEMA = {
   name: "Dr. Thomas Santucci",
   honorificPrefix: "Dr.",
   honorificSuffix: "DC",
-  jobTitle: "Doctor of Chiropractic; Functional Medicine, Functional Neurology, and Regenerative Medicine",
+  jobTitle: "Doctor of Chiropractic; Functional Neurology, Neurofeedback, and Regenerative Medicine",
   url: PAGE_URL,
   worksFor: {
     "@type": "MedicalOrganization",
@@ -130,7 +130,11 @@ const PERSON_SCHEMA = {
     "Functional Neurology",
     "Regenerative Medicine",
     "Neurofeedback",
-    "qEEG",
+    "qEEG Brain Mapping",
+    "Laser Therapy",
+    "PEMF Therapy",
+    "Neurotransmitter Testing & Remediation",
+    "Vestibular Rehabilitation",
     "Alzheimer's Disease",
     "Autoimmune Disease",
     "Concussion and Post-Trauma Care",
@@ -170,6 +174,16 @@ const STAT_RIBBON = [
   { label: "Disciplines", value: "5" },
   { label: "Training Hours", value: "10,000+" },
   { label: "Published Book", value: "1", note: "a second on the way" },
+] as const;
+
+const CLINICAL_FOCUS = [
+  "Cognitive Decline & Neurodegenerative Support",
+  "Metabolic & Toxic Load Recovery",
+  "Performance Optimization for Executives & Athletes",
+  "Concussion / Post-Concussion Syndrome",
+  "Stroke & Vestibular Rehabilitation",
+  "Chronic Pain & Spinal Conditions",
+  "Autoimmune & Chronic Conditions",
 ] as const;
 
 const CREDENTIALS = [
@@ -252,17 +266,18 @@ const INSTITUTION_BADGES: InstitutionBadge[] = [
 ];
 
 const SPEAKING = [
-  "Academy of Comprehensive Integrated Medicine (ACIM), Alzheimer's clinical intervention presentation to a 500-doctor audience",
-  "Aging Summit Silicon Valley",
-  "NeuroMetabolic Group",
-  "Pulse PEMF Medical Training",
-  "Functional Neurology group presentations",
+  "Aging Summit, Silicon Valley – Alzheimer's Clinical Intervention",
+  "Academy of Comprehensive Integrated Medicine (ACIM) – Integrative Tech",
+  "Academy of Comprehensive Integrated Medicine (ACIM) – Effective Alzheimer's Therapies, presented to a 500-doctor audience",
+  "NeuroMetabolic Group – Neurofeedback and Complex Neurological Conditions",
+  "Pulse PEMF Medical Training – Operational strategies using PEMF in difficult cases",
+  "Functional Neurology group presentation – Integrated Multimodal Neurology",
 ] as const;
 
 const MEDIA = [
-  "The Medical Insider podcast (2022)",
   "Vibrant Health Radio, SFO (2000)",
   "Integrative Medicine Radio, Santa Cruz (2018)",
+  "The Medical Insider podcast (2022)",
 ] as const;
 
 export default function AboutDrThomasSantucciPage() {
@@ -349,16 +364,39 @@ export default function AboutDrThomasSantucciPage() {
               <p className="mt-6 text-lg leading-relaxed text-muted">
                 Before medicine, he built a career in international business
                 (Georgetown University, then product management roles at IBM,
-                Telenet, British Telecom, and MCI). A car accident and the
-                traumatic brain injury and celiac trigger it left behind
-                changed the direction entirely, a decade-long personal
-                recovery that became the model he now applies to patients. He
-                is the author of{" "}
+                Telenet, British Telecom, and MCI, where he oversaw the
+                company&apos;s data communications initiatives across a
+                20-city network). A car accident and the traumatic brain
+                injury and celiac trigger it left behind changed the
+                direction entirely, a decade-long personal recovery that
+                became the model he now applies to patients. He is the author
+                of{" "}
                 <span className="italic text-ink">
                   Engineering Medical Miracles: Return to Health
                 </span>{" "}
                 and a presenter to a 500-doctor audience on Alzheimer&apos;s
                 clinical intervention.
+              </p>
+              <p className="mt-6 text-lg leading-relaxed text-muted">
+                His clinical toolkit spans qEEG brain mapping, neurofeedback,
+                laser and PEMF therapy, and neurotransmitter testing and
+                remediation, the same root-cause approach he built into two
+                virtual programs,{" "}
+                <Link
+                  href="/programs/virtual"
+                  className="text-ink underline decoration-amber/60 underline-offset-4 hover:text-amber-b"
+                >
+                  Mynd Transformation Blueprint
+                </Link>{" "}
+                and{" "}
+                <Link
+                  href="/conditions/brain-brightening"
+                  className="text-ink underline decoration-amber/60 underline-offset-4 hover:text-amber-b"
+                >
+                  Brain Brightening
+                </Link>
+                , for cognitive optimization, longevity, and executive
+                performance.
               </p>
             </Reveal>
           </div>
@@ -571,6 +609,33 @@ export default function AboutDrThomasSantucciPage() {
               are the same.
             </p>
           </Reveal>
+        </div>
+      </section>
+
+      {/* Clinical Focus Areas */}
+      <section className="bg-paper-2 py-24 lg:py-32">
+        <div className="mx-auto max-w-6xl px-6 lg:px-10">
+          <Reveal className="max-w-3xl">
+            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
+              Clinical Focus Areas
+            </p>
+            <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
+              Where his cases concentrate.
+            </h2>
+          </Reveal>
+          <ul className="mt-12 flex flex-wrap gap-3">
+            {CLINICAL_FOCUS.map((area, i) => (
+              <Reveal
+                key={area}
+                as="li"
+                delay={80 + i * 40}
+                offset={12}
+                className="rounded-full border border-rule/60 bg-paper px-5 py-2.5 text-[14px] leading-snug text-ink"
+              >
+                {area}
+              </Reveal>
+            ))}
+          </ul>
         </div>
       </section>
 
