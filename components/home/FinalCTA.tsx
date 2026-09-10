@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import Reveal from "@/components/Reveal";
+import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 
 export default function FinalCTA() {
   return (
@@ -29,33 +29,8 @@ export default function FinalCTA() {
           </h2>
         </Reveal>
 
-        <Reveal delay={220} className="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-          <motion.div
-            animate={{
-              boxShadow: [
-                "0 10px 30px -10px rgba(248,180,43,0.35)",
-                "0 22px 60px -10px rgba(248,180,43,0.75)",
-                "0 10px 30px -10px rgba(248,180,43,0.35)",
-              ],
-            }}
-            transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
-            whileHover={{ scale: 1.04, y: -3 }}
-            whileTap={{ scale: 0.98 }}
-            className="rounded-full"
-          >
-            <Link
-              href="/start"
-              className="inline-flex w-[380px] max-w-full items-center justify-center rounded-full bg-gradient-to-r from-amber to-amber-b px-8 py-4 text-center text-base font-medium tracking-tight text-ink"
-            >
-              Book your New-Patient Investigation
-            </Link>
-          </motion.div>
-          <Link
-            href="/brain-assessment"
-            className="inline-flex w-[380px] max-w-full items-center justify-center rounded-full border border-paper/30 px-7 py-3.5 text-center text-sm font-medium tracking-tight text-paper transition-colors hover:border-paper/50 hover:bg-paper/10"
-          >
-            Not ready yet? Take the Free Brain Assessment
-          </Link>
+        <Reveal delay={220} className="mt-12 flex justify-center">
+          <BrainAssessmentButton />
         </Reveal>
       </div>
     </section>

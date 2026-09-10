@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { blogPosts, findBlogPost } from "@/content/blog";
 import Reveal from "@/components/Reveal";
+import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 
 const SITE_URL = "https://neurointegrativecareoflosgatos.com";
 
@@ -119,6 +120,9 @@ export default async function BlogPostPage({ params }: PageProps) {
           >
             <time dateTime={post.date}>{post.displayDate}</time>
           </Reveal>
+          <Reveal delay={450} offset={16} className="mt-8 flex">
+            <BrainAssessmentButton />
+          </Reveal>
         </div>
       </section>
 
@@ -221,14 +225,9 @@ export default async function BlogPostPage({ params }: PageProps) {
           </Reveal>
           <Reveal
             delay={220}
-            className="mt-10 flex flex-wrap justify-center gap-3"
+            className="mt-10 flex flex-wrap items-center justify-center gap-3"
           >
-            <Link
-              href="/start"
-              className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
-            >
-              Book a New-Patient Investigation
-            </Link>
+            <BrainAssessmentButton />
             <Link
               href={post.ctaLinkHref}
               className="group inline-flex items-center gap-2 rounded-full border border-paper/25 px-6 py-3.5 text-sm text-paper/85 transition-colors hover:border-amber-b hover:text-amber-b"

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { blogPosts } from "@/content/blog";
 import Reveal from "@/components/Reveal";
+import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 
 const SITE_URL = "https://neurointegrativecareoflosgatos.com";
 const PAGE_URL = `${SITE_URL}/blog`;
@@ -86,6 +87,9 @@ export default function BlogPage() {
           >
             Articles from our team on what may be driving your symptoms, and
             the nonsurgical options worth understanding first.
+          </Reveal>
+          <Reveal delay={550} offset={16} className="mt-10 flex justify-center">
+            <BrainAssessmentButton />
           </Reveal>
         </div>
       </section>

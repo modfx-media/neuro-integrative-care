@@ -16,6 +16,7 @@ import {
   CURRICULUM_HOW_TO_USE,
 } from "@/content/neurologicalSupportProgram";
 import Reveal from "@/components/Reveal";
+import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 
 const SITE_URL = "https://neurointegrativecareoflosgatos.com";
 const PAGE_URL = `${SITE_URL}/programs/virtual`;
@@ -587,12 +588,7 @@ export default function VirtualProgramPage() {
             </h2>
           </Reveal>
           <Reveal delay={140} className="mt-10 flex justify-center">
-            <Link
-              href="/start"
-              className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
-            >
-              Book a New-Patient Investigation
-            </Link>
+            <BrainAssessmentButton />
           </Reveal>
         </div>
       </section>

@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { programs } from "@/content/programs";
 import Reveal from "@/components/Reveal";
+import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 
 const SITE_URL = "https://neurointegrativecareoflosgatos.com";
 const PAGE_URL = `${SITE_URL}/programs`;
@@ -105,6 +106,9 @@ export default function ProgramsPage() {
           >
             Everyone starts the same way. Where it goes from there depends on
             what your investigation surfaces.
+          </Reveal>
+          <Reveal delay={550} offset={16} className="mt-10 flex">
+            <BrainAssessmentButton />
           </Reveal>
         </div>
       </section>
@@ -347,19 +351,8 @@ export default function ProgramsPage() {
               Every program starts with the investigation.
             </h2>
           </Reveal>
-          <Reveal delay={140} className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <Link
-              href="/start"
-              className="inline-flex w-[340px] max-w-full items-center justify-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-center text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
-            >
-              Book a New-Patient Investigation
-            </Link>
-            <Link
-              href="/brain-assessment"
-              className="inline-flex w-[340px] max-w-full items-center justify-center rounded-full border border-paper/30 px-7 py-3.5 text-center text-sm font-medium tracking-tight text-paper transition-colors hover:border-paper/50 hover:bg-paper/10"
-            >
-              Not ready yet? Take the Free Brain Assessment
-            </Link>
+          <Reveal delay={140} className="mt-10 flex justify-center">
+            <BrainAssessmentButton />
           </Reveal>
         </div>
       </section>

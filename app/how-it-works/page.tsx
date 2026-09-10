@@ -4,6 +4,8 @@ import Link from "next/link";
 import { tools } from "@/content/tools";
 import Reveal from "@/components/Reveal";
 import DoctorVideos from "@/components/home/DoctorVideos";
+import Home2VideoHero from "@/components/home2/Home2VideoHero";
+import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 import {
   CURRICULUM_TAGLINE,
   FOUNDATIONAL_INTRO,
@@ -186,14 +188,16 @@ export default function HowItWorksPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
+      <Home2VideoHero />
+
       {/* Hero */}
-      <section className="relative overflow-hidden bg-ink py-28 text-paper lg:py-36">
+      <section className="relative overflow-hidden bg-paper py-28 lg:py-36">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -right-[10%] -top-[20%] h-[70vh] w-[70vh] rounded-full opacity-40"
           style={{
             background:
-              "radial-gradient(closest-side, rgba(248,180,43,0.28), rgba(11,18,32,0) 70%)",
+              "radial-gradient(closest-side, rgba(248,180,43,0.28), rgba(255,255,255,0) 70%)",
           }}
         />
         <div className="relative mx-auto max-w-5xl px-6 lg:px-10">
@@ -206,7 +210,7 @@ export default function HowItWorksPage() {
             Our Approach
           </Reveal>
           <Reveal as="span" delay={180} offset={28} className="mt-6 block">
-            <h1 className="font-serif text-4xl leading-[1.05] tracking-tight text-paper sm:text-5xl lg:text-6xl">
+            <h1 className="font-serif text-4xl leading-[1.05] tracking-tight text-ink sm:text-5xl lg:text-6xl">
               Neurometabolic Rejuvenation.
             </h1>
           </Reveal>
@@ -214,10 +218,13 @@ export default function HowItWorksPage() {
             as="p"
             delay={380}
             offset={16}
-            className="mt-8 max-w-3xl font-serif text-[1.35rem] leading-[1.4] text-paper/80 sm:text-[1.55rem] lg:text-[1.75rem]"
+            className="mt-8 max-w-3xl font-serif text-[1.35rem] leading-[1.4] text-muted sm:text-[1.55rem] lg:text-[1.75rem]"
           >
             The brain and metabolism as one system, investigated with
             objective testing, rebuilt with non-invasive, drug-free technology.
+          </Reveal>
+          <Reveal delay={550} offset={16} className="mt-10 flex">
+            <BrainAssessmentButton />
           </Reveal>
         </div>
       </section>

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 
 // Same headline/CTA copy as components/home/FinalCTA.tsx, restyled flat/light
 // (no dark background, no pulsing glow).
@@ -13,19 +13,8 @@ export default function Home2FinalCTA() {
           </span>
         </h2>
 
-        <div className="mt-9 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-          <Link
-            href="/start"
-            className="inline-flex w-[380px] max-w-full items-center justify-center rounded-md bg-amber px-8 py-4 text-center font-sans text-base font-medium text-ink transition-colors hover:bg-amber-b"
-          >
-            Book your New-Patient Investigation
-          </Link>
-          <Link
-            href="/brain-assessment"
-            className="inline-flex w-[380px] max-w-full items-center justify-center rounded-md border border-paper/30 px-8 py-4 text-center font-sans text-base font-medium text-paper transition-colors hover:border-paper/50 hover:bg-paper/10"
-          >
-            Not ready yet? Take the Free Brain Assessment
-          </Link>
+        <div className="mt-9 flex justify-center">
+          <BrainAssessmentButton />
         </div>
       </div>
     </section>

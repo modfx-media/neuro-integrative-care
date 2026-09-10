@@ -11,6 +11,7 @@ import type { PatientStory } from "@/content/patientStories";
 import type { SectorPageContent } from "@/content/sectorPageContent";
 import type { Tool } from "@/content/tools";
 import Reveal from "@/components/Reveal";
+import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 
 export interface ObjectiveMeasure {
   label: string;
@@ -117,6 +118,9 @@ export default function SectorPageTemplate({
             className="mt-8 max-w-3xl break-words font-serif text-[1.5rem] leading-[1.35] text-paper/85 sm:text-[1.75rem] lg:text-[1.95rem]"
           >
             {condition.heroLine}
+          </Reveal>
+          <Reveal delay={550} offset={16} className="mt-10 flex">
+            <BrainAssessmentButton />
           </Reveal>
         </div>
       </section>
@@ -408,12 +412,7 @@ export default function SectorPageTemplate({
             </h2>
           </Reveal>
           <Reveal delay={140} className="mt-10 flex justify-center">
-            <Link
-              href="/start"
-              className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
-            >
-              Book a New-Patient Investigation
-            </Link>
+            <BrainAssessmentButton />
           </Reveal>
         </div>
       </section>

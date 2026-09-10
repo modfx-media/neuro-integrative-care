@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Home2VideoHero from "@/components/home2/Home2VideoHero";
 import Home2Hero from "@/components/home2/Home2Hero";
 import Home2ConditionGrid from "@/components/home2/Home2ConditionGrid";
 import Home2Proof from "@/components/home2/Home2Proof";
@@ -27,7 +26,6 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <Home2VideoHero />
       <Home2Hero />
       <Home2ConditionGrid />
       <Home2Proof />

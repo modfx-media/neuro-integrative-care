@@ -11,7 +11,6 @@ const QUICK_LINKS = [
   { label: "Virtual Program", href: "/programs/virtual" },
   { label: "Patient Stories", href: "/results" },
   { label: "Blog", href: "/blog" },
-  { label: "About", href: "/about" },
   { label: "About Dr. Thomas Santucci", href: "/about/dr-thomas-santucci" },
   { label: "Start Here", href: "/start" },
   { label: "Regenerative Services", href: "/out-of-town" },

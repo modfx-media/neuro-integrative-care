@@ -15,6 +15,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 
 const SITE_URL = "https://neurointegrativecareoflosgatos.com";
 const PAGE_URL = `${SITE_URL}/about/dr-thomas-santucci`;
@@ -412,6 +413,9 @@ export default function AboutDrThomasSantucciPage() {
             Los Gatos, California. {YEARS_IN_PRACTICE} Years Clinical
             Excellence in Neurometabolic & Functional Medicine.
           </Reveal>
+          <Reveal delay={550} offset={16} className="mt-10 flex">
+            <BrainAssessmentButton />
+          </Reveal>
         </div>
       </section>
 
@@ -675,98 +679,8 @@ export default function AboutDrThomasSantucciPage() {
         </div>
       </section>
 
-      {/* Credentials */}
-      <section id="credentials" className="bg-paper py-24 lg:py-32">
-        <div className="mx-auto max-w-6xl px-6 lg:px-10">
-          <Reveal className="max-w-3xl">
-            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
-              Licenses & Certifications
-            </p>
-            <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
-              Licensed, certified, and continuously trained.
-            </h2>
-          </Reveal>
-
-          <Reveal delay={80} offset={16} className="mt-12">
-            <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-muted">
-              Trained &amp; Certified By
-            </p>
-            <ul className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-              {INSTITUTION_BADGES.map((badge) => (
-                <li
-                  key={badge.name}
-                  className={`flex h-20 items-center justify-center rounded-xl border border-rule/60 px-4 text-center ${
-                    badge.logo?.dark ? "bg-ink" : "bg-paper-2"
-                  }`}
-                >
-                  {badge.logo ? (
-                    <Image
-                      src={badge.logo.src}
-                      alt={badge.name}
-                      width={badge.logo.width}
-                      height={badge.logo.height}
-                      className="h-auto max-h-10 w-auto max-w-[85%] object-contain"
-                    />
-                  ) : (
-                    <span className="font-mono text-[13px] font-medium uppercase tracking-[0.08em] text-ink/80">
-                      {badge.name}
-                    </span>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-
-          <ul className="mt-14 grid gap-4 border-t border-rule pt-14 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-5">
-            {CREDENTIALS.map((cred, i) => (
-              <Reveal
-                key={cred}
-                as="li"
-                delay={80 + i * 30}
-                offset={12}
-                className="border-l border-amber/50 pl-5"
-              >
-                <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber">
-                  {String(i + 1).padStart(2, "0")}
-                </p>
-                <p className="mt-2 text-[15px] leading-relaxed text-ink">
-                  {cred}
-                </p>
-              </Reveal>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* Video: Neurofeedback explainer */}
-      <section className="bg-paper-2 py-24 lg:py-32">
-        <div className="mx-auto max-w-4xl px-6 lg:px-10">
-          <Reveal className="max-w-2xl">
-            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
-              Board Certified in Neurofeedback
-            </p>
-            <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
-              What is neurofeedback?
-            </h2>
-          </Reveal>
-          <Reveal delay={120} offset={20} className="mt-10">
-            {/* THIRD-PARTY MEDIA — embedded via YouTube, not re-hosted. */}
-            <div className="aspect-video w-full overflow-hidden rounded-2xl border border-rule/60 bg-ink">
-              <iframe
-                src="https://www.youtube.com/embed/Jr4iwULgxTs"
-                title="What is Neurofeedback?"
-                className="h-full w-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                loading="lazy"
-              />
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
       {/* Publications */}
-      <section className="bg-paper-2 py-24 lg:py-32">
+      <section className="bg-paper py-24 lg:py-32">
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
           <Reveal className="max-w-3xl">
             <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
@@ -851,8 +765,98 @@ export default function AboutDrThomasSantucciPage() {
         </div>
       </section>
 
-      {/* Speaking + Media */}
+      {/* Credentials */}
+      <section id="credentials" className="bg-paper-2 py-24 lg:py-32">
+        <div className="mx-auto max-w-6xl px-6 lg:px-10">
+          <Reveal className="max-w-3xl">
+            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
+              Licenses & Certifications
+            </p>
+            <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
+              Licensed, certified, and continuously trained.
+            </h2>
+          </Reveal>
+
+          <Reveal delay={80} offset={16} className="mt-12">
+            <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-muted">
+              Trained &amp; Certified By
+            </p>
+            <ul className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+              {INSTITUTION_BADGES.map((badge) => (
+                <li
+                  key={badge.name}
+                  className={`flex h-20 items-center justify-center rounded-xl border border-rule/60 px-4 text-center ${
+                    badge.logo?.dark ? "bg-ink" : "bg-paper-2"
+                  }`}
+                >
+                  {badge.logo ? (
+                    <Image
+                      src={badge.logo.src}
+                      alt={badge.name}
+                      width={badge.logo.width}
+                      height={badge.logo.height}
+                      className="h-auto max-h-10 w-auto max-w-[85%] object-contain"
+                    />
+                  ) : (
+                    <span className="font-mono text-[13px] font-medium uppercase tracking-[0.08em] text-ink/80">
+                      {badge.name}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+
+          <ul className="mt-14 grid gap-4 border-t border-rule pt-14 lg:grid-cols-2 lg:gap-x-10 lg:gap-y-5">
+            {CREDENTIALS.map((cred, i) => (
+              <Reveal
+                key={cred}
+                as="li"
+                delay={80 + i * 30}
+                offset={12}
+                className="border-l border-amber/50 pl-5"
+              >
+                <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber">
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <p className="mt-2 text-[15px] leading-relaxed text-ink">
+                  {cred}
+                </p>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Video: Neurofeedback explainer */}
       <section className="bg-paper py-24 lg:py-32">
+        <div className="mx-auto max-w-4xl px-6 lg:px-10">
+          <Reveal className="max-w-2xl">
+            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
+              Board Certified in Neurofeedback
+            </p>
+            <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
+              What is neurofeedback?
+            </h2>
+          </Reveal>
+          <Reveal delay={120} offset={20} className="mt-10">
+            {/* THIRD-PARTY MEDIA — embedded via YouTube, not re-hosted. */}
+            <div className="aspect-video w-full overflow-hidden rounded-2xl border border-rule/60 bg-ink">
+              <iframe
+                src="https://www.youtube.com/embed/Jr4iwULgxTs"
+                title="What is Neurofeedback?"
+                className="h-full w-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                loading="lazy"
+              />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Speaking + Media */}
+      <section className="bg-paper-2 py-24 lg:py-32">
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
             <Reveal offset={20}>
@@ -927,19 +931,8 @@ export default function AboutDrThomasSantucciPage() {
               Ready to have your case seen this way?
             </h2>
           </Reveal>
-          <Reveal delay={140} className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <Link
-              href="/start"
-              className="inline-flex w-[340px] max-w-full items-center justify-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-center text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
-            >
-              Book a New-Patient Investigation
-            </Link>
-            <Link
-              href="/brain-assessment"
-              className="inline-flex w-[340px] max-w-full items-center justify-center rounded-full border border-ink/20 px-7 py-3.5 text-center text-sm font-medium tracking-tight text-ink transition-colors hover:border-ink/40 hover:bg-ink/5"
-            >
-              Or take the Free Brain Assessment
-            </Link>
+          <Reveal delay={140} className="mt-10 flex justify-center">
+            <BrainAssessmentButton />
           </Reveal>
         </div>
       </section>

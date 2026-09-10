@@ -15,7 +15,7 @@ import { conditions } from "@/content/conditions";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
+  { label: "About", href: "/about/dr-thomas-santucci" },
   { label: "Conditions", href: "/conditions" },
   { label: "How It Works", href: "/how-it-works" },
   { label: "Programs", href: "/programs" },
@@ -320,7 +320,7 @@ function StartHereButton() {
         href={BOOK_HREF}
         className="group relative inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-3.5 py-2 text-xs font-medium tracking-tight text-ink shadow-[0_6px_18px_-10px_rgba(232,160,32,0.75)] transition-shadow duration-300 hover:shadow-[0_14px_32px_-10px_rgba(232,160,32,0.9)] sm:px-4 xl:px-5 xl:py-2.5 xl:text-sm"
       >
-        <span className="relative z-10">Start Here</span>
+        <span className="relative z-10">Schedule Your Consultation</span>
       </Link>
     </motion.div>
   );

@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { conditions } from "@/content/conditions";
 import Reveal from "@/components/Reveal";
+import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 
 // Stand-in icon per condition until real clinic/patient photography replaces
 // the placeholder tiles below.
@@ -63,6 +64,11 @@ export default function SixDoorsGrid({
             the real driver was somewhere no one had looked. Start where your
             symptoms point. The investigation goes deeper from there.
           </p>
+          {headingLevel === "h1" && (
+            <div className="mt-8 flex">
+              <BrainAssessmentButton />
+            </div>
+          )}
         </Reveal>
 
         <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">

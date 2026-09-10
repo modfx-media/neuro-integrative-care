@@ -15,6 +15,7 @@ import Link from "next/link";
 import Script from "next/script";
 import { Phone } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 
 // Live intake form (GoHighLevel/LeadConnector embed) provided by the client.
 const LEAD_FORM_ID = "USqbUJSbAufJeRRap7Z9";
@@ -127,6 +128,9 @@ export default function StartPage() {
                 Everything follows from a real answer.
               </span>
             </h1>
+          </Reveal>
+          <Reveal delay={400} offset={16} className="mt-10 flex justify-center">
+            <BrainAssessmentButton />
           </Reveal>
         </div>
       </section>

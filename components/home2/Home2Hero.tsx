@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 
 // Copy is reused word-for-word from components/home/HeroSection.tsx.
 const STATS = [
@@ -36,12 +37,7 @@ export default function Home2Hero() {
           </p>
 
           <div className="mt-9 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-            <Link
-              href="/start"
-              className="inline-flex items-center justify-center rounded-md bg-amber px-7 py-3.5 font-sans text-sm font-medium text-ink transition-colors hover:bg-amber-b"
-            >
-              Book a New-Patient Investigation
-            </Link>
+            <BrainAssessmentButton />
             <Link
               href="#how-it-works"
               className="font-sans text-sm text-muted underline underline-offset-4 transition-colors hover:text-ink"

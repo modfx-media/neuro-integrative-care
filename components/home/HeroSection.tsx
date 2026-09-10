@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 import Reveal from "@/components/Reveal";
 import StatBar from "@/components/home/StatBar";
+import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 
 /*
  * Compliance note: convey "finally understood" through empathy — never
@@ -82,34 +82,9 @@ export default function HeroSection() {
         <Reveal
           delay={1050}
           offset={16}
-          className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
+          className="mt-10 flex justify-center"
         >
-          <motion.div
-            whileHover={{ scale: 1.03, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            transition={{ type: "spring", stiffness: 400, damping: 22 }}
-            className="shrink-0"
-          >
-            <Link
-              href="/brain-assessment"
-              className="inline-flex h-[52px] items-center justify-center whitespace-nowrap rounded-full bg-paper px-7 text-sm font-semibold tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(255,255,255,0.45)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(255,255,255,0.7)]"
-            >
-              Take Your Free Brain Assessment
-            </Link>
-          </motion.div>
-          <motion.div
-            whileHover={{ scale: 1.03, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            transition={{ type: "spring", stiffness: 400, damping: 22 }}
-            className="shrink-0"
-          >
-            <Link
-              href="/start"
-              className="inline-flex h-[52px] items-center justify-center whitespace-nowrap rounded-full bg-gradient-to-r from-amber to-amber-b px-7 text-sm font-semibold tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.6)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
-            >
-              Book a New-Patient Investigation
-            </Link>
-          </motion.div>
+          <BrainAssessmentButton />
         </Reveal>
 
         <Reveal delay={1200} offset={12} className="mt-6">

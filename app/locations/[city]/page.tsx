@@ -5,6 +5,7 @@ import { MapPin, Phone, Clock } from "lucide-react";
 import { cityLocations, findCityLocation } from "@/content/locations";
 import Reveal from "@/components/Reveal";
 import CityConditionsGrid from "@/components/locations/CityConditionsGrid";
+import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 
 const SITE_URL = "https://neurointegrativecareoflosgatos.com";
 const PHONE_DISPLAY = "(408) 871-8222";
@@ -123,6 +124,9 @@ export default async function CityLocationPage({ params }: PageProps) {
           >
             {city.intro}
           </Reveal>
+          <Reveal delay={550} offset={16} className="mt-10 flex">
+            <BrainAssessmentButton />
+          </Reveal>
         </div>
       </section>
 
@@ -185,12 +189,7 @@ export default async function CityLocationPage({ params }: PageProps) {
             </h2>
           </Reveal>
           <Reveal delay={140} className="mt-10 flex justify-center">
-            <Link
-              href="/start"
-              className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
-            >
-              Book a New-Patient Investigation
-            </Link>
+            <BrainAssessmentButton />
           </Reveal>
         </div>
       </section>
