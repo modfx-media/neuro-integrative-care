@@ -1,12 +1,12 @@
 // COMPLIANCE + FACT-CHECK NOTES:
 //
-// (1) YEARS-IN-PRACTICE: master brief confirms "30+ years," superseding the
-//     earlier "27 years" blueprint figure. Consistent with the CV founding
-//     date (1996) and the homepage trust strip.
+// (1) All copy on this page is sourced directly from Dr. Santucci's supplied
+//     CV. Credentials, licenses, education, experience bullets, publications,
+//     speaking engagements, and media mentions are quoted verbatim from that
+//     document — do not paraphrase, expand, or invent additional detail.
 //
-// (2) All copy is derived from the client-supplied blueprint + CV excerpt in
-//     the request. Every credential, publication, engagement, and media
-//     mention is quoted verbatim. Do not paraphrase or expand.
+// (2) YEARS-IN-PRACTICE: CV confirms "30+ years," consistent with the
+//     founding date (1996).
 //
 // (3) Person + MedicalOrganization schema below is written for E-E-A-T
 //     signal — grounded only in the verified CV facts.
@@ -24,12 +24,12 @@ const YEARS_IN_PRACTICE = "30+";
 export const metadata: Metadata = {
   title: "About Dr. Thomas Santucci",
   description:
-    "An informed generalist across five disciplines. 30+ years in Silicon Valley, 11 colleges, 10,000+ training hours. Author of Engineering Medical Miracles.",
+    "Thomas A. Santucci, DC, AFNI — Founder & Clinical Director, NeuroIntegrative Care of Los Gatos. 30+ years of clinical excellence in neurometabolic and functional medicine. Author of Engineering Medical Miracles.",
   alternates: { canonical: "/about/dr-thomas-santucci" },
   openGraph: {
     title: "About Dr. Thomas Santucci | NeuroIntegrative Care of Los Gatos",
     description:
-      "An informed generalist with his feet in five disciplines. 30+ years, 11 colleges, one published book.",
+      "Functional Neurology | Neurofeedback Specialist | Regenerative Medicine Innovator. 30+ years of clinical excellence in neurometabolic and functional medicine.",
     url: "/about/dr-thomas-santucci",
     type: "profile",
   },
@@ -78,44 +78,37 @@ const PERSON_SCHEMA = {
   hasCredential: [
     {
       "@type": "EducationalOccupationalCredential",
-      name: "International Business Policy Degree",
-      credentialCategory: "degree",
-      recognizedBy: { "@type": "Organization", name: "Georgetown University" },
-    },
-    {
-      "@type": "EducationalOccupationalCredential",
-      name: "Doctor of Chiropractic (DC)",
+      name: "Doctor of Chiropractic (DC), Licensed in California",
       credentialCategory: "license",
-      recognizedBy: { "@type": "Organization", name: "California Board of Chiropractic Examiners" },
     },
     {
       "@type": "EducationalOccupationalCredential",
-      name: "American Functional Neurology Institute (AFNI) Certified, 4th Level Training",
+      name: "American Functional Neurology Institute (AFNI) Certified",
       credentialCategory: "certification",
     },
     {
       "@type": "EducationalOccupationalCredential",
-      name: "Alzheimer's Recode II Certified Provider, Medical Based Interventions",
+      name: "Alzheimer's Recode II Certified Provider",
       credentialCategory: "certification",
     },
     {
       "@type": "EducationalOccupationalCredential",
-      name: "The Listening Program Certified Provider, Sound Based Therapy",
+      name: "The Listening Program Certified Provider",
       credentialCategory: "certification",
     },
     {
       "@type": "EducationalOccupationalCredential",
-      name: "Board Certified in Neurofeedback (BCN), 19 Channel QEEG Testing & Interventions",
+      name: "Board Certified in Neurofeedback (BCN)",
       credentialCategory: "certification",
     },
     {
       "@type": "EducationalOccupationalCredential",
-      name: "Carrick Institute for Graduate Studies, Functional Neurology",
+      name: "Carrick Institute Neurology Programs, Extensive Postgraduate Training",
       credentialCategory: "training",
     },
     {
       "@type": "EducationalOccupationalCredential",
-      name: "Childhood Developmental Delays training, Robert Melillo",
+      name: "Developmental Delays Training, Robert Melillo Neurology",
       credentialCategory: "training",
     },
     {
@@ -123,6 +116,12 @@ const PERSON_SCHEMA = {
       name: "Functional Medicine Institute, Applying Clinical Excellence Series",
       credentialCategory: "certification",
       recognizedBy: { "@type": "Organization", name: "Institute for Functional Medicine" },
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "Bachelor of Science in Business Administration (BSBA), International Business Policy",
+      credentialCategory: "degree",
+      recognizedBy: { "@type": "Organization", name: "Georgetown University" },
     },
   ],
   knowsAbout: [
@@ -170,10 +169,10 @@ const MEDICAL_ORG_SCHEMA = {
 };
 
 const STAT_RIBBON = [
-  { label: "Years", value: `${YEARS_IN_PRACTICE} Years` },
-  { label: "Disciplines", value: "5" },
-  { label: "Training Hours", value: "10,000+" },
-  { label: "Published Book", value: "1", note: "a second on the way" },
+  { label: "Years in Practice", value: `${YEARS_IN_PRACTICE} Years` },
+  { label: "Practice Founded", value: "1996" },
+  { label: "Licenses & Certifications", value: "8" },
+  { label: "Published Book", value: "1", note: "a second in progress" },
 ] as const;
 
 const CLINICAL_FOCUS = [
@@ -186,16 +185,91 @@ const CLINICAL_FOCUS = [
   "Autoimmune & Chronic Conditions",
 ] as const;
 
+// Licenses & Certifications — verbatim from the CV.
 const CREDENTIALS = [
-  "International Business Policy Degree, Georgetown University, Washington, DC",
-  "Doctor of Chiropractic (DC), Licensed in California, Life Chiropractic College West, Hayward, CA",
-  "American Functional Neurology Institute (AFNI) Certified 4th Level Training",
-  "Alzheimer's Recode II Certified Provider \u2013 Medical based Interventions",
-  "The Listening Program Certified Provider \u2013 Sound based Therapy",
-  "Board Certified in Neurofeedback (BCN) \u2013 19 Channel QEEG Testing & Interventions",
-  "Carrick Institute for Graduate Studies, Functional Neurology (extensive postgraduate training)",
-  "Childhood Developmental Delays training, Robert Melillo",
-  "Functional Medicine Institute, entire Applying Clinical Excellence Series by originators of Functional Medicine",
+  "Doctor of Chiropractic (DC) \u2014 Licensed in California",
+  "American Functional Neurology Institute (AFNI) Certified",
+  "Alzheimer's Recode II Certified Provider",
+  "The Listening Program Certified Provider",
+  "Board Certified in Neurofeedback (BCN)",
+  "Carrick Institute Neurology Programs \u2014 Extensive Postgraduate Training",
+  "Developmental Delays \u2013 Robert Melillo Neurology Training",
+  "Functional Medicine Institute \u2014 Applying Clinical Excellence Series",
+] as const;
+
+// Education — verbatim from the CV.
+const EDUCATION = [
+  {
+    period: "Georgetown University \u00b7 1978",
+    title: "Bachelor of Science in Business Administration (BSBA)",
+    detail: "International Business Policy",
+  },
+  {
+    period: "Doctor of Chiropractic (DC)",
+    title: "Life Chiropractic College West",
+    detail: "Hayward, California",
+  },
+] as const;
+
+const ADVANCED_POSTGRAD = [
+  "Carrick Institute for Graduate Studies \u2014 Functional Neurology",
+  "Functional Medicine Institute \u2014 Clinical Excellence Series",
+  "American Functional Neurology Institute (AFNI)",
+] as const;
+
+// Advanced Training & Specializations — verbatim from the CV.
+const ADVANCED_TRAINING = [
+  {
+    title: "Neurofeedback & qEEG Brain Mapping",
+    detail: "Comprehensive clinical training and application",
+  },
+  {
+    title: "Functional Neurology (Carrick Institute)",
+    detail: "Hemisphericity, vestibular, and autonomic protocols",
+  },
+  {
+    title: "Neurotransmitter Testing & Remediation",
+    detail: "Clinical application for cognitive and mood disorders",
+  },
+  {
+    title: "PEMF (Pulsed Electromagnetic Field) Therapy",
+    detail: "Cellular recharge and neurological recovery",
+  },
+  {
+    title: "Regenerative Medicine & Stem Cell Protocols",
+    detail: "Neuroprotective and longevity applications",
+  },
+  {
+    title: "Biochemistry & Functional Lab Analysis",
+    detail: "Blood chemistry, genomics, mycotoxins, heavy metals",
+  },
+  {
+    title: "TBI & Post-Concussion Syndrome Rehabilitation",
+    detail: "Personal recovery + clinical protocols",
+  },
+  {
+    title: "Vestibular Rehabilitation & Stroke Recovery",
+    detail: "",
+  },
+] as const;
+
+// Professional Experience bullets — verbatim from the CV.
+const EXPERIENCE_BULLETS = [
+  "Built and led a multidisciplinary neurometabolic and functional neurology practice integrating Neurofeedback, Laser Therapy, Regenerative Medicine and advanced Functional Medicine.",
+  "Developed and scaled virtual programs: Brain Brightening\u2122 and Mynd Transformation Blueprint for cognitive optimization, longevity, and executive performance.",
+  "Personally designed and executed decade-long intensive rehabilitation protocol following severe motor vehicle accident and traumatic brain injury \u2014 achieving full cognitive and functional restoration.",
+] as const;
+
+// Key Skills — verbatim from the CV.
+const KEY_SKILLS = [
+  "Functional Neurology",
+  "Neurofeedback & qEEG",
+  "Laser, PEMF & Regenerative Modalities",
+  "Root-Cause Functional Medicine",
+  "Traumatic Brain Injury Rehabilitation",
+  "Clinical Education & Training",
+  "Biomarker Interpretation",
+  "Patient-Centered Outcome Measurement",
 ] as const;
 
 // Carrick, Apex, and Melillo have no usable logo file supplied yet (Apex's
@@ -265,19 +339,21 @@ const INSTITUTION_BADGES: InstitutionBadge[] = [
   },
 ];
 
+// Speaking Engagements — verbatim from the CV.
 const SPEAKING = [
-  "Aging Summit, Silicon Valley – Alzheimer's Clinical Intervention",
-  "Academy of Comprehensive Integrated Medicine (ACIM) – Integrative Tech",
-  "Academy of Comprehensive Integrated Medicine (ACIM) – Effective Alzheimer's Therapies, presented to a 500-doctor audience",
-  "NeuroMetabolic Group – Neurofeedback and Complex Neurological Conditions",
-  "Pulse PEMF Medical Training – Operational strategies using PEMF in difficult cases",
-  "Functional Neurology group presentation – Integrated Multimodal Neurology",
+  "Ageing Summit \u2013 Silicon Valley: Presentation on Alzheimer's Clinical Intervention",
+  "Academy of Comprehensive Integrated Medicine (ACIM): Presentation on Integrative Tech",
+  "NeuroMetabolic Group: Presentation on Neurofeedback and Complex Neurological Conditions",
+  "Pulse PEMF: Medical Training on operational strategies using PEMF in difficult cases",
+  "Functional Neurology group presentation on Integrated Multimodal Neurology",
+  "Academy of Comprehensive Integrated Medicine: Presentation on Effective Alzheimer's Therapies given to 500 doctor meeting",
 ] as const;
 
+// Outreach Media — verbatim from the CV.
 const MEDIA = [
-  "Vibrant Health Radio, SFO (2000)",
-  "Integrative Medicine Radio, Santa Cruz (2018)",
-  "The Medical Insider podcast (2022)",
+  "2000 \u2013 Vibrant Health Radio Show in SFO",
+  "2018 \u2013 Integrative Medicine Radio in Santa Cruz",
+  "2022 \u2013 New Podcast: The Medical Insider",
 ] as const;
 
 export default function AboutDrThomasSantucciPage() {
@@ -313,9 +389,18 @@ export default function AboutDrThomasSantucciPage() {
           </Reveal>
           <Reveal as="span" delay={180} offset={28} className="mt-6 block">
             <h1 className="font-serif text-4xl leading-[1.05] tracking-tight text-paper sm:text-5xl lg:text-6xl">
-              An informed generalist{" "}
-              <span className="italic text-amber-b">with his feet in five canoes.</span>
+              Thomas A. Santucci,{" "}
+              <span className="italic text-amber-b">DC, AFNI.</span>
             </h1>
+          </Reveal>
+          <Reveal
+            as="p"
+            delay={300}
+            offset={16}
+            className="mt-6 font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-paper/70"
+          >
+            Functional Neurology | Neurofeedback Specialist | Regenerative
+            Medicine Innovator
           </Reveal>
           <Reveal
             as="p"
@@ -323,8 +408,9 @@ export default function AboutDrThomasSantucciPage() {
             offset={16}
             className="mt-8 max-w-3xl font-serif text-[1.35rem] leading-[1.4] text-paper/80 sm:text-[1.55rem] lg:text-[1.75rem]"
           >
-            The doctor who refuses to be one narrow thing, because complex
-            cases don&apos;t reduce to one lane.
+            Founder & Clinical Director, NeuroIntegrative Care of Los Gatos,
+            Los Gatos, California. {YEARS_IN_PRACTICE} Years Clinical
+            Excellence in Neurometabolic & Functional Medicine.
           </Reveal>
         </div>
       </section>
@@ -346,42 +432,42 @@ export default function AboutDrThomasSantucciPage() {
             </Reveal>
             <Reveal delay={120} offset={24} className="lg:col-span-8">
               <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
-                Meet Dr. Santucci
+                Professional Summary
               </p>
               <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
                 Founder, NeuroIntegrative Care of Los Gatos.
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-ink">
-                Dr. Thomas Santucci, DC, has spent {YEARS_IN_PRACTICE} years
-                investigating the complex, unresolved cases that one lane of
-                medicine alone couldn&apos;t explain. He trained across five
-                disciplines, functional medicine, functional neurology,
-                neurofeedback, regenerative medicine, and chiropractic, at 11
-                colleges and 10,000+ hours of postgraduate study, because
-                complicated presentations rarely have a single-specialty
-                answer.
+                Board-certified Doctor of Chiropractic with advanced
+                certifications in nutrition, functional neurology, and
+                neurofeedback. Founder of a 30-year multidisciplinary
+                neurometabolic practice specializing in complex neurological
+                conditions. Personally recovered from severe traumatic brain
+                injury and post-concussion syndrome through self-designed
+                functional neurology and regenerative protocols, providing
+                unique clinical insight and validated methodology. Expert in
+                brain mapping, neurofeedback, LASER, PEMF, neurotransmitter
+                remediation, and root-cause functional medicine.
               </p>
               <p className="mt-6 text-lg leading-relaxed text-muted">
-                Before medicine, he built a career in international business
-                (Georgetown University, then product management roles at IBM,
-                Telenet, British Telecom, and MCI, where he oversaw the
-                company&apos;s data communications initiatives across a
-                20-city network). A car accident and the traumatic brain
-                injury and celiac trigger it left behind changed the
-                direction entirely, a decade-long personal recovery that
-                became the model he now applies to patients. He is the author
-                of{" "}
+                Prior to building his practice, Dr. Santucci served in
+                international product management roles at{" "}
+                <span className="font-medium text-ink">IBM</span>,{" "}
+                <span className="font-medium text-ink">Telenet</span>,{" "}
+                <span className="font-medium text-ink">British Telecom</span>{" "}
+                and as Product Manager for{" "}
+                <span className="font-medium text-ink">MCI&apos;s</span> Data
+                Communications initiatives, overseeing complex data services
+                across a 20-city network. These roles involved strategic
+                business planning which he applies to the development of
+                advanced interventional therapies.
+              </p>
+              <p className="mt-6 text-lg leading-relaxed text-muted">
+                He is the author of{" "}
                 <span className="italic text-ink">
                   Engineering Medical Miracles: Return to Health
                 </span>{" "}
-                and a presenter to a 500-doctor audience on Alzheimer&apos;s
-                clinical intervention.
-              </p>
-              <p className="mt-6 text-lg leading-relaxed text-muted">
-                His clinical toolkit spans qEEG brain mapping, neurofeedback,
-                laser and PEMF therapy, and neurotransmitter testing and
-                remediation, the same root-cause approach he built into two
-                virtual programs,{" "}
+                (2017) and developed the virtual programs{" "}
                 <Link
                   href="/programs/virtual"
                   className="text-ink underline decoration-amber/60 underline-offset-4 hover:text-amber-b"
@@ -393,7 +479,7 @@ export default function AboutDrThomasSantucciPage() {
                   href="/conditions/brain-brightening"
                   className="text-ink underline decoration-amber/60 underline-offset-4 hover:text-amber-b"
                 >
-                  Brain Brightening
+                  Brain Brightening™
                 </Link>
                 , for cognitive optimization, longevity, and executive
                 performance.
@@ -431,153 +517,96 @@ export default function AboutDrThomasSantucciPage() {
         </div>
       </section>
 
-      {/* The Approach */}
-      <section className="bg-paper py-24 lg:py-32">
-        <div className="mx-auto max-w-6xl px-6 lg:px-10">
-          <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
-            <Reveal className="lg:col-span-3">
-              <div className="flex items-center gap-4">
-                <h2 className="font-mono text-[13px] font-medium uppercase tracking-[0.18em] text-amber">
-                  The Approach
-                </h2>
-                <span
-                  aria-hidden="true"
-                  className="hidden h-px flex-1 bg-rule lg:block"
-                />
-              </div>
-            </Reveal>
-            <Reveal delay={120} offset={24} className="relative lg:col-span-9">
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute -left-3 -top-10 select-none font-serif text-[7rem] italic leading-none text-ink/[0.06] lg:-left-6 lg:-top-16 lg:text-[10rem]"
-              >
-                &ldquo;
-              </span>
-              <p className="relative font-serif text-[1.5rem] leading-[1.4] text-ink sm:text-[1.75rem] lg:text-[2.05rem]">
-                Come at a complex case with one modality and you get{" "}
-                <span className="italic text-amber">the wrong answer.</span>
-              </p>
-              <p className="mt-10 border-l-2 border-amber pl-6 font-serif text-[1.25rem] italic leading-snug text-ink lg:text-[1.4rem]">
-                &ldquo;We don&apos;t diagnose anything we can&apos;t help.&rdquo;
-              </p>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* The Origin */}
+      {/* Education */}
       <section className="bg-paper-2 py-24 lg:py-32">
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
           <Reveal className="max-w-3xl">
             <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
-              The Origin
+              Education
             </p>
             <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
               From Georgetown to the exam room.
             </h2>
           </Reveal>
 
-          <div className="mt-14 grid gap-8 lg:grid-cols-12 lg:gap-12">
-            <Reveal delay={100} offset={20} className="lg:col-span-4">
-              <div className="rounded-2xl border border-rule bg-paper p-6 lg:p-7">
-                <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber">
-                  Georgetown University · 1978
-                </p>
-                <p className="mt-4 font-serif text-[1.15rem] leading-tight text-ink">
-                  Bachelor of Science in Business Administration
-                </p>
-                <p className="mt-2 text-[13px] leading-snug text-muted">
-                  International Business Policy
-                </p>
-              </div>
-            </Reveal>
-            <Reveal delay={180} offset={20} className="lg:col-span-8">
-              <p className="text-lg leading-relaxed text-ink">
-                Before founding his practice, Dr. Santucci held international
-                product management roles at{" "}
-                <span className="font-medium">IBM</span>,{" "}
-                <span className="font-medium">Telenet</span>,{" "}
-                <span className="font-medium">British Telecom</span>, and{" "}
-                <span className="font-medium">MCI</span>, overseeing data
-                communications services across a 20-city network, strategic
-                business planning experience he later applied to building his
-                practice.
-              </p>
-              <p className="mt-6 text-lg leading-relaxed text-muted">
-                He became a doctor after a car accident and traumatic brain
-                injury that took a decade to fully resolve, a recovery he
-                personally designed and executed through functional neurology
-                and regenerative protocols. His own trauma also activated his
-                celiac genes.{" "}
-                <span className="italic text-ink">
-                  Trauma as an autoimmune trigger is autobiography, not theory.
-                </span>
-              </p>
-            </Reveal>
+          <div className="mt-14 grid gap-8 sm:grid-cols-2">
+            {EDUCATION.map((item, i) => (
+              <Reveal
+                key={item.title}
+                delay={100 + i * 90}
+                offset={20}
+              >
+                <div className="h-full rounded-2xl border border-rule bg-paper p-6 lg:p-7">
+                  <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber">
+                    {item.period}
+                  </p>
+                  <p className="mt-4 font-serif text-[1.15rem] leading-tight text-ink">
+                    {item.title}
+                  </p>
+                  <p className="mt-2 text-[13px] leading-snug text-muted">
+                    {item.detail}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
           </div>
+
+          <Reveal delay={240} offset={16} className="mt-10">
+            <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-muted">
+              Advanced Postgraduate Studies
+            </p>
+            <ul className="mt-4 flex flex-wrap gap-3">
+              {ADVANCED_POSTGRAD.map((item) => (
+                <li
+                  key={item}
+                  className="rounded-full border border-rule/60 bg-paper px-5 py-2.5 text-[14px] leading-snug text-ink"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
         </div>
       </section>
 
-      {/* The Philosophy */}
+      {/* Advanced Training & Specializations */}
       <section className="bg-paper py-24 lg:py-32">
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
           <Reveal className="max-w-3xl">
             <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
-              The Philosophy
+              Advanced Training & Specializations
             </p>
             <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
-              How do we tackle your complex issues?
+              Where the clinical depth comes from.
             </h2>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-              Every plausible cause on the table before narrowing, because
-              complicated cases don&apos;t yield to one modality&apos;s
-              default list.
-            </p>
           </Reveal>
 
-          <ol className="mt-16 grid gap-6 sm:grid-cols-3 lg:gap-8">
-            {[
-              {
-                num: "01",
-                title: "Neurologic Functions",
-                body: "Neurons are the most energy-hungry cells in the body. Systemic breakdowns show up neurologically first, which is where the investigation begins.",
-              },
-              {
-                num: "02",
-                title: "Metabolic Systems",
-                body: "Optimal, not merely inside a textbook window. 'Normal' labs miss what functional ranges catch.",
-              },
-              {
-                num: "03",
-                title: "Environmental Impacts",
-                body: "Understand how changes in food, environmental toxins, and chronic stress are reshaping the clinical picture, often driving symptoms other lanes miss.",
-              },
-            ].map((principle, i) => (
+          <ul className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {ADVANCED_TRAINING.map((item, i) => (
               <Reveal
-                key={principle.num}
+                key={item.title}
                 as="li"
-                delay={140 + i * 90}
+                delay={80 + i * 60}
                 offset={20}
                 className="h-full"
               >
-                <article className="flex h-full flex-col rounded-2xl border border-rule/60 bg-paper-2 p-8 lg:p-9">
-                  <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber">
-                    {principle.num}
-                  </p>
-                  <h3 className="mt-5 font-serif text-[1.5rem] leading-tight text-ink">
-                    {principle.title}
+                <article className="flex h-full flex-col rounded-2xl border border-rule/60 bg-paper-2 p-6 lg:p-7">
+                  <h3 className="font-serif text-[1.1rem] leading-tight text-ink">
+                    {item.title}
                   </h3>
-                  <p className="mt-4 text-[15px] leading-relaxed text-muted">
-                    {principle.body}
-                  </p>
+                  {item.detail && (
+                    <p className="mt-3 text-[14px] leading-relaxed text-muted">
+                      {item.detail}
+                    </p>
+                  )}
                 </article>
               </Reveal>
             ))}
-          </ol>
+          </ul>
         </div>
       </section>
 
-      {/* Plant analogy */}
+      {/* Professional Experience */}
       <section className="relative overflow-hidden bg-ink py-24 text-paper lg:py-32">
         <div
           aria-hidden="true"
@@ -587,28 +616,35 @@ export default function AboutDrThomasSantucciPage() {
               "radial-gradient(closest-side, rgba(248,180,43,0.22), rgba(11,18,32,0) 70%)",
           }}
         />
-        <div className="relative mx-auto max-w-5xl px-6 lg:px-10">
-          <Reveal>
+        <div className="relative mx-auto max-w-6xl px-6 lg:px-10">
+          <Reveal className="max-w-3xl">
             <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber-b">
-              The Plant
+              Professional Experience
+            </p>
+            <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-paper sm:text-5xl">
+              Founder & Clinical Director
+            </h2>
+            <p className="mt-4 font-mono font-medium text-[13px] uppercase tracking-[0.16em] text-paper/70">
+              NeuroIntegrative Care of Los Gatos, California (Est. 1996 —{" "}
+              {YEARS_IN_PRACTICE} Years)
             </p>
           </Reveal>
-          <Reveal delay={120} className="relative mt-8">
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute -left-4 -top-14 select-none font-serif text-[9rem] italic leading-none text-paper/10 lg:-left-8 lg:-top-20 lg:text-[14rem]"
-            >
-              &ldquo;
-            </span>
-            <p className="relative font-serif text-[1.65rem] leading-[1.35] text-paper sm:text-[2rem] lg:text-[2.35rem]">
-              Water, food, and sun each tested alone kill the plant,{" "}
-              <span className="italic text-amber-b">
-                &lsquo;proving&rsquo; none work.
-              </span>{" "}
-              They only work together. Neurology, biochemistry, and technology
-              are the same.
-            </p>
-          </Reveal>
+
+          <ul className="mt-12 space-y-6">
+            {EXPERIENCE_BULLETS.map((item, i) => (
+              <Reveal
+                key={item}
+                as="li"
+                delay={100 + i * 90}
+                offset={16}
+                className="flex gap-4 border-l border-amber/50 pl-5"
+              >
+                <p className="font-serif text-[1.15rem] leading-relaxed text-paper/90">
+                  {item}
+                </p>
+              </Reveal>
+            ))}
+          </ul>
         </div>
       </section>
 
@@ -644,10 +680,10 @@ export default function AboutDrThomasSantucciPage() {
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
           <Reveal className="max-w-3xl">
             <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
-              Credentials & Licenses
+              Licenses & Certifications
             </p>
             <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
-              11 colleges. 10,000+ hours.
+              Licensed, certified, and continuously trained.
             </h2>
           </Reveal>
 
@@ -732,40 +768,82 @@ export default function AboutDrThomasSantucciPage() {
       {/* Publications */}
       <section className="bg-paper-2 py-24 lg:py-32">
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
-          <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
-            <Reveal className="lg:col-span-3">
-              <div className="flex items-center gap-4">
-                <h2 className="font-mono text-[13px] font-medium uppercase tracking-[0.18em] text-amber">
-                  Publications
-                </h2>
-                <span
-                  aria-hidden="true"
-                  className="hidden h-px flex-1 bg-rule lg:block"
+          <Reveal className="max-w-3xl">
+            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
+              Publications
+            </p>
+          </Reveal>
+
+          <div className="mt-14 grid gap-12 sm:grid-cols-2 lg:gap-16">
+            <Reveal delay={100} offset={24}>
+              <div className="relative mx-auto aspect-[450/744] w-full max-w-[360px] overflow-hidden rounded-xl border border-rule shadow-[0_20px_50px_-20px_rgba(11,18,32,0.35)]">
+                <Image
+                  src="/images/publications/engineering-medical-miracles-cover.png"
+                  alt="Engineering Medical Miracles: Return to Health, book cover by Dr. Thomas A. Santucci, DC"
+                  fill
+                  sizes="(min-width: 640px) 360px, 90vw"
+                  className="object-cover"
                 />
               </div>
-            </Reveal>
-            <Reveal delay={120} className="lg:col-span-9">
-              <article>
+              <article className="mt-6 text-center">
                 <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber">
                   Book · 2017
                 </p>
-                <h3 className="mt-4 font-serif text-[2rem] leading-tight text-ink lg:text-[2.5rem]">
+                <h3 className="mt-3 font-serif text-[1.6rem] leading-tight text-ink">
                   Engineering Medical Miracles:{" "}
                   <span className="italic">Return to Health</span>
                 </h3>
-                <p className="mt-4 font-mono font-medium text-[13px] uppercase tracking-[0.16em] text-muted">
+                <p className="mt-3 font-mono font-medium text-[13px] uppercase tracking-[0.16em] text-muted">
                   ISBN 1544232829
                 </p>
               </article>
-              <article className="mt-12 border-t border-rule pt-10">
+            </Reveal>
+
+            <Reveal delay={200} offset={24}>
+              <div className="relative mx-auto flex aspect-[450/744] w-full max-w-[360px] flex-col overflow-hidden rounded-xl border border-rule bg-ink shadow-[0_20px_50px_-20px_rgba(11,18,32,0.35)]">
+                <div className="flex flex-1 flex-col px-8 pt-11">
+                  <p className="font-mono text-[12px] font-medium uppercase tracking-[0.22em] text-amber-b">
+                    A Neurometabolic Framework
+                  </p>
+                  <h4 className="mt-5 font-serif text-[2.35rem] italic leading-[1.1] text-paper">
+                    Deconstructing Alzheimer&apos;s
+                  </h4>
+                  <p className="mt-5 font-mono text-[11px] font-medium uppercase leading-relaxed tracking-[0.16em] text-paper/60">
+                    Explore Neurometabolic Therapies Available Now · Going
+                    Beyond Convention
+                  </p>
+                  <p className="mt-7 font-serif text-[16px] italic leading-relaxed text-paper/75">
+                    A defensible working framework for families and
+                    clinicians, integrating Functional Medicine, Functional
+                    Neurology, and advanced diagnostics to provide realistic,
+                    actionable interventions for Alzheimer&apos;s and cognitive
+                    decline.
+                  </p>
+                </div>
+                <div className="border-t border-paper/10 px-8 py-6">
+                  <p className="font-serif text-[18px] text-paper">
+                    Dr. Thomas A. Santucci
+                  </p>
+                  <p className="mt-1 font-mono text-[12px] font-medium uppercase tracking-[0.18em] text-paper/60">
+                    DC · AFNI
+                  </p>
+                </div>
+                <div className="flex h-3">
+                  <span className="flex-1 bg-emerald-700" />
+                  <span className="flex-1 bg-sky-700" />
+                  <span className="flex-1 bg-teal-400" />
+                </div>
+              </div>
+              <article className="mt-6 text-center">
                 <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber">
                   In Progress
                 </p>
-                <h3 className="mt-4 font-serif text-[1.5rem] leading-tight text-ink lg:text-[1.85rem]">
+                <h3 className="mt-3 font-serif text-[1.6rem] leading-tight text-ink">
                   Alzheimer&apos;s Intervention
                 </h3>
-                <p className="mt-3 text-[15px] italic leading-snug text-muted">
-                  Second book, forthcoming.
+                <p className="mt-3 text-[14px] leading-snug text-muted">
+                  Educational content and interventions for neurodegenerative
+                  conditions.
                 </p>
               </article>
             </Reveal>
@@ -797,7 +875,7 @@ export default function AboutDrThomasSantucciPage() {
             </Reveal>
             <Reveal offset={20} delay={140}>
               <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
-                Media
+                Outreach Media
               </p>
               <h2 className="mt-4 font-serif text-3xl leading-tight tracking-tight text-ink sm:text-4xl">
                 Community reach-out authored by Dr. Santucci.
@@ -817,57 +895,27 @@ export default function AboutDrThomasSantucciPage() {
         </div>
       </section>
 
-      {/* Alzheimer's work */}
+      {/* Key Skills */}
       <section className="bg-ink py-24 text-paper lg:py-32">
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
           <Reveal className="max-w-3xl">
             <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber-b">
-              The Alzheimer&apos;s Work
+              Key Skills
             </p>
-            <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-paper sm:text-5xl">
-              A model, and a project to validate it.
-            </h2>
           </Reveal>
-
-          <div className="mt-14 grid gap-8 lg:grid-cols-12 lg:gap-12">
-            <Reveal delay={100} offset={20} className="lg:col-span-4">
-              <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber-b">
-                The Model
-              </p>
-              <ul className="mt-6 space-y-4">
-                {[
-                  "Neural inflammation",
-                  "Mitochondrial dysfunction",
-                  "Decreased autophagy",
-                ].map((tenet) => (
-                  <li
-                    key={tenet}
-                    className="flex gap-3 font-serif text-[1.15rem] leading-tight text-paper"
-                  >
-                    <span
-                      aria-hidden="true"
-                      className="mt-2 h-[3px] w-4 shrink-0 rounded-full bg-amber"
-                    />
-                    <span>{tenet}</span>
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-            <Reveal delay={220} offset={20} className="lg:col-span-8">
-              <p className="text-lg leading-relaxed text-paper/80">
-                Dr. Santucci&apos;s Alzheimer&apos;s model rests on three
-                intersecting drivers (neural inflammation, mitochondrial
-                dysfunction, and decreased autophagy) and{" "}
-                <span className="italic text-amber-b">
-                  the Alzheimer&apos;s Project
-                </span>{" "}
-                exists to validate the intervention framework built on top of
-                that model. It&apos;s the work that took him from the ACIM stage
-                (Alzheimer&apos;s clinical intervention presented to a
-                500-doctor audience) to the second book now underway.
-              </p>
-            </Reveal>
-          </div>
+          <ul className="mt-10 flex flex-wrap gap-3">
+            {KEY_SKILLS.map((skill, i) => (
+              <Reveal
+                key={skill}
+                as="li"
+                delay={80 + i * 40}
+                offset={12}
+                className="rounded-full border border-paper/20 px-5 py-2.5 text-[14px] leading-snug text-paper/90"
+              >
+                {skill}
+              </Reveal>
+            ))}
+          </ul>
         </div>
       </section>
 
