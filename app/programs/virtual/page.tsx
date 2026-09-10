@@ -110,7 +110,7 @@ const TIERS: Array<{
       "Clinician review cadence": "Every 4 weeks with Dr. Santucci",
       "Program duration": virtualProgram?.duration ?? "6–10 weeks",
     },
-    cta: { label: "Start Here", href: "/start" },
+    cta: { label: "Schedule Your Consultation", href: "/start" },
     featured: true,
     placeholder: false,
   },

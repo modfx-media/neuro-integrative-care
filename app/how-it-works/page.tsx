@@ -493,7 +493,7 @@ export default function HowItWorksPage() {
               href="/start"
               className="inline-flex items-center rounded-full border border-paper/25 px-6 py-3.5 text-sm text-paper/85 transition-colors hover:border-amber-b hover:text-amber-b"
             >
-              Start Here
+              Schedule Your Consultation
             </Link>
           </Reveal>
         </div>

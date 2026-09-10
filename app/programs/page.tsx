@@ -232,7 +232,7 @@ export default function ProgramsPage() {
                     >
                       {program.slug === "virtual-program"
                         ? "Explore the Virtual Program"
-                        : "Start Here"}
+                        : "Schedule Your Consultation"}
                       <span
                         aria-hidden="true"
                         className="transition-transform group-hover:translate-x-1"
