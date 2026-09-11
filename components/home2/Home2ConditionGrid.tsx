@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { conditions } from "@/content/conditions";
 
-// Same six sectors and copy as components/home/SixDoorsGrid.tsx, restyled flat/minimal.
+// Same seven sectors and copy as components/home/SixDoorsGrid.tsx, restyled flat/minimal.
 export default function Home2ConditionGrid() {
   return (
     <section id="six-doors" className="bg-paper py-20 lg:py-24">
       <div className="mx-auto max-w-5xl px-6 lg:px-10">
         <div className="max-w-2xl">
           <p className="font-sans text-sm font-semibold uppercase tracking-wide text-amber-b">
-            Six Doors In
+            Seven Doors In
           </p>
           <h2 className="mt-3 font-sans text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
             Where does your story start?

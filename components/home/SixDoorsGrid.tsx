@@ -8,6 +8,7 @@ import {
   Leaf,
   Hourglass,
   HelpCircle,
+  Zap,
   type LucideIcon,
 } from "lucide-react";
 import { conditions } from "@/content/conditions";
@@ -23,6 +24,7 @@ const CONDITION_ICONS: Record<string, LucideIcon> = {
   "environmental-toxins": Leaf,
   "longevity-science": Hourglass,
   "idiopathic-unexplained": HelpCircle,
+  erchonia: Zap,
 };
 
 // Real photography, provided per-condition.
@@ -33,6 +35,7 @@ const CONDITION_IMAGES: Record<string, string> = {
   "environmental-toxins": "/images/conditions/environmental-toxins.png",
   "longevity-science": "/images/conditions/longevity-science.webp",
   "idiopathic-unexplained": "/images/conditions/idiopathic-unexplained.png",
+  erchonia: "/images/conditions/erchonia.webp",
 };
 
 interface SixDoorsGridProps {
@@ -54,7 +57,7 @@ export default function SixDoorsGrid({
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <Reveal className="max-w-3xl">
           <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
-            Six Doors In
+            Seven Doors In
           </p>
           <Heading className="mt-3 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
             Where does your story start?

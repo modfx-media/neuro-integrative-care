@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { tools } from "@/content/tools";
 import Reveal from "@/components/Reveal";
+import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 import {
   CURRICULUM_TAGLINE,
   FOUNDATIONAL_INTRO,
@@ -217,6 +218,9 @@ export default function ApproachPage() {
           >
             The brain and metabolism as one system, investigated with
             objective testing, rebuilt with non-invasive, drug-free technology.
+          </Reveal>
+          <Reveal delay={550} offset={16} className="mt-10 flex">
+            <BrainAssessmentButton />
           </Reveal>
         </div>
       </section>

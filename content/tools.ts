@@ -53,6 +53,7 @@ export const tools: Tool[] = [
       "concussion-post-trauma",
       "brain-brightening",
       "autoimmune-investigation",
+      "erchonia",
     ],
     // Lead asset per Media Asset Catalog: "Electron Transport Chain" (Erchonia),
     // directly illustrates the mitochondrial USP of the therapy.

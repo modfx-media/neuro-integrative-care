@@ -4,7 +4,7 @@ import SixDoorsGrid from "@/components/home/SixDoorsGrid";
 export const metadata: Metadata = {
   title: "Conditions",
   description:
-    "Six sectors of investigation: autoimmune, brain brightening, concussion & post-trauma, environmental toxins, longevity, and idiopathic cases. Start here.",
+    "Seven sectors of investigation: autoimmune, brain brightening, concussion & post-trauma, environmental toxins, longevity, idiopathic cases, and chronic & acute pain (Erchonia laser). Start here.",
   alternates: { canonical: "/conditions" },
 };
 

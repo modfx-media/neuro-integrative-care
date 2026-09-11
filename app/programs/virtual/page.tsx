@@ -244,19 +244,8 @@ export default function VirtualProgramPage() {
             A 30-year neurometabolic method, delivered to your home.
             National.
           </Reveal>
-          <Reveal delay={550} className="mt-10 flex flex-wrap gap-3">
-            <Link
-              href="/start"
-              className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
-            >
-              Start the Investigation
-            </Link>
-            <Link
-              href="#tiers"
-              className="inline-flex items-center rounded-full border border-paper/25 px-6 py-3.5 text-sm text-paper/85 transition-colors hover:border-amber-b hover:text-amber-b"
-            >
-              Compare tiers
-            </Link>
+          <Reveal delay={550} className="mt-10 flex flex-wrap items-center gap-3">
+            <BrainAssessmentButton />
           </Reveal>
         </div>
       </section>

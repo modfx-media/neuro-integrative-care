@@ -156,6 +156,28 @@ export const sectorPageContent: Record<string, SectorPageContent> = {
   // Sub-condition entries. Same interface, one tier down. Copy is draft — see
   // TODO at top of file. Parent-sector pairings are tracked in conditions.ts.
 
+  erchonia: {
+    dismissals:
+      "You've probably been told to manage it with medication, live with it, or consider surgery as the only real option. Opioids blunt the signal without addressing the tissue, and many patients are looking for a non-invasive option before taking that route.",
+    workupSteps: [
+      {
+        number: "01",
+        title: "IDENTIFY",
+        body: "We evaluate where the pain originates and whether the FX-405 violet laser, an FDA-cleared option for chronic and acute pain, including chronic low back pain, is a fit alongside the rest of your care.",
+      },
+      {
+        number: "02",
+        title: "REBUILD",
+        body: "Photobiomodulation from the violet and infrared wavelengths is absorbed directly by mitochondria, boosting cellular energy and reducing local inflammation at the site of injury, non-invasive, painless, and drug-free.",
+      },
+      {
+        number: "03",
+        title: "SUSTAIN",
+        body: "We track your pain and function over the course of care to confirm the improvement is holding, then set a maintenance plan so relief doesn't quietly fade.",
+      },
+    ],
+  },
+
   neuropathy: {
     dismissals:
       "You've probably been told nerve damage doesn't reverse. Or that pain meds are the only option. Or that there's nothing else to try. What was never done was a real workup for the driver (B12 status, toxin load, autoimmune activity) instead of chasing the symptom.",
