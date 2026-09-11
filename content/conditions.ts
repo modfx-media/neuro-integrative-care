@@ -139,7 +139,7 @@ export const conditions: Condition[] = [
         whatWeInvestigate:
           "Chronic and acute pain usually gets managed, not addressed: medication, injections, or surgery as the only options on the table. The FX-405 violet laser is the only laser on the market FDA-cleared to treat chronic low back pain. In a double-blind, placebo-controlled, randomized clinical trial, participants averaged 58% pain reduction at a 2-month follow-up, with continued improvement through six months, no addiction potential, no harmful side effects, and no downtime.",
         patientStorySlug: "gail",
-        heroImage: "/images/conditions/banners/chronic-acute-pain.jpg",
+        heroImage: "/images/conditions/banners/chronic-acute-pain.avif",
         galleryImage: "/images/blog/how-prp-therapy-may-support-active-aching-joints.webp",
         galleryImageAlt: "A patient's knee being examined for chronic joint pain",
       },
