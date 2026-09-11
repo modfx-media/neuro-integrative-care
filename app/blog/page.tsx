@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
+import { jsonLdScript } from "@/lib/jsonLd";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { blogPosts } from "@/content/blog";
 import Reveal from "@/components/Reveal";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
+import { SITE_URL } from "@/lib/site";
 
-const SITE_URL = "https://neurointegrativecareoflosgatos.com";
 const PAGE_URL = `${SITE_URL}/blog`;
 
 export const metadata: Metadata = {
   title: "Blog",
   description:
-    "Articles on joint pain, nerve health, and drug-free regenerative care from NeuroIntegrative Care of Los Gatos.",
+    "Articles on joint pain, nerve health, and drug-free regenerative care from NeuroIntegrative Care of Los Gatos — practical, root-cause insights.",
   alternates: { canonical: "/blog" },
   openGraph: {
     title: "Blog | NeuroIntegrative Care of Los Gatos",
@@ -49,7 +50,7 @@ export default function BlogPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(schema) }}
       />
 
       {/* Hero */}

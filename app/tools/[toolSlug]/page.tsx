@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { jsonLdScript } from "@/lib/jsonLd";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,8 +9,7 @@ import { articlesForTool } from "@/content/conditionArticles";
 import Reveal from "@/components/Reveal";
 import ToolMediaEmbed from "@/components/tools/ToolMediaEmbed";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
-
-const SITE_URL = "https://neurointegrativecareoflosgatos.com";
+import { SITE_URL } from "@/lib/site";
 
 const conditionsBySlug = new Map(conditions.map((c) => [c.slug, c]));
 
@@ -97,7 +97,7 @@ export default async function ToolPage({ params }: PageProps) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(schema) }}
       />
 
       {/* Hero */}

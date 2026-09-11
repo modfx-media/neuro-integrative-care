@@ -3,12 +3,13 @@
 // on the site; pricing is only discussed after the investigation.
 
 import type { Metadata } from "next";
+import { jsonLdScript } from "@/lib/jsonLd";
 import Link from "next/link";
 import { programs } from "@/content/programs";
 import Reveal from "@/components/Reveal";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
+import { SITE_URL } from "@/lib/site";
 
-const SITE_URL = "https://neurointegrativecareoflosgatos.com";
 const PAGE_URL = `${SITE_URL}/programs`;
 
 export const metadata: Metadata = {
@@ -71,7 +72,7 @@ export default function ProgramsPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(schema) }}
       />
 
       {/* Hero */}
@@ -119,9 +120,9 @@ export default function ProgramsPage() {
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
             <Reveal className="lg:col-span-3">
               <div className="flex items-center gap-4">
-                <h2 className="font-mono text-[13px] font-medium uppercase tracking-[0.18em] text-amber">
+                <p className="font-mono text-[13px] font-medium uppercase tracking-[0.18em] text-amber">
                   The Front Door
-                </h2>
+                </p>
                 <span
                   aria-hidden="true"
                   className="hidden h-px flex-1 bg-rule lg:block"

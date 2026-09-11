@@ -6,8 +6,7 @@ import { sectorPageContent } from "@/content/sectorPageContent";
 import { toolsForSector } from "@/content/tools";
 import SectorPageTemplate from "@/components/conditions/SectorPageTemplate";
 import SectorJsonLd from "@/components/conditions/SectorJsonLd";
-
-const SITE_URL = "https://neurointegrativecareoflosgatos.com";
+import { SITE_URL } from "@/lib/site";
 
 export function generateStaticParams() {
   return conditions.map((c) => ({ parentSlug: c.slug }));

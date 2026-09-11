@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import { jsonLdScript } from "@/lib/jsonLd";
 import Link from "next/link";
 import { programs } from "@/content/programs";
 import Reveal from "@/components/Reveal";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
+import { SITE_URL } from "@/lib/site";
 
-const SITE_URL = "https://neurointegrativecareoflosgatos.com";
 const PAGE_URL = `${SITE_URL}/out-of-town`;
 
 const FRAMING_LABELS = ["Continuity", "Access", "Oversight"] as const;
@@ -60,7 +61,7 @@ export default function OutOfTownPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(schema) }}
       />
 
       {/* Hero */}

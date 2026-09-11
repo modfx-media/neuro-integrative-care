@@ -23,6 +23,7 @@
 //     do NOT fabricate additional narrative for either patient.
 
 import type { Metadata } from "next";
+import { jsonLdScript } from "@/lib/jsonLd";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { conditions } from "@/content/conditions";
@@ -31,8 +32,8 @@ import { shortTestimonials, googleReviews } from "@/content/testimonials";
 import Reveal from "@/components/Reveal";
 import VideoTestimonials from "@/components/results/VideoTestimonials";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
+import { SITE_URL } from "@/lib/site";
 
-const SITE_URL = "https://neurointegrativecareoflosgatos.com";
 const PAGE_URL = `${SITE_URL}/results`;
 
 const STANDARD_DISCLAIMER =
@@ -43,7 +44,7 @@ const INCOMPLETE_SLUGS = new Set(["richard", "beakram"]);
 export const metadata: Metadata = {
   title: "Patient Stories",
   description:
-    "Eight patient case journeys from NeuroIntegrative Care of Los Gatos: real investigations, individual outcomes across autoimmune, brain, concussion, and toxin work.",
+    "Eight patient case journeys from NeuroIntegrative Care of Los Gatos: real investigations, individual outcomes across autoimmune and brain work.",
   alternates: { canonical: "/results" },
   openGraph: {
     title: "Patient Stories | NeuroIntegrative Care of Los Gatos",
@@ -163,7 +164,7 @@ export default function ResultsPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(schema) }}
       />
 
       {/* Hero */}

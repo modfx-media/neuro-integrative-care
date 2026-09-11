@@ -32,9 +32,9 @@ const CONDITION_IMAGES: Record<string, string> = {
   "autoimmune-investigation": "/images/conditions/autoimmune-investigation.webp",
   "brain-brightening": "/images/conditions/brain-brightening.webp",
   "concussion-post-trauma": "/images/conditions/concussion-post-trauma.webp",
-  "environmental-toxins": "/images/conditions/environmental-toxins.png",
+  "environmental-toxins": "/images/conditions/environmental-toxins.webp",
   "longevity-science": "/images/conditions/longevity-science.webp",
-  "idiopathic-unexplained": "/images/conditions/idiopathic-unexplained.png",
+  "idiopathic-unexplained": "/images/conditions/idiopathic-unexplained.webp",
   erchonia: "/images/conditions/banners/erchonia-laser-treatment.avif",
 };
 

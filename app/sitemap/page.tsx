@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { jsonLdScript } from "@/lib/jsonLd";
 import Link from "next/link";
 import { conditions } from "@/content/conditions";
 import { conditionArticles } from "@/content/conditionArticles";
@@ -7,8 +8,8 @@ import { cityLocations } from "@/content/locations";
 import { blogPosts } from "@/content/blog";
 import Reveal from "@/components/Reveal";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
+import { SITE_URL } from "@/lib/site";
 
-const SITE_URL = "https://neurointegrativecareoflosgatos.com";
 const PAGE_URL = `${SITE_URL}/sitemap`;
 
 export const metadata: Metadata = {
@@ -132,7 +133,7 @@ export default function SitemapPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(schema) }}
       />
 
       {/* Hero */}

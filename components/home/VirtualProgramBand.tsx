@@ -67,7 +67,7 @@ export default function VirtualProgramBand() {
         >
           <div className="relative aspect-[3/2] w-full overflow-hidden rounded-2xl border border-paper/10 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.5)]">
             <Image
-              src="/images/virtual-program.png"
+              src="/images/virtual-program.webp"
               alt="A patient using a remote QEEG headset during a virtual visit with Dr. Santucci"
               fill
               sizes="(min-width: 1024px) 40vw, 100vw"

@@ -1,4 +1,6 @@
 import type { Condition } from "@/content/conditions";
+import { SITE_URL } from "@/lib/site";
+import { jsonLdScript } from "@/lib/jsonLd";
 
 interface SectorJsonLdProps {
   condition: Condition;
@@ -16,7 +18,7 @@ export default function SectorJsonLd({ condition, url }: SectorJsonLdProps) {
     isPartOf: {
       "@type": "WebSite",
       name: "NeuroIntegrative Care of Los Gatos",
-      url: "https://neurointegrativecareoflosgatos.com/",
+      url: `${SITE_URL}/`,
     },
     about: {
       "@type": "MedicalCondition",
@@ -44,7 +46,7 @@ export default function SectorJsonLd({ condition, url }: SectorJsonLdProps) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: jsonLdScript(schema) }}
     />
   );
 }

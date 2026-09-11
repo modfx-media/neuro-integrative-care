@@ -8,6 +8,7 @@
 //   so nothing ships as "confirmed" until the client signs off.
 
 import type { Metadata } from "next";
+import { jsonLdScript } from "@/lib/jsonLd";
 import Image from "next/image";
 import Link from "next/link";
 import { programs } from "@/content/programs";
@@ -17,8 +18,8 @@ import {
 } from "@/content/neurologicalSupportProgram";
 import Reveal from "@/components/Reveal";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
+import { SITE_URL } from "@/lib/site";
 
-const SITE_URL = "https://neurointegrativecareoflosgatos.com";
 const PAGE_URL = `${SITE_URL}/programs/virtual`;
 
 // SPELLING: "Mynd" per Master Build Brief v1.0 (Aug 12), supersedes earlier "Mind" spelling from CO-01.
@@ -32,7 +33,7 @@ const virtualProgram = programs.entryPrograms.find(
 export const metadata: Metadata = {
   title: `The Virtual Program: ${PROGRAM_NAME_PUBLIC}`,
   description:
-    "A 30-year neurometabolic method delivered to your home. Remote QEEG, neurofeedback expert review every 2 weeks, clinician review with Dr. Santucci every 4 weeks. National.",
+    "A 30-year neurometabolic method delivered to your home: remote QEEG, biweekly neurofeedback review, and monthly clinician review. National.",
   alternates: { canonical: "/programs/virtual" },
   openGraph: {
     title: `The Virtual Program | NeuroIntegrative Care of Los Gatos`,
@@ -191,7 +192,7 @@ export default function VirtualProgramPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(schema) }}
       />
 
       {/* Hero */}
@@ -256,9 +257,9 @@ export default function VirtualProgramPage() {
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
             <Reveal className="lg:col-span-3">
               <div className="flex items-center gap-4">
-                <h2 className="font-mono text-[13px] font-medium uppercase tracking-[0.18em] text-amber">
+                <p className="font-mono text-[13px] font-medium uppercase tracking-[0.18em] text-amber">
                   The Method, Remote
-                </h2>
+                </p>
                 <span
                   aria-hidden="true"
                   className="hidden h-px flex-1 bg-rule lg:block"
@@ -367,7 +368,7 @@ export default function VirtualProgramPage() {
             <div className="aspect-video w-full overflow-hidden rounded-2xl border border-paper/10">
               <video
                 src="/videos/myndlift-remote-neurofeedback.mp4"
-                poster="/images/video/myndlift-remote-neurofeedback-thumbnail.png"
+                poster="/images/video/myndlift-remote-neurofeedback-thumbnail.webp"
                 controls
                 playsInline
                 preload="metadata"

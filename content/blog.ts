@@ -198,7 +198,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-08-28",
     displayDate: "August 28, 2026",
     heroImage:
-      "/images/blog/how-prp-therapy-may-support-active-aching-joints.jpg",
+      "/images/blog/how-prp-therapy-may-support-active-aching-joints.webp",
     heroImageAlt:
       "Active adult stretching outdoors, representing a return to movement after joint pain",
     excerpt:

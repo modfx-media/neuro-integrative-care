@@ -40,7 +40,7 @@ export default function DoctorTeaser() {
 
             <div className="relative mt-6 aspect-[4/5] overflow-hidden rounded-2xl border border-rule">
               <Image
-                src="/images/dr-santucci.png"
+                src="/images/dr-santucci.webp"
                 alt="Dr. Thomas Santucci"
                 fill
                 sizes="(min-width: 1024px) 33vw, 100vw"

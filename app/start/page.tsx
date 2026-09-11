@@ -11,16 +11,17 @@
 //     is discussed only after the investigation, directly with the patient.
 
 import type { Metadata } from "next";
+import { jsonLdScript } from "@/lib/jsonLd";
 import Link from "next/link";
 import Script from "next/script";
 import { Phone } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
+import { SITE_URL } from "@/lib/site";
 
 // Live intake form (GoHighLevel/LeadConnector embed) provided by the client.
 const LEAD_FORM_ID = "USqbUJSbAufJeRRap7Z9";
 
-const SITE_URL = "https://neurointegrativecareoflosgatos.com";
 const PAGE_URL = `${SITE_URL}/start`;
 
 const PHONE_DISPLAY = "(408) 871-8222";
@@ -99,7 +100,7 @@ export default function StartPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(schema) }}
       />
 
       {/* Hero */}
@@ -140,9 +141,9 @@ export default function StartPage() {
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-14 lg:items-start">
             <Reveal>
-              <h2 className="font-mono text-[13px] font-medium uppercase tracking-[0.18em] text-amber">
+              <p className="font-mono text-[13px] font-medium uppercase tracking-[0.18em] text-amber">
                 What You Get From Your Investigation
-              </h2>
+              </p>
               <p className="mt-8 font-serif text-[2rem] leading-tight text-ink lg:text-[2.5rem]">
                 A full consultation with Dr. Santucci.
               </p>
@@ -187,9 +188,9 @@ export default function StartPage() {
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
             <Reveal className="lg:col-span-4">
               <div className="flex items-center gap-4">
-                <h2 className="font-mono text-[13px] font-medium uppercase tracking-[0.18em] text-amber">
+                <p className="font-mono text-[13px] font-medium uppercase tracking-[0.18em] text-amber">
                   What To Expect Next
-                </h2>
+                </p>
               </div>
               <p className="mt-8 font-serif text-[2rem] leading-tight text-ink lg:text-[2.5rem]">
                 From investigation to program.
@@ -242,9 +243,9 @@ export default function StartPage() {
       <section className="bg-ink py-24 text-paper lg:py-32">
         <div className="mx-auto max-w-4xl px-6 lg:px-10">
           <Reveal>
-            <h2 className="font-mono text-[13px] font-medium uppercase tracking-[0.18em] text-amber-b">
+            <p className="font-mono text-[13px] font-medium uppercase tracking-[0.18em] text-amber-b">
               An Honest Fit Note
-            </h2>
+            </p>
           </Reveal>
           <Reveal delay={120} offset={24} className="mt-6">
             <div className="rounded-2xl border border-rule-d bg-ink-2 p-8 lg:p-12">

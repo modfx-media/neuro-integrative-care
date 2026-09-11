@@ -99,7 +99,7 @@ export default function HowItWorks() {
                   className="relative aspect-[864/1821] w-full overflow-hidden rounded-3xl border border-rule/60 shadow-[0_40px_80px_-40px_rgba(11,18,32,0.35)]"
                 >
                   <Image
-                    src="/images/investigation-steps.png"
+                    src="/images/investigation-steps.webp"
                     alt="A patient's investigation, rebuild, and sustain journey: QEEG brain mapping, neurofeedback and laser therapy, and a personalized lifestyle plan"
                     fill
                     sizes="(min-width: 1024px) 32vw, 90vw"

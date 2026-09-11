@@ -19,8 +19,7 @@ import SectorPageTemplate, {
 import SectorJsonLd from "@/components/conditions/SectorJsonLd";
 import ConditionArticleTemplate from "@/components/conditions/ConditionArticleTemplate";
 import ConditionArticleJsonLd from "@/components/conditions/ConditionArticleJsonLd";
-
-const SITE_URL = "https://neurointegrativecareoflosgatos.com";
+import { SITE_URL } from "@/lib/site";
 
 interface SubParams {
   parentSlug: string;

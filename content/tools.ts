@@ -81,7 +81,7 @@ export const tools: Tool[] = [
     },
     gallery: [
       {
-        src: "/images/neurofeedback/what-is-neurofeedback.jpg",
+        src: "/images/neurofeedback/what-is-neurofeedback.webp",
         alt: "How neurofeedback works: sensors read brain activity, software scores it, and the patient gets real-time feedback that rewards healthier patterns",
         caption: "How it works: sense, score, feed back, reward.",
         width: 1740,
@@ -95,7 +95,7 @@ export const tools: Tool[] = [
         height: 1074,
       },
       {
-        src: "/images/neurofeedback/sqeeg-brain-mapping.jpg",
+        src: "/images/neurofeedback/sqeeg-brain-mapping.webp",
         alt: "Sample sequential qEEG brain map comparing pre- and post-training brainwave activity across frequency bands",
         caption: "qEEG brain mapping: how change gets measured, band by band.",
         width: 1616,

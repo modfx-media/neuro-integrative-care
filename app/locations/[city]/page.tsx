@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { jsonLdScript } from "@/lib/jsonLd";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MapPin, Phone, Clock } from "lucide-react";
@@ -6,8 +7,8 @@ import { cityLocations, findCityLocation } from "@/content/locations";
 import Reveal from "@/components/Reveal";
 import CityConditionsGrid from "@/components/locations/CityConditionsGrid";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
+import { SITE_URL } from "@/lib/site";
 
-const SITE_URL = "https://neurointegrativecareoflosgatos.com";
 const PHONE_DISPLAY = "(408) 871-8222";
 const PHONE_HREF = "tel:+14088718222";
 
@@ -75,7 +76,7 @@ export default async function CityLocationPage({ params }: PageProps) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(schema) }}
       />
 
       {/* Hero */}

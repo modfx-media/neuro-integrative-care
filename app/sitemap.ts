@@ -4,8 +4,7 @@ import { tools } from "@/content/tools";
 import { conditionArticles } from "@/content/conditionArticles";
 import { cityLocations } from "@/content/locations";
 import { blogPosts } from "@/content/blog";
-
-const SITE_URL = "https://neurointegrativecareoflosgatos.com";
+import { SITE_URL } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

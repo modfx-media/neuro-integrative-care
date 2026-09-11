@@ -16,8 +16,9 @@ import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
+import { SITE_URL } from "@/lib/site";
+import { jsonLdScript } from "@/lib/jsonLd";
 
-const SITE_URL = "https://neurointegrativecareoflosgatos.com";
 const PAGE_URL = `${SITE_URL}/about/dr-thomas-santucci`;
 
 const YEARS_IN_PRACTICE = "30+";
@@ -25,7 +26,7 @@ const YEARS_IN_PRACTICE = "30+";
 export const metadata: Metadata = {
   title: "About Dr. Thomas Santucci",
   description:
-    "Thomas A. Santucci, DC, AFNI — Founder & Clinical Director, NeuroIntegrative Care of Los Gatos. 30+ years of clinical excellence in neurometabolic and functional medicine. Author of Engineering Medical Miracles.",
+    "Thomas A. Santucci, DC, AFNI — Founder & Clinical Director, NeuroIntegrative Care of Los Gatos. 30+ years in neurometabolic, functional medicine.",
   alternates: { canonical: "/about/dr-thomas-santucci" },
   openGraph: {
     title: "About Dr. Thomas Santucci | NeuroIntegrative Care of Los Gatos",
@@ -362,11 +363,11 @@ export default function AboutDrThomasSantucciPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(PERSON_SCHEMA) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(PERSON_SCHEMA) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(MEDICAL_ORG_SCHEMA) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(MEDICAL_ORG_SCHEMA) }}
       />
 
       {/* Hero */}
@@ -426,7 +427,7 @@ export default function AboutDrThomasSantucciPage() {
             <Reveal className="lg:col-span-4">
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-rule">
                 <Image
-                  src="/images/dr-santucci.png"
+                  src="/images/dr-santucci.webp"
                   alt="Dr. Thomas Santucci"
                   fill
                   sizes="(min-width: 1024px) 33vw, 100vw"
@@ -719,9 +720,9 @@ export default function AboutDrThomasSantucciPage() {
                   <p className="font-mono text-[12px] font-medium uppercase tracking-[0.22em] text-amber-b">
                     A Neurometabolic Framework
                   </p>
-                  <h4 className="mt-5 font-serif text-[2.35rem] italic leading-[1.1] text-paper">
+                  <h3 className="mt-5 font-serif text-[2.35rem] italic leading-[1.1] text-paper">
                     Deconstructing Alzheimer&apos;s
-                  </h4>
+                  </h3>
                   <p className="mt-5 font-mono text-[11px] font-medium uppercase leading-relaxed tracking-[0.16em] text-paper/60">
                     Explore Neurometabolic Therapies Available Now · Going
                     Beyond Convention

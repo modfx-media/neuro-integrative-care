@@ -5,6 +5,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import MotionProvider from "@/components/MotionProvider";
 import OrganizationJsonLd from "@/components/OrganizationJsonLd";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -25,9 +26,6 @@ const ibmPlexMono = IBM_Plex_Mono({
   weight: ["400", "500"],
   subsets: ["latin"],
 });
-
-// TODO: swap when the production domain is confirmed with the client.
-const SITE_URL = "https://neurointegrativecareoflosgatos.com";
 
 const SITE_TITLE = "NeuroIntegrative Care of Los Gatos";
 const SITE_TAGLINE =

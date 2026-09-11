@@ -32,7 +32,7 @@ export default function ProofCards() {
               className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-rule/60"
             >
               <Image
-                src="/images/proof-patients.png"
+                src="/images/proof-patients.webp"
                 alt="Patients whose symptoms were investigated and resolved through the program"
                 fill
                 sizes="(min-width: 1024px) 40vw, 100vw"

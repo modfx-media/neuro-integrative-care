@@ -1,4 +1,6 @@
 import type { ConditionArticle } from "@/content/conditionArticles";
+import { SITE_URL } from "@/lib/site";
+import { jsonLdScript } from "@/lib/jsonLd";
 
 interface ConditionArticleJsonLdProps {
   article: ConditionArticle;
@@ -19,7 +21,7 @@ export default function ConditionArticleJsonLd({
     isPartOf: {
       "@type": "WebSite",
       name: "NeuroIntegrative Care of Los Gatos",
-      url: "https://neurointegrativecareoflosgatos.com/",
+      url: `${SITE_URL}/`,
     },
     about: {
       "@type": "MedicalCondition",
@@ -55,11 +57,11 @@ export default function ConditionArticleJsonLd({
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(pageSchema) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(faqSchema) }}
       />
     </>
   );

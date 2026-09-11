@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { jsonLdScript } from "@/lib/jsonLd";
 import Image from "next/image";
 import Link from "next/link";
 import { tools } from "@/content/tools";
@@ -17,14 +18,14 @@ import {
   CURRICULUM_CLOSING,
   type CurriculumModule,
 } from "@/content/howItWorks";
+import { SITE_URL } from "@/lib/site";
 
-const SITE_URL = "https://neurointegrativecareoflosgatos.com";
 const PAGE_URL = `${SITE_URL}/how-it-works`;
 
 export const metadata: Metadata = {
   title: "How It Works",
   description:
-    "Neurometabolic Rejuvenation: five non-invasive, drug-free tools, plus the 10-week Brain Brightening neurological support curriculum that pairs lifestyle modules with home neurofeedback like Myndlift.",
+    "Neurometabolic Rejuvenation: five non-invasive, drug-free tools plus the 10-week Brain Brightening curriculum paired with home neurofeedback.",
   alternates: { canonical: "/how-it-works" },
   openGraph: {
     title: "How It Works | NeuroIntegrative Care of Los Gatos",
@@ -185,7 +186,7 @@ export default function HowItWorksPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(schema) }}
       />
 
       <Home2VideoHero />
@@ -235,9 +236,9 @@ export default function HowItWorksPage() {
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
             <Reveal className="lg:col-span-3">
               <div className="flex items-center gap-4">
-                <h2 className="font-mono text-[13px] font-medium uppercase tracking-[0.18em] text-amber">
+                <p className="font-mono text-[13px] font-medium uppercase tracking-[0.18em] text-amber">
                   Our Philosophy
-                </h2>
+                </p>
                 <span
                   aria-hidden="true"
                   className="hidden h-px flex-1 bg-rule lg:block"

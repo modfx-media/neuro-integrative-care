@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import { jsonLdScript } from "@/lib/jsonLd";
 import Reveal from "@/components/Reveal";
 import BrainAssessmentForm from "@/components/home/BrainAssessmentForm";
+import { SITE_URL } from "@/lib/site";
 
-const SITE_URL = "https://neurointegrativecareoflosgatos.com";
 const PAGE_URL = `${SITE_URL}/brain-assessment`;
 
 export const metadata: Metadata = {
   title: "Free Brain Assessment",
   description:
-    "Take a free, objective cognitive assessment powered by Creyos. See how your memory, attention, and reasoning are performing today, with no prescriptions and no obligation.",
+    "Take a free, objective cognitive assessment powered by Creyos. See how your memory, attention, and reasoning perform today — no obligation.",
   alternates: { canonical: "/brain-assessment" },
   openGraph: {
     title: "Free Brain Assessment | NeuroIntegrative Care of Los Gatos",
@@ -33,7 +34,7 @@ export default function BrainAssessmentPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(schema) }}
       />
 
       <section className="relative overflow-hidden bg-ink py-28 text-paper lg:py-36">

@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
+import { jsonLdScript } from "@/lib/jsonLd";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { blogPosts, findBlogPost } from "@/content/blog";
 import Reveal from "@/components/Reveal";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
-
-const SITE_URL = "https://neurointegrativecareoflosgatos.com";
+import { SITE_URL } from "@/lib/site";
 
 export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
@@ -32,7 +32,8 @@ export async function generateMetadata({
       url: `/blog/${post.slug}`,
       type: "article",
       publishedTime: post.date,
-      images: [{ url: post.heroImage }],
+      // No per-post `images` override: hero images aren't consistently
+      // 1200x630, so posts fall back to the branded app/opengraph-image.tsx.
     },
   };
 }
@@ -71,7 +72,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(schema) }}
       />
 
       {/* Hero */}

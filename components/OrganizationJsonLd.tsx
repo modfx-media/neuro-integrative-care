@@ -1,4 +1,6 @@
-const SITE_URL = "https://neurointegrativecareoflosgatos.com";
+import { SITE_URL } from "@/lib/site";
+import { jsonLdScript } from "@/lib/jsonLd";
+
 const NAME = "NeuroIntegrative Care of Los Gatos";
 const TELEPHONE = "+1-408-871-8222";
 const ADDRESS = {
@@ -31,7 +33,7 @@ const organizationSchema = {
   "@id": `${SITE_URL}/#organization`,
   name: NAME,
   url: `${SITE_URL}/`,
-  logo: `${SITE_URL}/images/logo/mark-square.png`,
+  logo: `${SITE_URL}/images/logo/mark-square.webp`,
   telephone: TELEPHONE,
   address: ADDRESS,
   founder: {
@@ -125,19 +127,19 @@ export default function OrganizationJsonLd() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(organizationSchema),
+          __html: jsonLdScript(organizationSchema),
         }}
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(localBusinessSchema),
+          __html: jsonLdScript(localBusinessSchema),
         }}
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(medicalClinicSchema),
+          __html: jsonLdScript(medicalClinicSchema),
         }}
       />
     </>

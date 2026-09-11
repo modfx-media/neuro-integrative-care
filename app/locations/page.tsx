@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
+import { jsonLdScript } from "@/lib/jsonLd";
 import Link from "next/link";
 import { MapPin } from "lucide-react";
 import { cityLocations } from "@/content/locations";
 import Reveal from "@/components/Reveal";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
-
-const SITE_URL = "https://neurointegrativecareoflosgatos.com";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Locations We Serve",
   description:
-    "NeuroIntegrative Care of Los Gatos serves patients from Los Gatos, Campbell, San Jose, Morgan Hill, Santa Cruz, and Aptos with root-cause functional medicine and neurology.",
+    "NeuroIntegrative Care of Los Gatos serves Los Gatos, Campbell, San Jose, Morgan Hill, Santa Cruz, and Aptos with root-cause functional medicine.",
   alternates: { canonical: "/locations" },
   openGraph: {
     title: "Locations We Serve | NeuroIntegrative Care of Los Gatos",
@@ -37,7 +37,7 @@ export default function LocationsHubPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(schema) }}
       />
 
       {/* Hero */}
