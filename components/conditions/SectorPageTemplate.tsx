@@ -155,21 +155,56 @@ export default function SectorPageTemplate({
       {/* 3 — What we actually investigate */}
       <section className="bg-paper py-24 lg:py-32">
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
-          <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
-            <Reveal className="lg:col-span-4">
-              <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
-                What We Investigate
-              </p>
-              <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
-                What we actually look for.
-              </h2>
-            </Reveal>
-            <Reveal delay={120} offset={24} className="lg:col-span-8">
-              <p className="text-lg leading-relaxed text-muted">
-                {condition.whatWeInvestigate}
-              </p>
-            </Reveal>
-          </div>
+          {condition.galleryImage ? (
+            <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+              <Reveal className="relative order-2 lg:order-1">
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -left-10 -top-10 h-56 w-56 rounded-full opacity-60"
+                  style={{
+                    background:
+                      "radial-gradient(closest-side, rgba(248,180,43,0.28), rgba(248,180,43,0) 70%)",
+                  }}
+                />
+                <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-amber/20 shadow-[0_30px_70px_-30px_rgba(232,160,32,0.45)]">
+                  <Image
+                    src={condition.galleryImage}
+                    alt={condition.galleryImageAlt ?? ""}
+                    fill
+                    sizes="(min-width: 1024px) 45vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+              </Reveal>
+              <Reveal delay={140} offset={24} className="order-1 lg:order-2">
+                <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
+                  What We Investigate
+                </p>
+                <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
+                  What we actually look for.
+                </h2>
+                <p className="mt-6 text-lg leading-relaxed text-muted">
+                  {condition.whatWeInvestigate}
+                </p>
+              </Reveal>
+            </div>
+          ) : (
+            <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
+              <Reveal className="lg:col-span-4">
+                <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
+                  What We Investigate
+                </p>
+                <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
+                  What we actually look for.
+                </h2>
+              </Reveal>
+              <Reveal delay={120} offset={24} className="lg:col-span-8">
+                <p className="text-lg leading-relaxed text-muted">
+                  {condition.whatWeInvestigate}
+                </p>
+              </Reveal>
+            </div>
+          )}
         </div>
       </section>
 

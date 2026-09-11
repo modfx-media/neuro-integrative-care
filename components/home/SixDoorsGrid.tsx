@@ -35,7 +35,7 @@ const CONDITION_IMAGES: Record<string, string> = {
   "environmental-toxins": "/images/conditions/environmental-toxins.png",
   "longevity-science": "/images/conditions/longevity-science.webp",
   "idiopathic-unexplained": "/images/conditions/idiopathic-unexplained.png",
-  erchonia: "/images/conditions/erchonia.webp",
+  erchonia: "/images/conditions/banners/erchonia-laser-treatment.avif",
 };
 
 interface SixDoorsGridProps {

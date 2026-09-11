@@ -7,6 +7,9 @@ export interface Condition {
   subConditions?: Condition[];
   /** Hero background banner image, public/images/conditions/banners/{slug}.jpg */
   heroImage?: string;
+  /** Optional supporting photo rendered alongside "What We Investigate". */
+  galleryImage?: string;
+  galleryImageAlt?: string;
 }
 
 // TODO(client): sub-condition → parent sector pairings below are TENTATIVE.
@@ -125,5 +128,8 @@ export const conditions: Condition[] = [
     whatWeInvestigate:
       "The FX-405 is an FDA-cleared violet laser, and the only laser on the market cleared to treat chronic low back pain. In a double-blind, placebo-controlled, randomized clinical trial, participants averaged 58% pain reduction at a 2-month follow-up, with continued improvement through six months. For patients looking for a non-invasive, opioid-free option for chronic and acute pain, laser therapy delivers this support with no addiction potential and no harmful side effects, while the added 405nm violet wavelength also supports anti-microbial and anti-bacterial applications.",
     patientStorySlug: "gail",
+    heroImage: "/images/conditions/banners/erchonia-laser-treatment.avif",
+    galleryImage: "/images/conditions/erchonia-fx405-device.avif",
+    galleryImageAlt: "The Erchonia FX-405 violet laser device",
   },
 ];
