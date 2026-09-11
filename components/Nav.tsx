@@ -132,11 +132,11 @@ export default function Nav() {
         style={{ backgroundColor, boxShadow, borderBottomColor: borderColor }}
         className="fixed inset-x-0 top-0 z-[60] border-b border-transparent text-paper backdrop-blur-[2px]"
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3.5 sm:px-5 sm:py-4 lg:gap-4 lg:px-8 xl:gap-6 xl:px-10">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-3.5 sm:gap-3 sm:px-5 sm:py-4 lg:gap-4 lg:px-8 xl:gap-6 xl:px-10">
           <Link
             href="/"
             aria-label="NeuroIntegrative Care of Los Gatos home"
-            className="flex items-center gap-2.5 sm:gap-3"
+            className="flex min-w-0 shrink items-center gap-1.5 sm:gap-3"
           >
             <span className="relative block h-9 w-9 shrink-0 overflow-hidden rounded-full ring-1 ring-paper/25 sm:h-10 sm:w-10">
               <Image
@@ -148,11 +148,11 @@ export default function Nav() {
                 className="object-cover"
               />
             </span>
-            <span className="flex flex-col leading-none">
-              <span className="whitespace-nowrap font-serif text-[12px] tracking-[0.02em] text-paper sm:text-[13px] xl:text-[15px]">
+            <span className="flex min-w-0 flex-col leading-none">
+              <span className="truncate font-serif text-[9px] tracking-[0.01em] text-paper sm:text-[13px] sm:tracking-[0.02em] xl:text-[15px]">
                 NEUROINTEGRATIVE CARE
               </span>
-              <span className="mt-1 font-mono font-medium text-[11px] uppercase tracking-[0.16em] text-amber-b sm:text-[12px] sm:tracking-[0.18em]">
+              <span className="mt-1 whitespace-nowrap font-mono font-medium text-[11px] uppercase tracking-[0.16em] text-amber-b sm:text-[12px] sm:tracking-[0.18em]">
                 Los Gatos
               </span>
             </span>
@@ -202,7 +202,7 @@ export default function Nav() {
             })}
           </ul>
 
-          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
             <StartHereButton />
             <button
               ref={hamburgerRef}
@@ -318,7 +318,7 @@ function StartHereButton() {
     >
       <Link
         href={BOOK_HREF}
-        className="group relative inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-3.5 py-2 text-xs font-medium tracking-tight text-ink shadow-[0_6px_18px_-10px_rgba(232,160,32,0.75)] transition-shadow duration-300 hover:shadow-[0_14px_32px_-10px_rgba(232,160,32,0.9)] sm:px-4 xl:px-5 xl:py-2.5 xl:text-sm"
+        className="group relative inline-flex shrink-0 items-center whitespace-nowrap rounded-full bg-gradient-to-r from-amber to-amber-b px-2 py-1.5 text-[10px] font-medium tracking-tight text-ink shadow-[0_6px_18px_-10px_rgba(232,160,32,0.75)] transition-shadow duration-300 hover:shadow-[0_14px_32px_-10px_rgba(232,160,32,0.9)] sm:px-4 sm:py-2 sm:text-xs xl:px-5 xl:py-2.5 xl:text-sm"
       >
         <span className="relative z-10">Schedule Your Consultation</span>
       </Link>
