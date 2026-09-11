@@ -41,8 +41,13 @@
 }
 
 @layer base {
+  html {
+    overflow-x: hidden;
+  }
+
   body {
     @apply bg-paper text-text font-sans;
+    overflow-x: hidden;
   }
 
   h1,

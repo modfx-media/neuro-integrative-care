@@ -136,7 +136,7 @@ export default function Nav() {
           <Link
             href="/"
             aria-label="NeuroIntegrative Care of Los Gatos home"
-            className="flex min-w-0 shrink items-center gap-1.5 sm:gap-3"
+            className="flex min-w-0 shrink items-center gap-1 sm:gap-3"
           >
             <span className="relative block h-9 w-9 shrink-0 overflow-hidden rounded-full ring-1 ring-paper/25 sm:h-10 sm:w-10">
               <Image
@@ -149,7 +149,7 @@ export default function Nav() {
               />
             </span>
             <span className="flex min-w-0 flex-col leading-none">
-              <span className="truncate font-serif text-[9px] tracking-[0.01em] text-paper sm:text-[13px] sm:tracking-[0.02em] xl:text-[15px]">
+              <span className="truncate font-serif text-[8px] tracking-normal text-paper sm:text-[13px] sm:tracking-[0.02em] xl:text-[15px]">
                 NEUROINTEGRATIVE CARE
               </span>
               <span className="mt-1 whitespace-nowrap font-mono font-medium text-[11px] uppercase tracking-[0.16em] text-amber-b sm:text-[12px] sm:tracking-[0.18em]">
@@ -202,7 +202,7 @@ export default function Nav() {
             })}
           </ul>
 
-          <div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
+          <div className="flex shrink-0 items-center gap-1 sm:gap-3">
             <StartHereButton />
             <button
               ref={hamburgerRef}
