@@ -158,6 +158,28 @@ export const sectorPageContent: Record<string, SectorPageContent> = {
 
   erchonia: {
     dismissals:
+      "You've probably seen cheap 'cold laser' pens marketed for everything from pain to wrinkles, and assumed photobiomodulation was more wellness fad than real medicine. The FX-405 is FDA-cleared clinical technology, backed by published trial data, not a gadget.",
+    workupSteps: [
+      {
+        number: "01",
+        title: "IDENTIFY",
+        body: "We evaluate where photobiomodulation actually fits your care: nerve repair, post-concussion recovery, autoimmune-driven inflammation, or chronic and acute pain, applied where the evidence supports it, not as a blanket add-on.",
+      },
+      {
+        number: "02",
+        title: "REBUILD",
+        body: "The violet and infrared wavelengths are absorbed directly by mitochondria, boosting cellular energy (ATP) and reducing inflammation at the treatment site, non-invasive, painless, and drug-free.",
+      },
+      {
+        number: "03",
+        title: "SUSTAIN",
+        body: "We track the objective markers tied to whatever it's treating (nerve function, pain and mobility, inflammatory markers) to confirm the laser is producing real, measurable change, not just a feeling of relief.",
+      },
+    ],
+  },
+
+  "chronic-acute-pain": {
+    dismissals:
       "You've probably been told to manage it with medication, live with it, or consider surgery as the only real option. Opioids blunt the signal without addressing the tissue, and many patients are looking for a non-invasive option before taking that route.",
     workupSteps: [
       {

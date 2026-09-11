@@ -124,12 +124,25 @@ export const conditions: Condition[] = [
   {
     slug: "erchonia",
     name: "Erchonia",
-    heroLine: "Chronic & Acute Pain",
+    heroLine: "FDA-Cleared Violet Laser Therapy",
     whatWeInvestigate:
-      "The FX-405 is an FDA-cleared violet laser, and the only laser on the market cleared to treat chronic low back pain. In a double-blind, placebo-controlled, randomized clinical trial, participants averaged 58% pain reduction at a 2-month follow-up, with continued improvement through six months. For patients looking for a non-invasive, opioid-free option for chronic and acute pain, laser therapy delivers this support with no addiction potential and no harmful side effects, while the added 405nm violet wavelength also supports anti-microbial and anti-bacterial applications.",
+      "The FX-405 is Erchonia's FDA-cleared violet laser: photobiomodulation, meaning specific light wavelengths absorbed directly by mitochondria to boost cellular energy (ATP) and calm inflammation at the source. It's the same platform used elsewhere in this practice for nerve repair, post-concussion recovery, and autoimmune-driven inflammation, and it's also the only laser on the market FDA-cleared to treat chronic low back pain. Non-invasive, painless, and drug-free, with the added 405nm violet wavelength also supporting anti-microbial and anti-bacterial effects at the treatment site.",
     patientStorySlug: "gail",
-    heroImage: "/images/conditions/banners/erchonia-laser-treatment.avif",
+    heroImage: "/images/conditions/banners/erchonia.jpg",
     galleryImage: "/images/conditions/erchonia-fx405-device.avif",
     galleryImageAlt: "The Erchonia FX-405 violet laser device",
+    subConditions: [
+      {
+        slug: "chronic-acute-pain",
+        name: "Chronic & Acute Pain",
+        heroLine: "58% Average Pain Reduction, No Medication",
+        whatWeInvestigate:
+          "Chronic and acute pain usually gets managed, not addressed: medication, injections, or surgery as the only options on the table. The FX-405 violet laser is the only laser on the market FDA-cleared to treat chronic low back pain. In a double-blind, placebo-controlled, randomized clinical trial, participants averaged 58% pain reduction at a 2-month follow-up, with continued improvement through six months, no addiction potential, no harmful side effects, and no downtime.",
+        patientStorySlug: "gail",
+        heroImage: "/images/conditions/banners/chronic-acute-pain.jpg",
+        galleryImage: "/images/blog/how-prp-therapy-may-support-active-aching-joints.webp",
+        galleryImageAlt: "A patient's knee being examined for chronic joint pain",
+      },
+    ],
   },
 ];
