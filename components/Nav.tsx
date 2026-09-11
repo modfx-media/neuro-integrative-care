@@ -318,7 +318,7 @@ function StartHereButton() {
     >
       <Link
         href={BOOK_HREF}
-        className="group relative inline-flex shrink-0 items-center whitespace-nowrap rounded-full bg-gradient-to-r from-amber to-amber-b px-2 py-1.5 text-[10px] font-medium tracking-tight text-ink shadow-[0_6px_18px_-10px_rgba(232,160,32,0.75)] transition-shadow duration-300 hover:shadow-[0_14px_32px_-10px_rgba(232,160,32,0.9)] sm:px-4 sm:py-2 sm:text-xs xl:px-5 xl:py-2.5 xl:text-sm"
+        className="group relative inline-flex shrink-0 items-center whitespace-nowrap rounded-full bg-gradient-to-r from-amber to-amber-b px-2.5 py-1.5 text-[12px] font-medium tracking-tight text-ink shadow-[0_6px_18px_-10px_rgba(232,160,32,0.75)] transition-shadow duration-300 hover:shadow-[0_14px_32px_-10px_rgba(232,160,32,0.9)] sm:px-4 sm:py-2 sm:text-[13px] xl:px-5 xl:py-2.5 xl:text-sm"
       >
         <span className="relative z-10">Schedule Your Consultation</span>
       </Link>
