@@ -299,6 +299,11 @@ export default function ProgramsPage() {
                     </li>
                   ))}
                 </ul>
+                {virtual.potentialAddOns && virtual.potentialAddOns.length > 0 && (
+                  <p className="mt-6 border-t border-paper/10 pt-5 text-[13px] leading-relaxed text-paper/60">
+                    Potential add-ons: {virtual.potentialAddOns.join(", ")}.
+                  </p>
+                )}
               </div>
             </Reveal>
           </div>

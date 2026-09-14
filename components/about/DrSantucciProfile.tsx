@@ -235,16 +235,35 @@ function ProgramMention({
 // into amber cards under the photo, which keeps landing pages from putting a
 // whole section between the bio and the offer.
 // amberEducation paints the education section a light amber instead of paper.
+// showEducation/showExperience/showClinicalFocus let landing pages drop the
+// CV-length sections that don't fit a short conversion page.
+// showName prints the name + credentials in the bio — off by default because
+// /about/dr-thomas-santucci already states the name in its own hero above
+// this component; landing pages that skip that hero turn it on.
 export default function DrSantucciProfile({
   linkProgramNames = true,
   afterStats,
   statsPlacement = "ribbon",
   amberEducation = false,
+  showEducation = true,
+  showExperience = true,
+  showClinicalFocus = true,
+  showSpeakingMedia = true,
+  showName = false,
+  showCta = true,
+  centerKeySkills = false,
 }: {
   linkProgramNames?: boolean;
   afterStats?: React.ReactNode;
   statsPlacement?: "ribbon" | "under-photo";
   amberEducation?: boolean;
+  showEducation?: boolean;
+  showExperience?: boolean;
+  showClinicalFocus?: boolean;
+  showSpeakingMedia?: boolean;
+  showName?: boolean;
+  showCta?: boolean;
+  centerKeySkills?: boolean;
 }) {
   return (
     <>
@@ -289,6 +308,11 @@ export default function DrSantucciProfile({
               <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
                 Professional Summary
               </p>
+              {showName && (
+                <p className="mt-4 font-serif text-xl leading-tight text-ink sm:text-2xl">
+                  Dr. Thomas Santucci, DC, AFNI
+                </p>
+              )}
               <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
                 Founder, NeuroIntegrative Care of Los Gatos.
               </h2>
@@ -377,6 +401,7 @@ export default function DrSantucciProfile({
       {afterStats}
 
       {/* Education */}
+      {showEducation && (
       <section
         className={`py-24 lg:py-32 ${
           amberEducation ? "bg-amber-soft" : "bg-paper-2"
@@ -447,6 +472,7 @@ export default function DrSantucciProfile({
           </Reveal>
         </div>
       </section>
+      )}
 
       {/* Advanced Training & Specializations */}
       <section className="bg-paper py-24 lg:py-32">
@@ -486,6 +512,7 @@ export default function DrSantucciProfile({
       </section>
 
       {/* Professional Experience */}
+      {showExperience && (
       <section className="relative overflow-hidden bg-ink py-24 text-paper lg:py-32">
         <div
           aria-hidden="true"
@@ -526,8 +553,10 @@ export default function DrSantucciProfile({
           </ul>
         </div>
       </section>
+      )}
 
       {/* Clinical Focus Areas */}
+      {showClinicalFocus && (
       <section className="bg-paper-2 py-24 lg:py-32">
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
           <Reveal className="max-w-3xl">
@@ -553,6 +582,7 @@ export default function DrSantucciProfile({
           </ul>
         </div>
       </section>
+      )}
 
       {/* Publications */}
       <section className="bg-paper py-24 lg:py-32">
@@ -731,48 +761,50 @@ export default function DrSantucciProfile({
       </section>
 
       {/* Speaking + Media */}
-      <section className="bg-paper-2 py-24 lg:py-32">
-        <div className="mx-auto max-w-6xl px-6 lg:px-10">
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-            <Reveal offset={20}>
-              <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
-                Speaking Engagements
-              </p>
-              <h2 className="mt-4 font-serif text-3xl leading-tight tracking-tight text-ink sm:text-4xl">
-                Where he&apos;s presented.
-              </h2>
-              <ul className="mt-8 space-y-5">
-                {SPEAKING.map((item) => (
-                  <li
-                    key={item}
-                    className="border-l border-amber/50 pl-4 text-[15px] leading-relaxed text-ink"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-            <Reveal offset={20} delay={140}>
-              <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
-                Outreach Media
-              </p>
-              <h2 className="mt-4 font-serif text-3xl leading-tight tracking-tight text-ink sm:text-4xl">
-                Community reach-out authored by Dr. Santucci.
-              </h2>
-              <ul className="mt-8 space-y-5">
-                {MEDIA.map((item) => (
-                  <li
-                    key={item}
-                    className="border-l border-amber/50 pl-4 text-[15px] leading-relaxed text-ink"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
+      {showSpeakingMedia && (
+        <section className="bg-paper-2 py-24 lg:py-32">
+          <div className="mx-auto max-w-6xl px-6 lg:px-10">
+            <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+              <Reveal offset={20}>
+                <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
+                  Speaking Engagements
+                </p>
+                <h2 className="mt-4 font-serif text-3xl leading-tight tracking-tight text-ink sm:text-4xl">
+                  Where he&apos;s presented.
+                </h2>
+                <ul className="mt-8 space-y-5">
+                  {SPEAKING.map((item) => (
+                    <li
+                      key={item}
+                      className="border-l border-amber/50 pl-4 text-[15px] leading-relaxed text-ink"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+              <Reveal offset={20} delay={140}>
+                <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
+                  Outreach Media
+                </p>
+                <h2 className="mt-4 font-serif text-3xl leading-tight tracking-tight text-ink sm:text-4xl">
+                  Community reach-out authored by Dr. Santucci.
+                </h2>
+                <ul className="mt-8 space-y-5">
+                  {MEDIA.map((item) => (
+                    <li
+                      key={item}
+                      className="border-l border-amber/50 pl-4 text-[15px] leading-relaxed text-ink"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Key Skills */}
       <section className="bg-ink py-24 text-paper lg:py-32">
@@ -782,7 +814,9 @@ export default function DrSantucciProfile({
               Key Skills
             </p>
           </Reveal>
-          <ul className="mt-10 flex flex-wrap gap-3">
+          <ul
+            className={`mt-10 flex flex-wrap gap-3 ${centerKeySkills ? "justify-center" : ""}`}
+          >
             {KEY_SKILLS.map((skill, i) => (
               <Reveal
                 key={skill}
@@ -799,18 +833,20 @@ export default function DrSantucciProfile({
       </section>
 
       {/* CTA */}
-      <section className="relative overflow-hidden bg-paper-2 py-24 lg:py-28">
-        <div className="relative mx-auto max-w-3xl px-6 text-center lg:px-10">
-          <Reveal>
-            <h2 className="font-serif text-3xl leading-[1.2] tracking-tight text-ink sm:text-4xl lg:text-5xl">
-              Ready to have your case seen this way?
-            </h2>
-          </Reveal>
-          <Reveal delay={140} className="mt-10 flex justify-center">
-            <BrainAssessmentButton />
-          </Reveal>
-        </div>
-      </section>
+      {showCta && (
+        <section className="relative overflow-hidden bg-paper-2 py-24 lg:py-28">
+          <div className="relative mx-auto max-w-3xl px-6 text-center lg:px-10">
+            <Reveal>
+              <h2 className="font-serif text-3xl leading-[1.2] tracking-tight text-ink sm:text-4xl lg:text-5xl">
+                Ready to have your case seen this way?
+              </h2>
+            </Reveal>
+            <Reveal delay={140} className="mt-10 flex justify-center">
+              <BrainAssessmentButton />
+            </Reveal>
+          </div>
+        </section>
+      )}
     </>
   );
 }

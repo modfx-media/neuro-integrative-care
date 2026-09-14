@@ -130,3 +130,31 @@
     opacity: 0 !important;
   }
 }
+
+/* Landing-page-only (brain-assessment-offer): center this page's content on
+   mobile, scoped to .lp-mobile-center (set on the LP's <main>) so it never
+   touches the homepage/about/other pages that reuse these same shared
+   components, and only applies below the sm breakpoint (desktop untouched). */
+@media (max-width: 639px) {
+  .lp-mobile-center section {
+    text-align: center;
+  }
+
+  .lp-mobile-center :is(.max-w-2xl, .max-w-3xl, .max-w-4xl) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Icon/number badges are block-level flex boxes; make them inline so the
+     section's centered text-align actually centers them too. */
+  .lp-mobile-center .rounded-full.flex {
+    display: inline-flex;
+  }
+
+  /* The left accent bar on bullet-style lists reads as a stray line once its
+     text is centered, so drop it only at this breakpoint. */
+  .lp-mobile-center .border-l {
+    border-left-width: 0;
+    padding-left: 0;
+  }
+}

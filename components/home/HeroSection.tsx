@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import StatBar from "@/components/home/StatBar";
@@ -24,12 +25,39 @@ const STATS = [
   { value: "CA", label: "Based in Los Gatos" },
 ] as const;
 
-// The secondary link jumps to the homepage's own "How It Works" section.
+// The secondary link jumps to the page's own "How It Works" section.
 // Landing pages that don't render that section switch it off.
+// eyebrow/heading/subtitle let landing pages swap copy while keeping the
+// exact same hero structure, video, stats, and animation timings.
+// stats lets landing pages swap the stat bar without touching the homepage.
+// statsClassName lets landing pages keep the bar centered at every breakpoint
+// instead of the homepage's left-aligned-on-desktop default.
 export default function HeroSection({
   showSecondaryLink = true,
+  eyebrow = "NeuroIntegrative Care · Los Gatos",
+  heading = (
+    <>
+      <Reveal as="span" delay={180} offset={28} className="block">
+        You&apos;re not imagining it.
+      </Reveal>
+      <Reveal as="span" delay={400} offset={28} className="block">
+        You&apos;ve just never been{" "}
+        <span className="italic text-amber-b">fully investigated</span>.
+      </Reveal>
+    </>
+  ),
+  subtitle = "For people who've seen specialist after specialist, whose labs keep coming back \u201cnormal,\u201d and who still don't feel right, a 30-year, root-cause investigation into the brain, metabolism, and nervous system. Drug-free. Backed by objective testing, not guesswork.",
+  stats = STATS,
+  statsClassName = "mx-auto max-w-2xl justify-items-center text-center sm:justify-items-start sm:text-left",
+  statsMobileColsClassName,
 }: {
   showSecondaryLink?: boolean;
+  eyebrow?: ReactNode;
+  heading?: ReactNode;
+  subtitle?: ReactNode;
+  stats?: readonly { value: string; label: string }[];
+  statsClassName?: string;
+  statsMobileColsClassName?: string;
 }) {
   return (
     <section className="relative isolate overflow-hidden text-paper">
@@ -59,17 +87,11 @@ export default function HeroSection({
           offset={12}
           className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber-b"
         >
-          NeuroIntegrative Care · Los Gatos
+          {eyebrow}
         </Reveal>
 
         <h1 className="mt-6 font-serif text-[2.5rem] leading-[1.05] tracking-tight text-paper sm:text-5xl lg:text-6xl">
-          <Reveal as="span" delay={180} offset={28} className="block">
-            You&apos;re not imagining it.
-          </Reveal>
-          <Reveal as="span" delay={400} offset={28} className="block">
-            You&apos;ve just never been{" "}
-            <span className="italic text-amber-b">fully investigated</span>.
-          </Reveal>
+          {heading}
         </h1>
 
         <Reveal
@@ -78,11 +100,7 @@ export default function HeroSection({
           offset={16}
           className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-paper/75"
         >
-          For people who&apos;ve seen specialist after specialist, whose labs
-          keep coming back &ldquo;normal,&rdquo; and who still don&apos;t feel
-          right, a 30-year, root-cause investigation into the brain,
-          metabolism, and nervous system. Drug-free. Backed by objective
-          testing, not guesswork.
+          {subtitle}
         </Reveal>
 
         <Reveal
@@ -112,9 +130,10 @@ export default function HeroSection({
 
         <Reveal delay={1300} offset={12} className="mt-16">
           <StatBar
-            stats={STATS}
+            stats={stats}
             tone="onDark"
-            className="mx-auto max-w-2xl justify-items-center text-center sm:justify-items-start sm:text-left"
+            className={statsClassName}
+            mobileColsClassName={statsMobileColsClassName}
           />
         </Reveal>
       </div>

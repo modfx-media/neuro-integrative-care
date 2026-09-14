@@ -33,7 +33,7 @@ const virtualProgram = programs.entryPrograms.find(
 export const metadata: Metadata = {
   title: `The Virtual Program: ${PROGRAM_NAME_PUBLIC}`,
   description:
-    "A 30-year neurometabolic method delivered to your home: remote QEEG, biweekly neurofeedback review, and monthly clinician review. National.",
+    "A 30-year neurometabolic method delivered to your home: remote QEEG, biweekly neurofeedback review, and monthly clinician review over a 10-week program. National.",
   alternates: { canonical: "/programs/virtual" },
   openGraph: {
     title: `The Virtual Program | NeuroIntegrative Care of Los Gatos`,
@@ -64,7 +64,7 @@ const schema = {
     name: `The Virtual Program (${PROGRAM_NAME_PUBLIC})`,
     serviceType: "Neurometabolic Care",
     description:
-      "A 6–10 week at-home neurometabolic program: remote QEEG unit, a weekly neurological support program, and clinician review calls with Dr. Santucci every 4 weeks. National.",
+      "A 10-week at-home neurometabolic program: remote QEEG unit, a weekly neurological support program, and clinician review calls with Dr. Santucci every 4 weeks. National.",
     provider: {
       "@type": "MedicalClinic",
       name: "NeuroIntegrative Care of Los Gatos",
@@ -83,6 +83,7 @@ const FEATURE_ROWS = [
   { label: "Neurofeedback training" },
   { label: "QEEG brain map" },
   { label: "Neurological support program" },
+  { label: "Onboarding" },
   { label: "Optional" },
   { label: "Clinician review cadence" },
   { label: "Program duration" },
@@ -107,9 +108,10 @@ const TIERS: Array<{
       "Neurofeedback training": "Remote QEEG unit, with your healing frequencies",
       "QEEG brain map": "Included + repeat scan",
       "Neurological support program": "Weekly support to enhance neurofeedback results",
+      "Onboarding": "Welcome packet with program terms, contacts, and full schedule",
       "Optional": "Toxicity, DNA, and functional testing as needed",
       "Clinician review cadence": "Every 4 weeks with Dr. Santucci",
-      "Program duration": virtualProgram?.duration ?? "6–10 weeks",
+      "Program duration": virtualProgram?.duration ?? "10 weeks",
     },
     cta: { label: "Schedule Your Consultation", href: "/start" },
     featured: true,
@@ -510,6 +512,41 @@ export default function VirtualProgramPage() {
               </Reveal>
             ))}
           </ul>
+
+          {virtualProgram?.potentialAddOns &&
+            virtualProgram.potentialAddOns.length > 0 && (
+              <Reveal delay={220} offset={16} className="mx-auto mt-14 max-w-3xl">
+                <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-muted">
+                  Potential Add-Ons
+                </p>
+                <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+                  {virtualProgram.potentialAddOns.map((slugOrName) => {
+                    const addOn = programs.addOnPrograms.find(
+                      (a) => a.name === slugOrName,
+                    );
+                    return (
+                      <li
+                        key={slugOrName}
+                        className="rounded-2xl border border-rule/60 bg-paper-2 p-6"
+                      >
+                        <p className="font-serif text-[1.1rem] leading-tight text-ink">
+                          {addOn?.name ?? slugOrName}
+                        </p>
+                        {addOn && (
+                          <p className="mt-2 text-[14px] leading-relaxed text-muted">
+                            {addOn.description}
+                          </p>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+                <p className="mt-4 text-[13px] italic leading-snug text-muted-l">
+                  Added on to the 10-week program when your workup calls for
+                  it. Discussed and priced during your consultation.
+                </p>
+              </Reveal>
+            )}
         </div>
       </section>
 

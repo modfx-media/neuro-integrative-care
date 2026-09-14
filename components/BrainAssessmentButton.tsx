@@ -2,13 +2,18 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useLeadFormModal } from "@/components/lp/LeadFormModal";
 
 // The single, site-wide primary CTA reused across every page banner/hero.
+// On the landing page (where a LeadFormModalProvider is mounted) it opens
+// the lead-capture popup instead of navigating to /brain-assessment.
 export default function BrainAssessmentButton({
   className = "",
 }: {
   className?: string;
 }) {
+  const modal = useLeadFormModal();
+
   return (
     <motion.div
       animate={{
@@ -24,12 +29,22 @@ export default function BrainAssessmentButton({
       whileTap={{ scale: 0.98 }}
       className={`inline-block shrink-0 rounded-full ${className}`}
     >
-      <Link
-        href="/brain-assessment"
-        className="inline-flex h-[52px] items-center justify-center whitespace-nowrap rounded-full bg-[#F3B42A] px-7 text-sm font-semibold tracking-tight text-ink"
-      >
-        Take Your Free Brain Assessment
-      </Link>
+      {modal ? (
+        <button
+          type="button"
+          onClick={modal.open}
+          className="inline-flex h-[52px] items-center justify-center whitespace-nowrap rounded-full bg-[#F3B42A] px-7 text-sm font-semibold tracking-tight text-ink"
+        >
+          Take Your Free Brain Assessment
+        </button>
+      ) : (
+        <Link
+          href="/brain-assessment"
+          className="inline-flex h-[52px] items-center justify-center whitespace-nowrap rounded-full bg-[#F3B42A] px-7 text-sm font-semibold tracking-tight text-ink"
+        >
+          Take Your Free Brain Assessment
+        </Link>
+      )}
     </motion.div>
   );
 }

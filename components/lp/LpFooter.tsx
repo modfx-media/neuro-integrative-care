@@ -1,15 +1,18 @@
-import Link from "next/link";
+"use client";
+
 import { MapPin, Phone, Clock } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import { useLeadFormModal } from "@/components/lp/LeadFormModal";
 
 // Landing-page footer. Carries the contact block, compliance disclaimer, and
 // one CTA — no quick-links grid, no locations list, no social row, so the
 // page keeps a single conversion path.
-const PHONE_DISPLAY = "(408) 871-8222";
-const PHONE_HREF = "tel:+14088718222";
-const BOOK_HREF = "/brain-assessment";
+const PHONE_DISPLAY = "801-292-1111";
+const PHONE_HREF = "tel:+18012921111";
 
 export default function LpFooter() {
+  const modal = useLeadFormModal();
+
   return (
     <footer className="bg-ink text-paper">
       <div className="mx-auto max-w-5xl px-6 py-16 lg:px-10 lg:py-20">
@@ -70,12 +73,13 @@ export default function LpFooter() {
             <p className="mt-4 max-w-xs font-serif text-xl leading-snug text-paper/85">
               Bring your case to someone who investigates it properly.
             </p>
-            <Link
-              href={BOOK_HREF}
+            <button
+              type="button"
+              onClick={modal?.open}
               className="mt-7 inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-6 py-3 text-sm font-medium tracking-tight text-ink shadow-[0_10px_28px_-14px_rgba(248,180,43,0.5)] transition-shadow duration-300 hover:shadow-[0_18px_44px_-14px_rgba(248,180,43,0.8)]"
             >
               Take Your Free Brain Assessment
-            </Link>
+            </button>
           </div>
         </Reveal>
 

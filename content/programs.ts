@@ -2,7 +2,9 @@
 // `internalNote` is for repo-internal reference only — never render it in any
 // component. No dollar figures are published on the site; internal pricing
 // detail (in-clinic-care-regenerative range) lives only in `internalNote` for
-// team reference.
+// team reference. Per the Sept 13, 2026 "Mynd Transformation Blueprint" funnel
+// doc, `potentialAddOns` / `addOnPrograms` follow the same rule: structure and
+// included items only, no $ figures.
 
 export interface EntryProgram {
   slug: string;
@@ -15,6 +17,8 @@ export interface EntryProgram {
   duration?: string;
   whatItIncludes?: string[];
   includedItems?: { title: string; description: string }[];
+  /** Optional add-ons offered alongside this program, no pricing. */
+  potentialAddOns?: string[];
 }
 
 export interface OutOfTownServiceItem {
@@ -27,9 +31,16 @@ export interface OutOfTownServices {
   items: OutOfTownServiceItem[];
 }
 
+export interface AddOnProgram {
+  slug: string;
+  name: string;
+  description: string;
+}
+
 export interface Programs {
   entryPrograms: EntryProgram[];
   outOfTownServices: OutOfTownServices;
+  addOnPrograms: AddOnProgram[];
 }
 
 export const programs: Programs = {
@@ -71,15 +82,20 @@ export const programs: Programs = {
       // do not treat as 100% final until confirmed by Justin.
       name: "The Virtual Program (Mynd Transformation Blueprint)",
       description:
-        "A 6–10 week at-home neurometabolic program: remote QEEG unit tuned to your own healing frequencies, a weekly neurological support program, and clinician review calls with Dr. Santucci every 4 weeks. National.",
-      duration: "6–10 weeks",
+        "A 10-week at-home neurometabolic program: remote QEEG unit tuned to your own healing frequencies, a weekly neurological support program, and clinician review calls with Dr. Santucci every 4 weeks. National.",
+      duration: "10 weeks",
       whatItIncludes: [
         "Remote QEEG brain-training unit, tuned to your healing frequencies",
+        "Initial brain assessment to set your baseline",
         "Weekly neurological support program",
         "Guided video series",
+        "Welcome packet with program terms, contacts, and full 10-week schedule",
         "Clinician review calls with Dr. Santucci every 4 weeks",
         "Optional toxicity, DNA, and functional testing as needed",
       ],
+      // Per the new funnel doc: optional add-ons offered alongside the 10-week
+      // program. No pricing here — see `addOnPrograms` below for descriptions.
+      potentialAddOns: ["Detox Detective", "The Listening Program (TLP)"],
     },
     {
       slug: "in-clinic-care-regenerative",
@@ -89,6 +105,42 @@ export const programs: Programs = {
         "Programs are tailored after your investigation, based on what your workup requires.",
       internalNote:
         "Internal only — DO NOT RENDER. Consult-based, typically $3,500–$7,200 per program (neurofeedback $3,500, regenerative $7,000). Priced after the investigation.",
+      // Menu of in-clinic tracks, from the Sept 13, 2026 funnel doc — no pricing.
+      includedItems: [
+        {
+          title: "Clinical Option",
+          description:
+            "For more difficult cases: comprehensive history, in-depth neurological examination, and an advanced report of findings.",
+        },
+        {
+          title: "Neurofeedback",
+          description:
+            "19-channel QEEG brain map paired with 4-channel neurofeedback sessions.",
+        },
+        {
+          title: "Advanced Rehab",
+          description:
+            "Violet laser therapy and pulse wave treatment.",
+        },
+        {
+          title: "Regenerative Solutions",
+          description: "PRP, exosomes, and cell therapy.",
+        },
+      ],
+    },
+  ],
+  addOnPrograms: [
+    {
+      slug: "detox-detective",
+      name: "Detox Detective",
+      description:
+        "A deeper toxicity workup for the 10-week program: full toxicology testing plus specialized autoimmune testing, added when the picture points to a toxic or immune driver.",
+    },
+    {
+      slug: "listening-program",
+      name: "The Listening Program (TLP)",
+      description:
+        "Research-backed, music-based auditory training done at home, supervised remotely.",
     },
   ],
   outOfTownServices: {

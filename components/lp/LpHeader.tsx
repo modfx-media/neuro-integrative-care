@@ -1,14 +1,14 @@
+"use client";
+
 import Image from "next/image";
-import Link from "next/link";
 import { Phone } from "lucide-react";
 
 // Landing-page header. Deliberately has no site navigation — the only ways
 // out are the phone number and the booking CTA. Sits transparently over the
 // dark hero rather than reserving layout space, so the hero renders exactly
 // as it does on the homepage.
-const PHONE_DISPLAY = "(408) 871-8222";
-const PHONE_HREF = "tel:+14088718222";
-const BOOK_HREF = "/brain-assessment";
+const PHONE_DISPLAY = "801-292-1111";
+const PHONE_HREF = "tel:+18012921111";
 
 export default function LpHeader() {
   return (
@@ -38,17 +38,11 @@ export default function LpHeader() {
         <div className="flex shrink-0 items-center gap-3 sm:gap-5">
           <a
             href={PHONE_HREF}
-            className="hidden items-center gap-2 text-sm text-paper/85 transition-colors hover:text-amber-b sm:inline-flex"
+            className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-gradient-to-r from-amber to-amber-b px-3.5 py-2 text-[12px] font-medium tracking-tight text-ink shadow-[0_6px_18px_-10px_rgba(232,160,32,0.75)] transition-shadow duration-300 hover:shadow-[0_14px_32px_-10px_rgba(232,160,32,0.9)] sm:px-5 sm:py-2.5 sm:text-sm"
           >
-            <Phone size={16} aria-hidden="true" className="text-amber-b" />
+            <Phone size={16} aria-hidden="true" />
             {PHONE_DISPLAY}
           </a>
-          <Link
-            href={BOOK_HREF}
-            className="inline-flex shrink-0 items-center whitespace-nowrap rounded-full bg-gradient-to-r from-amber to-amber-b px-3.5 py-2 text-[12px] font-medium tracking-tight text-ink shadow-[0_6px_18px_-10px_rgba(232,160,32,0.75)] transition-shadow duration-300 hover:shadow-[0_14px_32px_-10px_rgba(232,160,32,0.9)] sm:px-5 sm:py-2.5 sm:text-sm"
-          >
-            Take Your Free Brain Assessment
-          </Link>
         </div>
       </div>
     </header>
