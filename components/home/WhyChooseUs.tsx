@@ -1,5 +1,6 @@
 import { Microscope, BrainCircuit, ShieldOff, MapPin } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 
 // Differentiators only — restates language already used elsewhere on the
 // site (Hero stat bar, DoctorTeaser, compliance copy), no new claims.
@@ -28,7 +29,13 @@ const ITEMS = [
   },
 ] as const;
 
-export default function WhyChooseUs() {
+// showCta lets landing pages add a booking button after the grid; off by
+// default so the homepage's usage is unchanged.
+export default function WhyChooseUs({
+  showCta = false,
+}: {
+  showCta?: boolean;
+}) {
   return (
     <section className="bg-amber-soft py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
@@ -56,6 +63,12 @@ export default function WhyChooseUs() {
             </Reveal>
           ))}
         </ul>
+
+        {showCta && (
+          <Reveal delay={420} className="mt-16 flex justify-center">
+            <BrainAssessmentButton />
+          </Reveal>
+        )}
       </div>
     </section>
   );

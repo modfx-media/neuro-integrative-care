@@ -252,6 +252,7 @@ export default function DrSantucciProfile({
   showName = false,
   showCta = true,
   centerKeySkills = false,
+  showTrainingCta = false,
 }: {
   linkProgramNames?: boolean;
   afterStats?: React.ReactNode;
@@ -264,6 +265,7 @@ export default function DrSantucciProfile({
   showName?: boolean;
   showCta?: boolean;
   centerKeySkills?: boolean;
+  showTrainingCta?: boolean;
 }) {
   return (
     <>
@@ -508,6 +510,12 @@ export default function DrSantucciProfile({
               </Reveal>
             ))}
           </ul>
+
+          {showTrainingCta && (
+            <Reveal delay={420} className="mt-14 flex justify-center">
+              <BrainAssessmentButton />
+            </Reveal>
+          )}
         </div>
       </section>
 

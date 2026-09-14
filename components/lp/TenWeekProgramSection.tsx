@@ -1,5 +1,5 @@
-import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 import { programs } from "@/content/programs";
 import {
   FOUNDATIONAL_CURRICULUM,
@@ -78,18 +78,7 @@ export default function TenWeekProgramSection() {
               </div>
             )}
 
-            <Link
-              href="/programs/virtual"
-              className="group mt-8 inline-flex items-center gap-2 font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-ink transition-colors hover:text-amber"
-            >
-              Explore the full program
-              <span
-                aria-hidden="true"
-                className="transition-transform group-hover:translate-x-1"
-              >
-                →
-              </span>
-            </Link>
+            <BrainAssessmentButton className="mt-8" />
           </Reveal>
 
           <Reveal delay={120} offset={24} className="lg:col-span-7">

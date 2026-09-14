@@ -88,8 +88,9 @@ export default function BrainAssessmentOfferPage() {
         showName
         showCta={false}
         centerKeySkills
+        showTrainingCta
       />
-      <WhyChooseUs />
+      <WhyChooseUs showCta />
       <TenWeekProgramSection />
       <ReadyNowCtaSection />
     </>
