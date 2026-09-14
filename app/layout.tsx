@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Fraunces, Inter, IBM_Plex_Mono } from "next/font/google";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
+import Script from "next/script";
 import MotionProvider from "@/components/MotionProvider";
-import OrganizationJsonLd from "@/components/OrganizationJsonLd";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
+
+// GA4 lives in the root layout rather than the site layout so the landing
+// pages under app/(lp) are measured too.
+const GA_MEASUREMENT_ID = "G-FYBZCG4XTR";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -64,21 +65,21 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${fraunces.variable} ${inter.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <OrganizationJsonLd />
-        <MotionProvider>
-          <Nav />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </MotionProvider>
-        <Script id="knock-knock-widget" strategy="afterInteractive">
-          {`
-            window.company_id = '6a9169788db2cbf50c5c2258';
-            var newScript = document.createElement('script');
-            newScript.src = 'https://api.knock-knockapp.com/widget/widget.js';
-            document.getElementsByTagName('HEAD')[0].appendChild(newScript);
-          `}
-        </Script>
+        <MotionProvider>{children}</MotionProvider>
       </body>
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', '${GA_MEASUREMENT_ID}');
+        `}
+      </Script>
     </html>
   );
 }

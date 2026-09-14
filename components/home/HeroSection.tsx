@@ -24,7 +24,13 @@ const STATS = [
   { value: "CA", label: "Based in Los Gatos" },
 ] as const;
 
-export default function HeroSection() {
+// The secondary link jumps to the homepage's own "How It Works" section.
+// Landing pages that don't render that section switch it off.
+export default function HeroSection({
+  showSecondaryLink = true,
+}: {
+  showSecondaryLink?: boolean;
+}) {
   return (
     <section className="relative isolate overflow-hidden text-paper">
       <video
@@ -87,20 +93,22 @@ export default function HeroSection() {
           <BrainAssessmentButton />
         </Reveal>
 
-        <Reveal delay={1200} offset={12} className="mt-6">
-          <Link
-            href="#how-it-works"
-            className="group inline-flex items-center gap-2 text-sm text-paper/80 transition-colors hover:text-amber-b"
-          >
-            See how the investigation works
-            <span
-              aria-hidden="true"
-              className="transition-transform group-hover:translate-x-1"
+        {showSecondaryLink && (
+          <Reveal delay={1200} offset={12} className="mt-6">
+            <Link
+              href="#how-it-works"
+              className="group inline-flex items-center gap-2 text-sm text-paper/80 transition-colors hover:text-amber-b"
             >
-              →
-            </span>
-          </Link>
-        </Reveal>
+              See how the investigation works
+              <span
+                aria-hidden="true"
+                className="transition-transform group-hover:translate-x-1"
+              >
+                →
+              </span>
+            </Link>
+          </Reveal>
+        )}
 
         <Reveal delay={1300} offset={12} className="mt-16">
           <StatBar
