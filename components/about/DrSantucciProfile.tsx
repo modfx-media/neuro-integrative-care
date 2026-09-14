@@ -234,7 +234,7 @@ function ProgramMention({
 // statsPlacement moves the four stats out of their own full-width ribbon and
 // into amber cards under the photo, which keeps landing pages from putting a
 // whole section between the bio and the offer.
-// amberEducation paints the education section brand amber instead of paper.
+// amberEducation paints the education section a light amber instead of paper.
 export default function DrSantucciProfile({
   linkProgramNames = true,
   afterStats,
@@ -379,7 +379,7 @@ export default function DrSantucciProfile({
       {/* Education */}
       <section
         className={`py-24 lg:py-32 ${
-          amberEducation ? "bg-[#F4AF29]" : "bg-paper-2"
+          amberEducation ? "bg-amber-soft" : "bg-paper-2"
         }`}
       >
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
