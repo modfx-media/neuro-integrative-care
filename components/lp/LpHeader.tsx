@@ -47,7 +47,7 @@ export default function LpHeader() {
             href={BOOK_HREF}
             className="inline-flex shrink-0 items-center whitespace-nowrap rounded-full bg-gradient-to-r from-amber to-amber-b px-3.5 py-2 text-[12px] font-medium tracking-tight text-ink shadow-[0_6px_18px_-10px_rgba(232,160,32,0.75)] transition-shadow duration-300 hover:shadow-[0_14px_32px_-10px_rgba(232,160,32,0.9)] sm:px-5 sm:py-2.5 sm:text-sm"
           >
-            Schedule Your Consultation
+            Take Your Free Brain Assessment
           </Link>
         </div>
       </div>

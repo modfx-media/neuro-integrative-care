@@ -74,7 +74,7 @@ export default function LpFooter() {
               href={BOOK_HREF}
               className="mt-7 inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-6 py-3 text-sm font-medium tracking-tight text-ink shadow-[0_10px_28px_-14px_rgba(248,180,43,0.5)] transition-shadow duration-300 hover:shadow-[0_18px_44px_-14px_rgba(248,180,43,0.8)]"
             >
-              Schedule Your Consultation
+              Take Your Free Brain Assessment
             </Link>
           </div>
         </Reveal>
