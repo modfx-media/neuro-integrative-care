@@ -255,6 +255,7 @@ export default function DrSantucciProfile({
   showClinicalFocus = true,
   showSpeakingMedia = true,
   showKeySkills = true,
+  showCredentials = true,
   showName = false,
   showCta = true,
   centerKeySkills = false,
@@ -271,6 +272,7 @@ export default function DrSantucciProfile({
   showClinicalFocus?: boolean;
   showSpeakingMedia?: boolean;
   showKeySkills?: boolean;
+  showCredentials?: boolean;
   showName?: boolean;
   showCta?: boolean;
   centerKeySkills?: boolean;
@@ -739,6 +741,7 @@ export default function DrSantucciProfile({
       </section>
 
       {/* Credentials */}
+      {showCredentials && (
       <section id="credentials" className="bg-paper-2 py-24 lg:py-32">
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
           <Reveal className={headerBlock}>
@@ -806,6 +809,7 @@ export default function DrSantucciProfile({
           </ul>
         </div>
       </section>
+      )}
 
       {/* Video: Neurofeedback explainer */}
       <section className="bg-paper py-24 lg:py-32">

@@ -42,7 +42,7 @@ export default function BrainAssessmentOfferSection() {
   return (
     <section className="bg-paper-2 py-24 lg:py-32">
       <div className="mx-auto max-w-6xl px-6 lg:px-10">
-        <Reveal className="max-w-3xl">
+        <Reveal className="mx-auto max-w-3xl text-center">
           <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
             The Offer
           </p>
@@ -101,7 +101,7 @@ export default function BrainAssessmentOfferSection() {
         </div>
 
         <div className="mt-20 border-t border-rule pt-16">
-          <Reveal className="max-w-3xl">
+          <Reveal className="mx-auto max-w-3xl text-center">
             <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
               Patient Reviews
             </p>
@@ -121,7 +121,7 @@ export default function BrainAssessmentOfferSection() {
               >
                 <blockquote className="flex h-full flex-col rounded-2xl border border-rule/70 bg-paper p-6 lg:p-7">
                   <div
-                    className="flex items-center gap-0.5 text-amber"
+                    className="flex items-center justify-center gap-0.5 text-amber lg:justify-start"
                     aria-hidden="true"
                   >
                     {Array.from({ length: 5 }).map((_, star) => (
@@ -144,7 +144,7 @@ export default function BrainAssessmentOfferSection() {
             ))}
           </ul>
 
-          <Reveal delay={280} className="mt-8">
+          <Reveal delay={280} className="mt-8 text-center">
             <p className="text-[13px] italic leading-snug text-muted">
               Individual results; outcomes vary.
             </p>

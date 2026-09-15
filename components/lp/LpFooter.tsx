@@ -2,7 +2,7 @@
 
 import { MapPin, Phone, Clock } from "lucide-react";
 import Reveal from "@/components/Reveal";
-import { useLeadFormModal } from "@/components/lp/LeadFormModal";
+import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 
 // Landing-page footer. Carries the contact block, compliance disclaimer, and
 // one CTA — no quick-links grid, no locations list, no social row, so the
@@ -11,13 +11,11 @@ const PHONE_DISPLAY = "801-292-1111";
 const PHONE_HREF = "tel:+18012921111";
 
 export default function LpFooter() {
-  const modal = useLeadFormModal();
-
   return (
     <footer className="bg-ink text-paper">
       <div className="mx-auto max-w-5xl px-6 py-16 lg:px-10 lg:py-20">
-        <Reveal className="flex flex-col gap-10 sm:flex-row sm:items-start sm:justify-between">
-          <div>
+        <Reveal className="flex flex-col-reverse gap-10 sm:flex-row sm:items-start sm:justify-between">
+          <div className="text-center sm:text-left">
             <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber-b">
               Visit
             </p>
@@ -28,7 +26,7 @@ export default function LpFooter() {
             </h2>
 
             <address className="mt-7 space-y-4 not-italic text-paper/85">
-              <div className="flex items-start gap-3">
+              <div className="flex items-start justify-center gap-3 sm:justify-start">
                 <MapPin
                   size={18}
                   className="mt-1 shrink-0 text-amber-b"
@@ -39,7 +37,7 @@ export default function LpFooter() {
                   <p>Los Gatos, CA 95030</p>
                 </div>
               </div>
-              <div className="flex items-start gap-3">
+              <div className="flex items-start justify-center gap-3 sm:justify-start">
                 <Phone
                   size={18}
                   className="mt-1 shrink-0 text-amber-b"
@@ -52,7 +50,7 @@ export default function LpFooter() {
                   {PHONE_DISPLAY}
                 </a>
               </div>
-              <div className="flex items-start gap-3">
+              <div className="flex items-start justify-center gap-3 sm:justify-start">
                 <Clock
                   size={18}
                   className="mt-1 shrink-0 text-amber-b"
@@ -66,26 +64,30 @@ export default function LpFooter() {
             </address>
           </div>
 
-          <div className="sm:text-right">
+          <div className="text-center sm:max-w-sm">
             <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber-b">
               Next Step
             </p>
-            <p className="mt-4 max-w-xs font-serif text-xl leading-snug text-paper/85">
-              Bring your case to someone who investigates it properly.
+            <h2 className="mt-4 font-serif text-2xl leading-tight tracking-tight text-paper sm:text-[1.65rem]">
+              Ready to go now?
+              <br />
+              <span className="text-amber-b">
+                Book your consultation right here.
+              </span>
+            </h2>
+            <p className="mt-4 text-[15px] leading-relaxed text-paper/70">
+              No referral, no waiting room, no obligation. Just a few minutes
+              to get your assessment on the calendar.
             </p>
-            <button
-              type="button"
-              onClick={modal?.open}
-              className="mt-7 inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-6 py-3 text-sm font-medium tracking-tight text-ink shadow-[0_10px_28px_-14px_rgba(248,180,43,0.5)] transition-shadow duration-300 hover:shadow-[0_18px_44px_-14px_rgba(248,180,43,0.8)]"
-            >
-              Take Your Free Brain Assessment
-            </button>
+            <div className="mt-7 flex justify-center">
+              <BrainAssessmentButton label="Click Here For Your Brain Consultation" />
+            </div>
           </div>
         </Reveal>
 
         <Reveal
           delay={160}
-          className="mt-14 flex flex-col gap-4 border-t border-rule-d pt-8 text-xs text-paper/60 sm:flex-row sm:items-center sm:justify-between"
+          className="mt-14 flex flex-col gap-4 border-t border-rule-d pt-8 text-center text-xs text-paper/60 sm:flex-row sm:items-center sm:justify-between sm:text-left"
         >
           <p>
             &copy; {new Date().getFullYear()} NeuroIntegrative Care of Los

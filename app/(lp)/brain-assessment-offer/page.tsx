@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
 import HeroSection from "@/components/home/HeroSection";
-import HowItWorks from "@/components/home/HowItWorks";
 import BrainAssessmentOfferSection from "@/components/lp/BrainAssessmentOfferSection";
 import AssessmentFlowSection from "@/components/lp/AssessmentFlowSection";
 import WarningSignsSection from "@/components/lp/WarningSignsSection";
 import TenWeekProgramSection from "@/components/lp/TenWeekProgramSection";
-import ReadyNowCtaSection from "@/components/lp/ReadyNowCtaSection";
 import DrSantucciProfile from "@/components/about/DrSantucciProfile";
-import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import Reveal from "@/components/Reveal";
 
@@ -52,7 +49,7 @@ export default function BrainAssessmentOfferPage() {
             </Reveal>
           </>
         }
-        subtitle="Book your free, objective cognitive assessment now. Scored against your age group, done in minutes. Drug-free. No obligation. Limited spots."
+        subtitle="Take your free, objective cognitive assessment now. Scored against your age group, done in minutes. Drug-free. No obligation. Limited spots."
         stats={PATIENT_STATS}
         statsClassName="mx-auto max-w-2xl justify-items-center text-center"
         statsMobileColsClassName="grid-cols-3"
@@ -60,22 +57,6 @@ export default function BrainAssessmentOfferPage() {
       />
       <WarningSignsSection />
       <BrainAssessmentOfferSection />
-      <HowItWorks />
-
-      {/* Moved out of DrSantucciProfile (showCta={false} below) per request. */}
-      <section className="relative overflow-hidden bg-paper-2 py-24 lg:py-28">
-        <div className="relative mx-auto max-w-3xl px-6 text-center lg:px-10">
-          <Reveal>
-            <h2 className="font-serif text-3xl leading-[1.2] tracking-tight text-ink sm:text-4xl lg:text-5xl">
-              Ready to have your case seen this way?
-            </h2>
-          </Reveal>
-          <Reveal delay={140} className="mt-10 flex justify-center">
-            <BrainAssessmentButton />
-          </Reveal>
-        </div>
-      </section>
-
       <AssessmentFlowSection />
       <DrSantucciProfile
         linkProgramNames={false}
@@ -88,13 +69,13 @@ export default function BrainAssessmentOfferPage() {
         showClinicalFocus={false}
         showSpeakingMedia={false}
         showKeySkills={false}
+        showCredentials={false}
         showName
         showCta={false}
         showTrainingCta
       />
       <WhyChooseUs showCta centered />
       <TenWeekProgramSection />
-      <ReadyNowCtaSection />
     </>
   );
 }

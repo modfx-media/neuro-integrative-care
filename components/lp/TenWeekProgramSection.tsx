@@ -22,7 +22,7 @@ export default function TenWeekProgramSection() {
   return (
     <section className="bg-paper py-24 lg:py-32">
       <div className="mx-auto max-w-6xl px-6 lg:px-10">
-        <Reveal className="max-w-3xl">
+        <Reveal className="mx-auto max-w-3xl text-center">
           <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
             If It&apos;s a Fit
           </p>

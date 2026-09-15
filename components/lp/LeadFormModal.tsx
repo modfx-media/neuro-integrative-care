@@ -54,7 +54,7 @@ export function LeadFormModalProvider({ children }: { children: ReactNode }) {
         <div
           role="dialog"
           aria-modal="true"
-          aria-label="Book your free brain assessment"
+          aria-label="Take your free brain assessment"
           className="fixed inset-0 z-[100] flex items-center justify-center p-4"
         >
           <button
@@ -70,7 +70,7 @@ export function LeadFormModalProvider({ children }: { children: ReactNode }) {
                   Free Brain Assessment
                 </p>
                 <p className="mt-1 font-serif text-lg font-bold leading-tight text-ink">
-                  Book Your Assessment Now
+                  Take Your Assessment Now
                 </p>
               </div>
               <button
