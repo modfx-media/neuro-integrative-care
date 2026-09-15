@@ -70,7 +70,7 @@ export function LeadFormModalProvider({ children }: { children: ReactNode }) {
                   Free Brain Assessment
                 </p>
                 <p className="mt-1 font-serif text-lg font-bold leading-tight text-ink">
-                  Claim Your Free Brain Assessment
+                  Book Your Assessment Now
                 </p>
               </div>
               <button

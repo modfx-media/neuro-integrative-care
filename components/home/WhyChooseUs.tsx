@@ -30,28 +30,50 @@ const ITEMS = [
 ] as const;
 
 // showCta lets landing pages add a booking button after the grid; off by
-// default so the homepage's usage is unchanged.
+// default so the homepage's usage is unchanged. centered does the same for the
+// section header and the four items, which landing pages center (and the
+// header is enlarged to match their other section titles).
 export default function WhyChooseUs({
   showCta = false,
+  centered = false,
 }: {
   showCta?: boolean;
+  centered?: boolean;
 }) {
   return (
     <section className="bg-amber-soft py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <Reveal className="max-w-3xl">
+        <Reveal
+          className={centered ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}
+        >
           <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
             Why Choose Us
           </p>
-          <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
+          <h2
+            className={`mt-4 font-serif leading-tight tracking-tight text-ink ${
+              centered
+                ? "text-[2.75rem] sm:text-[3.5rem]"
+                : "text-4xl sm:text-5xl"
+            }`}
+          >
             What makes the investigation different
           </h2>
         </Reveal>
 
         <ul className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {ITEMS.map((item, i) => (
-            <Reveal key={item.title} as="li" delay={140 + i * 80} offset={20}>
-              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white text-amber shadow-[0_1px_2px_rgba(11,18,32,0.06)]">
+            <Reveal
+              key={item.title}
+              as="li"
+              delay={140 + i * 80}
+              offset={20}
+              className={centered ? "text-center" : ""}
+            >
+              <div
+                className={`flex h-14 w-14 items-center justify-center rounded-full bg-white text-amber shadow-[0_1px_2px_rgba(11,18,32,0.06)] ${
+                  centered ? "mx-auto" : ""
+                }`}
+              >
                 <item.icon size={26} strokeWidth={1.5} aria-hidden="true" />
               </div>
               <h3 className="mt-5 font-serif text-xl text-ink">

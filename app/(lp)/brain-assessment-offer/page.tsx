@@ -81,16 +81,18 @@ export default function BrainAssessmentOfferPage() {
         linkProgramNames={false}
         statsPlacement="under-photo"
         amberEducation
+        centerHeadings
+        darkTraining
         showEducation={false}
         showExperience={false}
         showClinicalFocus={false}
         showSpeakingMedia={false}
+        showKeySkills={false}
         showName
         showCta={false}
-        centerKeySkills
         showTrainingCta
       />
-      <WhyChooseUs showCta />
+      <WhyChooseUs showCta centered />
       <TenWeekProgramSection />
       <ReadyNowCtaSection />
     </>

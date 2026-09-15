@@ -157,4 +157,12 @@
     border-left-width: 0;
     padding-left: 0;
   }
+
+  /* Section padding that reads as breathing room on desktop stacks into ~190px
+     of dead space between every section on a phone. Halve it here; sections
+     with their own padding (the hero) are untouched. */
+  .lp-mobile-center section:is(.py-24, .py-20) {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
 }

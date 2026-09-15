@@ -36,14 +36,14 @@ export default function TenWeekProgramSection() {
 
         <div className="mt-14 grid gap-10 lg:grid-cols-12 lg:gap-14">
           <Reveal offset={24} className="lg:col-span-5">
-            <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-muted">
+            <p className="text-left font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-muted">
               What&apos;s Included
             </p>
             <ul className="mt-6 space-y-4">
               {virtualProgram?.whatItIncludes?.map((item) => (
                 <li
                   key={item}
-                  className="flex gap-4 text-[15px] leading-relaxed text-ink"
+                  className="flex gap-4 text-left text-[15px] leading-relaxed text-ink"
                 >
                   <span
                     aria-hidden="true"

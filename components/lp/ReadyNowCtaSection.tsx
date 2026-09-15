@@ -13,9 +13,11 @@ export default function ReadyNowCtaSection() {
             No Need to Wait
           </p>
           <h2 className="mt-4 font-serif text-3xl leading-tight tracking-tight text-ink sm:text-4xl">
-            Already know you&apos;re ready?
+            Ready to go now?
             <br />
-            <span className="text-amber-b">Go ahead and grab your spot.</span>
+            <span className="text-amber-b">
+              Book your consultation right here.
+            </span>
           </h2>
           <p className="mt-5 text-base leading-relaxed text-muted">
             No referral, no waiting room, no obligation. Just a few minutes
@@ -24,7 +26,7 @@ export default function ReadyNowCtaSection() {
         </Reveal>
 
         <Reveal delay={160} className="mt-8 flex justify-center">
-          <BrainAssessmentButton />
+          <BrainAssessmentButton label="Click Here For Your Brain Consultation" />
         </Reveal>
       </div>
     </section>

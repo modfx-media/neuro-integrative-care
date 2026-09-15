@@ -8,14 +8,14 @@ export default function AssessmentFlowSection() {
   return (
     <section className="bg-paper py-24 lg:py-32">
       <div className="mx-auto max-w-5xl px-6 lg:px-10">
-        <Reveal className="max-w-2xl">
+        <Reveal className="mx-auto max-w-3xl text-center">
           <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
             How It Works
           </p>
-          <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
+          <h2 className="mt-4 font-serif text-[2.75rem] leading-tight tracking-tight text-ink sm:text-[3.5rem]">
             From assessment to treatment plan.
           </h2>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted">
             qEEG brain mapping and psychological testing feed one treatment
             plan, reassessed periodically to confirm the plan is working.
           </p>

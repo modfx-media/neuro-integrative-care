@@ -235,20 +235,26 @@ function ProgramMention({
 // into amber cards under the photo, which keeps landing pages from putting a
 // whole section between the bio and the offer.
 // amberEducation paints the education section a light amber instead of paper.
-// showEducation/showExperience/showClinicalFocus let landing pages drop the
-// CV-length sections that don't fit a short conversion page.
+// showEducation/showExperience/showClinicalFocus/showKeySkills let landing
+// pages drop the CV-length sections that don't fit a short conversion page.
 // showName prints the name + credentials in the bio — off by default because
 // /about/dr-thomas-santucci already states the name in its own hero above
 // this component; landing pages that skip that hero turn it on.
+// centerHeadings centers and enlarges the section headers (training,
+// publications, credentials) so landing pages read as a sequence of centered
+// statements rather than the left-aligned CV layout of the about page.
 export default function DrSantucciProfile({
   linkProgramNames = true,
   afterStats,
   statsPlacement = "ribbon",
   amberEducation = false,
+  centerHeadings = false,
+  darkTraining = false,
   showEducation = true,
   showExperience = true,
   showClinicalFocus = true,
   showSpeakingMedia = true,
+  showKeySkills = true,
   showName = false,
   showCta = true,
   centerKeySkills = false,
@@ -258,15 +264,25 @@ export default function DrSantucciProfile({
   afterStats?: React.ReactNode;
   statsPlacement?: "ribbon" | "under-photo";
   amberEducation?: boolean;
+  centerHeadings?: boolean;
+  darkTraining?: boolean;
   showEducation?: boolean;
   showExperience?: boolean;
   showClinicalFocus?: boolean;
   showSpeakingMedia?: boolean;
+  showKeySkills?: boolean;
   showName?: boolean;
   showCta?: boolean;
   centerKeySkills?: boolean;
   showTrainingCta?: boolean;
 }) {
+  const headerBlock = centerHeadings
+    ? "mx-auto max-w-3xl text-center"
+    : "max-w-3xl";
+  const headingSize = centerHeadings
+    ? "text-[2.75rem] sm:text-[3.5rem]"
+    : "text-4xl sm:text-5xl";
+
   return (
     <>
       {/* Bio */}
@@ -310,12 +326,22 @@ export default function DrSantucciProfile({
               <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
                 Professional Summary
               </p>
-              {showName && (
-                <p className="mt-4 font-serif text-xl leading-tight text-ink sm:text-2xl">
-                  Dr. Thomas Santucci, DC, AFNI
-                </p>
-              )}
-              <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
+              {/* When this component prints the name (landing pages, which have
+                  no hero above it), the name and the role read as one bold
+                  heading rather than a label stacked on a title. */}
+              <h2
+                className={`mt-4 font-serif leading-tight tracking-tight text-ink ${
+                  showName
+                    ? "text-[2rem] font-bold sm:text-[2.5rem]"
+                    : "text-4xl sm:text-5xl"
+                }`}
+              >
+                {showName && (
+                  <>
+                    Dr. Thomas Santucci, DC, AFNI
+                    <br />
+                  </>
+                )}
                 Founder, NeuroIntegrative Care of Los Gatos.
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-ink">
@@ -477,13 +503,25 @@ export default function DrSantucciProfile({
       )}
 
       {/* Advanced Training & Specializations */}
-      <section className="bg-paper py-24 lg:py-32">
+      <section
+        className={`py-24 lg:py-32 ${
+          darkTraining ? "bg-[#12181F]" : "bg-paper"
+        }`}
+      >
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
-          <Reveal className="max-w-3xl">
-            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
+          <Reveal className={headerBlock}>
+            <p
+              className={`font-mono font-medium text-[13px] uppercase tracking-[0.18em] ${
+                darkTraining ? "text-amber-b" : "text-amber"
+              }`}
+            >
               Advanced Training & Specializations
             </p>
-            <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
+            <h2
+              className={`mt-4 font-serif leading-tight tracking-tight ${headingSize} ${
+                darkTraining ? "text-paper" : "text-ink"
+              }`}
+            >
               Where the clinical depth comes from.
             </h2>
           </Reveal>
@@ -497,12 +535,26 @@ export default function DrSantucciProfile({
                 offset={20}
                 className="h-full"
               >
-                <article className="flex h-full flex-col rounded-2xl border border-rule/60 bg-paper-2 p-6 lg:p-7">
-                  <h3 className="font-serif text-[1.1rem] leading-tight text-ink">
+                <article
+                  className={`flex h-full flex-col rounded-2xl p-6 lg:p-7 ${
+                    darkTraining
+                      ? "border border-paper/12 bg-paper/[0.05]"
+                      : "border border-rule/60 bg-paper-2"
+                  }`}
+                >
+                  <h3
+                    className={`font-serif text-[1.1rem] leading-tight ${
+                      darkTraining ? "text-paper" : "text-ink"
+                    }`}
+                  >
                     {item.title}
                   </h3>
                   {item.detail && (
-                    <p className="mt-3 text-[14px] leading-relaxed text-muted">
+                    <p
+                      className={`mt-3 text-[14px] leading-relaxed ${
+                        darkTraining ? "text-paper/65" : "text-muted"
+                      }`}
+                    >
                       {item.detail}
                     </p>
                   )}
@@ -595,8 +647,16 @@ export default function DrSantucciProfile({
       {/* Publications */}
       <section className="bg-paper py-24 lg:py-32">
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
-          <Reveal className="max-w-3xl">
-            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
+          <Reveal className={headerBlock}>
+            {/* This section has no headline of its own, so on landing pages the
+                label carries the section at heading scale. */}
+            <p
+              className={`font-mono font-medium uppercase text-amber ${
+                centerHeadings
+                  ? "text-[20px] tracking-[0.16em] sm:text-[26px]"
+                  : "text-[13px] tracking-[0.18em]"
+              }`}
+            >
               Publications
             </p>
           </Reveal>
@@ -681,17 +741,23 @@ export default function DrSantucciProfile({
       {/* Credentials */}
       <section id="credentials" className="bg-paper-2 py-24 lg:py-32">
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
-          <Reveal className="max-w-3xl">
+          <Reveal className={headerBlock}>
             <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
               Licenses & Certifications
             </p>
-            <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
+            <h2
+              className={`mt-4 font-serif leading-tight tracking-tight text-ink ${headingSize}`}
+            >
               Licensed, certified, and continuously trained.
             </h2>
           </Reveal>
 
           <Reveal delay={80} offset={16} className="mt-12">
-            <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-muted">
+            <p
+              className={`font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-muted ${
+                centerHeadings ? "text-center" : ""
+              }`}
+            >
               Trained &amp; Certified By
             </p>
             <ul className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
@@ -744,11 +810,17 @@ export default function DrSantucciProfile({
       {/* Video: Neurofeedback explainer */}
       <section className="bg-paper py-24 lg:py-32">
         <div className="mx-auto max-w-4xl px-6 lg:px-10">
-          <Reveal className="max-w-2xl">
+          <Reveal
+            className={
+              centerHeadings ? "mx-auto max-w-2xl text-center" : "max-w-2xl"
+            }
+          >
             <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
               Board Certified in Neurofeedback
             </p>
-            <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
+            <h2
+              className={`mt-4 font-serif leading-tight tracking-tight text-ink ${headingSize}`}
+            >
               What is neurofeedback?
             </h2>
           </Reveal>
@@ -815,30 +887,32 @@ export default function DrSantucciProfile({
       )}
 
       {/* Key Skills */}
-      <section className="bg-ink py-24 text-paper lg:py-32">
-        <div className="mx-auto max-w-6xl px-6 lg:px-10">
-          <Reveal className="max-w-3xl">
-            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber-b">
-              Key Skills
-            </p>
-          </Reveal>
-          <ul
-            className={`mt-10 flex flex-wrap gap-3 ${centerKeySkills ? "justify-center" : ""}`}
-          >
-            {KEY_SKILLS.map((skill, i) => (
-              <Reveal
-                key={skill}
-                as="li"
-                delay={80 + i * 40}
-                offset={12}
-                className="rounded-full border border-paper/20 px-5 py-2.5 text-[14px] leading-snug text-paper/90"
-              >
-                {skill}
-              </Reveal>
-            ))}
-          </ul>
-        </div>
-      </section>
+      {showKeySkills && (
+        <section className="bg-ink py-24 text-paper lg:py-32">
+          <div className="mx-auto max-w-6xl px-6 lg:px-10">
+            <Reveal className="max-w-3xl">
+              <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber-b">
+                Key Skills
+              </p>
+            </Reveal>
+            <ul
+              className={`mt-10 flex flex-wrap gap-3 ${centerKeySkills ? "justify-center" : ""}`}
+            >
+              {KEY_SKILLS.map((skill, i) => (
+                <Reveal
+                  key={skill}
+                  as="li"
+                  delay={80 + i * 40}
+                  offset={12}
+                  className="rounded-full border border-paper/20 px-5 py-2.5 text-[14px] leading-snug text-paper/90"
+                >
+                  {skill}
+                </Reveal>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
 
       {/* CTA */}
       {showCta && (

@@ -49,6 +49,10 @@ export default function BrainAssessmentOfferSection() {
           <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
             Start with a free brain assessment.
           </h2>
+          <p className="mt-6 text-lg leading-relaxed text-muted">
+            It costs nothing, takes minutes, and turns &ldquo;something feels
+            off&rdquo; into data you can actually look at.
+          </p>
         </Reveal>
 
         <div className="mt-14 grid items-center gap-10 lg:grid-cols-12 lg:gap-14">

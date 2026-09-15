@@ -9,8 +9,10 @@ import { useLeadFormModal } from "@/components/lp/LeadFormModal";
 // the lead-capture popup instead of navigating to /brain-assessment.
 export default function BrainAssessmentButton({
   className = "",
+  label = "Take Your Free Brain Assessment",
 }: {
   className?: string;
+  label?: string;
 }) {
   const modal = useLeadFormModal();
 
@@ -33,16 +35,16 @@ export default function BrainAssessmentButton({
         <button
           type="button"
           onClick={modal.open}
-          className="inline-flex h-[52px] items-center justify-center whitespace-nowrap rounded-full bg-[#F3B42A] px-7 text-sm font-semibold tracking-tight text-ink"
+          className="inline-flex h-[52px] items-center justify-center whitespace-nowrap rounded-full bg-[#F3B42A] px-6 text-[13px] font-semibold tracking-tight text-ink sm:px-7 sm:text-sm"
         >
-          Take Your Free Brain Assessment
+          {label}
         </button>
       ) : (
         <Link
           href="/brain-assessment"
-          className="inline-flex h-[52px] items-center justify-center whitespace-nowrap rounded-full bg-[#F3B42A] px-7 text-sm font-semibold tracking-tight text-ink"
+          className="inline-flex h-[52px] items-center justify-center whitespace-nowrap rounded-full bg-[#F3B42A] px-6 text-[13px] font-semibold tracking-tight text-ink sm:px-7 sm:text-sm"
         >
-          Take Your Free Brain Assessment
+          {label}
         </Link>
       )}
     </motion.div>
