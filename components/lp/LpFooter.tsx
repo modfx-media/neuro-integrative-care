@@ -70,18 +70,14 @@ export default function LpFooter() {
             </p>
             <h2 className="mt-4 font-serif text-2xl leading-tight tracking-tight text-paper sm:text-[1.65rem]">
               Ready to go now?
-              <br />
-              <span className="text-amber-b">
-                Book your consultation right here.
-              </span>
             </h2>
-            <p className="mt-4 text-[15px] leading-relaxed text-paper/70">
+            <div className="mt-5 flex justify-center">
+              <BrainAssessmentButton label="Book Your Consultation" />
+            </div>
+            <p className="mt-5 text-[15px] leading-relaxed text-paper/70">
               No referral, no waiting room, no obligation. Just a few minutes
               to get your assessment on the calendar.
             </p>
-            <div className="mt-7 flex justify-center">
-              <BrainAssessmentButton label="Click Here to Take Your Free Brain Assessment" />
-            </div>
           </div>
         </Reveal>
 

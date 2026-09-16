@@ -1,15 +1,11 @@
 "use client";
 
-import { Star } from "lucide-react";
 import Reveal from "@/components/Reveal";
-import { homepageGoogleReviews } from "@/content/testimonials";
 import { useLeadFormModal } from "@/components/lp/LeadFormModal";
 
 // COMPLIANCE: the offer copy below is taken from the already-approved
 // /brain-assessment page — objective testing language only, no diagnostic or
-// curative claims. Review quotes come verbatim from content/testimonials.ts
-// (published, client-approved Google Reviews) and are rendered unlinked, so
-// nothing in this landing page's body copy leads off the page.
+// curative claims. Nothing in this landing page's body copy leads off the page.
 
 const WHAT_YOU_GET = [
   {
@@ -25,16 +21,6 @@ const WHAT_YOU_GET = [
     detail: "Delivered through Creyos, our assessment partner.",
   },
 ] as const;
-
-const FEATURED_REVIEWERS = [
-  "Chris Prendergast",
-  "Leslie Alan Cezar",
-  "R. Gregory Lombard",
-];
-
-const TESTIMONIALS = homepageGoogleReviews.filter((review) =>
-  FEATURED_REVIEWERS.includes(review.reviewerName),
-);
 
 export default function BrainAssessmentOfferSection() {
   const modal = useLeadFormModal();
@@ -97,57 +83,6 @@ export default function BrainAssessmentOfferSection() {
             >
               Take Your Free Brain Assessment
             </button>
-          </Reveal>
-        </div>
-
-        <div className="mt-20 border-t border-rule pt-16">
-          <Reveal className="mx-auto max-w-3xl text-center">
-            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
-              Patient Reviews
-            </p>
-            <h3 className="mt-4 font-serif text-3xl leading-tight tracking-tight text-ink sm:text-4xl">
-              What patients say after being properly looked at.
-            </h3>
-          </Reveal>
-
-          <ul className="mt-12 grid items-start gap-6 lg:grid-cols-3">
-            {TESTIMONIALS.map((review, i) => (
-              <Reveal
-                key={review.reviewerName}
-                as="li"
-                delay={100 + i * 90}
-                offset={20}
-                className="h-full"
-              >
-                <blockquote className="flex h-full flex-col rounded-2xl border border-rule/70 bg-paper p-6 lg:p-7">
-                  <div
-                    className="flex items-center justify-center gap-0.5 text-amber lg:justify-start"
-                    aria-hidden="true"
-                  >
-                    {Array.from({ length: 5 }).map((_, star) => (
-                      <Star
-                        key={star}
-                        size={14}
-                        fill="currentColor"
-                        strokeWidth={0}
-                      />
-                    ))}
-                  </div>
-                  <p className="mt-4 flex-1 text-[15px] leading-relaxed text-ink">
-                    &ldquo;{review.quote}&rdquo;
-                  </p>
-                  <footer className="mt-5 border-t border-rule pt-4 font-mono font-medium text-[12px] uppercase tracking-[0.14em] text-muted">
-                    {review.reviewerName} · {review.source}
-                  </footer>
-                </blockquote>
-              </Reveal>
-            ))}
-          </ul>
-
-          <Reveal delay={280} className="mt-8 text-center">
-            <p className="text-[13px] italic leading-snug text-muted">
-              Individual results; outcomes vary.
-            </p>
           </Reveal>
         </div>
       </div>

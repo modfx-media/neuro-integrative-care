@@ -5,6 +5,8 @@ import AssessmentFlowSection from "@/components/lp/AssessmentFlowSection";
 import WarningSignsSection from "@/components/lp/WarningSignsSection";
 import TenWeekProgramSection from "@/components/lp/TenWeekProgramSection";
 import DrSantucciProfile from "@/components/about/DrSantucciProfile";
+import PublicationsSection from "@/components/about/PublicationsSection";
+import PatientReviewsSection from "@/components/lp/PatientReviewsSection";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import Reveal from "@/components/Reveal";
 
@@ -73,9 +75,12 @@ export default function BrainAssessmentOfferPage() {
         showName
         showCta={false}
         showTrainingCta
+        showPublications={false}
+        afterTraining={<TenWeekProgramSection />}
       />
       <WhyChooseUs showCta centered />
-      <TenWeekProgramSection />
+      <PublicationsSection centerHeadings />
+      <PatientReviewsSection />
     </>
   );
 }
