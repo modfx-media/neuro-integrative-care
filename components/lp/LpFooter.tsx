@@ -80,7 +80,7 @@ export default function LpFooter() {
               to get your assessment on the calendar.
             </p>
             <div className="mt-7 flex justify-center">
-              <BrainAssessmentButton />
+              <BrainAssessmentButton label="Click Here to Take Your Free Brain Assessment" />
             </div>
           </div>
         </Reveal>
