@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <SixDoorsGrid />
+      <SixDoorsGrid excludeSlugs={["erchonia"]} />
       <ProofCards />
       <GoogleReviewsMarquee />
       <WhyChooseUs />

@@ -262,6 +262,7 @@ export default function DrSantucciProfile({
   centerKeySkills = false,
   showTrainingCta = false,
   showPublications = true,
+  showRecoveryStory = true,
   afterTraining,
 }: {
   linkProgramNames?: boolean;
@@ -281,6 +282,7 @@ export default function DrSantucciProfile({
   centerKeySkills?: boolean;
   showTrainingCta?: boolean;
   showPublications?: boolean;
+  showRecoveryStory?: boolean;
   afterTraining?: React.ReactNode;
 }) {
   const headerBlock = centerHeadings
@@ -375,8 +377,26 @@ export default function DrSantucciProfile({
                 across a 20-city network. These roles involved strategic
                 business planning which he applies to the development of
                 advanced interventional therapies.
-              </p>
-              <p className="mt-6 text-lg leading-relaxed text-muted">
+              </p>              {showRecoveryStory && (
+                <p className="mt-6 text-lg leading-relaxed text-muted">
+                  Before he was a doctor, Dr. Santucci was a patient. A
+                  serious motor vehicle accident left him with traumatic
+                  brain injury, post-concussion syndrome, and spinal
+                  fractures that required six major surgeries. Specialists
+                  told him the loss of function would be permanent.
+                </p>
+              )}
+              {showRecoveryStory && (
+                <p className="mt-6 text-lg leading-relaxed text-muted">
+                  He refused that verdict. Over the next decade he designed
+                  and lived the same work he now offers patients: functional
+                  neurology, qEEG brain mapping, neurotransmitter testing,
+                  neurofeedback, PEMF, targeted nutrition, and lifestyle
+                  protocols. That recovery&mdash;well beyond
+                  prognosis&mdash;is the foundation of NeuroIntegrative Care
+                  of Los Gatos.
+                </p>
+              )}              <p className="mt-6 text-lg leading-relaxed text-muted">
                 He is the author of{" "}
                 <span className="italic text-ink">
                   Engineering Medical Miracles: Return to Health

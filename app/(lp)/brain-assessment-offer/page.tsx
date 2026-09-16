@@ -76,6 +76,7 @@ export default function BrainAssessmentOfferPage() {
         showCta={false}
         showTrainingCta
         showPublications={false}
+        showRecoveryStory={false}
         afterTraining={<TenWeekProgramSection />}
       />
       <WhyChooseUs showCta centered />

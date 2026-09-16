@@ -18,6 +18,7 @@ const NAV_ITEMS = [
   { label: "About", href: "/about/dr-thomas-santucci" },
   { label: "Conditions", href: "/conditions" },
   { label: "How It Works", href: "/how-it-works" },
+  { label: "Technology", href: "/technology" },
   { label: "Programs", href: "/programs" },
   { label: "Virtual Program", href: "/programs/virtual" },
 ] as const;
@@ -136,7 +137,7 @@ export default function Nav() {
           <Link
             href="/"
             aria-label="NeuroIntegrative Care of Los Gatos home"
-            className="flex min-w-0 shrink items-center gap-1 sm:gap-3"
+            className="flex shrink-0 items-center gap-1 sm:gap-3"
           >
             <span className="relative block h-9 w-9 shrink-0 overflow-hidden rounded-full ring-1 ring-paper/25 sm:h-10 sm:w-10">
               <Image
@@ -148,8 +149,8 @@ export default function Nav() {
                 className="object-cover"
               />
             </span>
-            <span className="flex min-w-0 flex-col leading-none">
-              <span className="truncate font-serif text-[8px] tracking-normal text-paper sm:text-[13px] sm:tracking-[0.02em] xl:text-[15px]">
+            <span className="flex flex-col leading-none">
+              <span className="whitespace-nowrap font-serif text-[8px] tracking-normal text-paper sm:text-[13px] sm:tracking-[0.02em] xl:text-[15px]">
                 NEUROINTEGRATIVE CARE
               </span>
               <span className="mt-1 whitespace-nowrap font-mono font-medium text-[11px] uppercase tracking-[0.16em] text-amber-b sm:text-[12px] sm:tracking-[0.18em]">
@@ -180,7 +181,7 @@ export default function Nav() {
                   <Link
                     href={item.href}
                     aria-current={active ? "page" : undefined}
-                    className={`relative inline-block whitespace-nowrap px-2 py-2 text-[13px] transition-colors xl:px-3 xl:text-sm ${
+                    className={`relative inline-block whitespace-nowrap px-1.5 py-2 text-[12px] transition-colors xl:px-2.5 xl:text-[13px] ${
                       active ? "text-paper" : "text-paper/75 hover:text-paper"
                     }`}
                   >
@@ -394,7 +395,7 @@ function ConditionsNavItem({ href, active }: ConditionsNavItemProps) {
         <Link
           href={href}
           aria-current={active ? "page" : undefined}
-          className={`relative inline-block whitespace-nowrap py-2 pl-2 pr-1 text-[13px] transition-colors xl:pl-3 xl:text-sm ${
+          className={`relative inline-block whitespace-nowrap py-2 pl-1.5 pr-1 text-[12px] transition-colors xl:pl-2.5 xl:text-[13px] ${
             active ? "text-paper" : "text-paper/75 hover:text-paper"
           }`}
         >
@@ -647,7 +648,7 @@ function AboutNavItem({ href, active }: AboutNavItemProps) {
         <Link
           href={href}
           aria-current={active ? "page" : undefined}
-          className={`relative inline-block whitespace-nowrap py-2 pl-2 pr-1 text-[13px] transition-colors xl:pl-3 xl:text-sm ${
+          className={`relative inline-block whitespace-nowrap py-2 pl-1.5 pr-1 text-[12px] transition-colors xl:pl-2.5 xl:text-[13px] ${
             active ? "text-paper" : "text-paper/75 hover:text-paper"
           }`}
         >

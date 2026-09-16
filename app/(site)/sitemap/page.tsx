@@ -41,6 +41,7 @@ const MAIN_PAGES: LinkItem[] = [
   { label: "About Dr. Thomas Santucci", href: "/about/dr-thomas-santucci" },
   { label: "Blog", href: "/blog" },
   { label: "How It Works", href: "/how-it-works" },
+  { label: "Technology", href: "/technology" },
   { label: "Conditions", href: "/conditions" },
   { label: "Programs", href: "/programs" },
   { label: "The Virtual Program", href: "/programs/virtual" },

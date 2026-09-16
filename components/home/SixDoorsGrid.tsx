@@ -38,15 +38,30 @@ const CONDITION_IMAGES: Record<string, string> = {
   erchonia: "/images/conditions/banners/erchonia-laser-treatment.avif",
 };
 
+const DOOR_COUNT_WORDS: Record<number, string> = {
+  5: "Five",
+  6: "Six",
+  7: "Seven",
+  8: "Eight",
+};
+
 interface SixDoorsGridProps {
   /** Heading level for the section title. Use "h1" when this is the primary heading of the page. */
   headingLevel?: "h1" | "h2";
+  /** Condition slugs to hide from this grid — e.g. Erchonia is a service, not a vertical, so it's excluded from the homepage cover grid while still keeping its own condition page. */
+  excludeSlugs?: string[];
 }
 
 export default function SixDoorsGrid({
   headingLevel = "h2",
+  excludeSlugs = [],
 }: SixDoorsGridProps = {}) {
   const Heading = headingLevel;
+  const visibleConditions = conditions.filter(
+    (condition) => !excludeSlugs.includes(condition.slug),
+  );
+  const doorCountWord =
+    DOOR_COUNT_WORDS[visibleConditions.length] ?? visibleConditions.length;
   // h1 usage means this is the page's own first section (no hero above it),
   // so it needs extra top padding to clear the fixed nav — h2 usage (the
   // homepage) already sits below HeroSection and shouldn't gain extra space.
@@ -57,7 +72,7 @@ export default function SixDoorsGrid({
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <Reveal className="max-w-3xl">
           <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
-            Seven Doors In
+            {doorCountWord} Doors In
           </p>
           <Heading className="mt-3 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
             Where does your story start?
@@ -75,7 +90,7 @@ export default function SixDoorsGrid({
         </Reveal>
 
         <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
-          {conditions.map((condition, i) => {
+          {visibleConditions.map((condition, i) => {
             const ConditionIcon = CONDITION_ICONS[condition.slug] ?? HelpCircle;
             return (
             <Reveal

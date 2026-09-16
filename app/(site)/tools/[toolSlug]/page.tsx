@@ -152,19 +152,23 @@ export default async function ToolPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* See It In Action — lead media asset */}
-      <section className="bg-paper-2 py-20 lg:py-24">
-        <div className="mx-auto max-w-5xl px-6 lg:px-10">
-          <Reveal>
-            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
-              See It In Action
-            </p>
-          </Reveal>
-          <Reveal delay={100} offset={24} className="mt-8">
-            <ToolMediaEmbed media={tool.media} toolName={tool.name} />
-          </Reveal>
-        </div>
-      </section>
+      {/* See It In Action — lead media asset. Hidden entirely when no real
+          media has been supplied yet, rather than shipping an empty
+          "Media Pending" placeholder box to visitors. */}
+      {tool.media.kind !== "placeholder" && (
+        <section className="bg-paper-2 py-20 lg:py-24">
+          <div className="mx-auto max-w-5xl px-6 lg:px-10">
+            <Reveal>
+              <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
+                See It In Action
+              </p>
+            </Reveal>
+            <Reveal delay={100} offset={24} className="mt-8">
+              <ToolMediaEmbed media={tool.media} toolName={tool.name} />
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       {/* Explainer graphics */}
       {tool.gallery && tool.gallery.length > 0 && (
