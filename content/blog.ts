@@ -37,6 +37,160 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "surgery-vs-regenerative-orthopedics-for-joint-pain",
+    title: "Choosing Between Surgery and Regenerative Orthopedics",
+    metaTitle: "Surgery vs Regenerative Orthopedics for Joint Pain",
+    metaDescription:
+      "Compare surgical care with regenerative orthopedics to understand non-surgical options for joint pain and make an informed treatment choice",
+    kicker: "Regenerative Medicine",
+    date: "2026-09-15",
+    displayDate: "September 15, 2026",
+    heroImage:
+      "/images/blog/surgery-vs-regenerative-orthopedics-for-joint-pain.webp",
+    heroImageAlt:
+      "Active adult pausing on outdoor stairs while holding an aching knee, representing joint pain that makes movement feel uncertain",
+    excerpt:
+      "Surgery can be appropriate for some conditions, but it is not the right first step for every person. Here's how to compare your options.",
+    intro: [
+      "Joint pain can make everyday decisions feel urgent. When walking, sleeping, working, or enjoying your usual activities becomes harder, it is natural to wonder whether surgery is the only answer. As fall brings school routines, weekend activities, travel, and holiday plans, many people want a clear path toward better comfort and movement.",
+      "Surgery can be appropriate for some conditions, but it is not the right first step for every person. At NeuroIntegrative Care of Los Gatos, we help you look at the full picture through personalized evaluations, diagnostic review, and integrative treatment planning. The best path depends on your diagnosis, the severity of tissue damage, your health history, activity goals, and your ability to take part in recovery.",
+    ],
+    sections: [
+      {
+        heading: "Know When Surgery May Offer a Clear Benefit",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Orthopedic surgery may be recommended when there is a serious structural problem that is unstable or unlikely to improve with conservative care. Examples can include advanced joint degeneration, complete tendon or ligament tears, fractures, major loss of mobility, or nerve compression that may threaten lasting function.",
+          },
+          {
+            type: "paragraph",
+            text: "Before surgery is considered, we believe you deserve a complete review of what is causing your symptoms. Imaging may be helpful in some cases, but it is only one part of the story. We also look at how pain affects your work, sleep, exercise, balance, and independence.",
+          },
+          {
+            type: "paragraph",
+            text: "Surgery may be used to directly repair, reconstruct, replace, or remove damaged tissue. For the right condition, it can address a clear physical problem. Still, pain lasting for months does not automatically mean an operation is the best next step.",
+          },
+          {
+            type: "paragraph",
+            text: "A surgical decision should include a realistic discussion of:",
+          },
+          {
+            type: "list",
+            items: [
+              "The condition being treated and whether it is getting worse",
+              "Expected changes in pain, strength, or mobility",
+              "Anesthesia and recovery needs",
+              "Physical therapy, follow-up care, and time away from usual tasks",
+              "Possible risks, including infection, stiffness, and gradual pain relief",
+            ],
+          },
+          {
+            type: "paragraph",
+            text: "We encourage you to ask direct questions. What is causing the pain? Is the condition progressing? What could happen with surgical care, and what may be possible with non-surgical care?",
+          },
+        ],
+      },
+      {
+        heading: "Understand How Regenerative Orthopedics May Help",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Regenerative orthopedics is a non-surgical area of care that may include biologically focused therapies and integrative strategies intended to support the body\u2019s healing response, improve function, and address musculoskeletal pain when clinically appropriate. It is not a one-size-fits-all procedure, and it should never be presented as a guaranteed replacement for surgery.",
+          },
+          {
+            type: "paragraph",
+            text: "Our evaluations begin with your individual history. We review your symptoms, movement limits, previous treatments, imaging when available, inflammation concerns, nerve-related symptoms, and overall health factors that may affect recovery. That broader view helps us decide whether regenerative orthopedics is worth discussing as part of a personalized plan.",
+          },
+          {
+            type: "paragraph",
+            text: "People often ask about this approach when they have:",
+          },
+          {
+            type: "list",
+            items: [
+              "Ongoing joint discomfort or tendon irritation",
+              "Early to moderate osteoarthritis",
+              "Overuse injuries or lingering pain after activity",
+              "Trouble returning to exercise comfortably",
+              "A desire to explore non-surgical options before an operation, when medically reasonable",
+            ],
+          },
+          {
+            type: "paragraph",
+            text: "For some people, the goal may be less pain during a walk or more comfort on a golf course. For others, it may be returning to tennis, keeping up with grandchildren, or getting through a long trip with fewer limitations. We focus on goals that are meaningful to you while keeping safety, medical history, and realistic outcomes in view.",
+          },
+        ],
+      },
+      {
+        heading: "Compare Recovery, Risks, and Everyday Demands",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Choosing between surgery and non-surgical care involves more than choosing a procedure. Surgery often comes with a defined recovery timeline that may include preoperative clearance, anesthesia planning, wound care, restricted movement, medication management, rehabilitation, and repeat visits. When surgery addresses a serious structural issue, those demands may be worthwhile.",
+          },
+          {
+            type: "paragraph",
+            text: "A non-surgical plan may be a reasonable first conversation for someone balancing work, caregiving, travel, or other health concerns. That does not mean non-surgical care has no limits or risks. Any treatment deserves a clear discussion about what it may help, what it cannot fix, and what signs call for prompt medical attention.",
+          },
+          {
+            type: "paragraph",
+            text: "Recovery also looks different from one person to the next. Healing can be affected by age, fitness level, smoking, diabetes, sleep quality, nutrition, inflammation, medication use, and prior injuries. Rather than focusing only on how quickly you want relief, we encourage you to consider the level of commitment each path may require.",
+          },
+        ],
+      },
+      {
+        heading: "Plan Ahead for Fall Activities",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Fall can be a busy time, with back-to-school schedules, outdoor walks, weekend sports, family gatherings, and upcoming holiday travel. Pain can quietly shrink your plans when you begin avoiding stairs, skipping exercise, or sitting out activities you enjoy. Getting an evaluation before symptoms become more limiting may give you more time to understand your options.",
+          },
+          {
+            type: "paragraph",
+            text: "Pain that is worsening, recurring, disrupting sleep, or paired with weakness, numbness, or instability deserves medical attention. Those symptoms can point to concerns that need a more careful review rather than a quick decision.",
+          },
+          {
+            type: "paragraph",
+            text: "To help us understand your situation, bring information such as:",
+          },
+          {
+            type: "list",
+            items: [
+              "Prior imaging and relevant medical records",
+              "A current list of medications and supplements",
+              "Notes about treatments you have already tried",
+              "A description of activities that are now difficult",
+              "Specific goals, such as walking comfortably or sleeping through the night",
+            ],
+          },
+          {
+            type: "paragraph",
+            text: "Clear goals help shape a more useful conversation. \u201CI want to travel with less discomfort\u201D gives us a better starting point than simply saying, \u201CMy knee hurts.\u201D",
+          },
+        ],
+      },
+      {
+        heading: "Make a Personalized Decision with Confidence",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "There is no prize for choosing the fastest or most aggressive option. A thoughtful orthopedic evaluation may show that surgery is appropriate, or it may point toward rehabilitative care, regenerative orthopedics, lifestyle support, or a combination of approaches. The right plan should make sense for your diagnosis and for the life you want to live.",
+          },
+          {
+            type: "paragraph",
+            text: "Before deciding, take time to understand the expected benefits, alternatives, recovery demands, and limits of each option. Informed choices can help you protect your mobility, set realistic expectations, and enjoy the season with greater confidence.",
+          },
+        ],
+      },
+    ],
+    ctaHeading: "Find a Treatment Path That Fits Your Goals",
+    ctaLead:
+      "At NeuroIntegrative Care, we help patients evaluate whether regenerative orthopedics may support their joint health and functional goals. Our team considers your symptoms, medical history, and lifestyle when discussing appropriate options. Contact us to request a personalized consultation and learn what care may be right for you.",
+    ctaLinkLabel: "Learn About Regenerative Solutions",
+    ctaLinkHref: "/tools/regenerative-solutions",
+  },
+  {
     slug: "should-you-consider-cognitive-improvement-therapy-for-brain-fog",
     title: "Should You Consider Cognitive Improvement Therapy for Brain Fog?",
     metaTitle: "How Cognitive Improvement Therapy May Help Brain Fog",
@@ -193,14 +347,14 @@ export const blogPosts: BlogPost[] = [
     title: "Understanding PRP Therapy for Active Adults with Joint Pain",
     metaTitle: "How PRP Therapy May Support Active, Aching Joints",
     metaDescription:
-      "Learn how PRP therapy in Los Gatos may support active adults seeking nonsurgical options for joint pain, mobility, function, and long-term wellness.",
+      "Learn how PRP therapy in Los Gatos may support active adults seeking nonsurgical options for joint pain, mobility, function, and long-term wellness",
     kicker: "Regenerative Medicine",
-    date: "2026-08-28",
-    displayDate: "August 28, 2026",
+    date: "2026-09-01",
+    displayDate: "September 1, 2026",
     heroImage:
       "/images/blog/how-prp-therapy-may-support-active-aching-joints.webp",
     heroImageAlt:
-      "Active adult stretching outdoors, representing a return to movement after joint pain",
+      "Active adult sitting on a trail bench holding an aching knee, representing joint pain that limits movement",
     excerpt:
       "Joint pain can make your favorite activities feel less certain. Here's how a personalized, physician-guided evaluation helps determine whether PRP may be a fit.",
     intro: [
@@ -238,7 +392,7 @@ export const blogPosts: BlogPost[] = [
           },
           {
             type: "paragraph",
-            text: "PRP therapy is not the same as a quick pain-relief injection. Your response can vary based on the condition being treated, the extent of tissue changes, your overall health, your daily activity demands, and how closely you follow your recovery plan.",
+            text: "PRP therapy in Los Gatos is not the same as a quick pain-relief injection. Your response can vary based on the condition being treated, the extent of tissue changes, your overall health, your daily activity demands, and how closely you follow your recovery plan.",
           },
           {
             type: "paragraph",
@@ -255,7 +409,11 @@ export const blogPosts: BlogPost[] = [
           },
           {
             type: "paragraph",
-            text: "A good candidate is not simply someone who has joint pain. We look for a clear understanding of the concern, realistic expectations, and a willingness to take part in a structured care plan. The procedure itself is only one piece of the larger picture. That plan may include:",
+            text: "A good candidate is not simply someone who has joint pain. We look for a clear understanding of the concern, realistic expectations, and a willingness to take part in a structured care plan. The procedure itself is only one piece of the larger picture.",
+          },
+          {
+            type: "paragraph",
+            text: "That plan may include:",
           },
           {
             type: "list",
@@ -299,7 +457,11 @@ export const blogPosts: BlogPost[] = [
           },
           {
             type: "paragraph",
-            text: "Depending on your individual needs, we may recommend a period of activity modification followed by a progressive return to exercise. Supportive habits can matter throughout that process, especially when they are consistent. Helpful areas to discuss with your care team include:",
+            text: "Depending on your individual needs, we may recommend a period of activity modification followed by a progressive return to exercise. Supportive habits can matter throughout that process, especially when they are consistent.",
+          },
+          {
+            type: "paragraph",
+            text: "Helpful areas to discuss with your care team include:",
           },
           {
             type: "list",
@@ -318,9 +480,9 @@ export const blogPosts: BlogPost[] = [
         ],
       },
     ],
-    ctaHeading: "Support Your Return to Comfortable Movement",
+    ctaHeading: "Support Your Return To Comfortable Movement",
     ctaLead:
-      "At NeuroIntegrative Care, we help active adults understand whether PRP therapy may fit their individual goals and joint concerns. Our team takes time to review your history, activity level, and treatment options with you.",
+      "At NeuroIntegrative Care, we help active adults understand whether PRP therapy in Los Gatos may fit their individual goals and joint concerns. Our team takes time to review your history, activity level, and treatment options with you. Contact us to discuss a personalized care plan.",
     ctaLinkLabel: "Learn About Regenerative Solutions",
     ctaLinkHref: "/tools/regenerative-solutions",
   },
