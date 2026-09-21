@@ -77,6 +77,52 @@ export default function BrainAssessmentPage() {
           </Reveal>
         </div>
       </section>
+
+      <section className="bg-paper py-20 lg:py-24">
+        <div className="mx-auto max-w-4xl px-6 lg:px-10">
+          <Reveal className="mx-auto max-w-2xl text-center">
+            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
+              What You&apos;ll Do
+            </p>
+            <h2 className="mt-4 font-serif text-3xl leading-tight tracking-tight text-ink sm:text-4xl">
+              A short set of tasks. An account created for you. Results scored
+              against your age.
+            </h2>
+          </Reveal>
+          <ol className="mt-12 grid gap-6 sm:grid-cols-3">
+            {[
+              {
+                n: "01",
+                title: "Enter your date of birth",
+                detail:
+                  "Needed so Creyos can score memory, attention, and reasoning against your age group.",
+              },
+              {
+                n: "02",
+                title: "Start a secure session",
+                detail:
+                  "The first visit creates your assessment account. Later visits reopen the same one — you don't register twice.",
+              },
+              {
+                n: "03",
+                title: "Complete the tasks",
+                detail:
+                  "A short, objective cognitive assessment on a secure platform. When you finish, you return here.",
+              },
+            ].map((step) => (
+              <Reveal key={step.n} as="li" className="rounded-2xl border border-rule bg-paper-2 p-6">
+                <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber">
+                  {step.n}
+                </p>
+                <h3 className="mt-3 font-serif text-xl text-ink">{step.title}</h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-muted">
+                  {step.detail}
+                </p>
+              </Reveal>
+            ))}
+          </ol>
+        </div>
+      </section>
     </>
   );
 }
