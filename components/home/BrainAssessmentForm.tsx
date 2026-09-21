@@ -12,7 +12,6 @@ export default function BrainAssessmentForm() {
   const [gender, setGender] = useState<"" | "male" | "female">("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [assessmentUrl, setAssessmentUrl] = useState<string | null>(null);
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -27,42 +26,15 @@ export default function BrainAssessmentForm() {
       const data = await res.json();
       if (!res.ok)
         throw new Error(data.error || "Something went wrong. Please try again.");
-      setAssessmentUrl(data.url);
+      window.location.href = data.url;
     } catch (err) {
       setError(
         err instanceof Error
           ? err.message
           : "Something went wrong. Please try again.",
       );
-    } finally {
       setLoading(false);
     }
-  }
-
-  if (assessmentUrl) {
-    return (
-      <div className="rounded-2xl border border-rule/70 bg-paper-2 p-3 sm:p-4">
-        <p className="px-2 pt-2 text-center text-sm text-muted">
-          Your assessment is ready. Complete the tasks below — if the window
-          doesn&apos;t load,{" "}
-          <a
-            href={assessmentUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-medium text-amber underline-offset-2 hover:underline"
-          >
-            open it in a new tab
-          </a>
-          .
-        </p>
-        <iframe
-          src={assessmentUrl}
-          title="Free Creyos brain assessment"
-          className="mt-4 h-[min(80vh,880px)] w-full rounded-xl border border-rule bg-white"
-          allow="camera; microphone; fullscreen"
-        />
-      </div>
-    );
   }
 
   return (
@@ -112,10 +84,10 @@ export default function BrainAssessmentForm() {
       {error && <p className="mt-4 text-sm text-red-600">{error}</p>}
 
       <p className="mt-5 text-xs leading-relaxed text-muted">
-        You&apos;ll start a secure session with our assessment partner, Creyos.
-        The first visit creates your assessment account; later visits reopen
-        the same one. No prescriptions, no obligation — just objective data
-        on how your brain is performing today.
+        You&apos;ll be taken to our secure assessment partner, Creyos, to
+        complete a short set of cognitive tasks. The first visit creates your
+        assessment account; later visits reopen the same one. No
+        prescriptions, no obligation.
       </p>
     </form>
   );
