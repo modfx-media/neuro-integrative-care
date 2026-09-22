@@ -47,7 +47,7 @@ function ReviewStars() {
 
 function ReviewCard({ review }: { review: GoogleReviewCard }) {
   const popupId = useId();
-  const cardRef = useRef<HTMLElement>(null);
+  const cardRef = useRef<HTMLQuoteElement>(null);
   const quoteRef = useRef<HTMLParagraphElement>(null);
   const closeTimerRef = useRef<ReturnType<typeof setTimeout> | undefined>(
     undefined,
