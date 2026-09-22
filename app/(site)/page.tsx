@@ -1,6 +1,7 @@
 import HeroSection from "@/components/home/HeroSection";
 import SixDoorsGrid from "@/components/home/SixDoorsGrid";
 import ProofCards from "@/components/home/ProofCards";
+import { GoogleReviews } from "@/components/home/GoogleReviews";
 import GoogleReviewsMarquee from "@/components/home/GoogleReviewsMarquee";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import HowItWorks from "@/components/home/HowItWorks";
@@ -17,7 +18,20 @@ export default function Home() {
       <HeroSection />
       <SixDoorsGrid excludeSlugs={["erchonia"]} />
       <ProofCards />
-      <GoogleReviewsMarquee />
+      <GoogleReviews>
+        {({ reviews, meta }) => (
+          <GoogleReviewsMarquee
+            items={reviews.map((review) => ({
+              name: review.name,
+              quote: review.quote,
+              when: review.relativeTime,
+            }))}
+            rating={meta.rating}
+            reviewCount={meta.reviewCount}
+            reviewsUrl={meta.reviewsUrl}
+          />
+        )}
+      </GoogleReviews>
       <WhyChooseUs />
       <HowItWorks />
       <VirtualProgramBand />

@@ -1,10 +1,16 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useId, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import Reveal from "@/components/Reveal";
-import { homepageGoogleReviews, GOOGLE_REVIEWS_URL } from "@/content/testimonials";
+
+export type GoogleReviewCard = {
+  quote: string;
+  name: string;
+  when?: string;
+};
 
 function GoogleLogo({ size = 18 }: { size?: number }) {
   return (
@@ -29,37 +35,181 @@ function GoogleLogo({ size = 18 }: { size?: number }) {
   );
 }
 
-function ReviewCard({
-  review,
-}: {
-  review: (typeof homepageGoogleReviews)[number];
-}) {
+function ReviewStars() {
   return (
-    <blockquote className="flex h-full w-[320px] shrink-0 flex-col rounded-2xl border border-rule/70 bg-white p-6 shadow-[0_1px_2px_rgba(11,18,32,0.04)] sm:w-[360px]">
-      <div className="flex items-center gap-0.5 text-amber" aria-hidden="true">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <Star key={i} size={14} fill="currentColor" strokeWidth={0} />
-        ))}
-      </div>
-      <p className="mt-4 flex-1 text-[14px] leading-relaxed text-ink line-clamp-6">
-        &ldquo;{review.quote}&rdquo;
-      </p>
-      <p className="mt-5 border-t border-rule pt-4 font-mono font-medium text-[12px] uppercase tracking-[0.14em] text-muted">
-        {review.reviewerName} · {review.source}
-      </p>
-    </blockquote>
+    <div className="flex items-center gap-0.5 text-amber" aria-hidden="true">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <Star key={i} size={14} fill="currentColor" strokeWidth={0} />
+      ))}
+    </div>
+  );
+}
+
+function ReviewCard({ review }: { review: GoogleReviewCard }) {
+  const popupId = useId();
+  const cardRef = useRef<HTMLElement>(null);
+  const quoteRef = useRef<HTMLParagraphElement>(null);
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | undefined>(
+    undefined,
+  );
+  const [truncated, setTruncated] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [coords, setCoords] = useState({ top: 0, left: 0, width: 360 });
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    const el = quoteRef.current;
+    if (!el) return;
+    const check = () => setTruncated(el.scrollHeight > el.clientHeight + 1);
+    check();
+    const observer = new ResizeObserver(check);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [review.quote]);
+
+  const updateCoords = () => {
+    const el = cardRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const width = Math.min(440, rect.width + 16);
+    const margin = 16;
+    let left = rect.left - 8;
+    if (left + width > window.innerWidth - margin) {
+      left = window.innerWidth - width - margin;
+    }
+    if (left < margin) left = margin;
+
+    const maxHeight = Math.min(window.innerHeight * 0.7, 480);
+    let top = rect.top - 8;
+    if (top + maxHeight > window.innerHeight - margin) {
+      top = Math.max(margin, window.innerHeight - maxHeight - margin);
+    }
+    if (top < margin) top = margin;
+
+    setCoords({ top, left, width });
+  };
+
+  const showPopup = () => {
+    if (!truncated) return;
+    clearTimeout(closeTimerRef.current);
+    updateCoords();
+    setOpen(true);
+  };
+
+  const hidePopup = () => {
+    clearTimeout(closeTimerRef.current);
+    closeTimerRef.current = setTimeout(() => setOpen(false), 120);
+  };
+
+  useEffect(() => {
+    if (!open) return;
+    const onScroll = () => updateCoords();
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("scroll", onScroll, true);
+    window.addEventListener("resize", onScroll);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      window.removeEventListener("scroll", onScroll, true);
+      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  return (
+    <>
+      <blockquote
+        ref={cardRef}
+        className="relative flex h-full w-[320px] shrink-0 flex-col rounded-2xl border border-rule/70 bg-white p-6 shadow-[0_1px_2px_rgba(11,18,32,0.04)] sm:w-[360px]"
+      >
+        <ReviewStars />
+        <p
+          ref={quoteRef}
+          className="mt-4 flex-1 text-[14px] leading-relaxed text-ink line-clamp-6"
+        >
+          &ldquo;{review.quote}&rdquo;
+        </p>
+        {truncated ? (
+          <button
+            type="button"
+            aria-expanded={open}
+            aria-controls={popupId}
+            onMouseEnter={showPopup}
+            onMouseLeave={hidePopup}
+            onClick={() => {
+              if (open) {
+                setOpen(false);
+                return;
+              }
+              showPopup();
+            }}
+            className="mt-3 self-start font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-amber transition hover:text-ink"
+          >
+            Read more
+          </button>
+        ) : null}
+        <p className="mt-5 border-t border-rule pt-4 font-mono font-medium text-[12px] uppercase tracking-[0.14em] text-muted">
+          {review.name} · Google
+          {review.when ? ` · ${review.when}` : ""}
+        </p>
+      </blockquote>
+      {mounted && open && truncated
+        ? createPortal(
+            <div
+              id={popupId}
+              role="tooltip"
+              onMouseEnter={showPopup}
+              onMouseLeave={hidePopup}
+              style={{
+                top: coords.top,
+                left: coords.left,
+                width: coords.width,
+              }}
+              className="fixed z-[70] max-h-[70vh] overflow-y-auto rounded-2xl border border-rule/70 bg-white p-6 shadow-[0_16px_40px_rgba(11,18,32,0.16)]"
+            >
+              <ReviewStars />
+              <p className="mt-4 text-[14px] leading-relaxed text-ink">
+                &ldquo;{review.quote}&rdquo;
+              </p>
+              <p className="mt-5 border-t border-rule pt-4 font-mono font-medium text-[12px] uppercase tracking-[0.14em] text-muted">
+                {review.name} · Google
+                {review.when ? ` · ${review.when}` : ""}
+              </p>
+            </div>,
+            document.body,
+          )
+        : null}
+    </>
   );
 }
 
 // Duplicated once so the auto-scroll can loop seamlessly (scrollLeft wraps at the halfway point).
-export default function GoogleReviewsMarquee() {
+export default function GoogleReviewsMarquee({
+  items,
+  rating,
+  reviewCount,
+  reviewsUrl,
+}: {
+  items: GoogleReviewCard[];
+  rating: number;
+  reviewCount: number;
+  reviewsUrl: string;
+}) {
   const trackRef = useRef<HTMLDivElement>(null);
   const pausedRef = useRef(false);
-  const resumeTimeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const resumeTimeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(
+    undefined,
+  );
 
   useEffect(() => {
     const track = trackRef.current;
-    if (!track || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!track || window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+      return;
 
     let frame: number;
     const step = () => {
@@ -86,6 +236,8 @@ export default function GoogleReviewsMarquee() {
     }, 4000);
   };
 
+  if (items.length === 0) return null;
+
   return (
     <section className="overflow-hidden bg-paper-2 py-24 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
@@ -93,11 +245,16 @@ export default function GoogleReviewsMarquee() {
           <div className="max-w-2xl">
             <Image
               src="/images/homepage-images/google-badge.png"
-              alt="5-star Google Reviews"
+              alt="Google Reviews"
               width={480}
               height={135}
               className="h-20 w-auto"
             />
+            {rating > 0 && reviewCount > 0 ? (
+              <p className="mt-3 font-mono font-medium text-[12px] uppercase tracking-[0.14em] text-muted">
+                {rating.toFixed(1)} from {reviewCount} Google reviews
+              </p>
+            ) : null}
             <h2 className="mt-5 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
               What patients are saying.
             </h2>
@@ -105,13 +262,13 @@ export default function GoogleReviewsMarquee() {
 
           <div className="flex items-center gap-3">
             <a
-              href={GOOGLE_REVIEWS_URL}
+              href={reviewsUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-rule/70 bg-white px-5 py-2.5 font-mono text-[12px] font-medium uppercase tracking-[0.12em] text-ink transition hover:border-ink/30 hover:bg-paper"
             >
               <GoogleLogo size={16} />
-              See reviews on Google
+              View all Google reviews
             </a>
             <div className="flex items-center gap-2">
               <button
@@ -146,14 +303,11 @@ export default function GoogleReviewsMarquee() {
           }}
           className="flex gap-6 overflow-x-auto scroll-smooth [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
-          {[...homepageGoogleReviews, ...homepageGoogleReviews].map(
-            (review, i) => (
-              <ReviewCard key={`${review.reviewerName}-${i}`} review={review} />
-            ),
-          )}
+          {[...items, ...items].map((review, i) => (
+            <ReviewCard key={`${review.name}-${i}`} review={review} />
+          ))}
         </div>
       </Reveal>
     </section>
   );
 }
-

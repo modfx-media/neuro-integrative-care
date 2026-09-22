@@ -1,5 +1,7 @@
 import { SITE_URL } from "@/lib/site";
 import { jsonLdScript } from "@/lib/jsonLd";
+import { getDisplayedGoogleReviews } from "@/lib/google-reviews";
+import { isFiveStarReview } from "@/lib/reviews";
 
 const NAME = "NeuroIntegrative Care of Los Gatos";
 const TELEPHONE = "+1-408-871-8222";
@@ -121,7 +123,42 @@ const medicalClinicSchema = {
   },
 };
 
-export default function OrganizationJsonLd() {
+export default async function OrganizationJsonLd() {
+  const { reviews, meta } = await getDisplayedGoogleReviews();
+  const visible = reviews.filter(isFiveStarReview);
+  const aggregateRating =
+    meta.rating > 0 && meta.reviewCount > 0
+      ? {
+          "@type": "AggregateRating" as const,
+          ratingValue: String(meta.rating),
+          reviewCount: meta.reviewCount,
+          bestRating: "5",
+        }
+      : undefined;
+  const review =
+    visible.length > 0
+      ? visible.map((item) => ({
+          "@type": "Review" as const,
+          author: { "@type": "Person" as const, name: item.name },
+          reviewRating: {
+            "@type": "Rating" as const,
+            ratingValue: "5",
+            bestRating: "5",
+          },
+          reviewBody: item.quote,
+        }))
+      : undefined;
+
+  const localBusiness = {
+    ...localBusinessSchema,
+    ...(aggregateRating ? { aggregateRating } : {}),
+  };
+  const medicalClinic = {
+    ...medicalClinicSchema,
+    ...(aggregateRating ? { aggregateRating } : {}),
+    ...(review ? { review } : {}),
+  };
+
   return (
     <>
       <script
@@ -133,13 +170,13 @@ export default function OrganizationJsonLd() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: jsonLdScript(localBusinessSchema),
+          __html: jsonLdScript(localBusiness),
         }}
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: jsonLdScript(medicalClinicSchema),
+          __html: jsonLdScript(medicalClinic),
         }}
       />
     </>

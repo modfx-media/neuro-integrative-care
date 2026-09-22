@@ -25,14 +25,15 @@
 import type { Metadata } from "next";
 import { jsonLdScript } from "@/lib/jsonLd";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Star } from "lucide-react";
 import { conditions } from "@/content/conditions";
 import { patientStories } from "@/content/patientStories";
-import { shortTestimonials, googleReviews } from "@/content/testimonials";
+import { shortTestimonials } from "@/content/testimonials";
 import Reveal from "@/components/Reveal";
 import VideoTestimonials from "@/components/results/VideoTestimonials";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 import { SITE_URL } from "@/lib/site";
+import { getDisplayedGoogleReviews } from "@/lib/google-reviews";
 
 const PAGE_URL = `${SITE_URL}/results`;
 
@@ -159,7 +160,10 @@ const AGGREGATE_MEASURES: AggregateMeasure[] = [
   },
 ];
 
-export default function ResultsPage() {
+export default async function ResultsPage() {
+  const { reviews: fiveStarGoogleReviews, meta } =
+    await getDisplayedGoogleReviews();
+
   return (
     <>
       <script
@@ -447,32 +451,64 @@ export default function ResultsPage() {
             ))}
           </ul>
 
-          <ul className="mt-6 grid gap-6 md:grid-cols-2">
-            {googleReviews.map((r, i) => (
-              <Reveal
-                key={r.reviewerName}
-                as="li"
-                delay={140 + i * 100}
-                offset={20}
-                className="h-full"
-              >
+          {fiveStarGoogleReviews.length > 0 ? (
+            <>
+              {meta.rating > 0 && meta.reviewCount > 0 ? (
+                <p className="mt-10 font-mono font-medium text-[12px] uppercase tracking-[0.14em] text-muted">
+                  Google · {meta.rating.toFixed(1)} from {meta.reviewCount} reviews
+                </p>
+              ) : null}
+              <ul className="mt-6 grid gap-6 md:grid-cols-2">
+                {fiveStarGoogleReviews.map((r, i) => (
+                  <Reveal
+                    key={r.name}
+                    as="li"
+                    delay={140 + i * 40}
+                    offset={20}
+                    className="h-full"
+                  >
+                    <a
+                      href={meta.reviewsUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="group flex h-full flex-col justify-between rounded-2xl border border-amber/30 bg-amber-soft/40 p-8 transition-colors duration-300 hover:border-amber/60"
+                    >
+                      <div
+                        className="flex items-center gap-0.5 text-amber"
+                        aria-hidden="true"
+                      >
+                        {Array.from({ length: 5 }).map((_, star) => (
+                          <Star
+                            key={star}
+                            size={14}
+                            fill="currentColor"
+                            strokeWidth={0}
+                          />
+                        ))}
+                      </div>
+                      <p className="mt-4 flex-1 text-[15px] leading-relaxed text-ink">
+                        &ldquo;{r.quote}&rdquo;
+                      </p>
+                      <p className="mt-6 flex items-center gap-2 font-mono font-medium text-[12px] uppercase tracking-[0.14em] text-muted transition-colors group-hover:text-amber">
+                        {r.name}, via Google
+                        <ArrowUpRight size={14} aria-hidden="true" />
+                      </p>
+                    </a>
+                  </Reveal>
+                ))}
+              </ul>
+              <p className="mt-6 text-center">
                 <a
-                  href={r.url}
+                  href={meta.reviewsUrl}
                   target="_blank"
-                  rel="noreferrer"
-                  className="group flex h-full flex-col justify-between rounded-2xl border border-amber/30 bg-amber-soft/40 p-8 transition-colors duration-300 hover:border-amber/60"
+                  rel="noopener noreferrer"
+                  className="font-mono text-[12px] font-medium uppercase tracking-[0.14em] text-amber transition hover:text-ink"
                 >
-                  <p className="text-[15px] leading-relaxed text-ink">
-                    &ldquo;{r.quote}&rdquo;
-                  </p>
-                  <p className="mt-6 flex items-center gap-2 font-mono font-medium text-[12px] uppercase tracking-[0.14em] text-muted transition-colors group-hover:text-amber">
-                    {r.reviewerName}, via {r.source}
-                    <ArrowUpRight size={14} aria-hidden="true" />
-                  </p>
+                  View all Google reviews
                 </a>
-              </Reveal>
-            ))}
-          </ul>
+              </p>
+            </>
+          ) : null}
 
           <p className="mt-10 text-center text-[12px] italic text-muted-l">
             {STANDARD_DISCLAIMER}
