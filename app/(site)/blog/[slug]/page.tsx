@@ -166,11 +166,13 @@ export default async function BlogPostPage({ params }: PageProps) {
 
           <div className={post.intro ? "mt-14 space-y-14" : "space-y-14"}>
             {post.sections.map((section, sIndex) => (
-              <Reveal key={section.heading} delay={60} offset={20}>
-                <h2 className="font-serif text-[1.75rem] leading-tight tracking-tight text-ink sm:text-[2rem]">
-                  {section.heading}
-                </h2>
-                <div className="mt-6 space-y-6">
+              <Reveal key={section.heading ?? `section-${sIndex}`} delay={60} offset={20}>
+                {section.heading ? (
+                  <h2 className="font-serif text-[1.75rem] leading-tight tracking-tight text-ink sm:text-[2rem]">
+                    {section.heading}
+                  </h2>
+                ) : null}
+                <div className={section.heading ? "mt-6 space-y-6" : "space-y-6"}>
                   {section.blocks.map((block, bIndex) =>
                     block.type === "paragraph" ? (
                       <p

@@ -12,7 +12,8 @@ export interface BlogBlock {
 }
 
 export interface BlogSection {
-  heading: string;
+  /** Omit when the source copy has no section heading. */
+  heading?: string;
   blocks: BlogBlock[];
 }
 
@@ -36,6 +37,159 @@ export interface BlogPost {
 }
 
 export const blogPosts: BlogPost[] = [
+  {
+    slug: "fall-hiking-knee-pain-when-injections-may-help",
+    title: "Get Back to Fall Trails with Confident Knee Support",
+    metaTitle: "Fall Hiking Knee Pain: When Injections May Help",
+    metaDescription:
+      "Learn when knee injection in Los Gatos may be considered for fall hiking knee pain, including symptoms that signal it is time to seek early care",
+    kicker: "Joint Health & Mobility",
+    date: "2026-09-22",
+    displayDate: "September 22, 2026",
+    heroImage: "/images/blog/fall-hiking-knee-pain.webp",
+    heroImageAlt:
+      "Hiker seated on a rock overlooking a fall trail, resting a hand on her knee beside a backpack and trekking poles",
+    excerpt:
+      "Knee pain can turn a fall hike from a welcome break into a stressful guessing game.",
+    intro: [
+      "Knee pain can turn a fall hike from a welcome break into a stressful guessing game. Around Los Gatos, changing trail surfaces, long descents, and a return to more regular outdoor activity can place extra demand on the knees. If discomfort makes you second-guess every step, it may be time to understand what is causing it instead of simply trying to push through.",
+      "At Neuro Integrative Care, we take a personalized, non-surgical approach to concerns involving joint pain, nerve issues, and mobility. A knee injection in Los Gatos may be considered when simpler conservative measures are not providing enough relief, but injections are never a one-size-fits-all answer. Before any treatment decision, we look at your symptoms, health history, activity goals, and the demands that hiking places on your body.",
+      "Some soreness after a longer-than-usual walk may settle with rest, gentle movement, and a temporary change in activity. Persistent pain is different. When discomfort begins affecting stairs, sleep, daily walking, or your confidence on uneven ground, we recommend an individualized evaluation.",
+    ],
+    sections: [
+      {
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Signs that deserve closer attention include:",
+          },
+          {
+            type: "list",
+            items: [
+              "Swelling that lingers or returns after activity",
+              "Pain that comes back during every hike",
+              "Stiffness after sitting or first getting up",
+              "Catching, locking, or trouble fully bending the knee",
+              "A feeling that the knee may give out on a downhill trail",
+            ],
+          },
+          {
+            type: "paragraph",
+            text: "Pain after a fall, twisting injury, or sudden jump in hiking mileage should not be brushed aside. We also encourage prompt medical attention for an inability to bear weight, a visibly misshapen knee, severe swelling, a hot or red joint with fever, or calf swelling with shortness of breath.",
+          },
+          {
+            type: "paragraph",
+            text: "The goal is not to cover up pain so you can finish a hike. A thorough assessment can help us consider whether symptoms may relate to osteoarthritis, joint inflammation, tendon irritation, a meniscal concern, nerve-related symptoms, or another issue. For people considering a knee injection in Los Gatos, that evaluation helps connect immediate symptoms with the movement habits and health factors that may be adding stress to the knee.",
+          },
+        ],
+      },
+      {
+        heading: "Understand How Knee Injections May Support Recovery",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Knee injections can be one part of a broader care plan for certain types of knee pain. The right option depends on the suspected cause of pain, symptom severity, prior treatment, medical history, and your goals. Someone hoping to return to moderate fall trails may need a different plan than someone whose knee pain is limiting basic daily movement.",
+          },
+          {
+            type: "paragraph",
+            text: "Depending on the clinical picture, an injection may be considered to address inflammation, joint irritation, or degenerative changes that interfere with mobility. Some treatments are intended to reduce inflammation, while regenerative medicine approaches may be considered for people who are appropriate candidates. Results vary, and no injection should be viewed as a shortcut around an unresolved injury or movement problem.",
+          },
+          {
+            type: "paragraph",
+            text: "Technology-supported care can also play a role. When clinically appropriate, image guidance may help us visualize joint structures and place an injection with greater precision. This may be helpful when anatomy is complex, a past injury affects the area, or symptoms do not point to a simple cause.",
+          },
+          {
+            type: "paragraph",
+            text: "An injection plan works best when it is paired with recovery habits that support the knee beyond the treatment room. We may discuss strengthening, balance, walking mechanics, training volume, and footwear as part of your larger plan for returning to activity.",
+          },
+        ],
+      },
+      {
+        heading: "Choose the Right Injection Plan for Your Knee",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Where your knee hurts matters, but why it hurts matters more. Pain during steep descents can point to different stresses than stiffness after sitting, swelling after activity, or pain that seems to travel from the low back or hip toward the knee.",
+          },
+          {
+            type: "paragraph",
+            text: "A comprehensive visit gives us a clearer picture. We may discuss your symptom history, past injuries, exercise routine, medications, health conditions, and desired activity level. Our assessment may also look at mobility, strength, gait, balance, and tender areas that could be contributing to knee strain.",
+          },
+          {
+            type: "paragraph",
+            text: "Treatment recommendations can differ for concerns such as:",
+          },
+          {
+            type: "list",
+            items: [
+              "Osteoarthritis-related discomfort",
+              "Tendon or ligament irritation",
+              "Overuse from rapid changes in activity",
+              "Ongoing discomfort after an injury",
+              "Nerve-related symptoms that affect the leg or knee",
+            ],
+          },
+          {
+            type: "paragraph",
+            text: "A knee injection in Los Gatos should be selected because it fits your clinical needs, not because it worked for a friend or seems convenient before a planned hike. We encourage you to ask clear questions about the proposed treatment, including why it may be appropriate, what preparation is needed, what activity limits may apply afterward, and how it fits into a long-term plan.",
+          },
+          {
+            type: "paragraph",
+            text: "Alternatives are worth discussing, too. Physical rehabilitation, movement changes, supportive therapies, and lifestyle strategies may all have a place depending on what we find during your evaluation.",
+          },
+        ],
+      },
+      {
+        heading: "Protect Your Knee Before and After Fall Hikes",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Trail preparation can help reduce avoidable knee stress while you are awaiting care, recovering from treatment, or gradually returning to hiking. Since every person's health and symptoms are different, activity decisions should be based on your own tolerance and guidance from your clinician.",
+          },
+          {
+            type: "paragraph",
+            text: "A few practical habits can make trail time easier on your knees:",
+          },
+          {
+            type: "list",
+            items: [
+              "Choose routes that match your current fitness and comfort level",
+              "Start with shorter distances rather than sharply increasing mileage or elevation",
+              "Slow down on downhill sections and allow extra time for careful footing",
+              "Consider hiking poles if they improve your stability on uneven terrain",
+              "Wear supportive shoes with reliable traction, especially on damp or leaf-covered paths",
+            ],
+          },
+          {
+            type: "paragraph",
+            text: "Before a hike, gentle movement can help prepare the hips, ankles, and legs for changing terrain. Strength work for the quadriceps and glutes, along with balance exercises, may support better knee control when included in a clinician-guided plan. A properly fitted pack also matters, since carrying more than your body is ready for can add to joint stress.",
+          },
+          {
+            type: "paragraph",
+            text: "Afterward, pay attention to what your knee tells you. Swelling, lasting stiffness, instability, or pain that continues well after the hike are useful signals, not inconveniences to ignore. Scaling back for a time may help keep a small problem from becoming a longer break from the trails and daily activities you enjoy.",
+          },
+        ],
+      },
+      {
+        heading: "Plan a Personalized Fall Knee Assessment",
+        blocks: [
+          {
+            type: "paragraph",
+            text: "Early evaluation can help clarify why knee pain is happening before it limits another hike, family outing, or regular routine. At Neuro Integrative Care of Los Gatos, we can discuss persistent pain, reduced mobility, and whether a knee injection in Los Gatos may be appropriate as part of a personalized, non-surgical care plan.",
+          },
+          {
+            type: "paragraph",
+            text: "Fall hiking should not require you to gamble with every downhill step. Paying attention to persistent symptoms, choosing activities that fit your current ability, and getting professional guidance can help you make informed decisions about movement and knee care.",
+          },
+        ],
+      },
+    ],
+    ctaHeading: "Find a Personalized Path to More Comfortable Movement",
+    ctaLead:
+      "At Neuro Integrative Care, we evaluate your symptoms, activity goals, and knee health to determine whether a knee injection in Los Gatos may be an appropriate option. Our team can help you understand the next steps and build a care plan around your needs. Contact us to schedule an appointment.",
+    ctaLinkLabel: "Schedule an Appointment",
+    ctaLinkHref: "/start",
+  },
   {
     slug: "surgery-vs-regenerative-orthopedics-for-joint-pain",
     title: "Choosing Between Surgery and Regenerative Orthopedics",
