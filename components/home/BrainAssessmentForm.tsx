@@ -8,6 +8,7 @@ const inputClass =
 const labelClass = "block text-sm font-medium text-ink";
 
 export default function BrainAssessmentForm() {
+  const [name, setName] = useState("");
   const [birthdate, setBirthdate] = useState("");
   const [gender, setGender] = useState<"" | "male" | "female">("");
   const [loading, setLoading] = useState(false);
@@ -21,7 +22,11 @@ export default function BrainAssessmentForm() {
       const res = await fetch("/api/creyos-auto-register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ birthdate, gender: gender || undefined }),
+        body: JSON.stringify({
+          name: name.trim(),
+          birthdate,
+          gender: gender || undefined,
+        }),
       });
       const data = await res.json();
       if (!res.ok)
@@ -43,6 +48,21 @@ export default function BrainAssessmentForm() {
       className="rounded-2xl border border-rule/70 bg-paper-2 p-6 sm:p-8"
     >
       <div>
+        <label htmlFor="patient-name" className={labelClass}>
+          Full name
+        </label>
+        <input
+          id="patient-name"
+          type="text"
+          required
+          autoComplete="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className={inputClass}
+        />
+      </div>
+
+      <div className="mt-5">
         <label htmlFor="birthdate" className={labelClass}>
           Date of birth
         </label>

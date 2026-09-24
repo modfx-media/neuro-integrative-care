@@ -68,8 +68,8 @@ export default function BrainAssessmentPage() {
             className="mx-auto mt-8 max-w-xl text-center text-lg leading-relaxed text-paper/80"
           >
             A short, objective cognitive assessment (memory, attention, and
-            reasoning) scored against your age group. Enter your date of
-            birth to begin.
+            reasoning) scored against your age group. Enter your name and
+            date of birth to begin.
           </Reveal>
 
           <Reveal delay={520} offset={24} className="mt-12">
@@ -93,9 +93,9 @@ export default function BrainAssessmentPage() {
             {[
               {
                 n: "01",
-                title: "Enter your date of birth",
+                title: "Enter your name and date of birth",
                 detail:
-                  "Needed so Creyos can score memory, attention, and reasoning against your age group.",
+                  "Your name is stored as the patient identifier on Creyos. Date of birth is needed so memory, attention, and reasoning can be scored against your age group.",
               },
               {
                 n: "02",

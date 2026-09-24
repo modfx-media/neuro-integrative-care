@@ -127,14 +127,14 @@ function AutoRegistrationTest() {
 
         <div>
           <label htmlFor="userCode" className="block text-sm font-medium text-ink">
-            Patient ID (optional, auto-generated if blank)
+            Patient name (Creyos user_code)
           </label>
           <input
             id="userCode"
             type="text"
             value={userCode}
             onChange={(e) => setUserCode(e.target.value)}
-            placeholder="e.g. abc123"
+            placeholder="e.g. Jane Doe"
             className={inputClass}
           />
         </div>
@@ -163,7 +163,7 @@ function AutoRegistrationTest() {
                   type="text"
                   value={trialId}
                   onChange={(e) => setTrialId(e.target.value)}
-                  placeholder="13528"
+                  placeholder="Leave blank to use CREYOS_TRIAL_NAME"
                   className={inputClass}
                 />
               </div>
