@@ -174,6 +174,17 @@ export const tools: Tool[] = [
     media: { kind: "placeholder" },
   },
   {
+    slug: "pemf",
+    name: "Pulse PEMF",
+    kicker: "Pulsed Electromagnetic Field Therapy",
+    description:
+      "Pulsed electromagnetic field (PEMF) therapy delivers a low-level, rhythmic magnetic pulse to support circulation and cellular energy production at the tissue level. Used in-clinic as a supporting therapy alongside neurofeedback, functional neurology, and regenerative care. Non-invasive, painless, no downtime.",
+    sectorSlugs: ["concussion-post-trauma", "longevity-science"],
+    // TODO(client): no media asset supplied for this tool yet — placeholder
+    // slot only. Swap for real clinic/procedure media before launch.
+    media: { kind: "placeholder" },
+  },
+  {
     slug: "detoxification",
     name: "Detoxification",
     kicker: "Removing the Trigger",

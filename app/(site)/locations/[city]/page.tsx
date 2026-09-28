@@ -6,6 +6,7 @@ import { MapPin, Phone, Clock } from "lucide-react";
 import { cityLocations, findCityLocation } from "@/content/locations";
 import Reveal from "@/components/Reveal";
 import CityConditionsGrid from "@/components/locations/CityConditionsGrid";
+import CityPseoLinks from "@/components/locations/CityPseoLinks";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 import { SITE_URL } from "@/lib/site";
 
@@ -133,6 +134,9 @@ export default async function CityLocationPage({ params }: PageProps) {
 
       {/* How we help [City] patients */}
       <CityConditionsGrid cityName={city.name} />
+
+      {/* pSEO: condition x city and service x city links */}
+      <CityPseoLinks citySlug={city.slug} cityName={city.name} />
 
       {/* Trust signals — NAP, hours, service area */}
       <section className="bg-paper-2 py-24 lg:py-32">

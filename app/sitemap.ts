@@ -4,6 +4,7 @@ import { tools } from "@/content/tools";
 import { conditionArticles } from "@/content/conditionArticles";
 import { cityLocations } from "@/content/locations";
 import { blogPosts } from "@/content/blog";
+import { resourceGuides } from "@/content/resources";
 import { SITE_URL } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -74,6 +75,43 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.75,
+    });
+    // pSEO: condition x city pages
+    cityLocations.forEach((city) => {
+      entries.push({
+        url: `${SITE_URL}/conditions/${article.parentSlug}/${article.slug}/${city.slug}`,
+        lastModified: now,
+        changeFrequency: "monthly",
+        priority: 0.6,
+      });
+    });
+  });
+
+  // pSEO: service (tool) x city pages
+  tools.forEach((tool) => {
+    cityLocations.forEach((city) => {
+      entries.push({
+        url: `${SITE_URL}/tools/${tool.slug}/${city.slug}`,
+        lastModified: now,
+        changeFrequency: "monthly",
+        priority: 0.6,
+      });
+    });
+  });
+
+  // pSEO: PAA-derived resource/guide pages
+  entries.push({
+    url: `${SITE_URL}/resources`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.6,
+  });
+  resourceGuides.forEach((guide) => {
+    entries.push({
+      url: `${SITE_URL}/resources/${guide.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.55,
     });
   });
 

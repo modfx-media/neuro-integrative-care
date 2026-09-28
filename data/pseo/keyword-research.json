@@ -1,0 +1,232 @@
+{
+  "meta": {
+    "generatedAt": "2026-09-29",
+    "sources": [
+      "GSC export (gsc-report/*.csv, last 16 months, property sc-domain:neurocarelg.com)",
+      "Live GSC via MCP (gsc_connection_status confirmed sc-domain:neurocarelg.com is accessible)",
+      "DataForSEO keyword_research / dfs_bulk_keyword_volume / paa_keyword_research (US database)"
+    ],
+    "criticalFinding": "The domain's GSC history is dominated by its former brand ('Advanced Regen Medical' \u2014 see Footer.tsx social links), an orthopedic/regenerative-medicine practice. Top historical queries (regenerative medicine, stem cell therapy, PRP, sanexas, PEMF, peptides, ozone/prolozone therapy, IV therapy, semaglutide) and top pages (/sanexas, /pemf, /pulse-wave, /regen, /knees, /hips, /shoulders, /orthopedics) reflect that old positioning, not the current NeuroIntegrative Care brain/functional-neurology brand. Per user direction (2026-09-29), this plan only builds on services confirmed in current site content: PRP/exosomes (Regenerative Solutions tool), PEMF, longevity/biological-age testing, and detoxification. Sanexas, ozone/prolozone, peptide injections, IV vitamin therapy, and semaglutide are NOT included \u2014 no current content confirms the clinic still offers them.",
+    "cityKeywordMethodology": "DataForSEO/Google Ads keyword data returns null (no trackable volume) for essentially all condition/service + small-city combinations (e.g. 'brain fog treatment Saratoga') \u2014 confirmed by testing all 288 seed\u00d7city combinations below in cityVariantVolumeTest, 0 returned non-null. This is expected/normal for hyperlocal long-tail medical queries and does NOT mean zero real demand; Google Ads underreports non-commercial, ultra-specific local queries. Per instructions, real demand is validated at the PARENT keyword level (this file); city pages are justified by genuine local service-area relevance (real drive times/routes, existing /locations precedent) rather than by per-city tool volume.",
+    "cityVariantVolumeTest": {
+      "combosTested": 288,
+      "nonNullResults": 0,
+      "note": "Full null result for all 9 condition + 8 service seeds x 16 South Bay/Santa Cruz county cities. See criticalFinding/cityKeywordMethodology."
+    }
+  },
+  "excludedTerms": [
+    { "term": "sanexas", "gscImpressions": 79, "reason": "No current site content confirms this service is still offered" },
+    { "term": "ozone therapy / prolozone therapy", "gscImpressions": 215, "reason": "Not offered per current tools.ts/programs.ts" },
+    { "term": "stem cell therapy / stem cells", "gscImpressions": 320, "reason": "Old-brand term; current 'Regenerative Solutions' tool is scoped to PRP + exosomes + cell therapy, not marketed as 'stem cell therapy'" },
+    { "term": "peptide therapy / peptide injections / semaglutide", "gscImpressions": 148, "reason": "Not offered per current site content" },
+    { "term": "IV therapy / NAD IV / glutathione IV / vitamin injections", "gscImpressions": 61, "reason": "Not offered per current site content" },
+    { "term": "orthopedic terms (knees/hips/shoulders/carpal tunnel/herniated disc)", "gscImpressions": 90, "reason": "Legacy orthopedic-brand pages (/knees /hips /shoulders /orthopedics), superseded by neuro/functional-medicine positioning" },
+    { "term": "adhd testing adults", "volume": 27100, "reason": "High volume but clinic does not advertise a dedicated ADHD diagnostic-testing service; neurofeedback's attention/focus use case is covered under the existing brain-fog/memory-cognition content instead of a standalone ADHD claim" },
+    { "term": "pulse wave / pulsewave", "gscImpressions": 117, "reason": "Legacy /pulse-wave page ranked, but current site does not list 'Pulse Wave' as an active modality (distinct from Pulse PEMF) \u2014 flagged for client confirmation, not included" }
+  ],
+  "pillars": [
+    {
+      "cluster": "brain-fog",
+      "existingPage": "/conditions/brain-brightening/brain-fog",
+      "targetPageType": "condition",
+      "terms": [
+        { "term": "brain fog treatment", "source": "MCP", "volume": 8100, "difficulty": 22, "intent": "informational/commercial" },
+        { "term": "brain fog doctor near me", "source": "MCP", "volume": 10, "difficulty": "medium", "intent": "commercial" },
+        { "term": "long covid brain fog", "source": "MCP", "volume": 720, "difficulty": "low", "intent": "informational" }
+      ],
+      "gsc": { "query": "microcurrent neurofeedback los gatos", "impressions": 3, "position": 22.33 },
+      "paaQuestions": [
+        "What are the four warning signs of brain fog?"
+      ]
+    },
+    {
+      "cluster": "chronic-fatigue-and-sleep",
+      "existingPage": "/conditions/longevity-science/chronic-fatigue-and-sleep",
+      "targetPageType": "condition",
+      "terms": [
+        { "term": "chronic fatigue syndrome", "source": "MCP", "volume": 74000, "difficulty": "low", "intent": "informational" }
+      ],
+      "paaQuestions": [
+        "What are the 7 symptoms of chronic fatigue syndrome?",
+        "What is mistaken for chronic fatigue syndrome?",
+        "Can you recover from chronic fatigue?"
+      ]
+    },
+    {
+      "cluster": "memory-and-cognitive-decline",
+      "existingPage": "/conditions/brain-brightening/memory-and-cognitive-decline",
+      "targetPageType": "condition",
+      "terms": [
+        { "term": "memory loss treatment", "source": "MCP", "volume": 5400, "difficulty": "low", "intent": "commercial" }
+      ],
+      "paaQuestions": []
+    },
+    {
+      "cluster": "toxin-mold-illness",
+      "existingPage": "/conditions/environmental-toxins/toxin-mold-illness",
+      "targetPageType": "condition",
+      "terms": [
+        { "term": "mold exposure symptoms", "source": "MCP", "volume": 90500, "difficulty": 72, "intent": "informational" },
+        { "term": "mold toxicity doctor", "source": "MCP", "volume": 210, "difficulty": "low", "intent": "commercial" },
+        { "term": "CIRS treatment", "source": "MCP", "volume": 1000, "difficulty": "low", "intent": "commercial" }
+      ],
+      "paaQuestions": [
+        "How do you tell if mold is making you sick?",
+        "What are the 10 warning signs of mold toxicity?",
+        "How long does it take to heal from mold exposure?"
+      ]
+    },
+    {
+      "cluster": "biological-aging",
+      "existingPage": "/conditions/longevity-science/biological-aging",
+      "targetPageType": "condition",
+      "terms": [
+        { "term": "biological age testing", "source": "MCP", "volume": 3600, "difficulty": "medium", "intent": "commercial" },
+        { "term": "biological age test near me", "source": "MCP", "volume": 110, "difficulty": "low", "intent": "commercial" },
+        { "term": "longevity clinic near me", "source": "MCP", "volume": 720, "difficulty": "medium", "intent": "commercial" }
+      ],
+      "paaQuestions": []
+    },
+    {
+      "cluster": "neuropathy-nerve-pain",
+      "existingPage": "/conditions/environmental-toxins/neuropathy-nerve-pain",
+      "targetPageType": "condition",
+      "terms": [],
+      "gsc": { "note": "Legacy /peripheral-neuropathy page already ranks well (position 2.62, 8 impressions) despite low volume \u2014 recommend a 301 redirect to /conditions/environmental-toxins/neuropathy-nerve-pain rather than treating this as a fresh content gap.", "impressions": 8, "position": 2.62 },
+      "paaQuestions": []
+    },
+    {
+      "cluster": "autoimmune-disease-symptoms",
+      "existingPage": "/conditions/autoimmune-investigation/autoimmune-disease-symptoms",
+      "targetPageType": "condition",
+      "terms": [
+        { "term": "autoimmune disease treatment los gatos", "source": "GSC", "volume": null, "gscImpressions": 17, "gscPosition": 25.24 }
+      ],
+      "paaQuestions": []
+    },
+    {
+      "cluster": "post-concussion-syndrome",
+      "existingPage": "/conditions/concussion-post-trauma/post-concussion-syndrome",
+      "targetPageType": "condition",
+      "terms": [],
+      "paaQuestions": []
+    },
+    {
+      "cluster": "balance-and-fall-risk",
+      "existingPage": "/conditions/concussion-post-trauma/balance-and-fall-risk",
+      "targetPageType": "condition",
+      "terms": [],
+      "paaQuestions": []
+    },
+    {
+      "cluster": "undiagnosed-illness",
+      "existingPage": "/conditions/idiopathic-unexplained/undiagnosed-illness",
+      "targetPageType": "condition",
+      "terms": [],
+      "note": "No measurable GSC or MCP demand found for this cluster \u2014 excluded from city expansion, kept as single page only.",
+      "paaQuestions": []
+    },
+    {
+      "cluster": "neurofeedback",
+      "existingPage": "/tools/neurofeedback",
+      "targetPageType": "service",
+      "terms": [
+        { "term": "neurofeedback", "source": "MCP", "volume": 14800, "difficulty": 38, "intent": "informational" },
+        { "term": "neurofeedback near me", "source": "MCP", "volume": 2400, "difficulty": "medium", "intent": "commercial" },
+        { "term": "neurofeedback los gatos", "source": "GSC+MCP", "volume": 10, "gscImpressions": 1, "gscPosition": 28, "intent": "commercial" }
+      ],
+      "paaQuestions": [
+        "What does neurofeedback therapy do?",
+        "Is neurofeedback actually effective?",
+        "What is the downside of neurofeedback?"
+      ]
+    },
+    {
+      "cluster": "regenerative-solutions",
+      "existingPage": "/tools/regenerative-solutions",
+      "targetPageType": "service",
+      "terms": [
+        { "term": "regenerative medicine near me", "source": "MCP", "volume": 2900, "difficulty": "low", "intent": "commercial" },
+        { "term": "regenerative medicine los gatos", "source": "GSC", "volume": null, "gscImpressions": 259, "gscPosition": 8.01, "intent": "commercial" },
+        { "term": "PRP therapy near me", "source": "MCP", "volume": 1900, "difficulty": "low", "intent": "commercial" },
+        { "term": "exosome therapy", "source": "MCP", "volume": 5400, "difficulty": "low", "intent": "informational/commercial" },
+        { "term": "exosome therapy near me", "source": "MCP", "volume": 390, "difficulty": "medium", "intent": "commercial" }
+      ],
+      "paaQuestions": []
+    },
+    {
+      "cluster": "pemf",
+      "existingPage": null,
+      "newPageNeeded": "/tools/pemf",
+      "targetPageType": "service",
+      "note": "PEMF ('Pulse PEMF') is listed on /technology as a current in-clinic modality but has no dedicated content page yet. Real volume + real GSC history justify building one.",
+      "terms": [
+        { "term": "PEMF therapy", "source": "MCP", "volume": 33100, "difficulty": 24, "intent": "informational" },
+        { "term": "PEMF therapy near me", "source": "MCP", "volume": 2400, "difficulty": "high", "intent": "commercial" },
+        { "term": "pemf", "source": "GSC", "volume": null, "gscImpressions": 52, "gscPosition": 29.46 },
+        { "term": "pemf autism", "source": "GSC", "volume": null, "gscImpressions": 78, "gscPosition": 47.03, "note": "Real historical impressions but clinic doesn't market PEMF specifically for autism \u2014 do not target this exact term in content" },
+        { "term": "leo pemf", "source": "GSC", "volume": null, "gscImpressions": 20, "gscPosition": 42.05 }
+      ],
+      "paaQuestions": [
+        "What does PEMF actually do?",
+        "What are the side effects of PEMF?",
+        "How often should you do PEMF therapy?"
+      ]
+    },
+    {
+      "cluster": "detoxification",
+      "existingPage": "/tools/detoxification",
+      "targetPageType": "service",
+      "terms": [
+        { "term": "heavy metal detox", "source": "MCP", "volume": 18100, "difficulty": 25, "intent": "informational" },
+        { "term": "heavy metal detox near me", "source": "MCP", "volume": 90, "difficulty": "low", "intent": "commercial" }
+      ],
+      "paaQuestions": [
+        "What are the symptoms of having heavy metals in your body?",
+        "How do you flush heavy metals out of your body?",
+        "How long does it take for heavy metals to leave the body?"
+      ]
+    },
+    {
+      "cluster": "functional-neurology",
+      "existingPage": "/tools/functional-neurology",
+      "targetPageType": "service",
+      "terms": [
+        { "term": "functional neurology", "source": "MCP", "volume": null, "note": "No trackable Google Ads volume, kept as a lower-priority service cluster" }
+      ],
+      "paaQuestions": []
+    },
+    {
+      "cluster": "longevity-testing",
+      "existingPage": "/tools/longevity-testing",
+      "targetPageType": "service",
+      "terms": [
+        { "term": "functional medicine near me", "source": "MCP", "volume": 14800, "difficulty": "medium", "intent": "commercial" },
+        { "term": "integrative medicine near me", "source": "MCP", "volume": 6600, "difficulty": "medium", "intent": "commercial" }
+      ],
+      "paaQuestions": []
+    },
+    {
+      "cluster": "violet-laser",
+      "existingPage": "/tools/violet-laser",
+      "targetPageType": "service",
+      "terms": [],
+      "note": "No measurable GSC/MCP demand found; included for city coverage completeness since it's a confirmed real modality, but lowest content priority in the batch order."
+    }
+  ],
+  "cities": {
+    "existing": ["los-gatos", "campbell", "san-jose", "morgan-hill", "santa-cruz", "aptos"],
+    "new": ["saratoga", "monte-sereno", "cupertino", "santa-clara", "sunnyvale", "mountain-view", "palo-alto", "los-altos", "milpitas", "scotts-valley"],
+    "excludedNoise": [
+      { "city": "Long Beach", "impressions": 1 },
+      { "city": "Chino Hills", "impressions": 1 },
+      { "city": "Hayward", "impressions": 3 },
+      { "city": "Vacaville", "impressions": 3 },
+      { "city": "Studio City", "impressions": 5 },
+      { "city": "San Ramon", "impressions": 7 },
+      { "city": "El Segundo", "impressions": 1 },
+      { "city": "Elk Grove", "impressions": 1 }
+    ],
+    "neighborhoodNote": "Willow Glen, Almaden Valley, and Cambrian Park (San Jose neighborhoods named in the brief) are kept as mentions within the San Jose city hub page rather than given separate URLs, to avoid thin/near-duplicate content."
+  }
+}
