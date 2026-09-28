@@ -155,7 +155,6 @@ function ReviewCard({ review }: { review: GoogleReviewCard }) {
         ) : null}
         <p className="mt-5 border-t border-rule pt-4 font-mono font-medium text-[12px] uppercase tracking-[0.14em] text-muted">
           {review.name} · Google
-          {review.when ? ` · ${review.when}` : ""}
         </p>
       </blockquote>
       {mounted && open && truncated
@@ -178,7 +177,6 @@ function ReviewCard({ review }: { review: GoogleReviewCard }) {
               </p>
               <p className="mt-5 border-t border-rule pt-4 font-mono font-medium text-[12px] uppercase tracking-[0.14em] text-muted">
                 {review.name} · Google
-                {review.when ? ` · ${review.when}` : ""}
               </p>
             </div>,
             document.body,

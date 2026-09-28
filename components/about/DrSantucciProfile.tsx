@@ -366,37 +366,38 @@ export default function DrSantucciProfile({
                 remediation, and root-cause functional medicine.
               </p>
               <p className="mt-6 text-lg leading-relaxed text-muted">
-                Prior to building his practice, Dr. Santucci served in
-                international product management roles at{" "}
-                <span className="font-medium text-ink">IBM</span>,{" "}
-                <span className="font-medium text-ink">Telenet</span>,{" "}
-                <span className="font-medium text-ink">British Telecom</span>{" "}
-                and as Product Manager for{" "}
-                <span className="font-medium text-ink">MCI&apos;s</span> Data
-                Communications initiatives, overseeing complex data services
-                across a 20-city network. These roles involved strategic
-                business planning which he applies to the development of
-                advanced interventional therapies.
-              </p>              {showRecoveryStory && (
+                A strategic planner who became a doctor. Serious injuries
+                from a head-on collision with a truck resulted in multiple
+                spinal fractures and a loss of ten years of vitality in a
+                high-performance creator. Now a doctor with {YEARS_IN_PRACTICE}{" "}
+                years&apos; experience solving your problem.
+              </p>
+              {showRecoveryStory && (
                 <p className="mt-6 text-lg leading-relaxed text-muted">
-                  Before he was a doctor, Dr. Santucci was a patient. A
-                  serious motor vehicle accident left him with traumatic
-                  brain injury, post-concussion syndrome, and spinal
-                  fractures that required six major surgeries. Specialists
-                  told him the loss of function would be permanent.
+                  He was a strategic planner before he was a doctor&mdash;a
+                  high-performance creator who made a living by seeing the
+                  whole board. A head-on collision with a truck ended that
+                  chapter. Multiple spinal fractures, and ten years of
+                  vitality gone. The planner in him did not accept a life
+                  sentence. He studied the body the way he used to study a
+                  plan: find the real constraint, sequence the work, measure
+                  whether it moved.
                 </p>
               )}
               {showRecoveryStory && (
                 <p className="mt-6 text-lg leading-relaxed text-muted">
-                  He refused that verdict. Over the next decade he designed
-                  and lived the same work he now offers patients: functional
-                  neurology, qEEG brain mapping, neurotransmitter testing,
-                  neurofeedback, PEMF, targeted nutrition, and lifestyle
-                  protocols. That recovery&mdash;well beyond
-                  prognosis&mdash;is the foundation of NeuroIntegrative Care
-                  of Los Gatos.
+                  That reconstruction is why the clinic exists. Dr. Thomas
+                  Santucci has spent the next thirty years as a doctor doing
+                  for patients what he had to do for himself&mdash;getting the
+                  diagnosis right, then building a multifaceted plan around
+                  the actual problem: chronic pain, memory that will not
+                  come, a nervous system that will not stand down, toxin
+                  load that keeps the system loud. He does not hand you a
+                  single tool and call it a solution. He shares
+                  responsibility for the outcome.
                 </p>
-              )}              <p className="mt-6 text-lg leading-relaxed text-muted">
+              )}
+              <p className="mt-6 text-lg leading-relaxed text-muted">
                 He is the author of{" "}
                 <span className="italic text-ink">
                   Engineering Medical Miracles: Return to Health
