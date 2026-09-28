@@ -10,6 +10,7 @@ const QUICK_LINKS = [
   { label: "Programs", href: "/programs" },
   { label: "Virtual Program", href: "/programs/virtual" },
   { label: "Patient Stories", href: "/results" },
+  { label: "Resources", href: "/resources" },
   { label: "Blog", href: "/blog" },
   { label: "About Dr. Thomas Santucci", href: "/about/dr-thomas-santucci" },
   { label: "Start Here", href: "/start" },

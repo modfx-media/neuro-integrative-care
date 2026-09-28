@@ -6,6 +6,7 @@ import { conditionArticles } from "@/content/conditionArticles";
 import { tools } from "@/content/tools";
 import { cityLocations } from "@/content/locations";
 import { blogPosts } from "@/content/blog";
+import { resourceGuides } from "@/content/resources";
 import Reveal from "@/components/Reveal";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 import { SITE_URL } from "@/lib/site";
@@ -82,6 +83,26 @@ const LOCATION_ITEMS: LinkItem[] = cityLocations.map((city) => ({
   href: `/locations/${city.slug}`,
 }));
 
+// One group per city: every condition article and tool page localized to that city.
+const CITY_PSEO_GROUPS: LinkGroup[] = cityLocations.map((city) => ({
+  heading: city.name,
+  items: [
+    ...conditionArticles.map((article) => ({
+      label: article.name,
+      href: `/conditions/${article.parentSlug}/${article.slug}/${city.slug}`,
+    })),
+    ...tools.map((tool) => ({
+      label: tool.name,
+      href: `/tools/${tool.slug}/${city.slug}`,
+    })),
+  ],
+}));
+
+const RESOURCE_ITEMS: LinkItem[] = [
+  { label: "All Resources", href: "/resources" },
+  ...resourceGuides.map((guide) => ({ label: guide.question, href: `/resources/${guide.slug}` })),
+];
+
 const BLOG_ITEMS: LinkItem[] = blogPosts.map((post) => ({
   label: post.title,
   href: `/blog/${post.slug}`,
@@ -97,6 +118,8 @@ const schema = {
     ...CONDITION_GROUPS.flatMap((group) => group.items),
     ...TOOL_ITEMS,
     ...LOCATION_ITEMS,
+    ...CITY_PSEO_GROUPS.flatMap((group) => group.items),
+    ...RESOURCE_ITEMS,
     ...BLOG_ITEMS,
   ].map((item, i) => ({
     "@type": "ListItem",
@@ -255,6 +278,54 @@ export default function SitemapPage() {
                 <LinkList items={LOCATION_ITEMS} />
               </Reveal>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Resources */}
+      <section className="bg-paper-2 py-24 lg:py-28">
+        <div className="mx-auto max-w-6xl px-6 lg:px-10">
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
+            <Reveal className="lg:col-span-4">
+              <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
+                Resources
+              </p>
+            </Reveal>
+            <Reveal delay={100} offset={20} className="lg:col-span-8">
+              <LinkList items={RESOURCE_ITEMS} />
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Conditions & services, by city */}
+      <section className="bg-paper py-24 lg:py-28">
+        <div className="mx-auto max-w-6xl px-6 lg:px-10">
+          <Reveal className="max-w-3xl">
+            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
+              Areas We Serve
+            </p>
+            <h2 className="mt-4 font-serif text-3xl leading-tight tracking-tight text-ink sm:text-4xl">
+              By city.
+            </h2>
+          </Reveal>
+
+          <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+            {CITY_PSEO_GROUPS.map((group, i) => (
+              <Reveal
+                key={group.heading}
+                delay={100 + i * 60}
+                offset={24}
+                className="rounded-2xl border border-rule/60 bg-white p-7 lg:p-8"
+              >
+                <h3 className="font-serif text-xl leading-tight text-ink">
+                  {group.heading}
+                </h3>
+                <div className="mt-5">
+                  <LinkList items={group.items} />
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
