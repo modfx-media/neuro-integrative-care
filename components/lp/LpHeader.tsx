@@ -7,8 +7,8 @@ import { Phone } from "lucide-react";
 // out are the phone number and the booking CTA. Sits transparently over the
 // dark hero rather than reserving layout space, so the hero renders exactly
 // as it does on the homepage.
-const PHONE_DISPLAY = "801-292-1111";
-const PHONE_HREF = "tel:+18012921111";
+const PHONE_DISPLAY = "669-257-6940";
+const PHONE_HREF = "tel:+16692576940";
 
 export default function LpHeader() {
   return (

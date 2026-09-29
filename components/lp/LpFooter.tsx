@@ -7,8 +7,8 @@ import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 // Landing-page footer. Carries the contact block, compliance disclaimer, and
 // one CTA — no quick-links grid, no locations list, no social row, so the
 // page keeps a single conversion path.
-const PHONE_DISPLAY = "801-292-1111";
-const PHONE_HREF = "tel:+18012921111";
+const PHONE_DISPLAY = "669-257-6940";
+const PHONE_HREF = "tel:+16692576940";
 
 export default function LpFooter() {
   return (
