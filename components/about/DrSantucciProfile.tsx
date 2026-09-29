@@ -365,7 +365,7 @@ export default function DrSantucciProfile({
                 brain mapping, neurofeedback, LASER, PEMF, neurotransmitter
                 remediation, and root-cause functional medicine.
               </p>
-              <p className="mt-6 text-lg leading-relaxed text-muted">
+              <p className="mt-6 text-lg leading-relaxed text-ink">
                 A strategic planner who became a doctor. Serious injuries
                 from a head-on collision with a truck resulted in multiple
                 spinal fractures and a loss of ten years of vitality in a
@@ -373,7 +373,7 @@ export default function DrSantucciProfile({
                 years&apos; experience solving your problem.
               </p>
               {showRecoveryStory && (
-                <p className="mt-6 text-lg leading-relaxed text-muted">
+                <p className="mt-6 text-lg leading-relaxed text-ink">
                   He was a strategic planner before he was a doctor&mdash;a
                   high-performance creator who made a living by seeing the
                   whole board. A head-on collision with a truck ended that
@@ -385,7 +385,7 @@ export default function DrSantucciProfile({
                 </p>
               )}
               {showRecoveryStory && (
-                <p className="mt-6 text-lg leading-relaxed text-muted">
+                <p className="mt-6 text-lg leading-relaxed text-ink">
                   That reconstruction is why the clinic exists. Dr. Thomas
                   Santucci has spent the next thirty years as a doctor doing
                   for patients what he had to do for himself&mdash;getting the
@@ -397,7 +397,7 @@ export default function DrSantucciProfile({
                   responsibility for the outcome.
                 </p>
               )}
-              <p className="mt-6 text-lg leading-relaxed text-muted">
+              <p className="mt-6 text-lg leading-relaxed text-ink">
                 He is the author of{" "}
                 <span className="italic text-ink">
                   Engineering Medical Miracles: Return to Health
