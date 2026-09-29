@@ -29,7 +29,23 @@ export function useLeadFormModal() {
   return useContext(LeadFormModalContext);
 }
 
-export function LeadFormModalProvider({ children }: { children: ReactNode }) {
+// Props default to the sitewide form; the (lp) layout nests a second
+// provider with the popup-specific form so only landing pages under it pick
+// up the different form (nested context overrides the root one for that
+// subtree, sitewide CTAs elsewhere are unaffected).
+export function LeadFormModalProvider({
+  children,
+  formId = GHL_LEAD_FORM_ID,
+  formHeight = GHL_LEAD_FORM_HEIGHT,
+  formName = GHL_LEAD_FORM_NAME,
+  formTitle = GHL_LEAD_FORM_TITLE,
+}: {
+  children: ReactNode;
+  formId?: string;
+  formHeight?: number;
+  formName?: string;
+  formTitle?: string;
+}) {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -85,14 +101,14 @@ export function LeadFormModalProvider({ children }: { children: ReactNode }) {
 
             <div className="flex-1 overflow-y-auto bg-paper-2 p-2 sm:p-4">
               <iframe
-                src={`https://api.leadconnectorhq.com/widget/form/${GHL_LEAD_FORM_ID}`}
+                src={`https://api.leadconnectorhq.com/widget/form/${formId}`}
                 style={{
                   width: "100%",
-                  height: `${GHL_LEAD_FORM_HEIGHT}px`,
+                  height: `${formHeight}px`,
                   border: "none",
                   borderRadius: "8px",
                 }}
-                id={`inline-${GHL_LEAD_FORM_ID}`}
+                id={`inline-${formId}`}
                 data-layout="{'id':'INLINE'}"
                 data-trigger-type="alwaysShow"
                 data-trigger-value=""
@@ -100,13 +116,13 @@ export function LeadFormModalProvider({ children }: { children: ReactNode }) {
                 data-activation-value=""
                 data-deactivation-type="neverDeactivate"
                 data-deactivation-value=""
-                data-form-name={GHL_LEAD_FORM_NAME}
-                data-height={String(GHL_LEAD_FORM_HEIGHT)}
-                data-layout-iframe-id={`inline-${GHL_LEAD_FORM_ID}`}
-                data-form-id={GHL_LEAD_FORM_ID}
+                data-form-name={formName}
+                data-height={String(formHeight)}
+                data-layout-iframe-id={`inline-${formId}`}
+                data-form-id={formId}
                 data-cookie-consent="true"
                 data-cookie-consent-provider="auto"
-                title={GHL_LEAD_FORM_TITLE}
+                title={formTitle}
               />
             </div>
           </div>
