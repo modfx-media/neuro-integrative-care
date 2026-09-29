@@ -39,7 +39,7 @@ export default function BrainAssessmentOfferPage() {
   return (
     <>
       <HeroSection
-        eyebrow="Free Brain Assessment · NeuroIntegrative Care of Los Gatos"
+        eyebrow="Free Discovery Call · NeuroIntegrative Care of Los Gatos"
         heading={
           <>
             <Reveal as="span" delay={180} offset={28} className="block">
@@ -51,7 +51,7 @@ export default function BrainAssessmentOfferPage() {
             </Reveal>
           </>
         }
-        subtitle="Take your free, objective cognitive assessment now. Scored against your age group, done in minutes. Drug-free. No obligation. Limited spots."
+        subtitle="Book a free discovery call to start a 30-year, root-cause investigation into the brain, metabolism, and nervous system. Drug-free. No obligation. Limited spots."
         stats={PATIENT_STATS}
         statsClassName="mx-auto max-w-2xl justify-items-center text-center"
         statsMobileColsClassName="grid-cols-3"

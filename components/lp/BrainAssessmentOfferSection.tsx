@@ -33,7 +33,7 @@ export default function BrainAssessmentOfferSection() {
             The Offer
           </p>
           <h2 className="mt-4 font-serif text-4xl leading-tight tracking-tight text-ink sm:text-5xl">
-            Start with a free brain assessment.
+            Start with a free discovery call.
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted">
             It costs nothing, takes minutes, and turns &ldquo;something feels
@@ -81,7 +81,7 @@ export default function BrainAssessmentOfferSection() {
               onClick={modal?.open}
               className="mt-10 inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
             >
-              Take Your Free Brain Assessment
+              Book a FREE Discovery Call
             </button>
           </Reveal>
         </div>

@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
 import { jsonLdScript } from "@/lib/jsonLd";
 import Reveal from "@/components/Reveal";
-import BrainAssessmentForm from "@/components/home/BrainAssessmentForm";
+import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 import { SITE_URL } from "@/lib/site";
 
 const PAGE_URL = `${SITE_URL}/brain-assessment`;
 
 export const metadata: Metadata = {
-  title: "Free Brain Assessment",
+  title: "Book a Free Discovery Call",
   description:
-    "Take a free, objective cognitive assessment powered by Creyos. See how your memory, attention, and reasoning perform today — no obligation.",
+    "Book a free discovery call with NeuroIntegrative Care of Los Gatos. No obligation.",
   alternates: { canonical: "/brain-assessment" },
   openGraph: {
-    title: "Free Brain Assessment | NeuroIntegrative Care of Los Gatos",
+    title: "Book a Free Discovery Call | NeuroIntegrative Care of Los Gatos",
     description:
-      "A free, objective cognitive assessment powered by Creyos. See how your brain is performing today.",
+      "Book a free discovery call with Dr. Santucci's clinic. No obligation.",
     url: "/brain-assessment",
     type: "website",
   },
@@ -23,9 +23,9 @@ export const metadata: Metadata = {
 const schema = {
   "@context": "https://schema.org",
   "@type": "MedicalWebPage",
-  name: "Free Brain Assessment | NeuroIntegrative Care of Los Gatos",
+  name: "Book a Free Discovery Call | NeuroIntegrative Care of Los Gatos",
   description:
-    "A free, objective cognitive assessment powered by Creyos. See how memory, attention, and reasoning are performing today.",
+    "Book a free discovery call with NeuroIntegrative Care of Los Gatos.",
   url: PAGE_URL,
 };
 
@@ -53,12 +53,11 @@ export default function BrainAssessmentPage() {
             offset={12}
             className="text-center font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber-b"
           >
-            Free Brain Assessment
+            Free Discovery Call
           </Reveal>
           <Reveal as="span" delay={180} offset={28} className="mt-6 block">
             <h1 className="text-center font-serif text-4xl leading-[1.05] tracking-tight text-paper sm:text-5xl">
-              See how your brain is{" "}
-              <span className="italic text-amber-b">performing today.</span>
+              Start with a conversation, not a form.
             </h1>
           </Reveal>
           <Reveal
@@ -67,60 +66,12 @@ export default function BrainAssessmentPage() {
             offset={16}
             className="mx-auto mt-8 max-w-xl text-center text-lg leading-relaxed text-paper/80"
           >
-            A short, objective cognitive assessment (memory, attention, and
-            reasoning) scored against your age group. Enter your name and
-            date of birth to begin.
+            Book a free discovery call. No prescriptions, no obligation.
           </Reveal>
 
-          <Reveal delay={520} offset={24} className="mt-12">
-            <BrainAssessmentForm />
+          <Reveal delay={520} offset={24} className="mt-12 flex justify-center">
+            <BrainAssessmentButton />
           </Reveal>
-        </div>
-      </section>
-
-      <section className="bg-paper py-20 lg:py-24">
-        <div className="mx-auto max-w-4xl px-6 lg:px-10">
-          <Reveal className="mx-auto max-w-2xl text-center">
-            <p className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber">
-              What You&apos;ll Do
-            </p>
-            <h2 className="mt-4 font-serif text-3xl leading-tight tracking-tight text-ink sm:text-4xl">
-              A short set of tasks. An account created for you. Results scored
-              against your age.
-            </h2>
-          </Reveal>
-          <ol className="mt-12 grid gap-6 sm:grid-cols-3">
-            {[
-              {
-                n: "01",
-                title: "Enter your name and date of birth",
-                detail:
-                  "Your name is stored as the patient identifier on Creyos. Date of birth is needed so memory, attention, and reasoning can be scored against your age group.",
-              },
-              {
-                n: "02",
-                title: "Start a secure session",
-                detail:
-                  "The first visit creates your assessment account. Later visits reopen the same one — you don't register twice.",
-              },
-              {
-                n: "03",
-                title: "Complete the tasks",
-                detail:
-                  "A short, objective cognitive assessment on a secure platform. When you finish, you return here.",
-              },
-            ].map((step) => (
-              <Reveal key={step.n} as="li" className="rounded-2xl border border-rule bg-paper-2 p-6">
-                <p className="font-mono font-medium text-[12px] uppercase tracking-[0.18em] text-amber">
-                  {step.n}
-                </p>
-                <h3 className="mt-3 font-serif text-xl text-ink">{step.title}</h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-muted">
-                  {step.detail}
-                </p>
-              </Reveal>
-            ))}
-          </ol>
         </div>
       </section>
     </>

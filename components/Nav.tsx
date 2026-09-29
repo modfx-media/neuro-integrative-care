@@ -12,6 +12,7 @@ import {
 } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { conditions } from "@/content/conditions";
+import { useLeadFormModal } from "@/components/lp/LeadFormModal";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
@@ -22,8 +23,6 @@ const NAV_ITEMS = [
   { label: "Programs", href: "/programs" },
   { label: "Virtual Program", href: "/programs/virtual" },
 ] as const;
-
-const BOOK_HREF = "/start";
 
 export default function Nav() {
   const pathname = usePathname() ?? "/";
@@ -310,6 +309,8 @@ export default function Nav() {
 }
 
 function StartHereButton() {
+  const modal = useLeadFormModal();
+
   return (
     <motion.div
       whileHover={{ y: -2 }}
@@ -317,12 +318,13 @@ function StartHereButton() {
       transition={{ type: "spring", stiffness: 420, damping: 22 }}
       className="shrink-0"
     >
-      <Link
-        href={BOOK_HREF}
+      <button
+        type="button"
+        onClick={() => modal?.open()}
         className="group relative inline-flex shrink-0 items-center whitespace-nowrap rounded-full bg-gradient-to-r from-amber to-amber-b px-2.5 py-1.5 text-[12px] font-medium tracking-tight text-ink shadow-[0_6px_18px_-10px_rgba(232,160,32,0.75)] transition-shadow duration-300 hover:shadow-[0_14px_32px_-10px_rgba(232,160,32,0.9)] sm:px-4 sm:py-2 sm:text-[13px] xl:px-5 xl:py-2.5 xl:text-sm"
       >
-        <span className="relative z-10">Schedule Your Consultation</span>
-      </Link>
+        <span className="relative z-10">Book a FREE Discovery Call</span>
+      </button>
     </motion.div>
   );
 }

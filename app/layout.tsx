@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces, Inter, IBM_Plex_Mono } from "next/font/google";
 import Script from "next/script";
 import MotionProvider from "@/components/MotionProvider";
+import { LeadFormModalProvider } from "@/components/lp/LeadFormModal";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
@@ -66,7 +67,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${fraunces.variable} ${inter.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <MotionProvider>{children}</MotionProvider>
+        <MotionProvider>
+          <LeadFormModalProvider>{children}</LeadFormModalProvider>
+        </MotionProvider>
       </body>
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}

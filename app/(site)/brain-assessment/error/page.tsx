@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 
 export const metadata: Metadata = {
   title: "Assessment Unavailable",
@@ -22,7 +22,7 @@ export default async function BrainAssessmentErrorPage({
           as="p"
           className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber"
         >
-          Free Brain Assessment
+          Next Step
         </Reveal>
         <Reveal delay={80} className="mt-4">
           <h1 className="font-serif text-4xl text-ink sm:text-5xl">
@@ -31,16 +31,11 @@ export default async function BrainAssessmentErrorPage({
         </Reveal>
         <Reveal as="p" delay={160} className="mt-6 text-lg leading-relaxed text-muted">
           {expired
-            ? "That link has expired. Start a new assessment and you'll get a fresh session."
-            : "Something went wrong starting your session. Please try again, or call the office if it keeps happening."}
+            ? "That link has expired. Book a free discovery call and the clinic can get you a fresh session."
+            : "Something went wrong starting your session. Book a free discovery call, or call the office if you need help right away."}
         </Reveal>
         <Reveal delay={240} className="mt-10">
-          <Link
-            href="/brain-assessment"
-            className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink"
-          >
-            Start a New Assessment
-          </Link>
+          <BrainAssessmentButton />
         </Reveal>
       </div>
     </section>

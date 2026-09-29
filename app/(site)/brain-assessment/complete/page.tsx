@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 
 export const metadata: Metadata = {
   title: "Assessment Complete",
@@ -15,7 +15,7 @@ export default function BrainAssessmentCompletePage() {
           as="p"
           className="font-mono font-medium text-[13px] uppercase tracking-[0.18em] text-amber"
         >
-          Free Brain Assessment
+          Next Step
         </Reveal>
         <Reveal delay={80} className="mt-4">
           <h1 className="font-serif text-4xl text-ink sm:text-5xl">
@@ -25,15 +25,10 @@ export default function BrainAssessmentCompletePage() {
         <Reveal as="p" delay={160} className="mt-6 text-lg leading-relaxed text-muted">
           Your results are scored against your age group and sent to the
           clinic. If you&apos;d like someone to walk through them with you,
-          book a consultation — no obligation.
+          book a free discovery call — no obligation.
         </Reveal>
         <Reveal delay={240} className="mt-10">
-          <Link
-            href="/start"
-            className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink"
-          >
-            Book a Consultation
-          </Link>
+          <BrainAssessmentButton />
         </Reveal>
       </div>
     </section>

@@ -18,9 +18,12 @@ import { Phone } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 import { SITE_URL } from "@/lib/site";
-
-// Live intake form (GoHighLevel/LeadConnector embed) provided by the client.
-const LEAD_FORM_ID = "USqbUJSbAufJeRRap7Z9";
+import {
+  GHL_LEAD_FORM_HEIGHT,
+  GHL_LEAD_FORM_ID,
+  GHL_LEAD_FORM_NAME,
+  GHL_LEAD_FORM_TITLE,
+} from "@/lib/ghl-form";
 
 const PAGE_URL = `${SITE_URL}/start`;
 
@@ -158,9 +161,14 @@ export default function StartPage() {
             <Reveal delay={120} offset={24}>
               <div className="rounded-2xl border border-rule/70 bg-paper-2 p-4 shadow-[0_2px_18px_-14px_rgba(11,18,32,0.25)] sm:p-6">
                 <iframe
-                  src={`https://api.leadconnectorhq.com/widget/form/${LEAD_FORM_ID}`}
-                  style={{ width: "100%", height: "839px", border: "none", borderRadius: "8px" }}
-                  id={`inline-${LEAD_FORM_ID}`}
+                  src={`https://api.leadconnectorhq.com/widget/form/${GHL_LEAD_FORM_ID}`}
+                  style={{
+                    width: "100%",
+                    height: `${GHL_LEAD_FORM_HEIGHT}px`,
+                    border: "none",
+                    borderRadius: "8px",
+                  }}
+                  id={`inline-${GHL_LEAD_FORM_ID}`}
                   data-layout="{'id':'INLINE'}"
                   data-trigger-type="alwaysShow"
                   data-trigger-value=""
@@ -168,13 +176,13 @@ export default function StartPage() {
                   data-activation-value=""
                   data-deactivation-type="neverDeactivate"
                   data-deactivation-value=""
-                  data-form-name="Form 0"
-                  data-height="839"
-                  data-layout-iframe-id={`inline-${LEAD_FORM_ID}`}
-                  data-form-id={LEAD_FORM_ID}
+                  data-form-name={GHL_LEAD_FORM_NAME}
+                  data-height={String(GHL_LEAD_FORM_HEIGHT)}
+                  data-layout-iframe-id={`inline-${GHL_LEAD_FORM_ID}`}
+                  data-form-id={GHL_LEAD_FORM_ID}
                   data-cookie-consent="true"
                   data-cookie-consent-provider="auto"
-                  title="New-Patient Investigation intake form"
+                  title={GHL_LEAD_FORM_TITLE}
                 />
               </div>
             </Reveal>

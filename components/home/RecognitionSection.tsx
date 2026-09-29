@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { Users, ClipboardX, HeartHandshake, BatteryLow, type LucideIcon } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 
 interface RecognitionCard {
   label: string;
@@ -97,12 +97,7 @@ export default function RecognitionSection() {
             investigated.
           </p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-            <Link
-              href="/brain-assessment"
-              className="inline-flex w-[300px] max-w-full items-center justify-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-center text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.85)]"
-            >
-              Take Your Free Brain Assessment
-            </Link>
+            <BrainAssessmentButton />
           </div>
         </Reveal>
       </div>

@@ -610,7 +610,7 @@ export default function VirtualProgramPage() {
         <div className="relative mx-auto max-w-3xl px-6 text-center lg:px-10">
           <Reveal>
             <h2 className="font-serif text-3xl leading-[1.2] tracking-tight text-paper sm:text-4xl lg:text-5xl">
-              Start with your assessment and bring the therapy home. Start
+              Book a free discovery call and bring the therapy home. Start
               where everyone starts.
             </h2>
           </Reveal>

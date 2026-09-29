@@ -72,11 +72,11 @@ export default function LpFooter() {
               Ready to go now?
             </h2>
             <div className="mt-5 flex justify-center">
-              <BrainAssessmentButton label="Book Your Consultation" />
+              <BrainAssessmentButton />
             </div>
             <p className="mt-5 text-[15px] leading-relaxed text-paper/70">
               No referral, no waiting room, no obligation. Just a few minutes
-              to get your assessment on the calendar.
+              to get a discovery call on the calendar.
             </p>
           </div>
         </Reveal>
