@@ -1,3 +1,4 @@
+import Script from "next/script";
 import LpHeader from "@/components/lp/LpHeader";
 import LpFooter from "@/components/lp/LpFooter";
 import { LeadFormModalProvider } from "@/components/lp/LeadFormModal";
@@ -23,6 +24,14 @@ export default function LpLayout({ children }: { children: React.ReactNode }) {
       {/* lp-mobile-center: see globals.css — centers this page's content on mobile only. */}
       <main className="lp-mobile-center flex-1">{children}</main>
       <LpFooter />
+      <Script id="knock-knock-widget" strategy="afterInteractive">
+        {`
+          window.company_id = '6a9169788db2cbf50c5c2258';
+          var newScript = document.createElement('script');
+          newScript.src = 'https://api.knock-knockapp.com/widget/widget.js';
+          document.getElementsByTagName('HEAD')[0].appendChild(newScript);
+        `}
+      </Script>
     </LeadFormModalProvider>
   );
 }

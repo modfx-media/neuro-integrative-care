@@ -4,9 +4,7 @@ import Footer from "@/components/Footer";
 import OrganizationJsonLd from "@/components/OrganizationJsonLd";
 
 // Chrome for the main marketing site. Landing pages live in app/(lp) and
-// supply their own stripped-down header and footer instead. The chat widget
-// is mounted here rather than in the root layout so landing pages stay free
-// of it.
+// supply their own stripped-down header and footer instead.
 export default function SiteLayout({
   children,
 }: {
