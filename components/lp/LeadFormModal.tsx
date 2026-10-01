@@ -62,6 +62,38 @@ export function LeadFormModalProvider({
     };
   }, [isOpen]);
 
+  // GoHighLevel's own embed script (form_embed.js) only does a silent
+  // history.replaceState() with the configured redirect URL on submit — it
+  // never actually navigates the browser there. That left the thank-you
+  // page (and its Meta Pixel Lead event) unreachable: the address bar
+  // changed but our page never loaded. We listen for that same postMessage
+  // ourselves and perform the real navigation. Origin is checked against
+  // LeadConnector's known domains, and the target URL must be same-origin,
+  // so a compromised third party can't use this to redirect visitors
+  // off-site.
+  useEffect(() => {
+    const ALLOWED_ORIGINS = [
+      "https://api.leadconnectorhq.com",
+      "https://link.msgsndr.com",
+    ];
+    function onMessage(event: MessageEvent) {
+      if (!ALLOWED_ORIGINS.includes(event.origin)) return;
+      if (!Array.isArray(event.data) || event.data[0] !== "modify-parent-url")
+        return;
+      const redirectUrl = event.data[1];
+      if (typeof redirectUrl !== "string") return;
+      try {
+        const target = new URL(redirectUrl, window.location.href);
+        if (target.origin !== window.location.origin) return;
+        window.location.assign(target.href);
+      } catch {
+        // Malformed URL — ignore rather than risk an unsafe navigation.
+      }
+    }
+    window.addEventListener("message", onMessage);
+    return () => window.removeEventListener("message", onMessage);
+  }, []);
+
   return (
     <LeadFormModalContext.Provider value={{ open: () => setIsOpen(true) }}>
       {children}
