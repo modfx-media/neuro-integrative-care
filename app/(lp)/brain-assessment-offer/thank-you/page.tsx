@@ -19,7 +19,7 @@ export default function BrainAssessmentThankYouPage() {
       <PatientReviewsSection />
       {/* Meta Pixel Lead event — this is the funnel's conversion page. */}
       <Script id="meta-pixel-lead" strategy="afterInteractive">
-        {`fbq('track', 'Lead');`}
+        {`fbq('track', 'Lead', { content_name: 'Lead Submitted' });`}
       </Script>
     </>
   );

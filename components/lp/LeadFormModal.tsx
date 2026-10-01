@@ -94,8 +94,14 @@ export function LeadFormModalProvider({
     return () => window.removeEventListener("message", onMessage);
   }, []);
 
+  function open() {
+    const fbq = (window as { fbq?: (...args: unknown[]) => void }).fbq;
+    fbq?.("trackCustom", "SubmitForm");
+    setIsOpen(true);
+  }
+
   return (
-    <LeadFormModalContext.Provider value={{ open: () => setIsOpen(true) }}>
+    <LeadFormModalContext.Provider value={{ open }}>
       {children}
 
       {isOpen && (
