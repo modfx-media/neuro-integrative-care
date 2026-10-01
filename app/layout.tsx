@@ -82,6 +82,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             t.src=v;s=b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
+            // Explicitly opt out of restricted data processing — without this,
+            // Meta's SDK silently suppressed Lead events ("restricted event" warning).
+            fbq('dataProcessingOptions', []);
             fbq('init', '${META_PIXEL_ID}');
             fbq('track', 'PageView');
           `}
