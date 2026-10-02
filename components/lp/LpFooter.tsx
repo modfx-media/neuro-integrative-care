@@ -114,6 +114,17 @@ export default function LpFooter() {
             medical advice.
           </p>
         </Reveal>
+
+        <Reveal delay={220} className="mt-6 flex justify-center sm:justify-end">
+          <a
+            href="https://modfxmedia.com"
+            target="_blank"
+            rel="noreferrer"
+            className="font-mono text-[11px] uppercase tracking-[0.18em] text-paper/50 transition-colors hover:text-amber-b"
+          >
+            Powered by ModFXMedia
+          </a>
+        </Reveal>
       </div>
     </footer>
   );
