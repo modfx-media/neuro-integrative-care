@@ -29,7 +29,7 @@ const PATIENT_STATS = [
 // Every CTA points at /brain-assessment and no body copy links away, so the
 // page has exactly one exit.
 export const metadata: Metadata = {
-  title: "Brain Assessment Offer",
+  title: "Free Discovery Call",
   description:
     "A 30-year, root-cause investigation into the brain, metabolism, and nervous system, led by Dr. Thomas Santucci, DC, AFNI. Start with a free brain assessment.",
   robots: { index: false, follow: true },

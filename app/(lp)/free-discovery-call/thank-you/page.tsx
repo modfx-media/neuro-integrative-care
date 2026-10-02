@@ -3,7 +3,7 @@ import Script from "next/script";
 import ThankYouSection from "@/components/lp/ThankYouSection";
 import PatientReviewsSection from "@/components/lp/PatientReviewsSection";
 
-// Confirmation destination for the brain-assessment-offer funnel's lead
+// Confirmation destination for the free-discovery-call funnel's lead
 // form. Noindexed for the same reason as the offer page itself: it's a
 // funnel-only step, not a page meant to rank on its own.
 export const metadata: Metadata = {

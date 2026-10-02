@@ -10,7 +10,7 @@
 //     founding date (1996).
 //
 // Rendered by /about/dr-thomas-santucci (below its hero) and by the
-// brain-assessment-offer landing page, which has no hero of its own.
+// free-discovery-call landing page, which has no hero of its own.
 
 import Image from "next/image";
 import Link from "next/link";

@@ -131,7 +131,7 @@
   }
 }
 
-/* Landing-page-only (brain-assessment-offer): center this page's content on
+/* Landing-page-only (free-discovery-call): center this page's content on
    mobile, scoped to .lp-mobile-center (set on the LP's <main>) so it never
    touches the homepage/about/other pages that reuse these same shared
    components, and only applies below the sm breakpoint (desktop untouched). */

@@ -5,7 +5,7 @@
 //     speaking engagements, and media mentions are quoted verbatim from that
 //     document — do not paraphrase, expand, or invent additional detail.
 //     Everything below the hero lives in <DrSantucciProfile />, which the
-//     brain-assessment-offer landing page also renders.
+//     free-discovery-call landing page also renders.
 //
 // (2) YEARS-IN-PRACTICE: CV confirms "30+ years," consistent with the
 //     founding date (1996).
