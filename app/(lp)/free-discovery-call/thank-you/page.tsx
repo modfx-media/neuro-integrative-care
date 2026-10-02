@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Script from "next/script";
+import ThankYouLeadTracker from "@/components/analytics/ThankYouLeadTracker";
 import ThankYouSection from "@/components/lp/ThankYouSection";
 import PatientReviewsSection from "@/components/lp/PatientReviewsSection";
 
@@ -17,10 +17,7 @@ export default function BrainAssessmentThankYouPage() {
     <>
       <ThankYouSection />
       <PatientReviewsSection />
-      {/* Meta Pixel Lead event — this is the funnel's conversion page. */}
-      <Script id="meta-pixel-lead" strategy="afterInteractive">
-        {`fbq('track', 'Lead', { content_name: 'Lead Submitted' });`}
-      </Script>
+      <ThankYouLeadTracker />
     </>
   );
 }

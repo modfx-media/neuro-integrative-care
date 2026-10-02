@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter, IBM_Plex_Mono } from "next/font/google";
 import Script from "next/script";
+import MetaPageView from "@/components/analytics/MetaPageView";
 import MotionProvider from "@/components/MotionProvider";
 import { LeadFormModalProvider } from "@/components/lp/LeadFormModal";
 import { SITE_URL } from "@/lib/site";
@@ -68,10 +69,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${fraunces.variable} ${inter.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        {/* Must mount before any page content: pages (e.g. the thank-you
-            page's Lead event) call fbq() directly and assume it already
-            exists. Scripts placed after </body> mount after this subtree,
-            which left fbq undefined when a nested page tried to use it. */}
+        {/* Base pixel, once per document load. Route changes are reported
+            by MetaPageView; the thank-you Lead event waits for fbq itself. */}
         <Script id="meta-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
@@ -98,6 +97,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
           />
         </noscript>
+        <MetaPageView />
         <MotionProvider>
           <LeadFormModalProvider>{children}</LeadFormModalProvider>
         </MotionProvider>
