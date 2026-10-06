@@ -6,8 +6,11 @@ import { cityLocations } from "@/content/locations";
 import Reveal from "@/components/Reveal";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 import { SITE_URL } from "@/lib/site";
+import CMSRoute from "@/components/cms/CMSRoute";
+import { withCMSMetadata } from "@/lib/cms/metadata";
 
-export const metadata: Metadata = {
+
+const metadataFallback: Metadata = {
   title: "Locations We Serve",
   description:
     "NeuroIntegrative Care of Los Gatos serves Los Gatos, Campbell, San Jose, Morgan Hill, Santa Cruz, and Aptos with root-cause functional medicine.",
@@ -32,8 +35,13 @@ const schema = {
   })),
 };
 
+export async function generateMetadata(): Promise<Metadata> {
+  return withCMSMetadata("/locations", metadataFallback);
+}
+
 export default function LocationsHubPage() {
   return (
+    <CMSRoute path={"/locations"}>
     <>
       <script
         type="application/ld+json"
@@ -144,5 +152,6 @@ export default function LocationsHubPage() {
         </div>
       </section>
     </>
-  );
+  
+    </CMSRoute>);
 }

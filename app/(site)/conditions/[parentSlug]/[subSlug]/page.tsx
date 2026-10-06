@@ -20,6 +20,9 @@ import SectorJsonLd from "@/components/conditions/SectorJsonLd";
 import ConditionArticleTemplate from "@/components/conditions/ConditionArticleTemplate";
 import ConditionArticleJsonLd from "@/components/conditions/ConditionArticleJsonLd";
 import { SITE_URL } from "@/lib/site";
+import CMSRoute from "@/components/cms/CMSRoute";
+import { withCMSMetadata } from "@/lib/cms/metadata";
+
 
 interface SubParams {
   parentSlug: string;
@@ -59,7 +62,7 @@ export async function generateMetadata({
   const article = findConditionArticle(parentSlug, subSlug);
   if (article) {
     const url = `/conditions/${article.parentSlug}/${article.slug}`;
-    return {
+    return withCMSMetadata(url, {
       title: article.metaTitle,
       description: article.metaDescription,
       alternates: { canonical: url },
@@ -69,7 +72,7 @@ export async function generateMetadata({
         url,
         type: "article",
       },
-    };
+    });
   }
 
   const found = findSub(parentSlug, subSlug);
@@ -83,7 +86,7 @@ export async function generateMetadata({
     ? `/conditions/${superseding.parentSlug}/${superseding.slug}`
     : `/conditions/${parent.slug}/${sub.slug}`;
 
-  return {
+  return withCMSMetadata(`/conditions/${parent.slug}/${sub.slug}`, {
     title: `${sub.name} · ${parent.name}`,
     description: sub.heroLine,
     alternates: {
@@ -95,7 +98,7 @@ export async function generateMetadata({
       url: `/conditions/${parent.slug}/${sub.slug}`,
       type: "article",
     },
-  };
+  });
 }
 
 // COMPLIANCE: Objective measures below are pulled from patientStories.ts
@@ -161,18 +164,20 @@ export default async function SubConditionPage({ params }: PageProps) {
     ];
 
     return (
-      <>
-        <ConditionArticleJsonLd
-          article={article}
-          url={`${SITE_URL}/conditions/${article.parentSlug}/${article.slug}`}
-        />
-        <ConditionArticleTemplate
-          article={article}
-          parentName={parentCondition.name}
-          tool={tool}
-          breadcrumb={breadcrumb}
-        />
-      </>
+      <CMSRoute path={`/conditions/${parentSlug}/${subSlug}`}>
+        <>
+          <ConditionArticleJsonLd
+            article={article}
+            url={`${SITE_URL}/conditions/${article.parentSlug}/${article.slug}`}
+          />
+          <ConditionArticleTemplate
+            article={article}
+            parentName={parentCondition.name}
+            tool={tool}
+            breadcrumb={breadcrumb}
+          />
+        </>
+      </CMSRoute>
     );
   }
 
@@ -194,20 +199,22 @@ export default async function SubConditionPage({ params }: PageProps) {
   const objectiveMeasures = objectiveMeasuresFor(sub.slug);
 
   return (
-    <>
-      <SectorJsonLd
-        condition={sub}
-        url={`${SITE_URL}/conditions/${parent.slug}/${sub.slug}`}
-      />
-      <SectorPageTemplate
-        condition={sub}
-        allConditions={conditions}
-        patientStory={patientStory}
-        sectorContent={content}
-        breadcrumb={breadcrumb}
-        toolsUsed={toolsForSector(parent.slug)}
-        objectiveMeasures={objectiveMeasures}
-      />
-    </>
+    <CMSRoute path={`/conditions/${parentSlug}/${subSlug}`}>
+      <>
+        <SectorJsonLd
+          condition={sub}
+          url={`${SITE_URL}/conditions/${parent.slug}/${sub.slug}`}
+        />
+        <SectorPageTemplate
+          condition={sub}
+          allConditions={conditions}
+          patientStory={patientStory}
+          sectorContent={content}
+          breadcrumb={breadcrumb}
+          toolsUsed={toolsForSector(parent.slug)}
+          objectiveMeasures={objectiveMeasures}
+        />
+      </>
+    </CMSRoute>
   );
 }

@@ -24,6 +24,8 @@ import {
   GHL_LEAD_FORM_NAME,
   GHL_LEAD_FORM_TITLE,
 } from "@/lib/ghl-form";
+import CMSRoute from "@/components/cms/CMSRoute";
+import { withCMSMetadata } from "@/lib/cms/metadata";
 
 const PAGE_URL = `${SITE_URL}/start`;
 
@@ -34,7 +36,7 @@ const PHONE_HREF = "tel:+14088718222";
 const BOOKING_PLACEHOLDER_HREF =
   "mailto:contact@neurointegrativecareoflosgatos.com?subject=New-Patient%20Investigation";
 
-export const metadata: Metadata = {
+const metadataFallback: Metadata = {
   title: "Start Here",
   description:
     "Book your New-Patient Investigation with Dr. Santucci. Full consultation, complete history review, and a clinical impression that finally fits.",
@@ -98,8 +100,13 @@ const schema = {
   },
 };
 
+export async function generateMetadata(): Promise<Metadata> {
+  return withCMSMetadata("/start", metadataFallback);
+}
+
 export default function StartPage() {
   return (
+    <CMSRoute path={"/start"}>
     <>
       <script
         type="application/ld+json"
@@ -315,5 +322,6 @@ export default function StartPage() {
         strategy="afterInteractive"
       />
     </>
-  );
+  
+    </CMSRoute>);
 }

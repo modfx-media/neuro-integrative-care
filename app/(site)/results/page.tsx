@@ -34,6 +34,9 @@ import VideoTestimonials from "@/components/results/VideoTestimonials";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 import { SITE_URL } from "@/lib/site";
 import { getDisplayedGoogleReviews } from "@/lib/google-reviews";
+import CMSRoute from "@/components/cms/CMSRoute";
+import { withCMSMetadata } from "@/lib/cms/metadata";
+
 
 const PAGE_URL = `${SITE_URL}/results`;
 
@@ -42,7 +45,7 @@ const STANDARD_DISCLAIMER =
 
 const INCOMPLETE_SLUGS = new Set(["richard", "beakram"]);
 
-export const metadata: Metadata = {
+const metadataFallback: Metadata = {
   title: "Patient Stories",
   description:
     "Eight patient case journeys from NeuroIntegrative Care of Los Gatos: real investigations, individual outcomes across autoimmune and brain work.",
@@ -160,11 +163,16 @@ const AGGREGATE_MEASURES: AggregateMeasure[] = [
   },
 ];
 
+export async function generateMetadata(): Promise<Metadata> {
+  return withCMSMetadata("/results", metadataFallback);
+}
+
 export default async function ResultsPage() {
   const { reviews: fiveStarGoogleReviews, meta } =
     await getDisplayedGoogleReviews();
 
   return (
+    <CMSRoute path={"/results"}>
     <>
       <script
         type="application/ld+json"
@@ -552,5 +560,6 @@ export default async function ResultsPage() {
         </div>
       </section>
     </>
-  );
+  
+    </CMSRoute>);
 }

@@ -11,10 +11,17 @@ import DoctorTeaser from "@/components/home/DoctorTeaser";
 import DoctorVideos from "@/components/home/DoctorVideos";
 import FinalCTA from "@/components/home/FinalCTA";
 import VisitUsSection from "@/components/home/VisitUsSection";
+import CMSRoute from "@/components/cms/CMSRoute";
+import { withCMSMetadata } from "@/lib/cms/metadata";
+import { siteMetadata } from "@/components/cms/DocumentShell";
+
+export async function generateMetadata() {
+  return withCMSMetadata("/", siteMetadata);
+}
 
 export default function Home() {
   return (
-    <>
+    <CMSRoute path="/">
       <HeroSection />
       <SixDoorsGrid excludeSlugs={["erchonia"]} />
       <ProofCards />
@@ -40,6 +47,6 @@ export default function Home() {
       <DoctorVideos />
       <FinalCTA />
       <VisitUsSection />
-    </>
+    </CMSRoute>
   );
 }

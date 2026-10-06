@@ -10,10 +10,13 @@ import { resourceGuides } from "@/content/resources";
 import Reveal from "@/components/Reveal";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 import { SITE_URL } from "@/lib/site";
+import CMSRoute from "@/components/cms/CMSRoute";
+import { withCMSMetadata } from "@/lib/cms/metadata";
+
 
 const PAGE_URL = `${SITE_URL}/sitemap`;
 
-export const metadata: Metadata = {
+const metadataFallback: Metadata = {
   title: "Sitemap",
   description:
     "Every page on the NeuroIntegrative Care of Los Gatos site: conditions, tools, programs, locations, and patient resources.",
@@ -152,8 +155,13 @@ function LinkList({ items }: { items: LinkItem[] }) {
   );
 }
 
+export async function generateMetadata(): Promise<Metadata> {
+  return withCMSMetadata("/sitemap", metadataFallback);
+}
+
 export default function SitemapPage() {
   return (
+    <CMSRoute path={"/sitemap"}>
     <>
       <script
         type="application/ld+json"
@@ -368,5 +376,6 @@ export default function SitemapPage() {
         </div>
       </section>
     </>
-  );
+  
+    </CMSRoute>);
 }

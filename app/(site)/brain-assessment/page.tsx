@@ -3,10 +3,13 @@ import { jsonLdScript } from "@/lib/jsonLd";
 import Reveal from "@/components/Reveal";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 import { SITE_URL } from "@/lib/site";
+import CMSRoute from "@/components/cms/CMSRoute";
+import { withCMSMetadata } from "@/lib/cms/metadata";
+
 
 const PAGE_URL = `${SITE_URL}/brain-assessment`;
 
-export const metadata: Metadata = {
+const metadataFallback: Metadata = {
   title: "Book a Free Discovery Call",
   description:
     "Book a free discovery call with NeuroIntegrative Care of Los Gatos. No obligation.",
@@ -29,8 +32,13 @@ const schema = {
   url: PAGE_URL,
 };
 
+export async function generateMetadata(): Promise<Metadata> {
+  return withCMSMetadata("/brain-assessment", metadataFallback);
+}
+
 export default function BrainAssessmentPage() {
   return (
+    <CMSRoute path={"/brain-assessment"}>
     <>
       <script
         type="application/ld+json"
@@ -75,5 +83,6 @@ export default function BrainAssessmentPage() {
         </div>
       </section>
     </>
-  );
+  
+    </CMSRoute>);
 }

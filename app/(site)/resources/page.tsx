@@ -3,8 +3,11 @@ import Link from "next/link";
 import { resourceGuides } from "@/content/resources";
 import Reveal from "@/components/Reveal";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
+import CMSRoute from "@/components/cms/CMSRoute";
+import { withCMSMetadata } from "@/lib/cms/metadata";
 
-export const metadata: Metadata = {
+
+const metadataFallback: Metadata = {
   title: "Patient Resources & Guides",
   description:
     "Straight answers to common questions about brain fog, neurofeedback, PEMF therapy, mold exposure, chronic fatigue, and heavy metal detox.",
@@ -18,8 +21,13 @@ export const metadata: Metadata = {
   },
 };
 
+export async function generateMetadata(): Promise<Metadata> {
+  return withCMSMetadata("/resources", metadataFallback);
+}
+
 export default function ResourcesHubPage() {
   return (
+    <CMSRoute path={"/resources"}>
     <>
       {/* Hero */}
       <section className="relative overflow-hidden bg-ink py-28 text-paper lg:py-36">
@@ -88,5 +96,6 @@ export default function ResourcesHubPage() {
         </div>
       </section>
     </>
-  );
+  
+    </CMSRoute>);
 }

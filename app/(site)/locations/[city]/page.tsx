@@ -9,6 +9,9 @@ import CityConditionsGrid from "@/components/locations/CityConditionsGrid";
 import CityPseoLinks from "@/components/locations/CityPseoLinks";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 import { SITE_URL } from "@/lib/site";
+import CMSRoute from "@/components/cms/CMSRoute";
+import { withCMSMetadata } from "@/lib/cms/metadata";
+
 
 const PHONE_DISPLAY = "(408) 871-8222";
 const PHONE_HREF = "tel:+14088718222";
@@ -27,7 +30,7 @@ export async function generateMetadata({
   const { city: citySlug } = await params;
   const city = findCityLocation(citySlug);
   if (!city) return {};
-  return {
+  return withCMSMetadata(`/locations/${city.slug}`, {
     title: city.metaTitle,
     description: city.metaDescription,
     alternates: { canonical: `/locations/${city.slug}` },
@@ -37,7 +40,7 @@ export async function generateMetadata({
       url: `/locations/${city.slug}`,
       type: "article",
     },
-  };
+  });
 }
 
 export default async function CityLocationPage({ params }: PageProps) {
@@ -74,6 +77,7 @@ export default async function CityLocationPage({ params }: PageProps) {
   };
 
   return (
+    <CMSRoute path={`/locations/${city.slug}`}>
     <>
       <script
         type="application/ld+json"
@@ -199,5 +203,6 @@ export default async function CityLocationPage({ params }: PageProps) {
         </div>
       </section>
     </>
-  );
+  
+    </CMSRoute>);
 }
