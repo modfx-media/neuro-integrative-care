@@ -19,10 +19,13 @@ import {
   type CurriculumModule,
 } from "@/content/howItWorks";
 import { SITE_URL } from "@/lib/site";
+import CMSRoute from "@/components/cms/CMSRoute";
+import { withCMSMetadata } from "@/lib/cms/metadata";
+
 
 const PAGE_URL = `${SITE_URL}/how-it-works`;
 
-export const metadata: Metadata = {
+const metadataFallback: Metadata = {
   title: "How It Works",
   description:
     "Neurometabolic Rejuvenation: five non-invasive, drug-free tools plus the 10-week Brain Brightening curriculum paired with home neurofeedback.",
@@ -181,8 +184,13 @@ function ModuleAccordion({
   );
 }
 
+export async function generateMetadata(): Promise<Metadata> {
+  return withCMSMetadata("/how-it-works", metadataFallback);
+}
+
 export default function HowItWorksPage() {
   return (
+    <CMSRoute path={"/how-it-works"}>
     <>
       <script
         type="application/ld+json"
@@ -500,5 +508,6 @@ export default function HowItWorksPage() {
         </div>
       </section>
     </>
-  );
+  
+    </CMSRoute>);
 }

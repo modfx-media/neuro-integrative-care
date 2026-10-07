@@ -21,10 +21,13 @@ import DrSantucciProfile, {
 } from "@/components/about/DrSantucciProfile";
 import { SITE_URL } from "@/lib/site";
 import { jsonLdScript } from "@/lib/jsonLd";
+import CMSRoute from "@/components/cms/CMSRoute";
+import { withCMSMetadata } from "@/lib/cms/metadata";
+
 
 const PAGE_URL = `${SITE_URL}/about/dr-thomas-santucci`;
 
-export const metadata: Metadata = {
+const metadataFallback: Metadata = {
   title: "About Dr. Thomas Santucci",
   description:
     "Thomas A. Santucci, DC, AFNI — Founder & Clinical Director, NeuroIntegrative Care of Los Gatos. 30+ years in neurometabolic, functional medicine.",
@@ -171,8 +174,13 @@ const MEDICAL_ORG_SCHEMA = {
   telephone: "+1-408-871-8222",
 };
 
+export async function generateMetadata(): Promise<Metadata> {
+  return withCMSMetadata("/about/dr-thomas-santucci", metadataFallback);
+}
+
 export default function AboutDrThomasSantucciPage() {
   return (
+    <CMSRoute path={"/about/dr-thomas-santucci"}>
     <>
       <script
         type="application/ld+json"
@@ -235,5 +243,6 @@ export default function AboutDrThomasSantucciPage() {
 
       <DrSantucciProfile />
     </>
-  );
+  
+    </CMSRoute>);
 }

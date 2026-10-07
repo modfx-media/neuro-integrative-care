@@ -9,10 +9,13 @@ import { programs } from "@/content/programs";
 import Reveal from "@/components/Reveal";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 import { SITE_URL } from "@/lib/site";
+import CMSRoute from "@/components/cms/CMSRoute";
+import { withCMSMetadata } from "@/lib/cms/metadata";
+
 
 const PAGE_URL = `${SITE_URL}/programs`;
 
-export const metadata: Metadata = {
+const metadataFallback: Metadata = {
   title: "Programs",
   description:
     "Three ways in: start with the New-Patient Investigation, then the Virtual Program or In-Clinic Care & Regenerative. Out-of-town services available.",
@@ -65,10 +68,15 @@ const schema = {
   },
 };
 
+export async function generateMetadata(): Promise<Metadata> {
+  return withCMSMetadata("/programs", metadataFallback);
+}
+
 export default function ProgramsPage() {
   const [frontDoor, virtual] = programs.entryPrograms;
 
   return (
+    <CMSRoute path={"/programs"}>
     <>
       <script
         type="application/ld+json"
@@ -363,5 +371,6 @@ export default function ProgramsPage() {
         </div>
       </section>
     </>
-  );
+  
+    </CMSRoute>);
 }

@@ -7,6 +7,9 @@ import { toolsForSector } from "@/content/tools";
 import SectorPageTemplate from "@/components/conditions/SectorPageTemplate";
 import SectorJsonLd from "@/components/conditions/SectorJsonLd";
 import { SITE_URL } from "@/lib/site";
+import CMSRoute from "@/components/cms/CMSRoute";
+import { withCMSMetadata } from "@/lib/cms/metadata";
+
 
 export function generateStaticParams() {
   return conditions.map((c) => ({ parentSlug: c.slug }));
@@ -22,7 +25,7 @@ export async function generateMetadata({
   const { parentSlug } = await params;
   const condition = conditions.find((c) => c.slug === parentSlug);
   if (!condition) return {};
-  return {
+  return withCMSMetadata(`/conditions/${condition.slug}`, {
     title: condition.name,
     description: condition.heroLine,
     alternates: { canonical: `/conditions/${condition.slug}` },
@@ -32,7 +35,7 @@ export async function generateMetadata({
       url: `/conditions/${condition.slug}`,
       type: "article",
     },
-  };
+  });
 }
 
 export default async function ConditionPage({ params }: PageProps) {
@@ -46,6 +49,7 @@ export default async function ConditionPage({ params }: PageProps) {
     : undefined;
 
   return (
+    <CMSRoute path={`/conditions/${condition.slug}`}>
     <>
       <SectorJsonLd
         condition={condition}
@@ -59,5 +63,6 @@ export default async function ConditionPage({ params }: PageProps) {
         sectorContent={content}
       />
     </>
-  );
+  
+    </CMSRoute>);
 }

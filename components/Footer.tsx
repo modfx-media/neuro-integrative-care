@@ -45,7 +45,12 @@ const PHONE_DISPLAY = "(408) 871-8222";
 const PHONE_HREF = "tel:+14088718222";
 const MAP_QUERY = "20+S+Santa+Cruz+Ave,+Suite+101,+Los+Gatos,+CA+95030";
 
-export default function Footer() {
+export default function Footer({
+  quickLinks,
+}: {
+  quickLinks?: { label: string; href: string }[];
+}) {
+  const links = quickLinks && quickLinks.length > 0 ? quickLinks : QUICK_LINKS;
   return (
     <footer className="bg-ink text-paper">
       <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-24">
@@ -92,7 +97,7 @@ export default function Footer() {
               Explore
             </p>
             <ul className="mt-6 columns-2 gap-x-6">
-              {QUICK_LINKS.map((link) => (
+              {links.map((link) => (
                 <li key={link.href} className="mb-3 break-inside-avoid">
                   <Link
                     href={link.href}

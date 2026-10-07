@@ -19,6 +19,9 @@ import {
 import Reveal from "@/components/Reveal";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 import { SITE_URL } from "@/lib/site";
+import CMSRoute from "@/components/cms/CMSRoute";
+import { withCMSMetadata } from "@/lib/cms/metadata";
+
 
 const PAGE_URL = `${SITE_URL}/programs/virtual`;
 
@@ -30,7 +33,7 @@ const virtualProgram = programs.entryPrograms.find(
   (p) => p.slug === "virtual-program",
 );
 
-export const metadata: Metadata = {
+const metadataFallback: Metadata = {
   title: `The Virtual Program: ${PROGRAM_NAME_PUBLIC}`,
   description:
     "A 30-year neurometabolic method delivered to your home: remote QEEG, biweekly neurofeedback review, and monthly clinician review over a 10-week program. National.",
@@ -189,8 +192,13 @@ const EXECUTIVE_CONTROL_SYSTEMS = [
   },
 ] as const;
 
+export async function generateMetadata(): Promise<Metadata> {
+  return withCMSMetadata("/programs/virtual", metadataFallback);
+}
+
 export default function VirtualProgramPage() {
   return (
+    <CMSRoute path={"/programs/virtual"}>
     <>
       <script
         type="application/ld+json"
@@ -620,5 +628,6 @@ export default function VirtualProgramPage() {
         </div>
       </section>
     </>
-  );
+  
+    </CMSRoute>);
 }

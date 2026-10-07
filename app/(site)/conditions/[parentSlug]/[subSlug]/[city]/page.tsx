@@ -9,6 +9,9 @@ import { buildCityConditionCopy } from "@/content/pseo/cityConditionCopy";
 import Reveal from "@/components/Reveal";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 import { SITE_URL } from "@/lib/site";
+import CMSRoute from "@/components/cms/CMSRoute";
+import { withCMSMetadata } from "@/lib/cms/metadata";
+
 
 interface CityConditionParams {
   parentSlug: string;
@@ -50,7 +53,7 @@ export async function generateMetadata({
   const cityIndex = cityLocations.findIndex((c) => c.slug === city.slug);
   const copy = buildCityConditionCopy(article, city, cityIndex);
   const url = `/conditions/${article.parentSlug}/${article.slug}/${city.slug}`;
-  return {
+  return withCMSMetadata(url, {
     title: copy.metaTitle,
     description: copy.metaDescription,
     alternates: { canonical: url },
@@ -60,7 +63,7 @@ export async function generateMetadata({
       url,
       type: "article",
     },
-  };
+  });
 }
 
 export default async function CityConditionPage({ params }: PageProps) {
@@ -92,6 +95,7 @@ export default async function CityConditionPage({ params }: PageProps) {
   };
 
   return (
+    <CMSRoute path={`/conditions/${article.parentSlug}/${article.slug}/${city.slug}`}>
     <>
       <script
         type="application/ld+json"
@@ -243,5 +247,6 @@ export default async function CityConditionPage({ params }: PageProps) {
         </div>
       </section>
     </>
-  );
+  
+    </CMSRoute>);
 }

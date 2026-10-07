@@ -2,20 +2,27 @@ import Script from "next/script";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import OrganizationJsonLd from "@/components/OrganizationJsonLd";
+import DocumentShell, { siteMetadata } from "@/components/cms/DocumentShell";
+import { getFooterQuickLinks, getHeaderNavItems } from "@/lib/cms/query";
 
-// Chrome for the main marketing site. Landing pages live in app/(lp) and
-// supply their own stripped-down header and footer instead.
-export default function SiteLayout({
+export const metadata = siteMetadata;
+
+export default async function SiteLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const [navItems, quickLinks] = await Promise.all([
+    getHeaderNavItems(),
+    getFooterQuickLinks(),
+  ]);
+
   return (
-    <>
+    <DocumentShell>
       <OrganizationJsonLd />
-      <Nav />
+      <Nav items={navItems} />
       <main className="flex-1">{children}</main>
-      <Footer />
+      <Footer quickLinks={quickLinks} />
       <Script id="knock-knock-widget" strategy="afterInteractive">
         {`
           window.company_id = '6a9169788db2cbf50c5c2258';
@@ -24,6 +31,6 @@ export default function SiteLayout({
           document.getElementsByTagName('HEAD')[0].appendChild(newScript);
         `}
       </Script>
-    </>
+    </DocumentShell>
   );
 }

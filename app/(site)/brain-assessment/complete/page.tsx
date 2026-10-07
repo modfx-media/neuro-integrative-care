@@ -1,14 +1,22 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
+import CMSRoute from "@/components/cms/CMSRoute";
+import { withCMSMetadata } from "@/lib/cms/metadata";
 
-export const metadata: Metadata = {
+
+const metadataFallback: Metadata = {
   title: "Assessment Complete",
   robots: { index: false, follow: false },
 };
 
+export async function generateMetadata(): Promise<Metadata> {
+  return withCMSMetadata("/brain-assessment/complete", metadataFallback);
+}
+
 export default function BrainAssessmentCompletePage() {
   return (
+    <CMSRoute path={"/brain-assessment/complete"}>
     <section className="bg-paper py-28 lg:py-36">
       <div className="mx-auto max-w-2xl px-6 text-center lg:px-10">
         <Reveal
@@ -32,5 +40,6 @@ export default function BrainAssessmentCompletePage() {
         </Reveal>
       </div>
     </section>
-  );
+  
+    </CMSRoute>);
 }

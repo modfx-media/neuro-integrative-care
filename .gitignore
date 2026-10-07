@@ -41,6 +41,14 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# payload local uploads (use Vercel Blob in production)
+/public/media/**
+!/public/media/.gitkeep
+/media
+
+# cms script build artifacts
+scripts/.cms-run*.mjs
+
 # raw client-supplied source assets (originals, some exceed GitHub's 100MB
 # file limit) — optimized copies actually used by the site live in public/
 /client-assests/
