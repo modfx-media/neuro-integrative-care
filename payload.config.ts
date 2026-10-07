@@ -18,7 +18,9 @@ const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
 const disablePush =
-  process.env.VERCEL === "1" || process.env.CMS_IMPORT_APPLY === "1";
+  Boolean(process.env.VERCEL) ||
+  process.env.CMS_IMPORT_APPLY === "1" ||
+  process.env.PAYLOAD_PUSH === "false";
 
 const plugins: Plugin[] = [
   seoPlugin({
@@ -73,10 +75,12 @@ export default buildConfig({
     user: Users.slug,
     importMap: {
       baseDir: path.resolve(dirname),
+      importMapFile: path.resolve(dirname, "app/(payload)/admin/importMap.js"),
     },
     livePreview: {
       breakpoints: [
         { label: "Mobile", name: "mobile", width: 375, height: 667 },
+        { label: "Tablet", name: "tablet", width: 768, height: 1024 },
         { label: "Desktop", name: "desktop", width: 1440, height: 900 },
       ],
     },
@@ -84,7 +88,7 @@ export default buildConfig({
   collections: [Users, Media, Pages, Posts],
   globals: [Header, Footer, SiteSettings],
   editor: lexicalEditor(),
-  secret: process.env.PAYLOAD_SECRET || "CHANGE-ME-LOCAL-DEV-SECRET-32CHARS",
+  secret: process.env.PAYLOAD_SECRET || "",
   serverURL: getServerURL(),
   cors: getCorsOrigins(),
   csrf: getCorsOrigins(),

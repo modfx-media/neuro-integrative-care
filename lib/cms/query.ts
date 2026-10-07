@@ -1,7 +1,7 @@
 import { draftMode } from "next/headers";
 import { getPayload } from "payload";
 import config from "@payload-config";
-import { withCMS } from "@/lib/cms/safe";
+import { cmsConfigured, withCMS } from "@/lib/cms/safe";
 import { normalizePath } from "@/lib/cms/path";
 
 export type RoutedContent = {
@@ -31,6 +31,7 @@ export async function queryRoutedContentByPath(
 ): Promise<RoutedContent | null> {
   const normalized = normalizePath(path);
   if (!normalized) return null;
+  if (!cmsConfigured()) return null;
 
   return withCMS(async () => {
     const payload = await getPayload({ config });
@@ -75,6 +76,7 @@ export type SitemapDoc = {
 };
 
 export async function querySitemapEntries(): Promise<SitemapDoc[]> {
+  if (!cmsConfigured()) return [];
   return withCMS(async () => {
     const payload = await getPayload({ config });
     const [pages, posts] = await Promise.all([
@@ -120,6 +122,7 @@ export async function querySitemapEntries(): Promise<SitemapDoc[]> {
 }
 
 export async function getHeaderNavItems() {
+  if (!cmsConfigured()) return [] as { label: string; href: string }[];
   return withCMS(async () => {
     const payload = await getPayload({ config });
     const header = await payload.findGlobal({ slug: "header" });
@@ -133,6 +136,7 @@ export async function getHeaderNavItems() {
 }
 
 export async function getFooterQuickLinks() {
+  if (!cmsConfigured()) return [] as { label: string; href: string }[];
   return withCMS(async () => {
     const payload = await getPayload({ config });
     const footer = await payload.findGlobal({ slug: "footer" });

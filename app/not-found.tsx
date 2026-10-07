@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import DocumentShell from "@/components/cms/DocumentShell";
 
 export const metadata: Metadata = {
@@ -15,9 +16,9 @@ export default function NotFound() {
         <p className="mt-4 text-lg text-ink/75">
           The URL may have moved. Head back to the homepage to keep exploring care options.
         </p>
-        <a href="/" className="mt-8 inline-flex text-sm font-medium text-ink underline">
+        <Link href="/" className="mt-8 inline-flex text-sm font-medium text-ink underline">
           Return home
-        </a>
+        </Link>
       </main>
     </DocumentShell>
   );

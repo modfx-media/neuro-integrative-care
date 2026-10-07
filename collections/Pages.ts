@@ -16,9 +16,17 @@ export const Pages: CollectionConfig = {
     defaultColumns: ["title", "path", "updatedAt"],
     useAsTitle: "title",
     livePreview: {
-      url: ({ data }) => previewFromPath((data as { path?: string })?.path),
+      url: ({ data }) =>
+        previewFromPath(
+          (data as { path?: string })?.path,
+          (data as { slug?: string })?.slug,
+        ),
     },
-    preview: (data) => previewFromPath((data as { path?: string } | undefined)?.path),
+    preview: (data) =>
+      previewFromPath(
+        (data as { path?: string; slug?: string } | undefined)?.path,
+        (data as { path?: string; slug?: string } | undefined)?.slug,
+      ),
   },
   fields: [
     {

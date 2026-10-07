@@ -16,9 +16,21 @@ export const Posts: CollectionConfig = {
     defaultColumns: ["title", "path", "updatedAt"],
     useAsTitle: "title",
     livePreview: {
-      url: ({ data }) => previewFromPath((data as { path?: string })?.path),
+      url: ({ data }) =>
+        previewFromPath(
+          (data as { path?: string })?.path,
+          (data as { slug?: string })?.slug
+            ? `blog/${(data as { slug?: string }).slug}`
+            : undefined,
+        ),
     },
-    preview: (data) => previewFromPath((data as { path?: string } | undefined)?.path),
+    preview: (data) => {
+      const doc = data as { path?: string; slug?: string } | undefined;
+      return previewFromPath(
+        doc?.path,
+        doc?.slug ? `blog/${doc.slug}` : undefined,
+      );
+    },
   },
   fields: [
     {
