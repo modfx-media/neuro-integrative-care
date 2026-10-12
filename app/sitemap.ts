@@ -8,6 +8,8 @@ import { resourceGuides } from "@/content/resources";
 import { SITE_URL } from "@/lib/site";
 import { querySitemapEntries } from "@/lib/cms/query";
 
+
+export const revalidate = 300;
 function hardcodedSitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   const entries: MetadataRoute.Sitemap = [

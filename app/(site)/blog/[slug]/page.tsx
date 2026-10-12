@@ -11,6 +11,8 @@ import CMSRoute from "@/components/cms/CMSRoute";
 import { withCMSMetadata } from "@/lib/cms/metadata";
 
 
+
+export const revalidate = 300;
 export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
 }
