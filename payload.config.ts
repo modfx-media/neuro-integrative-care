@@ -14,6 +14,7 @@ import { Header, Footer, SiteSettings } from "./globals/Site";
 import { getCorsOrigins, getServerURL } from "./lib/cms/serverURL";
 import { normalizePath } from "./lib/cms/path";
 
+import { scheduledPublishPlugin } from "./scheduled-publish";
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
@@ -103,5 +104,5 @@ export default buildConfig({
       connectionString: process.env.DATABASE_URL || "",
     },
   }),
-  plugins,
+  plugins: [scheduledPublishPlugin(), ...plugins],
 });

@@ -11,6 +11,8 @@ import CMSRoute from "@/components/cms/CMSRoute";
 import { withCMSMetadata } from "@/lib/cms/metadata";
 
 
+
+export const revalidate = 300;
 const PAGE_URL = `${SITE_URL}/blog`;
 
 const metadataFallback: Metadata = {
