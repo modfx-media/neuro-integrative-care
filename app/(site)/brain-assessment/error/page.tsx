@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
+import CMSRoute from "@/components/cms/CMSRoute";
+import { withCMSMetadata } from "@/lib/cms/metadata";
 
-export const metadata: Metadata = {
+
+const metadataFallback: Metadata = {
   title: "Assessment Unavailable",
   robots: { index: false, follow: false },
 };
+
+export async function generateMetadata(): Promise<Metadata> {
+  return withCMSMetadata("/brain-assessment/error", metadataFallback);
+}
 
 export default async function BrainAssessmentErrorPage({
   searchParams,
@@ -16,6 +23,7 @@ export default async function BrainAssessmentErrorPage({
   const expired = error_msg?.toLowerCase().includes("expired");
 
   return (
+    <CMSRoute path={"/brain-assessment/error"}>
     <section className="bg-paper py-28 lg:py-36">
       <div className="mx-auto max-w-2xl px-6 text-center lg:px-10">
         <Reveal
@@ -39,5 +47,6 @@ export default async function BrainAssessmentErrorPage({
         </Reveal>
       </div>
     </section>
-  );
+  
+    </CMSRoute>);
 }

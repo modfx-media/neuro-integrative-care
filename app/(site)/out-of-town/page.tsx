@@ -5,12 +5,15 @@ import { programs } from "@/content/programs";
 import Reveal from "@/components/Reveal";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 import { SITE_URL } from "@/lib/site";
+import CMSRoute from "@/components/cms/CMSRoute";
+import { withCMSMetadata } from "@/lib/cms/metadata";
+
 
 const PAGE_URL = `${SITE_URL}/out-of-town`;
 
 const FRAMING_LABELS = ["Continuity", "Access", "Oversight"] as const;
 
-export const metadata: Metadata = {
+const metadataFallback: Metadata = {
   title: "Out-of-Town Services",
   description: programs.outOfTownServices.description,
   alternates: { canonical: "/out-of-town" },
@@ -56,8 +59,13 @@ const schema = {
   },
 };
 
+export async function generateMetadata(): Promise<Metadata> {
+  return withCMSMetadata("/out-of-town", metadataFallback);
+}
+
 export default function OutOfTownPage() {
   return (
+    <CMSRoute path={"/out-of-town"}>
     <>
       <script
         type="application/ld+json"
@@ -182,5 +190,6 @@ export default function OutOfTownPage() {
         </div>
       </section>
     </>
-  );
+  
+    </CMSRoute>);
 }

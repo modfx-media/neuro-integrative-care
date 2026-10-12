@@ -14,6 +14,9 @@ import { jsonLdScript } from "@/lib/jsonLd";
 import Reveal from "@/components/Reveal";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 import { SITE_URL } from "@/lib/site";
+import CMSRoute from "@/components/cms/CMSRoute";
+import { withCMSMetadata } from "@/lib/cms/metadata";
+
 
 const PAGE_URL = `${SITE_URL}/technology`;
 
@@ -57,7 +60,7 @@ const TECHNOLOGY_ITEMS: TechnologyItem[] = [
   },
 ];
 
-export const metadata: Metadata = {
+const metadataFallback: Metadata = {
   title: "Technology",
   description:
     "The non-invasive, drug-free technology used at NeuroIntegrative Care of Los Gatos: Violet Laser Therapy, qEEG & Neurofeedback, Miracle Wave, Neogen Neuropathy Treatment, Pulse PEMF, and Thermal Photography.",
@@ -75,7 +78,7 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "MedicalWebPage",
   name: "Technology | NeuroIntegrative Care of Los Gatos",
-  description: metadata.description,
+  description: metadataFallback.description,
   url: PAGE_URL,
   inLanguage: "en-US",
   isPartOf: {
@@ -87,8 +90,13 @@ const schema = {
   audience: { "@type": "MedicalAudience", audienceType: "Patient" },
 };
 
+export async function generateMetadata(): Promise<Metadata> {
+  return withCMSMetadata("/technology", metadataFallback);
+}
+
 export default function TechnologyPage() {
   return (
+    <CMSRoute path={"/technology"}>
     <>
       <script
         type="application/ld+json"
@@ -222,6 +230,7 @@ export default function TechnologyPage() {
         </div>
       </section>
     </>
-  );
+  
+    </CMSRoute>);
 }
 

@@ -10,6 +10,9 @@ import Reveal from "@/components/Reveal";
 import ToolMediaEmbed from "@/components/tools/ToolMediaEmbed";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 import { SITE_URL } from "@/lib/site";
+import CMSRoute from "@/components/cms/CMSRoute";
+import { withCMSMetadata } from "@/lib/cms/metadata";
+
 
 const conditionsBySlug = new Map(conditions.map((c) => [c.slug, c]));
 
@@ -27,7 +30,7 @@ export async function generateMetadata({
   const { toolSlug } = await params;
   const tool = tools.find((t) => t.slug === toolSlug);
   if (!tool) return {};
-  return {
+  return withCMSMetadata(`/tools/${tool.slug}`, {
     title: tool.name,
     description: tool.description,
     alternates: { canonical: `/tools/${tool.slug}` },
@@ -37,7 +40,7 @@ export async function generateMetadata({
       url: `/tools/${tool.slug}`,
       type: "article",
     },
-  };
+  });
 }
 
 export default async function ToolPage({ params }: PageProps) {
@@ -94,6 +97,7 @@ export default async function ToolPage({ params }: PageProps) {
   };
 
   return (
+    <CMSRoute path={`/tools/${tool.slug}`}>
     <>
       <script
         type="application/ld+json"
@@ -416,5 +420,6 @@ export default async function ToolPage({ params }: PageProps) {
         </div>
       </section>
     </>
-  );
+  
+    </CMSRoute>);
 }

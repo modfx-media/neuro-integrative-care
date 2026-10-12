@@ -7,10 +7,13 @@ import { blogPosts } from "@/content/blog";
 import Reveal from "@/components/Reveal";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 import { SITE_URL } from "@/lib/site";
+import CMSRoute from "@/components/cms/CMSRoute";
+import { withCMSMetadata } from "@/lib/cms/metadata";
+
 
 const PAGE_URL = `${SITE_URL}/blog`;
 
-export const metadata: Metadata = {
+const metadataFallback: Metadata = {
   title: "Blog",
   description:
     "Articles on joint pain, nerve health, and drug-free regenerative care from NeuroIntegrative Care of Los Gatos — practical, root-cause insights.",
@@ -45,8 +48,13 @@ const schema = {
   })),
 };
 
+export async function generateMetadata(): Promise<Metadata> {
+  return withCMSMetadata("/blog", metadataFallback);
+}
+
 export default function BlogPage() {
   return (
+    <CMSRoute path={"/blog"}>
     <>
       <script
         type="application/ld+json"
@@ -152,5 +160,6 @@ export default function BlogPage() {
         </div>
       </section>
     </>
-  );
+  
+    </CMSRoute>);
 }

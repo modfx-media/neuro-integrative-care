@@ -6,6 +6,9 @@ import { resourceGuides, findResourceGuide } from "@/content/resources";
 import Reveal from "@/components/Reveal";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 import { SITE_URL } from "@/lib/site";
+import CMSRoute from "@/components/cms/CMSRoute";
+import { withCMSMetadata } from "@/lib/cms/metadata";
+
 
 export function generateStaticParams() {
   return resourceGuides.map((guide) => ({ slug: guide.slug }));
@@ -21,7 +24,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const guide = findResourceGuide(slug);
   if (!guide) return {};
-  return {
+  return withCMSMetadata(`/resources/${slug}`, {
     title: guide.metaTitle,
     description: guide.metaDescription,
     alternates: { canonical: `/resources/${guide.slug}` },
@@ -31,7 +34,7 @@ export async function generateMetadata({
       url: `/resources/${guide.slug}`,
       type: "article",
     },
-  };
+  });
 }
 
 export default async function ResourceGuidePage({ params }: PageProps) {
@@ -73,6 +76,7 @@ export default async function ResourceGuidePage({ params }: PageProps) {
   };
 
   return (
+    <CMSRoute path={`/resources/${slug}`}>
     <>
       <script
         type="application/ld+json"
@@ -207,5 +211,6 @@ export default async function ResourceGuidePage({ params }: PageProps) {
         </div>
       </section>
     </>
-  );
+  
+    </CMSRoute>);
 }

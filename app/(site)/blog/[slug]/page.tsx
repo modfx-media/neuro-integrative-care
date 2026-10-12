@@ -7,6 +7,9 @@ import { blogPosts, findBlogPost } from "@/content/blog";
 import Reveal from "@/components/Reveal";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 import { SITE_URL } from "@/lib/site";
+import CMSRoute from "@/components/cms/CMSRoute";
+import { withCMSMetadata } from "@/lib/cms/metadata";
+
 
 export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
@@ -22,7 +25,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = findBlogPost(slug);
   if (!post) return {};
-  return {
+  return withCMSMetadata(`/blog/${slug}`, {
     title: post.metaTitle,
     description: post.metaDescription,
     alternates: { canonical: `/blog/${post.slug}` },
@@ -35,7 +38,7 @@ export async function generateMetadata({
       // No per-post `images` override: hero images aren't consistently
       // 1200x630, so posts fall back to the branded app/opengraph-image.tsx.
     },
-  };
+  });
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
@@ -69,6 +72,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   };
 
   return (
+    <CMSRoute path={`/blog/${slug}`}>
     <>
       <script
         type="application/ld+json"
@@ -296,5 +300,6 @@ export default async function BlogPostPage({ params }: PageProps) {
         </section>
       )}
     </>
-  );
+  
+    </CMSRoute>);
 }

@@ -6,8 +6,9 @@ import { cityLocations } from "@/content/locations";
 import { blogPosts } from "@/content/blog";
 import { resourceGuides } from "@/content/resources";
 import { SITE_URL } from "@/lib/site";
+import { querySitemapEntries } from "@/lib/cms/query";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+function hardcodedSitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   const entries: MetadataRoute.Sitemap = [
     { url: `${SITE_URL}/`, lastModified: now, changeFrequency: "weekly", priority: 1.0 },
@@ -51,9 +52,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     });
     parent.subConditions?.forEach((sub) => {
-      // Skip legacy sub-condition pages superseded by a fuller condition
-      // article — they carry a canonical tag elsewhere and shouldn't be
-      // listed as a separate indexable URL.
       const superseded = conditionArticles.some(
         (article) =>
           article.supersedes?.parentSlug === parent.slug &&
@@ -76,7 +74,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.75,
     });
-    // pSEO: condition x city pages
     cityLocations.forEach((city) => {
       entries.push({
         url: `${SITE_URL}/conditions/${article.parentSlug}/${article.slug}/${city.slug}`,
@@ -87,7 +84,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
-  // pSEO: service (tool) x city pages
   tools.forEach((tool) => {
     cityLocations.forEach((city) => {
       entries.push({
@@ -99,7 +95,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
-  // pSEO: PAA-derived resource/guide pages
   entries.push({
     url: `${SITE_URL}/resources`,
     lastModified: now,
@@ -125,4 +120,34 @@ export default function sitemap(): MetadataRoute.Sitemap {
   });
 
   return entries;
+}
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const entries = hardcodedSitemap();
+  const cmsDocs = await querySitemapEntries();
+  if (!cmsDocs.length) return entries;
+
+  const byUrl = new Map(entries.map((entry) => [entry.url, entry]));
+  for (const doc of cmsDocs) {
+    if (!doc.path) continue;
+    const url = `${SITE_URL}${doc.path === "/" ? "/" : doc.path}`;
+    const lastModified = doc.sourceUpdatedAt
+      ? new Date(doc.sourceUpdatedAt)
+      : doc.updatedAt
+        ? new Date(doc.updatedAt)
+        : new Date();
+    const existing = byUrl.get(url);
+    byUrl.set(url, {
+      ...(existing ?? { url, changeFrequency: "monthly" as const, priority: 0.5 }),
+      lastModified,
+    });
+  }
+
+  const excluded = new Set(
+    cmsDocs
+      .filter((doc) => doc.meta?.excludeFromSitemap || doc.meta?.noIndex)
+      .map((doc) => `${SITE_URL}${doc.path === "/" ? "/" : doc.path}`),
+  );
+
+  return [...byUrl.values()].filter((entry) => !excluded.has(entry.url));
 }

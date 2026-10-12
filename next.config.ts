@@ -1,6 +1,13 @@
 import type { NextConfig } from "next";
+import { withPayload } from "@payloadcms/next/withPayload";
 
 const nextConfig: NextConfig = {
+  serverExternalPackages: [
+    "pg",
+    "@payloadcms/db-vercel-postgres",
+    "@neondatabase/serverless",
+    "@vercel/postgres",
+  ],
   async redirects() {
     return [
       { source: "/how-we-work", destination: "/how-it-works", permanent: true },
@@ -13,4 +20,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withPayload(nextConfig, { devBundleServerPackages: false });

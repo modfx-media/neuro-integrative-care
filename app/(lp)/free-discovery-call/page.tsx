@@ -9,6 +9,9 @@ import PublicationsSection from "@/components/about/PublicationsSection";
 import PatientReviewsSection from "@/components/lp/PatientReviewsSection";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import Reveal from "@/components/Reveal";
+import CMSRoute from "@/components/cms/CMSRoute";
+import { withCMSMetadata } from "@/lib/cms/metadata";
+
 
 // Patient-focused stat bar for the funnel hero — swaps the homepage's
 // career-history stats (Silicon Valley, colleges) for what a prospective
@@ -28,15 +31,20 @@ const PATIENT_STATS = [
 //
 // Every CTA points at /brain-assessment and no body copy links away, so the
 // page has exactly one exit.
-export const metadata: Metadata = {
+const metadataFallback: Metadata = {
   title: "Free Discovery Call",
   description:
     "A 30-year, root-cause investigation into the brain, metabolism, and nervous system, led by Dr. Thomas Santucci, DC, AFNI. Start with a free brain assessment.",
   robots: { index: false, follow: true },
 };
 
+export async function generateMetadata(): Promise<Metadata> {
+  return withCMSMetadata("/free-discovery-call", metadataFallback);
+}
+
 export default function BrainAssessmentOfferPage() {
   return (
+    <CMSRoute path={"/free-discovery-call"}>
     <>
       <HeroSection
         eyebrow="Free Discovery Call · NeuroIntegrative Care of Los Gatos"
@@ -83,6 +91,7 @@ export default function BrainAssessmentOfferPage() {
       <PublicationsSection centerHeadings />
       <PatientReviewsSection />
     </>
-  );
+  
+    </CMSRoute>);
 }
 

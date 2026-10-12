@@ -24,7 +24,12 @@ const NAV_ITEMS = [
   { label: "Virtual Program", href: "/programs/virtual" },
 ] as const;
 
-export default function Nav() {
+export default function Nav({
+  items,
+}: {
+  items?: { label: string; href: string }[];
+}) {
+  const navItems = items && items.length > 0 ? items : NAV_ITEMS;
   const pathname = usePathname() ?? "/";
   const [mobileOpen, setMobileOpen] = useState(false);
   const hamburgerRef = useRef<HTMLButtonElement | null>(null);
@@ -159,7 +164,7 @@ export default function Nav() {
           </Link>
 
           <ul className="hidden lg:flex items-center gap-0 xl:gap-1">
-            {NAV_ITEMS.map((item) => {
+            {navItems.map((item) => {
               const active = isActive(item.href);
               if (item.label === "About") {
                 return (
@@ -249,7 +254,7 @@ export default function Nav() {
                 Menu
               </p>
               <ul className="flex flex-col">
-                {NAV_ITEMS.map((item, i) => {
+                {navItems.map((item, i) => {
                   const active = isActive(item.href);
                   if (item.label === "About") {
                     return (

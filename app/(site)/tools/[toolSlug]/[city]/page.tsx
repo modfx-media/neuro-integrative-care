@@ -8,6 +8,9 @@ import { buildCityServiceCopy } from "@/content/pseo/cityServiceCopy";
 import Reveal from "@/components/Reveal";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 import { SITE_URL } from "@/lib/site";
+import CMSRoute from "@/components/cms/CMSRoute";
+import { withCMSMetadata } from "@/lib/cms/metadata";
+
 
 interface CityServiceParams {
   toolSlug: string;
@@ -41,7 +44,7 @@ export async function generateMetadata({
   const cityIndex = cityLocations.findIndex((c) => c.slug === city.slug);
   const copy = buildCityServiceCopy(tool, city, cityIndex);
   const url = `/tools/${tool.slug}/${city.slug}`;
-  return {
+  return withCMSMetadata(url, {
     title: copy.metaTitle,
     description: copy.metaDescription,
     alternates: { canonical: url },
@@ -51,7 +54,7 @@ export async function generateMetadata({
       url,
       type: "article",
     },
-  };
+  });
 }
 
 export default async function CityServicePage({ params }: PageProps) {
@@ -88,6 +91,7 @@ export default async function CityServicePage({ params }: PageProps) {
   };
 
   return (
+    <CMSRoute path={`/tools/${tool.slug}/${city.slug}`}>
     <>
       <script
         type="application/ld+json"
@@ -189,5 +193,6 @@ export default async function CityServicePage({ params }: PageProps) {
         </div>
       </section>
     </>
-  );
+  
+    </CMSRoute>);
 }
