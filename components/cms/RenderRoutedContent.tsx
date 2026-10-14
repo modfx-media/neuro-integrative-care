@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { RichText } from "@payloadcms/richtext-lexical/react";
+import type { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 import type { RoutedContent } from "@/lib/cms/query";
 
 type LayoutBlock = {
@@ -51,13 +53,10 @@ function BlockView({ block }: { block: LayoutBlock }) {
   }
 
   if (block.blockType === "richText") {
-    const text = extractPlainText(block.content);
-    if (!text) return null;
+    if (!extractPlainText(block.content) && !JSON.stringify(block.content ?? "").includes('"upload"')) return null;
     return (
-      <div className="space-y-4 text-lg leading-relaxed text-ink/80">
-        {text.split(/\n{2,}/).map((paragraph, index) => (
-          <p key={index}>{paragraph}</p>
-        ))}
+      <div className="cms-prose space-y-4 text-lg leading-relaxed text-ink/80 [&_a]:text-amber-b [&_a]:underline [&_h2]:font-serif [&_h2]:text-3xl [&_h2]:text-ink [&_h3]:font-serif [&_h3]:text-2xl [&_h3]:text-ink [&_img]:my-6 [&_img]:h-auto [&_img]:max-w-full [&_img]:rounded-2xl [&_ol]:list-decimal [&_ol]:pl-6 [&_ul]:list-disc [&_ul]:pl-6">
+        <RichText data={block.content as SerializedEditorState} />
       </div>
     );
   }
@@ -84,18 +83,31 @@ function BlockView({ block }: { block: LayoutBlock }) {
   return null;
 }
 
-export default function RenderRoutedContent({ doc }: { doc: RoutedContent["doc"] }) {
+export default function RenderRoutedContent({
+  doc,
+  standalone = false,
+}: {
+  doc: RoutedContent["doc"];
+  /** CMS-only post with no coded page: also render its title and meta image. */
+  standalone?: boolean;
+}) {
   const layout = Array.isArray(doc.layout) ? (doc.layout as LayoutBlock[]) : [];
+  const featured = (doc.meta?.image ?? null) as { url?: string | null; alt?: string | null } | null;
+  const featuredUrl = standalone && featured && typeof featured === "object" ? featured.url : null;
+  const hasH1 = layout.some((b) => b.blockType === "heading" && b.tag === "h1");
 
   return (
     <article className="mx-auto max-w-4xl space-y-10 px-6 py-16 lg:px-10 lg:py-24">
-      {layout.length === 0 ? (
-        <h1 className="font-serif text-4xl text-ink">{doc.title}</h1>
-      ) : (
-        layout.map((block, index) => (
-          <BlockView key={index} block={block} />
-        ))
-      )}
+      {(standalone || layout.length === 0) && !hasH1 && doc.title ? (
+        <h1 className="font-serif text-4xl leading-tight text-ink lg:text-5xl">{doc.title}</h1>
+      ) : null}
+      {featuredUrl ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={featuredUrl} alt={featured?.alt ?? doc.title ?? ""} className="aspect-[16/9] w-full rounded-2xl object-cover" />
+      ) : null}
+      {layout.map((block, index) => (
+        <BlockView key={index} block={block} />
+      ))}
     </article>
   );
 }
