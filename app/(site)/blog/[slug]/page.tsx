@@ -13,6 +13,11 @@ import { withCMSMetadata } from "@/lib/cms/metadata";
 
 
 export const revalidate = 300;
+export const dynamicParams = true;
+
+function MissingPost(): never {
+  notFound();
+}
 export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
 }
@@ -26,7 +31,7 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const post = findBlogPost(slug);
-  if (!post) return {};
+  if (!post) return withCMSMetadata(`/blog/${slug}`, {});
   return withCMSMetadata(`/blog/${slug}`, {
     title: post.metaTitle,
     description: post.metaDescription,
@@ -46,7 +51,15 @@ export async function generateMetadata({
 export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
   const post = findBlogPost(slug);
-  if (!post) notFound();
+  if (!post) {
+    // CMS-only post (created in Payload, not in content/blog): render it from
+    // the CMS, or 404 when no published doc exists at this path.
+    return (
+      <CMSRoute path={`/blog/${slug}`} standalone>
+        <MissingPost />
+      </CMSRoute>
+    );
+  }
 
   const pageUrl = `${SITE_URL}/blog/${post.slug}`;
   const otherPosts = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 2);

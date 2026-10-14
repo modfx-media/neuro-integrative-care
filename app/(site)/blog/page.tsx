@@ -9,6 +9,7 @@ import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 import { SITE_URL } from "@/lib/site";
 import CMSRoute from "@/components/cms/CMSRoute";
 import { withCMSMetadata } from "@/lib/cms/metadata";
+import { getCmsPublishedPosts } from "@/lib/cms/listed-posts";
 
 
 
@@ -54,7 +55,24 @@ export async function generateMetadata(): Promise<Metadata> {
   return withCMSMetadata("/blog", metadataFallback);
 }
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const staticSlugs = new Set(blogPosts.map((p) => p.slug));
+  const cmsOnly = (await getCmsPublishedPosts()).filter((p) => !staticSlugs.has(p.slug));
+  const cards = [
+    ...cmsOnly.map((p) => ({
+      slug: p.slug,
+      title: p.title,
+      excerpt: p.excerpt,
+      heroImage: p.image,
+      heroImageAlt: p.imageAlt,
+      kicker: "Article",
+      date: p.date ?? "",
+      displayDate: p.date
+        ? new Date(p.date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" })
+        : "",
+    })),
+    ...blogPosts,
+  ];
   return (
     <CMSRoute path={"/blog"}>
     <>
@@ -109,7 +127,7 @@ export default function BlogPage() {
       <section className="bg-paper py-24 lg:py-32">
         <div className="mx-auto max-w-6xl px-6 lg:px-10">
           <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {blogPosts.map((post, i) => (
+            {cards.map((post, i) => (
               <Reveal
                 key={post.slug}
                 as="li"
@@ -121,14 +139,17 @@ export default function BlogPage() {
                   href={`/blog/${post.slug}`}
                   className="group flex h-full flex-col overflow-hidden rounded-2xl border border-rule/60 bg-paper shadow-[0_2px_18px_-14px_rgba(11,18,32,0.25)] transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-amber/50 hover:shadow-[0_40px_80px_-32px_rgba(232,160,32,0.35)]"
                 >
-                  <div className="relative aspect-[4/3] overflow-hidden">
+                  <div className="relative aspect-[4/3] overflow-hidden bg-ink">
+                    {post.heroImage ? (
                     <Image
+                      unoptimized={post.heroImage.startsWith("http") || post.heroImage.startsWith("/api/")}
                       src={post.heroImage}
                       alt={post.heroImageAlt}
                       fill
                       sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                       className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     />
+                    ) : null}
                   </div>
                   <div className="flex flex-1 flex-col p-6 lg:p-7">
                     <p className="font-mono font-medium text-[12px] uppercase tracking-[0.16em] text-amber">

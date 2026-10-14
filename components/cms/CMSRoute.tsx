@@ -7,9 +7,11 @@ import RenderRoutedContent from "@/components/cms/RenderRoutedContent";
 export default async function CMSRoute({
   path,
   children,
+  standalone = false,
 }: {
   path: string;
   children: ReactNode;
+  standalone?: boolean;
 }) {
   const [routed, draft] = await Promise.all([
     queryRoutedContentByPath(path),
@@ -21,7 +23,7 @@ export default async function CMSRoute({
   return (
     <>
       {draft.isEnabled ? <LivePreviewListener /> : null}
-      <RenderRoutedContent doc={routed.doc} />
+      <RenderRoutedContent doc={routed.doc} standalone={standalone} />
     </>
   );
 }
