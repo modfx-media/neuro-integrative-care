@@ -35,11 +35,12 @@ export default function Nav({
   const hamburgerRef = useRef<HTMLButtonElement | null>(null);
   const drawerRef = useRef<HTMLElement | null>(null);
 
-  // The Conditions hub page's hero is light, not the dark video used
-  // elsewhere — the header can't fade in from transparent there (white nav
-  // text disappears against a white background), so it stays permanently in
-  // its "scrolled" solid state.
-  const isLightHero = pathname === "/conditions";
+  // Light-top pages: white nav text disappears against a paper/white
+  // background if the header fades in from transparent, so stay in the
+  // solid "scrolled" state. Blog posts (coded or CMS) start on a light
+  // surface; the Conditions hub uses a light grid instead of the dark video.
+  const isLightHero =
+    pathname === "/conditions" || pathname.startsWith("/blog/");
 
   const { scrollY } = useScroll();
   const backgroundColor = useTransform(
@@ -442,7 +443,7 @@ function ConditionsNavItem({ href, active }: ConditionsNavItemProps) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -6, scale: 0.98 }}
             transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute left-0 top-full z-10 mt-2 w-[19rem] rounded-2xl border border-rule bg-paper p-3 shadow-[0_24px_60px_-24px_rgba(11,18,32,0.35)]"
+            className="absolute left-0 top-full z-[70] mt-2 w-[19rem] rounded-2xl border border-rule bg-paper p-3 shadow-[0_24px_60px_-24px_rgba(11,18,32,0.35)]"
           >
             <ul>
               {conditions.map((sector) => (
@@ -695,7 +696,7 @@ function AboutNavItem({ href, active }: AboutNavItemProps) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -6, scale: 0.98 }}
             transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute left-0 top-full z-10 mt-2 w-[14rem] rounded-2xl border border-rule bg-paper p-3 shadow-[0_24px_60px_-24px_rgba(11,18,32,0.35)]"
+            className="absolute left-0 top-full z-[70] mt-2 w-[14rem] rounded-2xl border border-rule bg-paper p-3 shadow-[0_24px_60px_-24px_rgba(11,18,32,0.35)]"
           >
             <ul>
               {ABOUT_LINKS.map((link) => (

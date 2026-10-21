@@ -97,7 +97,7 @@ export default function RenderRoutedContent({
   const hasH1 = layout.some((b) => b.blockType === "heading" && b.tag === "h1");
 
   return (
-    <article className="mx-auto max-w-4xl space-y-10 px-6 py-16 lg:px-10 lg:py-24">
+    <article className="mx-auto max-w-4xl space-y-10 px-6 pb-16 pt-28 lg:px-10 lg:pb-24 lg:pt-32">
       {(standalone || layout.length === 0) && !hasH1 && doc.title ? (
         <h1 className="font-serif text-4xl leading-tight text-ink lg:text-5xl">{doc.title}</h1>
       ) : null}
