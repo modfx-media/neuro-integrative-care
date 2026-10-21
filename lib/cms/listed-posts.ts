@@ -11,21 +11,44 @@ export type CmsListedPost = {
   date: string | null;
 };
 
-/** Published posts from Payload (card image = the post's SEO meta image) (future-dated ones are hidden by the scheduled-publish guard). */
-export async function getCmsPublishedPosts(): Promise<CmsListedPost[]> {
-  if (!cmsConfigured()) return [];
-  return withCMS(async () => {
-    const payload = await getPayload({ config });
+type PayloadLike = Awaited<ReturnType<typeof getPayload>>;
+
+async function findPublishedDocs(payload: PayloadLike, depth: number) {
+  const docs: unknown[] = [];
+  let page = 1;
+  for (;;) {
     const res = await payload.find({
       collection: "posts",
       draft: false,
       overrideAccess: false,
-      depth: 1,
-      limit: 200,
+      depth,
+      limit: 100,
+      page,
       sort: "-publishedOn",
       where: { _status: { equals: "published" } },
     });
-    return res.docs
+    docs.push(...res.docs);
+    if (!res.hasNextPage || page >= 50) break;
+    page += 1;
+  }
+  return docs;
+}
+
+/** Published posts from Payload (card image = the post's SEO meta image). Future calendar dates are hidden by the scheduled-publish guard. */
+export async function getCmsPublishedPosts(): Promise<CmsListedPost[]> {
+  if (!cmsConfigured()) return [];
+  return withCMS(async () => {
+    const payload = await getPayload({ config });
+    let docs: unknown[];
+    try {
+      docs = await findPublishedDocs(payload, 1);
+    } catch (error) {
+      // A broken media relation (for example a missing media._objectkey column)
+      // must not drop every published post back to the hardcoded list.
+      console.error("[cms] published posts query failed while populating media; retrying without relations", error);
+      docs = await findPublishedDocs(payload, 0);
+    }
+    return docs
       .map((doc) => {
         const d = doc as unknown as {
           slug?: string | null;

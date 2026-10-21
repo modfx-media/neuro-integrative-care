@@ -7,6 +7,10 @@ import type { CollectionBeforeOperationHook, Config, Field, Plugin, Where } from
  * 2. Hides posts whose publish date is still in the future from every read that is
  *    not made by a logged-in user or as a draft/preview read (REST, GraphQL and the
  *    site's own Local API queries), until that date passes.
+ *    Day-only dates are stored at 12:00:00.000Z (Payload's default picker). Comparing
+ *    that instant to `now` hides a post until noon UTC on the day the editor picked.
+ *    The calendar date is visible from 00:00:00.000Z instead. A missing date is
+ *    already published.
  */
 const DATE_CANDIDATES = ["publishedAt", "publishDate", "publishedOn", "datePublished", "published", "postDate", "date"];
 
@@ -25,14 +29,26 @@ function findDateField(fields: Field[]): string | null {
   return null;
 }
 
+/** Publish calendar date (UTC) has started, or the date field is empty. */
+function publishedDateWhere(field: string, now = new Date()): Where {
+  const startOfNextUtcDay = new Date(
+    Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1),
+  ).toISOString();
+  return {
+    or: [
+      { [field]: { exists: false } },
+      { [field]: { equals: null } },
+      { [field]: { less_than: startOfNextUtcDay } },
+    ],
+  };
+}
+
 function hideFuturePosts(field: string): CollectionBeforeOperationHook {
   return ({ args, operation, req }) => {
     if (operation !== "read" && operation !== "count") return args;
     const a = args as { where?: Where; draft?: boolean; overrideAccess?: boolean };
     if (req?.user || a.draft === true) return args;
-    const notFuture: Where = {
-      or: [{ [field]: { exists: false } }, { [field]: { less_than_equal: new Date().toISOString() } }],
-    };
+    const notFuture = publishedDateWhere(field);
     a.where = a.where ? { and: [a.where, notFuture] } : notFuture;
     return args;
   };

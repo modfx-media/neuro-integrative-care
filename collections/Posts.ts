@@ -2,6 +2,7 @@ import type { CollectionConfig } from "payload";
 import { authenticated, authenticatedOrPublished } from "./access";
 import { layoutBlocks } from "./blocks";
 import { blogPathFromSlug, uniqueEmptyToNull } from "./hooks";
+import { revalidatePost, revalidatePostDelete } from "./revalidatePost";
 import { previewFromPath } from "@/lib/cms/preview";
 
 export const Posts: CollectionConfig = {
@@ -88,6 +89,10 @@ export const Posts: CollectionConfig = {
       admin: { initCollapsed: true },
     },
   ],
+  hooks: {
+    afterChange: [revalidatePost],
+    afterDelete: [revalidatePostDelete],
+  },
   versions: {
     drafts: {
       schedulePublish: true,
