@@ -6,6 +6,7 @@ import Script from "next/script";
 const SCRIPT_SRC = "https://cdn.practicebetter.io/assets/js/booking.widget.js";
 const SLIDE_1_HEIGHT = 176;
 const TALL_HEIGHT = 800;
+const EXPANDED_KEY = "nic-booking-expanded";
 
 declare global {
   interface Window {
@@ -63,7 +64,21 @@ export default function BookingWidget() {
 
     window.__bcmWidgetInitialized = false;
     host.querySelectorAll("iframe").forEach((frame) => frame.remove());
-    applyBookingHeight(host, SLIDE_1_HEIGHT);
+
+    const expandLive = () => {
+      if (isLocalHttp()) return;
+      host.classList.add("is-expanded");
+      sessionStorage.setItem(EXPANDED_KEY, "1");
+      applyBookingHeight(host, TALL_HEIGHT);
+    };
+
+    if (isLocalHttp()) {
+      applyBookingHeight(host, SLIDE_1_HEIGHT);
+    } else {
+      host.classList.add("is-live");
+      if (sessionStorage.getItem(EXPANDED_KEY) === "1") expandLive();
+      else applyBookingHeight(host, SLIDE_1_HEIGHT);
+    }
 
     const script = document.createElement("script");
     script.src = SCRIPT_SRC;
@@ -92,19 +107,16 @@ export default function BookingWidget() {
       attributes: true,
       attributeFilter: ["src", "style", "id"],
     });
-    const growAfterBookNow = () => {
-      if (isLocalHttp()) return;
-      applyBookingHeight(host, TALL_HEIGHT);
-    };
-
     window.addEventListener("message", onMessage);
-    host.addEventListener("pointerdown", growAfterBookNow);
+    host.addEventListener("pointerdown", expandLive, true);
+    host.addEventListener("focusin", expandLive);
     syncIframe();
 
     return () => {
       observer.disconnect();
       window.removeEventListener("message", onMessage);
-      host.removeEventListener("pointerdown", growAfterBookNow);
+      host.removeEventListener("pointerdown", expandLive, true);
+      host.removeEventListener("focusin", expandLive);
       window.__bcmWidgetInitialized = false;
       script.remove();
     };
@@ -112,7 +124,7 @@ export default function BookingWidget() {
 
   return (
     <>
-      <style>{`.better-inline-booking-widget{position:relative;overflow:hidden;width:100%;max-width:520px;height:176px;margin-inline:auto;transition:height .2s ease}.better-inline-booking-widget iframe{position:absolute;top:0;left:0;width:100%;height:800px;border:0}`}</style>
+      <style>{`.better-inline-booking-widget{position:relative;overflow:hidden;width:100%;max-width:520px;height:176px;margin-inline:auto;transition:height .2s ease}.better-inline-booking-widget.is-live:focus-within,.better-inline-booking-widget.is-expanded{height:800px!important}.better-inline-booking-widget iframe{position:absolute;top:0;left:0;width:100%;height:800px;border:0}`}</style>
       <div
         ref={widgetRef}
         className="better-inline-booking-widget"
