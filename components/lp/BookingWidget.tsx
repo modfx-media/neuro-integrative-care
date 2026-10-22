@@ -4,9 +4,8 @@ import { useEffect, useRef } from "react";
 import Script from "next/script";
 
 const SCRIPT_SRC = "https://cdn.practicebetter.io/assets/js/booking.widget.js";
-const SLIDE_1 = 176;
-const SLIDE_2 = 256;
-const SLIDE_3 = 800;
+const COMPACT_HEIGHT = 176;
+const TALL_HEIGHT = 800;
 
 declare global {
   interface Window {
@@ -64,7 +63,7 @@ export default function BookingWidget() {
 
     window.__bcmWidgetInitialized = false;
     host.querySelectorAll("iframe").forEach((frame) => frame.remove());
-    applyBookingHeight(host, SLIDE_1);
+    applyBookingHeight(host, COMPACT_HEIGHT);
 
     const script = document.createElement("script");
     script.src = SCRIPT_SRC;
@@ -86,26 +85,9 @@ export default function BookingWidget() {
       applyBookingHeight(host, event.data.height);
     };
 
-    const overlay = document.createElement("div");
-    overlay.setAttribute("aria-hidden", "true");
-    overlay.style.cssText =
-      "position:absolute;inset:0;z-index:2;display:none;background:transparent";
-    host.appendChild(overlay);
-
-    let liveStep = 0;
-    const onHostPointerDown = (event: PointerEvent) => {
+    const growForCalendar = () => {
       if (isLocalHttp()) return;
-      if (event.target === overlay) return;
-      if (liveStep !== 0) return;
-      liveStep = 1;
-      applyBookingHeight(host, SLIDE_2);
-      window.requestAnimationFrame(() => {
-        overlay.style.display = "block";
-      });
-    };
-    const onOverlayPointerDown = () => {
-      applyBookingHeight(host, SLIDE_3);
-      overlay.style.display = "none";
+      applyBookingHeight(host, TALL_HEIGHT);
     };
 
     const observer = new MutationObserver(syncIframe);
@@ -116,16 +98,13 @@ export default function BookingWidget() {
       attributeFilter: ["src", "style", "id"],
     });
     window.addEventListener("message", onMessage);
-    host.addEventListener("pointerdown", onHostPointerDown);
-    overlay.addEventListener("pointerdown", onOverlayPointerDown);
+    host.addEventListener("pointerdown", growForCalendar);
     syncIframe();
 
     return () => {
       observer.disconnect();
       window.removeEventListener("message", onMessage);
-      host.removeEventListener("pointerdown", onHostPointerDown);
-      overlay.removeEventListener("pointerdown", onOverlayPointerDown);
-      overlay.remove();
+      host.removeEventListener("pointerdown", growForCalendar);
       window.__bcmWidgetInitialized = false;
       script.remove();
     };
