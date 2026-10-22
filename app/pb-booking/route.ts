@@ -16,11 +16,34 @@ const FETCH_PATCH = `<script>
 })();
 </script>`;
 
+const HEIGHT_PATCH = `<script>
+(function(){
+  var TALL=/select a time|available times|first name|i'm booking/i;
+  function report(){
+    try{
+      var text=(document.body&&document.body.innerText)||"";
+      var height=800;
+      if(!TALL.test(text)){
+        var el=document.querySelector("fl-booking-request");
+        if(!el) return;
+        var bottom=el.getBoundingClientRect().bottom;
+        if(bottom<80) return;
+        height=Math.ceil(bottom+16);
+      }
+      parent.postMessage({source:"nic-pb-booking",height:height},"*");
+    }catch(e){}
+  }
+  setInterval(report,300);
+  window.addEventListener("load",report);
+  document.addEventListener("click",function(){setTimeout(report,50);},true);
+})();
+</script>`;
+
 export const dynamic = "force-dynamic";
 
-/** Same-origin stand-in for the Practice Better booking SPA so the widget
- *  can render on http://localhost. Their CSP is `frame-ancestors https:`,
- *  which blocks HTTP parents. Production HTTPS embeds them directly. */
+/** Same-origin stand-in for the Practice Better booking SPA.
+ *  Lets the thank-you page measure each step and shrink slides 1–2.
+ *  Also bypasses their `frame-ancestors https:` CSP on http://localhost. */
 export async function GET(request: Request) {
   const incoming = new URL(request.url);
   const target = new URL(PB_ORIGIN);
@@ -32,7 +55,7 @@ export async function GET(request: Request) {
   });
 
   let html = await upstream.text();
-  html = html.replace('<base href="/"/>', `<base href="/pb-proxy/"/>${FETCH_PATCH}`);
+  html = html.replace('<base href="/"/>', `<base href="/pb-proxy/"/>${FETCH_PATCH}${HEIGHT_PATCH}`);
 
   return new Response(html, {
     status: upstream.status,

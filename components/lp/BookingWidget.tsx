@@ -19,8 +19,7 @@ function revealIframe(iframe: HTMLIFrameElement) {
   iframe.style.removeProperty("left");
 }
 
-function useLocalBookingProxy(iframe: HTMLIFrameElement) {
-  if (window.location.protocol !== "http:") return;
+function useSameOriginBooking(iframe: HTMLIFrameElement) {
   if (!iframe.src.includes("practicebetter.io")) return;
   try {
     const remote = new URL(iframe.src);
@@ -30,25 +29,22 @@ function useLocalBookingProxy(iframe: HTMLIFrameElement) {
   }
 }
 
-const TALL_HEIGHT = 800;
-const TALL_STEP = /select a time|available times|first name|i'm booking/i;
+function applyBookingHeight(host: HTMLDivElement, height: number) {
+  if (height < 120 || height > 900) return;
+  host.style.height = `${Math.round(height)}px`;
+}
 
-function fitHostToStep(host: HTMLDivElement, iframe: HTMLIFrameElement) {
-  try {
-    const doc = iframe.contentDocument;
-    if (!doc?.body) return;
-    const text = doc.body.innerText || "";
-    if (TALL_STEP.test(text)) {
-      host.style.height = `${TALL_HEIGHT}px`;
-      return;
-    }
-    const content = doc.querySelector("fl-booking-request");
-    const bottom = content?.getBoundingClientRect().bottom ?? 0;
-    if (bottom < 80) return;
-    host.style.height = `${Math.ceil(bottom + 16)}px`;
-  } catch {
-    // Cross-origin on HTTPS — keep the default tall height.
-  }
+function isBookingHeightMessage(
+  data: unknown,
+): data is { source: "nic-pb-booking"; height: number } {
+  return (
+    typeof data === "object" &&
+    data !== null &&
+    "source" in data &&
+    data.source === "nic-pb-booking" &&
+    "height" in data &&
+    typeof data.height === "number"
+  );
 }
 
 export default function BookingWidget() {
@@ -69,9 +65,14 @@ export default function BookingWidget() {
     const syncIframe = () => {
       host.querySelectorAll("iframe").forEach((frame) => {
         revealIframe(frame);
-        useLocalBookingProxy(frame);
-        fitHostToStep(host, frame);
+        useSameOriginBooking(frame);
       });
+    };
+    const onMessage = (event: MessageEvent) => {
+      if (!isBookingHeightMessage(event.data)) return;
+      const frame = host.querySelector("iframe");
+      if (frame && event.source !== frame.contentWindow) return;
+      applyBookingHeight(host, event.data.height);
     };
     const observer = new MutationObserver(syncIframe);
     observer.observe(host, {
@@ -80,11 +81,12 @@ export default function BookingWidget() {
       attributes: true,
       attributeFilter: ["src", "style", "id"],
     });
-    const pulse = window.setInterval(syncIframe, 400);
+    window.addEventListener("message", onMessage);
+    syncIframe();
 
     return () => {
       observer.disconnect();
-      window.clearInterval(pulse);
+      window.removeEventListener("message", onMessage);
       window.__bcmWidgetInitialized = false;
       script.remove();
     };
