@@ -4,7 +4,9 @@ import { useEffect, useRef } from "react";
 import Script from "next/script";
 
 const SCRIPT_SRC = "https://cdn.practicebetter.io/assets/js/booking.widget.js";
-const TALL_HEIGHT = 800;
+const SLIDE_1 = 176;
+const SLIDE_2 = 256;
+const SLIDE_3 = 800;
 
 declare global {
   interface Window {
@@ -62,7 +64,7 @@ export default function BookingWidget() {
 
     window.__bcmWidgetInitialized = false;
     host.querySelectorAll("iframe").forEach((frame) => frame.remove());
-    applyBookingHeight(host, TALL_HEIGHT);
+    applyBookingHeight(host, SLIDE_1);
 
     const script = document.createElement("script");
     script.src = SCRIPT_SRC;
@@ -84,6 +86,28 @@ export default function BookingWidget() {
       applyBookingHeight(host, event.data.height);
     };
 
+    const overlay = document.createElement("div");
+    overlay.setAttribute("aria-hidden", "true");
+    overlay.style.cssText =
+      "position:absolute;inset:0;z-index:2;display:none;background:transparent";
+    host.appendChild(overlay);
+
+    let liveStep = 0;
+    const onHostPointerDown = (event: PointerEvent) => {
+      if (isLocalHttp()) return;
+      if (event.target === overlay) return;
+      if (liveStep !== 0) return;
+      liveStep = 1;
+      applyBookingHeight(host, SLIDE_2);
+      window.requestAnimationFrame(() => {
+        overlay.style.display = "block";
+      });
+    };
+    const onOverlayPointerDown = () => {
+      applyBookingHeight(host, SLIDE_3);
+      overlay.style.display = "none";
+    };
+
     const observer = new MutationObserver(syncIframe);
     observer.observe(host, {
       childList: true,
@@ -92,11 +116,16 @@ export default function BookingWidget() {
       attributeFilter: ["src", "style", "id"],
     });
     window.addEventListener("message", onMessage);
+    host.addEventListener("pointerdown", onHostPointerDown);
+    overlay.addEventListener("pointerdown", onOverlayPointerDown);
     syncIframe();
 
     return () => {
       observer.disconnect();
       window.removeEventListener("message", onMessage);
+      host.removeEventListener("pointerdown", onHostPointerDown);
+      overlay.removeEventListener("pointerdown", onOverlayPointerDown);
+      overlay.remove();
       window.__bcmWidgetInitialized = false;
       script.remove();
     };
@@ -104,7 +133,7 @@ export default function BookingWidget() {
 
   return (
     <>
-      <style>{`.better-inline-booking-widget{position:relative;overflow:hidden;width:100%;max-width:520px;height:800px;margin-inline:auto;transition:height .2s ease}.better-inline-booking-widget iframe{position:absolute;inset:0;width:100%;height:100%;border:0}`}</style>
+      <style>{`.better-inline-booking-widget{position:relative;overflow:hidden;width:100%;max-width:520px;height:176px;margin-inline:auto;transition:height .2s ease}.better-inline-booking-widget iframe{position:absolute;top:0;left:0;width:100%;height:800px;border:0}`}</style>
       <div
         ref={widgetRef}
         className="better-inline-booking-widget"
