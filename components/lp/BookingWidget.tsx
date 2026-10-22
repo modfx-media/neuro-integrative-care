@@ -30,6 +30,27 @@ function useLocalBookingProxy(iframe: HTMLIFrameElement) {
   }
 }
 
+const TALL_HEIGHT = 800;
+const TALL_STEP = /select a time|available times|first name|i'm booking/i;
+
+function fitHostToStep(host: HTMLDivElement, iframe: HTMLIFrameElement) {
+  try {
+    const doc = iframe.contentDocument;
+    if (!doc?.body) return;
+    const text = doc.body.innerText || "";
+    if (TALL_STEP.test(text)) {
+      host.style.height = `${TALL_HEIGHT}px`;
+      return;
+    }
+    const content = doc.querySelector("fl-booking-request");
+    const bottom = content?.getBoundingClientRect().bottom ?? 0;
+    if (bottom < 80) return;
+    host.style.height = `${Math.ceil(bottom + 16)}px`;
+  } catch {
+    // Cross-origin on HTTPS — keep the default tall height.
+  }
+}
+
 export default function BookingWidget() {
   const widgetRef = useRef<HTMLDivElement>(null);
 
@@ -49,6 +70,7 @@ export default function BookingWidget() {
       host.querySelectorAll("iframe").forEach((frame) => {
         revealIframe(frame);
         useLocalBookingProxy(frame);
+        fitHostToStep(host, frame);
       });
     };
     const observer = new MutationObserver(syncIframe);
@@ -58,9 +80,11 @@ export default function BookingWidget() {
       attributes: true,
       attributeFilter: ["src", "style", "id"],
     });
+    const pulse = window.setInterval(syncIframe, 400);
 
     return () => {
       observer.disconnect();
+      window.clearInterval(pulse);
       window.__bcmWidgetInitialized = false;
       script.remove();
     };
@@ -68,7 +92,7 @@ export default function BookingWidget() {
 
   return (
     <>
-      <style>{`.better-inline-booking-widget{position:relative;overflow:hidden;width:100%;max-width:520px;height:800px;margin-inline:auto}.better-inline-booking-widget iframe{position:absolute;inset:0;width:100%;height:100%;border:0}`}</style>
+      <style>{`.better-inline-booking-widget{position:relative;overflow:hidden;width:100%;max-width:520px;height:800px;margin-inline:auto;transition:height .2s ease}.better-inline-booking-widget iframe{position:absolute;inset:0;width:100%;height:100%;border:0}`}</style>
       <div
         ref={widgetRef}
         className="better-inline-booking-widget"
