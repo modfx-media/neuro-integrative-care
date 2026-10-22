@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import Script from "next/script";
 
 const SCRIPT_SRC = "https://cdn.practicebetter.io/assets/js/booking.widget.js";
+const SLIDE_HEIGHTS = [176, 256, 800] as const;
 
 declare global {
   interface Window {
@@ -19,7 +20,12 @@ function revealIframe(iframe: HTMLIFrameElement) {
   iframe.style.removeProperty("left");
 }
 
-function useSameOriginBooking(iframe: HTMLIFrameElement) {
+function isLocalHttp() {
+  return window.location.protocol === "http:";
+}
+
+function useLocalBookingProxy(iframe: HTMLIFrameElement) {
+  if (!isLocalHttp()) return;
   if (!iframe.src.includes("practicebetter.io")) return;
   try {
     const remote = new URL(iframe.src);
@@ -56,6 +62,7 @@ export default function BookingWidget() {
 
     window.__bcmWidgetInitialized = false;
     host.querySelectorAll("iframe").forEach((frame) => frame.remove());
+    applyBookingHeight(host, SLIDE_HEIGHTS[0]);
 
     const script = document.createElement("script");
     script.src = SCRIPT_SRC;
@@ -65,15 +72,38 @@ export default function BookingWidget() {
     const syncIframe = () => {
       host.querySelectorAll("iframe").forEach((frame) => {
         revealIframe(frame);
-        useSameOriginBooking(frame);
+        useLocalBookingProxy(frame);
       });
     };
+
     const onMessage = (event: MessageEvent) => {
       if (!isBookingHeightMessage(event.data)) return;
       const frame = host.querySelector("iframe");
       if (frame && event.source !== frame.contentWindow) return;
       applyBookingHeight(host, event.data.height);
     };
+
+    let httpsStep = 0;
+    let lastBump = 0;
+    let safetyTimer = 0;
+    const bumpHttpsStep = () => {
+      if (isLocalHttp()) return;
+      const now = Date.now();
+      if (now - lastBump < 400) return;
+      lastBump = now;
+      httpsStep = Math.min(httpsStep + 1, 2);
+      applyBookingHeight(host, SLIDE_HEIGHTS[httpsStep]);
+      if (httpsStep === 1 && !safetyTimer) {
+        safetyTimer = window.setTimeout(() => {
+          applyBookingHeight(host, SLIDE_HEIGHTS[2]);
+        }, 2500);
+      }
+      if (httpsStep >= 2 && safetyTimer) {
+        window.clearTimeout(safetyTimer);
+        safetyTimer = 0;
+      }
+    };
+
     const observer = new MutationObserver(syncIframe);
     observer.observe(host, {
       childList: true,
@@ -82,11 +112,16 @@ export default function BookingWidget() {
       attributeFilter: ["src", "style", "id"],
     });
     window.addEventListener("message", onMessage);
+    host.addEventListener("pointerdown", bumpHttpsStep);
+    host.addEventListener("focusin", bumpHttpsStep);
     syncIframe();
 
     return () => {
       observer.disconnect();
       window.removeEventListener("message", onMessage);
+      host.removeEventListener("pointerdown", bumpHttpsStep);
+      host.removeEventListener("focusin", bumpHttpsStep);
+      if (safetyTimer) window.clearTimeout(safetyTimer);
       window.__bcmWidgetInitialized = false;
       script.remove();
     };
@@ -94,7 +129,7 @@ export default function BookingWidget() {
 
   return (
     <>
-      <style>{`.better-inline-booking-widget{position:relative;overflow:hidden;width:100%;max-width:520px;height:800px;margin-inline:auto;transition:height .2s ease}.better-inline-booking-widget iframe{position:absolute;inset:0;width:100%;height:100%;border:0}`}</style>
+      <style>{`.better-inline-booking-widget{position:relative;overflow:hidden;width:100%;max-width:520px;height:176px;margin-inline:auto;transition:height .2s ease}.better-inline-booking-widget iframe{position:absolute;inset:0;width:100%;height:100%;border:0}`}</style>
       <div
         ref={widgetRef}
         className="better-inline-booking-widget"
