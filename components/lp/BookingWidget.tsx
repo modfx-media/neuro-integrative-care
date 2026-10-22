@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import Script from "next/script";
 
 const SCRIPT_SRC = "https://cdn.practicebetter.io/assets/js/booking.widget.js";
+const SLIDE_1_HEIGHT = 176;
 const TALL_HEIGHT = 800;
 
 declare global {
@@ -62,7 +63,7 @@ export default function BookingWidget() {
 
     window.__bcmWidgetInitialized = false;
     host.querySelectorAll("iframe").forEach((frame) => frame.remove());
-    applyBookingHeight(host, TALL_HEIGHT);
+    applyBookingHeight(host, SLIDE_1_HEIGHT);
 
     const script = document.createElement("script");
     script.src = SCRIPT_SRC;
@@ -91,12 +92,19 @@ export default function BookingWidget() {
       attributes: true,
       attributeFilter: ["src", "style", "id"],
     });
+    const growAfterBookNow = () => {
+      if (isLocalHttp()) return;
+      applyBookingHeight(host, TALL_HEIGHT);
+    };
+
     window.addEventListener("message", onMessage);
+    host.addEventListener("pointerdown", growAfterBookNow);
     syncIframe();
 
     return () => {
       observer.disconnect();
       window.removeEventListener("message", onMessage);
+      host.removeEventListener("pointerdown", growAfterBookNow);
       window.__bcmWidgetInitialized = false;
       script.remove();
     };
@@ -104,7 +112,7 @@ export default function BookingWidget() {
 
   return (
     <>
-      <style>{`.better-inline-booking-widget{position:relative;overflow:hidden;width:100%;max-width:520px;height:800px;margin-inline:auto}.better-inline-booking-widget iframe{position:absolute;inset:0;width:100%;height:100%;border:0}`}</style>
+      <style>{`.better-inline-booking-widget{position:relative;overflow:hidden;width:100%;max-width:520px;height:176px;margin-inline:auto;transition:height .2s ease}.better-inline-booking-widget iframe{position:absolute;top:0;left:0;width:100%;height:800px;border:0}`}</style>
       <div
         ref={widgetRef}
         className="better-inline-booking-widget"
