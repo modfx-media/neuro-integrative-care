@@ -1,5 +1,6 @@
 import { CheckCircle2, Mail, PhoneCall } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import BookingWidget from "@/components/lp/BookingWidget";
 
 // Confirmation copy shown after the GHL lead form on the brain-assessment
 // funnel is submitted. No claims beyond "we received your request" — the
@@ -49,9 +50,18 @@ export default function ThankYouSection() {
           offset={16}
           className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-paper/75"
         >
-          Your request for a free discovery call has been received. Here&apos;s
-          what happens next.
+          Your request for a free discovery call has been received. Pick a time
+          below, or we&apos;ll reach out if you&apos;d rather we call you.
         </Reveal>
+      </div>
+
+      <div className="mx-auto mt-10 w-full max-w-[600px] px-6">
+        <p className="mb-3 text-center font-mono font-medium text-[12px] uppercase tracking-[0.16em] text-amber-b">
+          Choose a time
+        </p>
+        <div className="overflow-hidden rounded-2xl bg-white px-8 pt-8 shadow-[0_24px_48px_-28px_rgba(11,18,32,0.55)] ring-1 ring-white/10 sm:px-10 sm:pt-10">
+          <BookingWidget />
+        </div>
       </div>
 
       <Reveal

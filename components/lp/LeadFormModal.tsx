@@ -8,6 +8,7 @@ import {
   type ReactNode,
 } from "react";
 import { X } from "lucide-react";
+import { usePathname } from "next/navigation";
 import Script from "next/script";
 import {
   GHL_LEAD_FORM_HEIGHT,
@@ -47,6 +48,11 @@ export function LeadFormModalProvider({
   formTitle?: string;
 }) {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname() ?? "";
+  // form_embed.js claims the first iframe on the page (id ghl_embed___1)
+  // and hides it. The thank-you page's Practice Better calendar is an
+  // iframe, so skip the GHL script there.
+  const loadFormEmbed = !pathname.endsWith("/thank-you");
 
   useEffect(() => {
     if (!isOpen) return;
@@ -167,10 +173,12 @@ export function LeadFormModalProvider({
         </div>
       )}
 
-      <Script
-        src="https://link.msgsndr.com/js/form_embed.js"
-        strategy="lazyOnload"
-      />
+      {loadFormEmbed ? (
+        <Script
+          src="https://link.msgsndr.com/js/form_embed.js"
+          strategy="lazyOnload"
+        />
+      ) : null}
     </LeadFormModalContext.Provider>
   );
 }
