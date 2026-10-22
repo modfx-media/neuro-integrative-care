@@ -4,7 +4,8 @@ import { useEffect, useRef } from "react";
 import Script from "next/script";
 
 const SCRIPT_SRC = "https://cdn.practicebetter.io/assets/js/booking.widget.js";
-const SLIDE_HEIGHTS = [176, 256, 800] as const;
+const COMPACT_HEIGHT = 176;
+const TALL_HEIGHT = 800;
 
 declare global {
   interface Window {
@@ -62,7 +63,7 @@ export default function BookingWidget() {
 
     window.__bcmWidgetInitialized = false;
     host.querySelectorAll("iframe").forEach((frame) => frame.remove());
-    applyBookingHeight(host, SLIDE_HEIGHTS[0]);
+    applyBookingHeight(host, COMPACT_HEIGHT);
 
     const script = document.createElement("script");
     script.src = SCRIPT_SRC;
@@ -83,25 +84,9 @@ export default function BookingWidget() {
       applyBookingHeight(host, event.data.height);
     };
 
-    let httpsStep = 0;
-    let lastBump = 0;
-    let safetyTimer = 0;
-    const bumpHttpsStep = () => {
+    const growForCalendar = () => {
       if (isLocalHttp()) return;
-      const now = Date.now();
-      if (now - lastBump < 400) return;
-      lastBump = now;
-      httpsStep = Math.min(httpsStep + 1, 2);
-      applyBookingHeight(host, SLIDE_HEIGHTS[httpsStep]);
-      if (httpsStep === 1 && !safetyTimer) {
-        safetyTimer = window.setTimeout(() => {
-          applyBookingHeight(host, SLIDE_HEIGHTS[2]);
-        }, 2500);
-      }
-      if (httpsStep >= 2 && safetyTimer) {
-        window.clearTimeout(safetyTimer);
-        safetyTimer = 0;
-      }
+      applyBookingHeight(host, TALL_HEIGHT);
     };
 
     const observer = new MutationObserver(syncIframe);
@@ -112,16 +97,13 @@ export default function BookingWidget() {
       attributeFilter: ["src", "style", "id"],
     });
     window.addEventListener("message", onMessage);
-    host.addEventListener("pointerdown", bumpHttpsStep);
-    host.addEventListener("focusin", bumpHttpsStep);
+    host.addEventListener("pointerdown", growForCalendar);
     syncIframe();
 
     return () => {
       observer.disconnect();
       window.removeEventListener("message", onMessage);
-      host.removeEventListener("pointerdown", bumpHttpsStep);
-      host.removeEventListener("focusin", bumpHttpsStep);
-      if (safetyTimer) window.clearTimeout(safetyTimer);
+      host.removeEventListener("pointerdown", growForCalendar);
       window.__bcmWidgetInitialized = false;
       script.remove();
     };
@@ -129,7 +111,7 @@ export default function BookingWidget() {
 
   return (
     <>
-      <style>{`.better-inline-booking-widget{position:relative;overflow:hidden;width:100%;max-width:520px;height:176px;margin-inline:auto;transition:height .2s ease}.better-inline-booking-widget iframe{position:absolute;inset:0;width:100%;height:100%;border:0}`}</style>
+      <style>{`.better-inline-booking-widget{position:relative;overflow:hidden;width:100%;max-width:520px;height:176px;margin-inline:auto;transition:height .2s ease}.better-inline-booking-widget iframe{position:absolute;top:0;left:0;width:100%;height:800px;border:0}`}</style>
       <div
         ref={widgetRef}
         className="better-inline-booking-widget"

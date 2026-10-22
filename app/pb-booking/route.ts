@@ -18,7 +18,7 @@ const FETCH_PATCH = `<script>
 
 const HEIGHT_PATCH = `<script>
 (function(){
-  var TALL=/select a time|available times|first name|i'm booking/i;
+  var TALL=/select a time|available times|first name|i'm booking|su\s+mo\s+tu|there are available times/i;
   function report(){
     try{
       var text=(document.body&&document.body.innerText)||"";
