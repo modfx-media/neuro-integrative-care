@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react";
 import Script from "next/script";
 
 const SCRIPT_SRC = "https://cdn.practicebetter.io/assets/js/booking.widget.js";
-const COMPACT_HEIGHT = 176;
 const TALL_HEIGHT = 800;
 
 declare global {
@@ -63,7 +62,7 @@ export default function BookingWidget() {
 
     window.__bcmWidgetInitialized = false;
     host.querySelectorAll("iframe").forEach((frame) => frame.remove());
-    applyBookingHeight(host, COMPACT_HEIGHT);
+    applyBookingHeight(host, TALL_HEIGHT);
 
     const script = document.createElement("script");
     script.src = SCRIPT_SRC;
@@ -85,11 +84,6 @@ export default function BookingWidget() {
       applyBookingHeight(host, event.data.height);
     };
 
-    const growForCalendar = () => {
-      if (isLocalHttp()) return;
-      applyBookingHeight(host, TALL_HEIGHT);
-    };
-
     const observer = new MutationObserver(syncIframe);
     observer.observe(host, {
       childList: true,
@@ -98,13 +92,11 @@ export default function BookingWidget() {
       attributeFilter: ["src", "style", "id"],
     });
     window.addEventListener("message", onMessage);
-    host.addEventListener("pointerdown", growForCalendar);
     syncIframe();
 
     return () => {
       observer.disconnect();
       window.removeEventListener("message", onMessage);
-      host.removeEventListener("pointerdown", growForCalendar);
       window.__bcmWidgetInitialized = false;
       script.remove();
     };
@@ -112,7 +104,7 @@ export default function BookingWidget() {
 
   return (
     <>
-      <style>{`.better-inline-booking-widget{position:relative;overflow:hidden;width:100%;max-width:520px;height:176px;margin-inline:auto;transition:height .2s ease}.better-inline-booking-widget iframe{position:absolute;top:0;left:0;width:100%;height:800px;border:0}`}</style>
+      <style>{`.better-inline-booking-widget{position:relative;overflow:hidden;width:100%;max-width:520px;height:800px;margin-inline:auto}.better-inline-booking-widget iframe{position:absolute;inset:0;width:100%;height:100%;border:0}`}</style>
       <div
         ref={widgetRef}
         className="better-inline-booking-widget"
@@ -121,7 +113,7 @@ export default function BookingWidget() {
         data-hash="69482a6e4f5f366b24e31491"
         data-theme="32a363"
         data-theme-accent="e74c3c"
-        data-scrollbar-visible="false"
+        data-scrollbar-visible="true"
       />
       <Script
         id="practice-better-booking-widget"

@@ -59,7 +59,7 @@ export default function ThankYouSection() {
         <p className="mb-3 text-center font-mono font-medium text-[12px] uppercase tracking-[0.16em] text-amber-b">
           Choose a time
         </p>
-        <div className="overflow-hidden rounded-2xl bg-white px-8 pt-8 shadow-[0_24px_48px_-28px_rgba(11,18,32,0.55)] ring-1 ring-white/10 sm:px-10 sm:pt-10">
+        <div className="overflow-hidden rounded-2xl bg-white px-8 py-8 shadow-[0_24px_48px_-28px_rgba(11,18,32,0.55)] ring-1 ring-white/10 sm:px-10 sm:py-10">
           <BookingWidget />
         </div>
       </div>
