@@ -6,6 +6,7 @@ import DocumentShell from "@/components/cms/DocumentShell";
 import {
   GHL_LP_POPUP_FORM_HEIGHT,
   GHL_LP_POPUP_FORM_ID,
+  GHL_LP_POPUP_FORM_KIND,
   GHL_LP_POPUP_FORM_NAME,
   GHL_LP_POPUP_FORM_TITLE,
 } from "@/lib/ghl-form";
@@ -18,6 +19,7 @@ export default function LpLayout({ children }: { children: React.ReactNode }) {
         formHeight={GHL_LP_POPUP_FORM_HEIGHT}
         formName={GHL_LP_POPUP_FORM_NAME}
         formTitle={GHL_LP_POPUP_FORM_TITLE}
+        embedKind={GHL_LP_POPUP_FORM_KIND}
       >
         <Script id="gtm-lp" strategy="afterInteractive">
           {`

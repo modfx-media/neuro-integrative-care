@@ -40,12 +40,14 @@ export function LeadFormModalProvider({
   formHeight = GHL_LEAD_FORM_HEIGHT,
   formName = GHL_LEAD_FORM_NAME,
   formTitle = GHL_LEAD_FORM_TITLE,
+  embedKind = "form",
 }: {
   children: ReactNode;
   formId?: string;
   formHeight?: number;
   formName?: string;
   formTitle?: string;
+  embedKind?: "form" | "survey";
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname() ?? "";
@@ -144,30 +146,42 @@ export function LeadFormModalProvider({
             </div>
 
             <div className="flex-1 overflow-y-auto bg-paper-2 p-2 sm:p-4">
-              <iframe
-                src={`https://api.leadconnectorhq.com/widget/form/${formId}`}
-                style={{
-                  width: "100%",
-                  height: `${formHeight}px`,
-                  border: "none",
-                  borderRadius: "8px",
-                }}
-                id={`inline-${formId}`}
-                data-layout="{'id':'INLINE'}"
-                data-trigger-type="alwaysShow"
-                data-trigger-value=""
-                data-activation-type="alwaysActivated"
-                data-activation-value=""
-                data-deactivation-type="neverDeactivate"
-                data-deactivation-value=""
-                data-form-name={formName}
-                data-height={String(formHeight)}
-                data-layout-iframe-id={`inline-${formId}`}
-                data-form-id={formId}
-                data-cookie-consent="true"
-                data-cookie-consent-provider="auto"
-                title={formTitle}
-              />
+              {embedKind === "survey" ? (
+                <iframe
+                  src={`https://api.leadconnectorhq.com/widget/survey/${formId}`}
+                  style={{ border: "none", width: "100%", height: `${formHeight}px` }}
+                  scrolling="no"
+                  id={formId}
+                  title={formTitle}
+                  data-cookie-consent="true"
+                  data-cookie-consent-provider="auto"
+                />
+              ) : (
+                <iframe
+                  src={`https://api.leadconnectorhq.com/widget/form/${formId}`}
+                  style={{
+                    width: "100%",
+                    height: `${formHeight}px`,
+                    border: "none",
+                    borderRadius: "8px",
+                  }}
+                  id={`inline-${formId}`}
+                  data-layout="{'id':'INLINE'}"
+                  data-trigger-type="alwaysShow"
+                  data-trigger-value=""
+                  data-activation-type="alwaysActivated"
+                  data-activation-value=""
+                  data-deactivation-type="neverDeactivate"
+                  data-deactivation-value=""
+                  data-form-name={formName}
+                  data-height={String(formHeight)}
+                  data-layout-iframe-id={`inline-${formId}`}
+                  data-form-id={formId}
+                  data-cookie-consent="true"
+                  data-cookie-consent-provider="auto"
+                  title={formTitle}
+                />
+              )}
             </div>
           </div>
         </div>
