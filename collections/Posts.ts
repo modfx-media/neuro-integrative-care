@@ -78,6 +78,16 @@ export const Posts: CollectionConfig = {
       type: "textarea",
     },
     {
+      name: "featuredImage",
+      type: "upload",
+      relationTo: "media",
+      admin: {
+        position: "sidebar",
+        description:
+          "Blog card and post header image. Falls back to the SEO image, then the default blog image.",
+      },
+    },
+    {
       name: "publishedOn",
       type: "date",
       admin: { position: "sidebar" },
