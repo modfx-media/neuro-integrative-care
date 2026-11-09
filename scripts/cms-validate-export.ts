@@ -28,6 +28,7 @@ function collectSitemapPaths(): string[] {
     "/resources",
     "/brain-assessment",
     "/free-discovery-call",
+    "/free-discovery-call/video",
     "/free-discovery-call/thank-you",
   ]);
 

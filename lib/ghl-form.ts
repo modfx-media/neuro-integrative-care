@@ -10,3 +10,7 @@ export const GHL_LP_POPUP_FORM_KIND = "survey" as const;
 export const GHL_LP_POPUP_FORM_HEIGHT = 720;
 export const GHL_LP_POPUP_FORM_NAME = "Free Discovery Call survey";
 export const GHL_LP_POPUP_FORM_TITLE = "survey";
+
+/** Funnel steps after the LP survey: watch the program video, then pick a time. */
+export const LP_VIDEO_PATH = "/free-discovery-call/video";
+export const LP_THANK_YOU_PATH = "/free-discovery-call/thank-you";

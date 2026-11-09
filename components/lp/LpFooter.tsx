@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { MapPin, Phone, Clock } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import BrainAssessmentButton from "@/components/BrainAssessmentButton";
+import { LP_THANK_YOU_PATH, LP_VIDEO_PATH } from "@/lib/ghl-form";
 
 // Landing-page footer. Carries the contact block, compliance disclaimer, and
 // one CTA — no quick-links grid, no locations list, no social row, so the
@@ -12,8 +13,12 @@ const PHONE_DISPLAY = "669-257-6940";
 const PHONE_HREF = "tel:+16692576940";
 
 export default function LpFooter() {
+  const pathname = usePathname() ?? "";
   // Thank-you page already converted the lead — no "book a call" CTA there.
-  const isThankYouPage = usePathname()?.endsWith("/thank-you") ?? false;
+  const isThankYouPage = pathname.endsWith("/thank-you");
+  // Video page already captured the lead; continue to the calendar instead
+  // of opening the survey again.
+  const isVideoPage = pathname === LP_VIDEO_PATH;
 
   return (
     <footer className="bg-ink text-paper">
@@ -91,7 +96,9 @@ export default function LpFooter() {
                 Ready to go now?
               </h2>
               <div className="mt-5 flex justify-center">
-                <BrainAssessmentButton />
+                <BrainAssessmentButton
+                  href={isVideoPage ? LP_THANK_YOU_PATH : undefined}
+                />
               </div>
               <p className="mt-5 text-[15px] leading-relaxed text-paper/70">
                 No referral, no waiting room, no obligation. Just a few

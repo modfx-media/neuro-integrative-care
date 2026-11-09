@@ -150,6 +150,14 @@ const STATIC: RecordDoc[] = [
     { noIndex: true, excludeFromSitemap: true },
   ),
   page(
+    "/free-discovery-call/video",
+    "Detox Detective Program",
+    [
+      "Watch Dr. Santucci introduce the Detox Detective Program, then choose a time for a free discovery call.",
+    ],
+    { noIndex: true, excludeFromSitemap: true },
+  ),
+  page(
     "/free-discovery-call/thank-you",
     "Thank You",
     ["Your free discovery call request has been received."],

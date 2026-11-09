@@ -15,6 +15,8 @@ import {
   GHL_LEAD_FORM_ID,
   GHL_LEAD_FORM_NAME,
   GHL_LEAD_FORM_TITLE,
+  LP_THANK_YOU_PATH,
+  LP_VIDEO_PATH,
 } from "@/lib/ghl-form";
 
 interface LeadFormModalContextValue {
@@ -93,6 +95,21 @@ export function LeadFormModalProvider({
       try {
         const target = new URL(redirectUrl, window.location.href);
         if (target.origin !== window.location.origin) return;
+        // GHL is still configured to the thank-you URL. After the LP survey,
+        // send people to the program video first; the video page CTA then
+        // continues to the calendar. If they submit again from the video
+        // page, let thank-you through so they can pick a time.
+        const onOfferPage = pathname === "/free-discovery-call";
+        const headingToThankYou =
+          target.pathname === LP_THANK_YOU_PATH ||
+          target.pathname.endsWith(LP_THANK_YOU_PATH);
+        if (onOfferPage && headingToThankYou) {
+          const next = new URL(LP_VIDEO_PATH, window.location.origin);
+          next.search = target.search;
+          next.hash = target.hash;
+          window.location.assign(next.href);
+          return;
+        }
         window.location.assign(target.href);
       } catch {
         // Malformed URL — ignore rather than risk an unsafe navigation.
@@ -100,7 +117,7 @@ export function LeadFormModalProvider({
     }
     window.addEventListener("message", onMessage);
     return () => window.removeEventListener("message", onMessage);
-  }, []);
+  }, [pathname]);
 
   function open() {
     const fbq = (window as { fbq?: (...args: unknown[]) => void }).fbq;

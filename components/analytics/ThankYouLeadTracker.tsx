@@ -20,7 +20,13 @@ export default function ThankYouLeadTracker() {
     const tick = () => {
       if (cancelled) return;
       if (typeof window.fbq === "function") {
+        // The funnel now hits the video page and then thank-you. Track the
+        // lead once per session so both steps can mount this without a
+        // double fire.
+        const key = "nic-lead-tracked";
+        if (window.sessionStorage.getItem(key) === "1") return;
         window.fbq("track", "Lead", { content_name: "Lead Submitted" });
+        window.sessionStorage.setItem(key, "1");
         return;
       }
       if (attempts++ < 40) timer = window.setTimeout(tick, 250);
