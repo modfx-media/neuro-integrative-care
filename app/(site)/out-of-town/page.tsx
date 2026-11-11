@@ -15,7 +15,8 @@ const FRAMING_LABELS = ["Continuity", "Access", "Oversight"] as const;
 
 const metadataFallback: Metadata = {
   title: "Out-of-Town Services",
-  description: programs.outOfTownServices.description,
+  description:
+    "Remote care for traveling patients: Myndlift neurofeedback, national-lab testing, and the Listening Program, with the same clinician oversight as in clinic.",
   alternates: { canonical: "/out-of-town" },
   openGraph: {
     title: "Out-of-Town Services | NeuroIntegrative Care of Los Gatos",

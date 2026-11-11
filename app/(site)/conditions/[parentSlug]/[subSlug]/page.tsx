@@ -62,9 +62,13 @@ export async function generateMetadata({
   const article = findConditionArticle(parentSlug, subSlug);
   if (article) {
     const url = `/conditions/${article.parentSlug}/${article.slug}`;
+    const description =
+      article.slug === "toxin-mold-illness"
+        ? "Fatigue, brain fog, and nerve symptoms after a water-damaged building? We test for mold, metals, and chemical exposure, and how completely you clear them."
+        : article.metaDescription;
     return withCMSMetadata(url, {
       title: article.metaTitle,
-      description: article.metaDescription,
+      description,
       alternates: { canonical: url },
       openGraph: {
         title: `${article.metaTitle} | NeuroIntegrative Care of Los Gatos`,

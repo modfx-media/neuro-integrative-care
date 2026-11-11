@@ -37,25 +37,33 @@ export default function VirtualProgramBand() {
             approach, delivered remotely, wherever you are.
           </p>
 
-          <div className="mt-10 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
-            <motion.div
-              whileHover={{ scale: 1.03, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ type: "spring", stiffness: 400, damping: 22 }}
-              className="shrink-0"
-            >
+          <div className="mt-10 flex flex-col items-start gap-5">
+            <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center">
+              <motion.div
+                whileHover={{ scale: 1.03, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: "spring", stiffness: 400, damping: 22 }}
+                className="shrink-0"
+              >
+                <Link
+                  href="/programs/virtual"
+                  className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.8)]"
+                >
+                  Explore the Virtual Program
+                </Link>
+              </motion.div>
               <Link
                 href="/programs/virtual"
-                className="inline-flex items-center rounded-full bg-gradient-to-r from-amber to-amber-b px-7 py-3.5 text-sm font-medium tracking-tight text-ink shadow-[0_10px_36px_-10px_rgba(248,180,43,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_52px_-12px_rgba(248,180,43,0.8)]"
+                className="text-sm text-paper/70 underline decoration-amber-b/50 decoration-1 underline-offset-4 transition-colors hover:text-amber-b hover:decoration-amber-b"
               >
-                Explore the Virtual Program
+                Not local? Start remotely.
               </Link>
-            </motion.div>
+            </div>
             <Link
-              href="/programs/virtual"
+              href="/programs"
               className="text-sm text-paper/70 underline decoration-amber-b/50 decoration-1 underline-offset-4 transition-colors hover:text-amber-b hover:decoration-amber-b"
             >
-              Not local? Start remotely.
+              See all programs
             </Link>
           </div>
         </Reveal>

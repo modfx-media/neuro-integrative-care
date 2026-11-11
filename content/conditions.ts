@@ -10,6 +10,8 @@ export interface Condition {
   /** Optional supporting photo rendered alongside "What We Investigate". */
   galleryImage?: string;
   galleryImageAlt?: string;
+  /** Alt text for the card photo on the homepage and city grids. */
+  cardImageAlt?: string;
 }
 
 // TODO(client): sub-condition → parent sector pairings below are TENTATIVE.
@@ -32,6 +34,8 @@ export const conditions: Condition[] = [
       "Autoimmune disease is rarely random. We map the triggers with predictive-antibody panels, gut-barrier and molecular-mimicry testing, food-sensitivity and microbiome analysis, then address the triggers at the source through targeted nutrition, gut repair, and environmental change. Dr. Santucci's own trademarked Autoimmune Triggers model organizes the search: food antigens, metals, stress, hormones, pesticides, trauma, now expanded to include mold/mycotoxins and post-viral triggers.",
     patientStorySlug: "ellie",
     heroImage: "/images/conditions/banners/autoimmune-investigation.jpg",
+    cardImageAlt:
+      "Clinician in gloves preparing blood samples beside a laptop during an autoimmune workup",
     subConditions: [
       {
         slug: "neuropathy",
@@ -51,6 +55,8 @@ export const conditions: Condition[] = [
     whatWeInvestigate:
       "Memory, focus, and clarity depend on three things working together: cerebral blood flow, mitochondrial energy, and balanced neurotransmitters. When any falter, from stress, poor sleep, blood-sugar swings, or low-grade inflammation, cognition suffers long before anything shows on a standard test. A 19-channel QEEG brain map reveals more about how your brain actually operates than you've ever seen, and shows exactly where to train. We combine neurofeedback, photobiomodulation, and targeted nutrient support to rebuild efficiency.",
     heroImage: "/images/conditions/banners/brain-brightening.jpg",
+    cardImageAlt:
+      "Woman meditating cross-legged on a mat in a sunlit room, representing brain brightening",
     subConditions: [
       {
         slug: "memory-cognition",
@@ -71,6 +77,8 @@ export const conditions: Condition[] = [
       "A concussion disrupts vestibular-ocular reflexes, autonomic regulation, and cellular energy all at once, which is why 'rest and wait' leaves so many people with lingering symptoms years later. Our functional-neurology assessment maps exactly which circuits were affected, then builds active rehab: vestibular and oculomotor retraining, autonomic regulation, and violet-laser support for mitochondrial healing. By Dr. Santucci's estimate, up to half of men are walking around with unaddressed post-concussive syndrome.",
     patientStorySlug: "michael",
     heroImage: "/images/conditions/banners/concussion-post-trauma.jpg",
+    cardImageAlt:
+      "Man holding his face and glasses, appearing to struggle with post-concussion symptoms",
     subConditions: [
       {
         slug: "balance-strength",
@@ -91,6 +99,8 @@ export const conditions: Condition[] = [
       "Mycotoxins, heavy metals, and everyday chemical exposures accumulate silently and often surface first as neurological symptoms. We test for the exposure itself (urine mycotoxin and heavy-metal panels) and for how efficiently your body clears toxins, including genetic detox variants like MTHFR. Care then supports your own detox pathways so the burden is actually cleared. In Dr. Santucci's clinic, an all-toxin panel has yet to come back clean.",
     patientStorySlug: "seth",
     heroImage: "/images/conditions/banners/environmental-toxins.jpg",
+    cardImageAlt:
+      "Woman outdoors beside icons of factories, vehicle exhaust, household chemicals, water, and crop spraying",
   },
   {
     slug: "longevity-science",
@@ -100,6 +110,8 @@ export const conditions: Condition[] = [
     whatWeInvestigate:
       "Biological age tells the truth that a birthdate can't. We use epigenetic-clock testing, mitochondrial-function markers, and cellular-senescence indicators to establish where you actually stand, then build a personalized protocol (nutrition, movement, NAD+ pathway support, targeted lifestyle change) aimed at slowing cellular aging and extending healthy, functional years. Dr. Santucci's view: real longevity is interventional and brain-first, not a shelf of supplements with the word on the label.",
     heroImage: "/images/conditions/banners/longevity-science.jpg",
+    cardImageAlt:
+      "Illustrated chromosomes inside a cell, representing biological aging and longevity testing",
     subConditions: [
       {
         slug: "sleep-fatigue",
@@ -120,6 +132,8 @@ export const conditions: Condition[] = [
       "When standard testing is 'normal' but symptoms persist, the answer is usually that the wrong systems were tested, not that nothing is wrong. We investigate metabolic, neurological, immune, and hormonal function together rather than in isolation, which is where most 'idiopathic' cases finally reveal their driver. 'The idiopathic nature of it is not idiopathic to us.'",
     patientStorySlug: "don",
     heroImage: "/images/conditions/banners/idiopathic-unexplained.jpg",
+    cardImageAlt:
+      "Woman sitting on a sofa with a hand on her temple, looking for an explanation of unexplained symptoms",
   },
   {
     slug: "erchonia",

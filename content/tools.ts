@@ -13,6 +13,8 @@ export interface Tool {
   /** Short mono-caps label used above the title on the tool's /tools/[slug] page. */
   kicker: string;
   description: string;
+  /** Search snippet, 150–158 characters. `description` stays the on-page copy. */
+  metaDescription: string;
   /** Slugs from conditions.ts — parent sectors this tool most directly serves. */
   sectorSlugs: string[];
   media: ToolMedia;
@@ -49,6 +51,8 @@ export const tools: Tool[] = [
     kicker: "Photobiomodulation",
     description:
       "Photobiomodulation: specific wavelengths absorbed by mitochondria to boost ATP and reduce inflammation at the source. Used to accelerate nerve and tissue repair and, applied transcranially, to support brain regions affected by injury or decline. Non-invasive, painless, drug-free.",
+    metaDescription:
+      "Violet laser therapy uses specific wavelengths absorbed by mitochondria to support nerve and tissue repair and brain recovery. Non-invasive and drug-free.",
     sectorSlugs: [
       "concussion-post-trauma",
       "brain-brightening",
@@ -69,6 +73,8 @@ export const tools: Tool[] = [
     kicker: "qEEG-Guided Training",
     description:
       "Real-time, qEEG-guided EEG training that shows the brain its own activity and rewards healthier patterns. Over a course of sessions the brain learns to self-regulate (attention, sleep, emotional regulation, stress resilience) with no medication. Every protocol is individualized to the patient's brain map, then re-mapped to measure change. Home and remote options available (Myndlift).",
+    metaDescription:
+      "qEEG-guided neurofeedback shows the brain its own activity and rewards healthier patterns for attention, sleep, and stress, with home and remote options.",
     sectorSlugs: [
       "brain-brightening",
       "concussion-post-trauma",
@@ -146,6 +152,8 @@ export const tools: Tool[] = [
     kicker: "Non-Surgical Repair",
     description:
       "Advanced, non-surgical therapies (including PRP and exosome-supported approaches) that stimulate the body's own repair in joints, connective tissue, and peripheral nerves. Frequently paired with neurofeedback and functional-neurology work so structural repair and nervous-system retraining progress together.",
+    metaDescription:
+      "Non-surgical regenerative care, including PRP and exosome-supported approaches, to support repair in joints, connective tissue, and peripheral nerves.",
     sectorSlugs: ["concussion-post-trauma", "longevity-science"],
     // TODO(client): no media asset supplied for this tool yet — placeholder
     // slot only. Swap for real clinic/procedure media before launch.
@@ -157,6 +165,8 @@ export const tools: Tool[] = [
     kicker: "Circuit-Level Rehab",
     description:
       "Computerized assessment (eye-movement tracking, posturography and balance, reaction-time and heart-rate-variability testing) pinpoints which neural circuits underperform, followed by targeted hands-on rehab that retrains those exact pathways.",
+    metaDescription:
+      "Functional neurology uses eye-movement, balance, and reaction testing to find underperforming neural circuits, then retrains those pathways in clinic.",
     sectorSlugs: ["concussion-post-trauma", "brain-brightening"],
     // TODO(client): no media asset supplied for this tool yet — placeholder
     // slot only. Swap for real clinic/procedure media before launch.
@@ -168,6 +178,8 @@ export const tools: Tool[] = [
     kicker: "Beyond the Standard Physical",
     description:
       "A panel far beyond a standard physical: Real Age (biological-age) testing, IntellxxDNA cognitive genomics, comprehensive DNA, neurotransmitter testing, and specialized labs, delivering an objective, data-driven picture of how you're aging and functioning.",
+    metaDescription:
+      "Longevity testing goes past a standard physical: biological age, cognitive genomics, DNA, neurotransmitters, and specialized labs that show how you're aging.",
     sectorSlugs: ["longevity-science", "idiopathic-unexplained"],
     // TODO(client): no media asset supplied for this tool yet — placeholder
     // slot only. Swap for real clinic/procedure media before launch.
@@ -179,6 +191,8 @@ export const tools: Tool[] = [
     kicker: "Pulsed Electromagnetic Field Therapy",
     description:
       "Pulsed electromagnetic field (PEMF) therapy delivers a low-level, rhythmic magnetic pulse to support circulation and cellular energy production at the tissue level. Used in-clinic as a supporting therapy alongside neurofeedback, functional neurology, and regenerative care. Non-invasive, painless, no downtime.",
+    metaDescription:
+      "Pulse PEMF delivers a low-level rhythmic magnetic field to support circulation and cellular energy in clinic, alongside neurofeedback and regenerative care.",
     sectorSlugs: ["concussion-post-trauma", "longevity-science"],
     // TODO(client): no media asset supplied for this tool yet — placeholder
     // slot only. Swap for real clinic/procedure media before launch.
@@ -190,6 +204,8 @@ export const tools: Tool[] = [
     kicker: "Removing the Trigger",
     description:
       "Targeted support for the body's own detox pathways once a metals, mold, or environmental-toxin trigger is identified, clearing the load that's driving inflammation rather than only treating the downstream symptoms.",
+    metaDescription:
+      "Detoxification support for the body's own clearance pathways once metals, mold, or another environmental trigger is identified, rather than covering symptoms.",
     sectorSlugs: ["autoimmune-investigation", "environmental-toxins"],
     // TODO(client): no media asset supplied for this tool yet — placeholder
     // slot only. Swap for real clinic/procedure media before launch.

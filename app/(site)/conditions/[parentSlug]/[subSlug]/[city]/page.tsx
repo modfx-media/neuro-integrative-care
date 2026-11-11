@@ -11,6 +11,7 @@ import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 import { SITE_URL } from "@/lib/site";
 import CMSRoute from "@/components/cms/CMSRoute";
 import { withCMSMetadata } from "@/lib/cms/metadata";
+import { localMetaDescription } from "@/lib/seo";
 
 
 interface CityConditionParams {
@@ -55,7 +56,11 @@ export async function generateMetadata({
   const url = `/conditions/${article.parentSlug}/${article.slug}/${city.slug}`;
   return withCMSMetadata(url, {
     title: copy.metaTitle,
-    description: copy.metaDescription,
+    description: localMetaDescription(
+      city.name,
+      city.driveNote,
+      article.name.toLowerCase(),
+    ),
     alternates: { canonical: url },
     openGraph: {
       title: `${copy.metaTitle} | NeuroIntegrative Care of Los Gatos`,

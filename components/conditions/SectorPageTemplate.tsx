@@ -55,7 +55,7 @@ export default function SectorPageTemplate({
         {condition.heroImage && (
           <Image
             src={condition.heroImage}
-            alt=""
+            alt={`${condition.name} at NeuroIntegrative Care of Los Gatos`}
             fill
             priority
             sizes="100vw"
@@ -169,7 +169,10 @@ export default function SectorPageTemplate({
                 <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-amber/20 shadow-[0_30px_70px_-30px_rgba(232,160,32,0.45)]">
                   <Image
                     src={condition.galleryImage}
-                    alt={condition.galleryImageAlt ?? ""}
+                    alt={
+                      condition.galleryImageAlt ||
+                      `${condition.name} at NeuroIntegrative Care of Los Gatos`
+                    }
                     fill
                     sizes="(min-width: 1024px) 45vw, 100vw"
                     className="object-cover"

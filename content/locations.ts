@@ -21,9 +21,9 @@ export const cityLocations: CityLocation[] = [
     slug: "los-gatos",
     name: "Los Gatos",
     h1: "Root-Cause Care, Right Here in Los Gatos",
-    metaTitle: "Los Gatos Functional Medicine & Neurometabolic Care",
+    metaTitle: "Functional Medicine in Los Gatos | NeuroIntegrative Care",
     metaDescription:
-      "NeuroIntegrative Care is based in downtown Los Gatos, CA: functional medicine, functional neurology, and regenerative care for local patients who want an actual answer.",
+      "Functional medicine, functional neurology, and regenerative care in downtown Los Gatos for people whose labs look normal but who still don't feel right.",
     intro:
       "Our clinic sits on Santa Cruz Ave in downtown Los Gatos, a few steps from the plaza. For Los Gatos residents, that means no highway, no bridge traffic, just a short walk or drive to a practice built around finding what's actually driving a symptom, not managing it indefinitely.",
     servingLine: "Serving Los Gatos and the greater West Valley.",
@@ -33,9 +33,9 @@ export const cityLocations: CityLocation[] = [
     slug: "campbell",
     name: "Campbell",
     h1: "Root-Cause Neurometabolic Care for Campbell Patients, Minutes Away",
-    metaTitle: "Functional Medicine Near Campbell, CA | NeuroIntegrative Care",
+    metaTitle: "Functional Medicine Near Campbell | NeuroIntegrative Care",
     metaDescription:
-      "Campbell patients reach our Los Gatos clinic in about ten minutes via Hamilton Ave or Winchester Blvd: root-cause functional medicine and neurology, no referral needed.",
+      "Campbell patients reach our Los Gatos clinic in about ten minutes via Hamilton Ave or Winchester Blvd for root-cause functional medicine and neurology.",
     intro:
       "From most of Campbell, it's a straight shot down Hamilton Ave or Winchester Blvd to our door in downtown Los Gatos. Call it ten minutes without traffic. Close enough that patients who've bounced between specialists in the Pruneyard area often make us their next stop rather than their last resort.",
     servingLine: "Serving Campbell and surrounding areas.",
@@ -45,9 +45,9 @@ export const cityLocations: CityLocation[] = [
     slug: "san-jose",
     name: "San Jose",
     h1: "San Jose Patients Drive a Few Exits for a Different Kind of Workup",
-    metaTitle: "Root-Cause Care for San Jose Patients | NeuroIntegrative Care",
+    metaTitle: "Root-Cause Care for San Jose | NeuroIntegrative Care",
     metaDescription:
-      "San Jose patients, from Willow Glen to Almaden, reach our Los Gatos clinic in 15–20 minutes for functional medicine, functional neurology, and regenerative care.",
+      "San Jose patients, from Willow Glen to Almaden, reach our Los Gatos clinic in 15–20 minutes for functional medicine, neurology, and regenerative care.",
     intro:
       "San Jose is a big city, so the drive varies: Willow Glen and Almaden Valley patients are 15 minutes out via 880/17, while those further north or east budget closer to 25–30. Either way, it's a familiar trip for patients who've already worked through San Jose's larger hospital systems without a clear answer and want a different approach.",
     servingLine: "Serving San Jose, Almaden Valley, Willow Glen, and Cambrian Park.",
@@ -57,9 +57,9 @@ export const cityLocations: CityLocation[] = [
     slug: "morgan-hill",
     name: "Morgan Hill",
     h1: "From Morgan Hill to Los Gatos: One Trip North for Root-Cause Answers",
-    metaTitle: "Morgan Hill Patients: Functional Neurology & Root-Cause Medicine",
+    metaTitle: "Functional Neurology, Morgan Hill | NeuroIntegrative Care",
     metaDescription:
-      "Morgan Hill patients travel roughly 25 minutes north on Highway 101/85 to our Los Gatos clinic for functional medicine, neurofeedback, and regenerative therapies.",
+      "Morgan Hill patients travel about 25 minutes north on Highway 101 to our Los Gatos clinic for functional medicine, neurofeedback, and regenerative care.",
     intro:
       "Morgan Hill patients typically take 101 north to 85, arriving in about 25 minutes, a single, predictable trip rather than a string of specialist referrals scattered across the South Bay. Many make a morning of it: one visit, a full workup, and a plan before heading back south.",
     servingLine: "Serving Morgan Hill, Gilroy, and South Santa Clara County.",
@@ -69,9 +69,9 @@ export const cityLocations: CityLocation[] = [
     slug: "santa-cruz",
     name: "Santa Cruz",
     h1: "Over the Hill from Santa Cruz: Root-Cause Care Worth the Drive",
-    metaTitle: "Santa Cruz Patients Travel Highway 17 for This Root-Cause Practice",
+    metaTitle: "Root-Cause Care for Santa Cruz | NeuroIntegrative Care",
     metaDescription:
-      "Santa Cruz patients cross Highway 17 (about 40 minutes) to reach our Los Gatos clinic: functional medicine, functional neurology, and regenerative therapies without the Bay Area referral maze.",
+      "Santa Cruz patients cross Highway 17, about 40 minutes, for direct functional medicine, functional neurology, and regenerative care at our Los Gatos clinic.",
     intro:
       "Highway 17 is the one road most Santa Cruz patients already know by heart, and it's the same route that brings many of them to us, about 40 minutes, mountains and all. For patients who've exhausted what's available on the coast, that drive tends to be the shortest distance to an actual explanation.",
     servingLine: "Serving Santa Cruz, Scotts Valley, and the greater Monterey Bay area.",
@@ -81,9 +81,9 @@ export const cityLocations: CityLocation[] = [
     slug: "aptos",
     name: "Aptos",
     h1: "Aptos Patients Make the Highway 17 Trip for Answers Standard Care Missed",
-    metaTitle: "Aptos, CA Patients | Functional Medicine in Los Gatos",
+    metaTitle: "Functional Medicine for Aptos | NeuroIntegrative Care",
     metaDescription:
-      "Aptos patients travel Highway 17 and Highway 1 (about 45–50 minutes) to our Los Gatos clinic for root-cause functional medicine, functional neurology, and regenerative care.",
+      "Aptos patients travel Highway 1 onto Highway 17, about 45–50 minutes, for root-cause functional medicine, neurology, and regenerative care in Los Gatos.",
     intro:
       "Coming from Aptos means Highway 1 into Highway 17, roughly 45 to 50 minutes depending on the hour, a longer trip than most, and one our Aptos patients tend to make only after the closer options ran out of ideas. It's a full day out, but for a root-cause workup instead of another round of symptom management, most say it's worth the miles.",
     servingLine: "Serving Aptos, Capitola, and Soquel.",
@@ -93,7 +93,7 @@ export const cityLocations: CityLocation[] = [
     slug: "saratoga",
     name: "Saratoga",
     h1: "Saratoga Patients Are Practically Neighbors of This Clinic",
-    metaTitle: "Saratoga, CA Patients | Functional Medicine in Los Gatos",
+    metaTitle: "Functional Medicine in Saratoga | NeuroIntegrative Care",
     metaDescription:
       "Saratoga patients reach our Los Gatos clinic in about ten minutes via Saratoga-Los Gatos Road for root-cause functional medicine and functional neurology.",
     intro:
@@ -105,7 +105,7 @@ export const cityLocations: CityLocation[] = [
     slug: "monte-sereno",
     name: "Monte Sereno",
     h1: "Monte Sereno Is Next Door, So the Workup Doesn't Have to Wait",
-    metaTitle: "Monte Sereno, CA | Functional Medicine Next Door in Los Gatos",
+    metaTitle: "Functional Medicine, Monte Sereno | NeuroIntegrative Care",
     metaDescription:
       "Monte Sereno borders Los Gatos directly, so our clinic is a five-minute drive for root-cause functional medicine, functional neurology, and regenerative care.",
     intro:
@@ -117,7 +117,7 @@ export const cityLocations: CityLocation[] = [
     slug: "cupertino",
     name: "Cupertino",
     h1: "Cupertino Patients Take Highway 85 for a Different Kind of Workup",
-    metaTitle: "Cupertino, CA Patients | Root-Cause Care in Los Gatos",
+    metaTitle: "Root-Cause Care for Cupertino | NeuroIntegrative Care",
     metaDescription:
       "Cupertino patients reach our Los Gatos clinic in about 15–20 minutes via Highway 85 for functional medicine, functional neurology, and regenerative therapies.",
     intro:
@@ -129,7 +129,7 @@ export const cityLocations: CityLocation[] = [
     slug: "santa-clara",
     name: "Santa Clara",
     h1: "Santa Clara Patients Head South on 85 for Root-Cause Answers",
-    metaTitle: "Santa Clara, CA Patients | Functional Medicine in Los Gatos",
+    metaTitle: "Functional Medicine, Santa Clara | NeuroIntegrative Care",
     metaDescription:
       "Santa Clara patients travel about 20–25 minutes via Highway 85 to 101 to reach our Los Gatos clinic for functional medicine and functional neurology.",
     intro:
@@ -141,7 +141,7 @@ export const cityLocations: CityLocation[] = [
     slug: "sunnyvale",
     name: "Sunnyvale",
     h1: "Sunnyvale Patients Make the Highway 85 Trip South for Real Answers",
-    metaTitle: "Sunnyvale, CA Patients | Root-Cause Medicine in Los Gatos",
+    metaTitle: "Root-Cause Care for Sunnyvale | NeuroIntegrative Care",
     metaDescription:
       "Sunnyvale patients reach our Los Gatos clinic in about 20 minutes via Highway 85 for functional medicine, neurofeedback, and regenerative care.",
     intro:
@@ -153,7 +153,7 @@ export const cityLocations: CityLocation[] = [
     slug: "mountain-view",
     name: "Mountain View",
     h1: "Mountain View Patients Drive South for a Workup That Goes Further",
-    metaTitle: "Mountain View, CA Patients | Functional Medicine in Los Gatos",
+    metaTitle: "Functional Medicine, Mountain View | NeuroIntegrative Care",
     metaDescription:
       "Mountain View patients travel about 25 minutes via Highway 85 to 101 to reach our Los Gatos clinic for root-cause functional medicine and neurology.",
     intro:
@@ -165,7 +165,7 @@ export const cityLocations: CityLocation[] = [
     slug: "palo-alto",
     name: "Palo Alto",
     h1: "Palo Alto Patients Travel South for a Practice Built Around Evidence",
-    metaTitle: "Palo Alto, CA Patients | Functional Medicine in Los Gatos",
+    metaTitle: "Functional Medicine for Palo Alto | NeuroIntegrative Care",
     metaDescription:
       "Palo Alto patients travel about 30 minutes via Highway 85 to 101 to reach our Los Gatos clinic for functional medicine, neurofeedback, and root-cause care.",
     intro:
@@ -177,7 +177,7 @@ export const cityLocations: CityLocation[] = [
     slug: "los-altos",
     name: "Los Altos",
     h1: "Los Altos Patients Take Highway 85 South for Root-Cause Care",
-    metaTitle: "Los Altos, CA Patients | Functional Medicine in Los Gatos",
+    metaTitle: "Functional Medicine in Los Altos | NeuroIntegrative Care",
     metaDescription:
       "Los Altos patients reach our Los Gatos clinic in about 25 minutes via Highway 85 for functional medicine, functional neurology, and regenerative care.",
     intro:
@@ -189,7 +189,7 @@ export const cityLocations: CityLocation[] = [
     slug: "milpitas",
     name: "Milpitas",
     h1: "Milpitas Patients Cross the Valley for a Different Kind of Workup",
-    metaTitle: "Milpitas, CA Patients | Functional Medicine in Los Gatos",
+    metaTitle: "Functional Medicine for Milpitas | NeuroIntegrative Care",
     metaDescription:
       "Milpitas patients travel about 30–35 minutes via Highway 85/101 or 880/17 to reach our Los Gatos clinic for functional medicine and functional neurology.",
     intro:
@@ -201,7 +201,7 @@ export const cityLocations: CityLocation[] = [
     slug: "scotts-valley",
     name: "Scotts Valley",
     h1: "Scotts Valley Patients Take Highway 17 Before It Reaches Santa Cruz",
-    metaTitle: "Scotts Valley, CA Patients | Functional Medicine in Los Gatos",
+    metaTitle: "Functional Medicine, Scotts Valley | NeuroIntegrative Care",
     metaDescription:
       "Scotts Valley patients travel about 30–35 minutes via Highway 17 to reach our Los Gatos clinic for root-cause functional medicine and functional neurology.",
     intro:

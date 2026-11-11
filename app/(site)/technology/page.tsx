@@ -63,7 +63,7 @@ const TECHNOLOGY_ITEMS: TechnologyItem[] = [
 const metadataFallback: Metadata = {
   title: "Technology",
   description:
-    "The non-invasive, drug-free technology used at NeuroIntegrative Care of Los Gatos: Violet Laser Therapy, qEEG & Neurofeedback, Miracle Wave, Neogen Neuropathy Treatment, Pulse PEMF, and Thermal Photography.",
+    "Non-invasive, drug-free technology used together in Los Gatos: violet laser, qEEG neurofeedback, Miracle Wave, Neogen, Pulse PEMF, and thermal photography.",
   alternates: { canonical: "/technology" },
   openGraph: {
     title: "Technology | NeuroIntegrative Care of Los Gatos",
@@ -78,7 +78,8 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "MedicalWebPage",
   name: "Technology | NeuroIntegrative Care of Los Gatos",
-  description: metadataFallback.description,
+  description:
+    "The non-invasive, drug-free technology used at NeuroIntegrative Care of Los Gatos: Violet Laser Therapy, qEEG & Neurofeedback, Miracle Wave, Neogen Neuropathy Treatment, Pulse PEMF, and Thermal Photography.",
   url: PAGE_URL,
   inLanguage: "en-US",
   isPartOf: {

@@ -147,7 +147,7 @@ export default function Nav({
             <span className="relative block h-9 w-9 shrink-0 overflow-hidden rounded-full ring-1 ring-paper/25 sm:h-10 sm:w-10">
               <Image
                 src="/images/logo/mark-square.webp"
-                alt=""
+                alt="NeuroIntegrative Care of Los Gatos logo"
                 fill
                 sizes="40px"
                 priority

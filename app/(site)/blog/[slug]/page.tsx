@@ -43,7 +43,7 @@ export async function generateMetadata({
       type: "article",
       publishedTime: post.date,
       // No per-post `images` override: hero images aren't consistently
-      // 1200x630, so posts fall back to the branded app/opengraph-image.tsx.
+      // 1200x630, so posts use the sitewide /images/og-default.jpg.
     },
   });
 }
