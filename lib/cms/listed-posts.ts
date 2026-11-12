@@ -11,6 +11,9 @@ export type CmsListedPost = {
   date: string | null;
 };
 
+/** On-brand fallback so a post without a featured or SEO image never shows a blank card. */
+export const DEFAULT_BLOG_CARD_IMAGE = "/images/virtual-program.webp";
+
 type PayloadLike = Awaited<ReturnType<typeof getPayload>>;
 
 async function findPublishedDocs(payload: PayloadLike, depth: number) {
@@ -34,7 +37,7 @@ async function findPublishedDocs(payload: PayloadLike, depth: number) {
   return docs;
 }
 
-/** Published posts from Payload (card image = the post's SEO meta image). Future calendar dates are hidden by the scheduled-publish guard. */
+/** Published posts from Payload (card image = featuredImage, then the SEO meta image, then the default). Future calendar dates are hidden by the scheduled-publish guard. */
 export async function getCmsPublishedPosts(): Promise<CmsListedPost[]> {
   if (!cmsConfigured()) return [];
   return withCMS(async () => {
@@ -56,16 +59,20 @@ export async function getCmsPublishedPosts(): Promise<CmsListedPost[]> {
           excerpt?: string | null;
           publishedOn?: string | null;
           featuredImage?: { url?: string | null; alt?: string | null } | number | null;
-          meta?: { description?: string | null; image?: { url?: string | null } | number | null } | null;
+          meta?: { description?: string | null; image?: { url?: string | null; alt?: string | null } | number | null } | null;
         };
         const fi = d.featuredImage && typeof d.featuredImage === "object" ? d.featuredImage : null;
-        const mi = d.meta?.image && typeof d.meta.image === "object" ? d.meta.image : null;
+        const mi =
+          d.meta?.image && typeof d.meta.image === "object"
+            ? (d.meta.image as { url?: string | null; alt?: string | null })
+            : null;
+        const image = fi?.url ?? mi?.url ?? null;
         return {
           slug: d.slug ?? "",
           title: d.title ?? "",
           excerpt: d.excerpt ?? d.meta?.description ?? "",
-          image: fi?.url ?? mi?.url ?? null,
-          imageAlt: fi?.alt ?? d.title ?? "",
+          image: image ?? DEFAULT_BLOG_CARD_IMAGE,
+          imageAlt: (fi?.url ? fi.alt : mi?.url ? mi.alt : null) || d.title || "",
           date: d.publishedOn ?? null,
         };
       })

@@ -307,6 +307,7 @@ export interface Post {
   sourceUrl?: string | null;
   sourceUpdatedAt?: string | null;
   excerpt?: string | null;
+  featuredImage?: (number | null) | Media;
   publishedOn?: string | null;
   layout?: (HeadingBlock | CopyBlock | RichTextBlock | CtaBlock)[] | null;
   meta?: {
@@ -654,6 +655,7 @@ export interface PostsSelect<T extends boolean = true> {
   sourceUrl?: T;
   sourceUpdatedAt?: T;
   excerpt?: T;
+  featuredImage?: T;
   publishedOn?: T;
   layout?:
     | T

@@ -12,6 +12,7 @@ export type RoutedContent = {
     path?: string | null;
     slug?: string | null;
     layout?: unknown;
+    featuredImage?: unknown;
     meta?: {
       title?: string | null;
       description?: string | null;

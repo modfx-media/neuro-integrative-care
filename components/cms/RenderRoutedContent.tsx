@@ -88,12 +88,16 @@ export default function RenderRoutedContent({
   standalone = false,
 }: {
   doc: RoutedContent["doc"];
-  /** CMS-only post with no coded page: also render its title and meta image. */
+  /** CMS-only post with no coded page: also render its title and featured (or meta) image. */
   standalone?: boolean;
 }) {
   const layout = Array.isArray(doc.layout) ? (doc.layout as LayoutBlock[]) : [];
-  const featured = (doc.meta?.image ?? null) as { url?: string | null; alt?: string | null } | null;
-  const featuredUrl = standalone && featured && typeof featured === "object" ? featured.url : null;
+  type ImageDoc = { url?: string | null; alt?: string | null };
+  const asImage = (value: unknown): ImageDoc | null =>
+    value && typeof value === "object" && (value as ImageDoc).url ? (value as ImageDoc) : null;
+  const featured =
+    asImage(doc.featuredImage) ?? asImage(doc.meta?.image);
+  const featuredUrl = standalone && featured ? featured.url : null;
   const hasH1 = layout.some((b) => b.blockType === "heading" && b.tag === "h1");
 
   return (
