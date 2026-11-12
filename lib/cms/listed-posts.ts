@@ -1,6 +1,7 @@
 import { getPayload } from "payload";
 import config from "@payload-config";
 import { cmsConfigured, withCMS } from "@/lib/cms/safe";
+import { contentImageAlt } from "@/lib/seo";
 
 export type CmsListedPost = {
   slug: string;
@@ -65,7 +66,11 @@ export async function getCmsPublishedPosts(): Promise<CmsListedPost[]> {
           title: d.title ?? "",
           excerpt: d.excerpt ?? d.meta?.description ?? "",
           image: fi?.url ?? mi?.url ?? null,
-          imageAlt: fi?.alt ?? d.title ?? "",
+          imageAlt: contentImageAlt(
+            fi?.alt,
+            d.title,
+            "Article image from NeuroIntegrative Care of Los Gatos",
+          ),
           date: d.publishedOn ?? null,
         };
       })

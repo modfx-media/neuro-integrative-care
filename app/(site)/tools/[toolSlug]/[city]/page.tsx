@@ -10,6 +10,7 @@ import BrainAssessmentButton from "@/components/BrainAssessmentButton";
 import { SITE_URL } from "@/lib/site";
 import CMSRoute from "@/components/cms/CMSRoute";
 import { withCMSMetadata } from "@/lib/cms/metadata";
+import { localMetaDescription } from "@/lib/seo";
 
 
 interface CityServiceParams {
@@ -46,7 +47,11 @@ export async function generateMetadata({
   const url = `/tools/${tool.slug}/${city.slug}`;
   return withCMSMetadata(url, {
     title: copy.metaTitle,
-    description: copy.metaDescription,
+    description: localMetaDescription(
+      city.name,
+      city.driveNote,
+      tool.name.toLowerCase(),
+    ),
     alternates: { canonical: url },
     openGraph: {
       title: copy.metaTitle,

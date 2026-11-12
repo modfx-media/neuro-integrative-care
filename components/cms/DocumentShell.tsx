@@ -6,6 +6,7 @@ import MetaPageView from "@/components/analytics/MetaPageView";
 import MotionProvider from "@/components/MotionProvider";
 import { LeadFormModalProvider } from "@/components/lp/LeadFormModal";
 import { SITE_URL } from "@/lib/site";
+import { BRAND_NAME, DEFAULT_OG_IMAGE } from "@/lib/seo";
 import "@/app/globals.css";
 
 const GA_MEASUREMENT_ID = "G-FYBZCG4XTR";
@@ -36,12 +37,13 @@ export const SITE_TAGLINE =
   "Functional Medicine & Root-Cause Investigation in Los Gatos, CA";
 export const SITE_DESCRIPTION =
   "Dr. Santucci's 30-year root-cause investigation of brain, metabolism, and nervous system, for people whose labs read \u201Cnormal\u201D but who don't feel right.";
+const HOME_TITLE = "Functional Medicine in Los Gatos | NeuroIntegrative Care";
 
 export const siteMetadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_TITLE} | ${SITE_TAGLINE}`,
-    template: `%s | ${SITE_TITLE}`,
+    default: HOME_TITLE,
+    template: `%s | ${BRAND_NAME}`,
   },
   description: SITE_DESCRIPTION,
   alternates: { canonical: "/" },
@@ -49,14 +51,16 @@ export const siteMetadata: Metadata = {
     type: "website",
     url: "/",
     siteName: SITE_TITLE,
-    title: `${SITE_TITLE} | ${SITE_TAGLINE}`,
+    title: HOME_TITLE,
     description: SITE_DESCRIPTION,
     locale: "en_US",
+    images: [DEFAULT_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_TITLE} | ${SITE_TAGLINE}`,
+    title: HOME_TITLE,
     description: SITE_DESCRIPTION,
+    images: [DEFAULT_OG_IMAGE.url],
   },
   robots: { index: true, follow: true },
 };

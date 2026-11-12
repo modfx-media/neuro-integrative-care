@@ -32,11 +32,11 @@ export async function generateMetadata({
   if (!tool) return {};
   return withCMSMetadata(`/tools/${tool.slug}`, {
     title: tool.name,
-    description: tool.description,
+    description: tool.metaDescription,
     alternates: { canonical: `/tools/${tool.slug}` },
     openGraph: {
       title: `${tool.name} | NeuroIntegrative Care of Los Gatos`,
-      description: tool.description,
+      description: tool.metaDescription,
       url: `/tools/${tool.slug}`,
       type: "article",
     },

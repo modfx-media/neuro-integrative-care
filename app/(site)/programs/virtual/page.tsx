@@ -34,9 +34,9 @@ const virtualProgram = programs.entryPrograms.find(
 );
 
 const metadataFallback: Metadata = {
-  title: `The Virtual Program: ${PROGRAM_NAME_PUBLIC}`,
+  title: "Virtual Functional Medicine Program",
   description:
-    "A 30-year neurometabolic method delivered to your home: remote QEEG, biweekly neurofeedback review, and monthly clinician review over a 10-week program. National.",
+    "A 10-week at-home neurometabolic program with remote QEEG, weekly neurological support, and a clinician review with Dr. Santucci every 4 weeks. Nationwide.",
   alternates: { canonical: "/programs/virtual" },
   openGraph: {
     title: `The Virtual Program | NeuroIntegrative Care of Los Gatos`,

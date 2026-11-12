@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { RichText } from "@payloadcms/richtext-lexical/react";
+import { defaultJSXConverters, RichText } from "@payloadcms/richtext-lexical/react";
 import type { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 import type { RoutedContent } from "@/lib/cms/query";
+import { contentImageAlt, humanizeFilename } from "@/lib/seo";
 
 type LayoutBlock = {
   blockType?: string;
@@ -56,7 +57,53 @@ function BlockView({ block }: { block: LayoutBlock }) {
     if (!extractPlainText(block.content) && !JSON.stringify(block.content ?? "").includes('"upload"')) return null;
     return (
       <div className="cms-prose space-y-4 text-lg leading-relaxed text-ink/80 [&_a]:text-amber-b [&_a]:underline [&_h2]:font-serif [&_h2]:text-3xl [&_h2]:text-ink [&_h3]:font-serif [&_h3]:text-2xl [&_h3]:text-ink [&_img]:my-6 [&_img]:h-auto [&_img]:max-w-full [&_img]:rounded-2xl [&_ol]:list-decimal [&_ol]:pl-6 [&_ul]:list-disc [&_ul]:pl-6">
-        <RichText data={block.content as SerializedEditorState} />
+        <RichText
+          converters={{
+            ...defaultJSXConverters,
+            upload: ({ node }) => {
+              const upload = node as {
+                value?: unknown;
+                fields?: { alt?: string | null };
+              };
+              const doc =
+                upload.value && typeof upload.value === "object"
+                  ? (upload.value as {
+                      url?: string | null;
+                      alt?: string | null;
+                      mimeType?: string | null;
+                      filename?: string | null;
+                      width?: number | null;
+                      height?: number | null;
+                    })
+                  : null;
+              if (!doc?.url) return null;
+              const alt = contentImageAlt(
+                upload.fields?.alt,
+                doc.alt,
+                humanizeFilename(doc.filename),
+                "Clinical image from NeuroIntegrative Care of Los Gatos",
+              );
+              if (doc.mimeType && !doc.mimeType.startsWith("image")) {
+                return (
+                  <a href={doc.url} rel="noopener noreferrer">
+                    {doc.filename || alt}
+                  </a>
+                );
+              }
+              return (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={doc.url}
+                  alt={alt}
+                  width={doc.width ?? undefined}
+                  height={doc.height ?? undefined}
+                  className="my-6 h-auto max-w-full rounded-2xl"
+                />
+              );
+            },
+          }}
+          data={block.content as SerializedEditorState}
+        />
       </div>
     );
   }
@@ -103,7 +150,15 @@ export default function RenderRoutedContent({
       ) : null}
       {featuredUrl ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={featuredUrl} alt={featured?.alt ?? doc.title ?? ""} className="aspect-[16/9] w-full rounded-2xl object-cover" />
+        <img
+          src={featuredUrl}
+          alt={contentImageAlt(
+            featured?.alt,
+            doc.title,
+            "Clinical image from NeuroIntegrative Care of Los Gatos",
+          )}
+          className="aspect-[16/9] w-full rounded-2xl object-cover"
+        />
       ) : null}
       {layout.map((block, index) => (
         <BlockView key={index} block={block} />
