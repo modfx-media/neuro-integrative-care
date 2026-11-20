@@ -75,6 +75,9 @@ export function titleFromMetadata(title: Metadata["title"]): string | undefined 
  * Prefer a title that already fits. A stored CMS title that has to be chopped
  * loses to a fallback that already fits, so old long CMS titles don't beat a
  * tuned page title.
+ *
+ * A published `meta.title` does not go through this helper. See
+ * `resolvePublishedTitle`.
  */
 export function chooseTitle(
   cmsTitle?: string | null,
@@ -123,6 +126,36 @@ export function chooseDescription(
   if (fallback && fallback.length <= 160) return fallback;
   const raw = cms || fallback;
   return raw ? fitDescription(raw) : undefined;
+}
+
+function hasVerbatimMeta(value: string | null | undefined): value is string {
+  return typeof value === "string" && value.trim().length > 0;
+}
+
+/**
+ * Published SEO meta.title is the document title, unchanged.
+ * An empty meta title keeps chooseTitle: the doc title when it fits, otherwise
+ * the designed fallback, including brand fitting.
+ */
+export function resolvePublishedTitle(
+  metaTitle: string | null | undefined,
+  docTitle: string | null | undefined,
+  fallbackTitle: string | null | undefined,
+): string | undefined {
+  if (hasVerbatimMeta(metaTitle)) return metaTitle;
+  return chooseTitle(metaTitle || docTitle, fallbackTitle);
+}
+
+/**
+ * Published SEO meta.description is the meta description, unchanged.
+ * An empty meta description keeps chooseDescription.
+ */
+export function resolvePublishedDescription(
+  metaDescription: string | null | undefined,
+  fallbackDescription: string | null | undefined,
+): string | undefined {
+  if (hasVerbatimMeta(metaDescription)) return metaDescription;
+  return chooseDescription(metaDescription, fallbackDescription);
 }
 
 const DESCRIPTION_CLOSERS = [
