@@ -24,13 +24,22 @@ const NAV_ITEMS = [
   { label: "Virtual Program", href: "/programs/virtual" },
 ] as const;
 
+// Vercel prerenders `/` with an RSC canonical URL of `/index` (flight payload
+// `c:["","index"]`). The browser location is `/`, so `usePathname()` is
+// `/index` in the server HTML and `/` on the client. The Home link then
+// renders its active underline on only one side and React throws #418.
+function normalizePathname(pathname: string | null): string {
+  if (pathname == null || pathname === "" || pathname === "/index") return "/";
+  return pathname;
+}
+
 export default function Nav({
   items,
 }: {
   items?: { label: string; href: string }[];
 }) {
   const navItems = items && items.length > 0 ? items : NAV_ITEMS;
-  const pathname = usePathname() ?? "/";
+  const pathname = normalizePathname(usePathname());
   const [mobileOpen, setMobileOpen] = useState(false);
   const hamburgerRef = useRef<HTMLButtonElement | null>(null);
   const drawerRef = useRef<HTMLElement | null>(null);
