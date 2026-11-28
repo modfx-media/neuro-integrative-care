@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { queryRoutedContentByPath } from "@/lib/cms/query";
 import { normalizePath } from "@/lib/cms/path";
 import {
-  chooseDescription,
-  chooseTitle,
   DEFAULT_OG_IMAGE,
   ogImageFromMedia,
+  resolvePublishedDescription,
+  resolvePublishedTitle,
   titleFromMetadata,
   type OgImage,
 } from "@/lib/seo";
@@ -42,11 +42,12 @@ export async function withCMSMetadata(
 ): Promise<Metadata> {
   const routed = await queryRoutedContentByPath(path);
   const meta = routed?.doc.meta;
-  const title = chooseTitle(
-    meta?.title || routed?.doc.title,
+  const title = resolvePublishedTitle(
+    meta?.title,
+    routed?.doc.title,
     titleFromMetadata(fallback.title),
   );
-  const description = chooseDescription(
+  const description = resolvePublishedDescription(
     meta?.description,
     typeof fallback.description === "string" ? fallback.description : undefined,
   );
